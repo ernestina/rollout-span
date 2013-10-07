@@ -47,6 +47,7 @@
                         <a href="<?php echo URL; ?>dataTetap/addDataTetap">ADMIN</a>
                         <ul>
                             <li><a href="<?php echo URL; ?>dataTetap/addDataTetap"><i class="icon-globe icon-white"></i>Data Tetap</a></li>
+                            <li><a href="<?php echo URL; ?>dataUser/addDataUser"><i class="icon-globe icon-white"></i>Data User</a></li>
                         </ul>
                     </li>
                     <li class="subnav">

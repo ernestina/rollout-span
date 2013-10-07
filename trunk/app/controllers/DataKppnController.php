@@ -30,6 +30,7 @@ class DataKppnController extends BaseController {
         $d_kppn = new DataKppn($this->registry);
         if (isset($_POST['add_d_kppn'])) {
             $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
             $kd_d_konversi = $_POST['kd_d_konversi'];
             $kd_d_nrs = $_POST['kd_d_nrs'];
             $kd_d_nrk = $_POST['kd_d_nrk'];
@@ -37,10 +38,15 @@ class DataKppnController extends BaseController {
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_lhp= $_POST['kd_d_lhp'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_persepsi = $_POST['kd_d_persepsi'];
+            $kd_d_terimaan = $_POST['kd_d_terimaan'];
+            $kd_d_koreksi = $_POST['kd_d_koreksi'];
             $kd_d_infrastuktur = $_POST['kd_d_infrastruktur'];
             $kd_d_jaringan = $_POST['kd_d_jaringan'];
+            $kd_d_masalah = $_POST['kd_d_masalah'];
 
             $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
             $d_kppn->set_kd_d_konversi($kd_d_konversi);
             $d_kppn->set_kd_d_nrs($kd_d_nrs);
             $d_kppn->set_kd_d_nrk($kd_d_nrk);
@@ -48,8 +54,12 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
             $d_kppn->set_kd_d_lhp($kd_d_lhp);
             $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_persepsi($kd_d_persepsi);
+            $d_kppn->set_kd_d_terimaan($kd_d_terimaan);
+            $d_kppn->set_kd_d_koreksi($kd_d_koreksi);
             $d_kppn->set_kd_d_infrastruktur($kd_d_infrastuktur);
             $d_kppn->set_kd_d_jaringan($kd_d_jaringan);
+            $d_kppn->set_kd_d_masalah($kd_d_masalah);
 
             if (!$d_kppn->add_d_kppn()) {
                 $this->view->d_rekam = $d_kppn;
@@ -76,6 +86,7 @@ class DataKppnController extends BaseController {
         if (isset($_POST['upd_d_kppn'])) {
             $kd_d_kppn = $_POST['kd_d_kppn'];
             $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
             $kd_d_konversi = $_POST['kd_d_konversi'];
             $kd_d_nrs = $_POST['kd_d_nrs'];
             $kd_d_nrk = $_POST['kd_d_nrk'];
@@ -83,11 +94,16 @@ class DataKppnController extends BaseController {
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_lhp= $_POST['kd_d_lhp'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_persepsi = $_POST['kd_d_persepsi'];
+            $kd_d_terimaan = $_POST['kd_d_terimaan'];
+            $kd_d_koreksi = $_POST['kd_d_koreksi'];
             $kd_d_infrastuktur = $_POST['kd_d_infrastruktur'];
             $kd_d_jaringan = $_POST['kd_d_jaringan'];
+            $kd_d_masalah = $_POST['kd_d_masalah'];
 
             $d_kppn->set_kd_d_kppn($kd_d_kppn);
             $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
             $d_kppn->set_kd_d_konversi($kd_d_konversi);
             $d_kppn->set_kd_d_nrs($kd_d_nrs);
             $d_kppn->set_kd_d_nrk($kd_d_nrk);
@@ -95,8 +111,12 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
             $d_kppn->set_kd_d_lhp($kd_d_lhp);
             $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_persepsi($kd_d_persepsi);
+            $d_kppn->set_kd_d_terimaan($kd_d_terimaan);
+            $d_kppn->set_kd_d_koreksi($kd_d_koreksi);
             $d_kppn->set_kd_d_infrastruktur($kd_d_infrastuktur);
             $d_kppn->set_kd_d_jaringan($kd_d_jaringan);
+            $d_kppn->set_kd_d_masalah($kd_d_masalah);
 
             if (!$d_kppn->update_d_kppn()) {
                 $this->view->d_ubah = $d_kppn;

@@ -10,6 +10,7 @@ class DataKppn {
     private $db;
     private $_kd_d_kppn;
     private $_kd_d_user;
+    private $_kd_d_tgl;
     private $_kd_d_konversi;
     private $_kd_d_nrs;
     private $_kd_d_nrk;
@@ -17,8 +18,12 @@ class DataKppn {
     private $_kd_d_sp2d;
     private $_kd_d_lhp;
     private $_kd_d_rekon;
+    private $_kd_d_persepsi;
+    private $_kd_d_terimaan;
+    private $_kd_d_koreksi;
     private $_kd_d_infrastruktur;
     private $_kd_d_jaringan;
+    private $_kd_d_masalah;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_kppn';
@@ -50,6 +55,7 @@ class DataKppn {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
             $d_kppn->set_kd_d_user($val['kd_d_user']);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_nrs($val['kd_d_nrs']);
             $d_kppn->set_kd_d_nrk($val['kd_d_nrk']);
@@ -57,8 +63,12 @@ class DataKppn {
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $d_kppn->set_kd_d_persepsi($val['kd_d_persepsi']);
+            $d_kppn->set_kd_d_terimaan($val['kd_d_terimaan']);
+            $d_kppn->set_kd_d_koreksi($val['kd_d_koreksi']);
             $d_kppn->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
             $d_kppn->set_kd_d_jaringan($val['kd_d_jaringan']);
+            $d_kppn->set_kd_d_masalah($val['kd_d_masalah']);
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
@@ -83,15 +93,20 @@ class DataKppn {
         foreach ($result as $val) {
             $this->set_kd_d_kppn($val['kd_d_kppn']);
             $this->set_kd_d_user($val['kd_d_user']);
+            $this->set_kd_d_tgl($val['kd_d_tgl']);
             $this->set_kd_d_konversi($val['kd_d_konversi']);
             $this->set_kd_d_nrs($val['kd_d_nrs']);
             $this->set_kd_d_nrk($val['kd_d_nrk']);
             $this->set_kd_d_spm($val['kd_d_spm']);
-            $this->set_kd_d_sp2d($val['kd_d_s2d']);
+            $this->set_kd_d_sp2d($val['kd_d_sp2d']);
             $this->set_kd_d_lhp($val['kd_d_lhp']);
             $this->set_kd_d_rekon($val['kd_d_rekon']);
+            $this->set_kd_d_persepsi($val['kd_d_persepsi']);
+            $this->set_kd_d_terimaan($val['kd_d_terimaan']);
+            $this->set_kd_d_koreksi($val['kd_d_koreksi']);
             $this->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
             $this->set_kd_d_jaringan($val['kd_d_jaringan']);
+            $this->set_kd_d_masalah($val['kd_d_masalah']);
         }
         return $this;
     }
@@ -104,6 +119,7 @@ class DataKppn {
     public function add_d_kppn() {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
+            'kd_d_tgl' => $this->get_kd_d_tgl(),
             'kd_d_konversi' => $this->get_kd_d_konversi(),
             'kd_d_nrs' => $this->get_kd_d_nrs(),
             'kd_d_nrk' => $this->get_kd_d_nrk(),
@@ -111,8 +127,12 @@ class DataKppn {
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
             'kd_d_lhp' => $this->get_kd_d_lhp(),
             'kd_d_rekon' => $this->get_kd_d_rekon(),
+            'kd_d_persepsi' => $this->get_kd_d_persepsi(),
+            'kd_d_terimaan' => $this->get_kd_d_terimaan(),
+            'kd_d_koreksi' => $this->get_kd_d_koreksi(),
             'kd_d_infrastruktur' => $this->get_kd_d_infrastruktur(),
-            'kd_d_jaringan' => $this->get_kd_d_jaringan()
+            'kd_d_jaringan' => $this->get_kd_d_jaringan(),
+            'kd_d_masalah' => $this->get_kd_d_masalah()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -130,6 +150,7 @@ class DataKppn {
     public function update_d_kppn() {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
+            'kd_d_tgl' => $this->get_kd_d_tgl(),
             'kd_d_konversi' => $this->get_kd_d_konversi(),
             'kd_d_nrs' => $this->get_kd_d_nrs(),
             'kd_d_nrk' => $this->get_kd_d_nrk(),
@@ -137,8 +158,12 @@ class DataKppn {
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
             'kd_d_lhp' => $this->get_kd_d_lhp(),
             'kd_d_rekon' => $this->get_kd_d_rekon(),
+            'kd_d_persepsi' => $this->get_kd_d_persepsi(),
+            'kd_d_terimaan' => $this->get_kd_d_terimaan(),
+            'kd_d_koreksi' => $this->get_kd_d_koreksi(),
             'kd_d_infrastruktur' => $this->get_kd_d_infrastruktur(),
-            'kd_d_jaringan' => $this->get_kd_d_jaringan()
+            'kd_d_jaringan' => $this->get_kd_d_jaringan(),
+            'kd_d_masalah' => $this->get_kd_d_masalah()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -161,6 +186,10 @@ class DataKppn {
     public function validate() {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_tgl() == 0) {
+            $this->_error .= "Tangal belum diinput!</br>";
             $this->_valid = FALSE;
         }
         if ($this->get_kd_d_konversi() == "") {
@@ -191,12 +220,28 @@ class DataKppn {
             $this->_error .= "Rekon belum diinput!</br>";
             $this->_valid = FALSE;
         }
+        if ($this->get_kd_d_persepsi() == "" ) {
+            $this->_error .= "Persepsi belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_terimaan() == "" ) {
+            $this->_error .= "Terimaan belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_koreksi() == "" ) {
+            $this->_error .= "Koreksi belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
         if ($this->get_kd_d_infrastruktur() == "" ) {
             $this->_error .= "Infrastruktur belum diinput!</br>";
             $this->_valid = FALSE;
         }
         if ($this->get_kd_d_jaringan() == "" ) {
             $this->_error .= "Jaringan belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_masalah() == "" ) {
+            $this->_error .= "Masalah belum diinput!</br>";
             $this->_valid = FALSE;
         }
     }
@@ -211,6 +256,10 @@ class DataKppn {
 
     public function set_kd_d_user($user) {
         $this->_kd_d_user = $user;
+    }
+    
+    public function set_kd_d_tgl($tgl) {
+        $this->_kd_d_tgl = $tgl;
     }
     
     public function set_kd_d_konversi($konversi) {
@@ -240,6 +289,18 @@ class DataKppn {
     public function set_kd_d_rekon($rekon) {
         $this->_kd_d_rekon = $rekon;
     }
+    
+    public function set_kd_d_persepsi($persepsi) {
+        $this->_kd_d_persepsi = $persepsi;
+    }
+    
+    public function set_kd_d_terimaan($terimaan) {
+        $this->_kd_d_terimaan = $terimaan;
+    }
+    
+    public function set_kd_d_koreksi($koreksi) {
+        $this->_kd_d_koreksi = $koreksi;
+    }
 
     public function set_kd_d_infrastruktur($infrastruktur) {
         $this->_kd_d_infrastuktur = $infrastruktur;
@@ -247,6 +308,10 @@ class DataKppn {
     
     public function set_kd_d_jaringan($jaringan) {
         $this->_kd_d_jaringan = $jaringan;
+    }
+    
+    public function set_kd_d_masalah($masalah) {
+        $this->_kd_d_masalah = $masalah;
     }
 
     public function set_table($table) {
@@ -270,6 +335,10 @@ class DataKppn {
 
     public function get_kd_d_user() {
         return $this->_kd_d_user;
+    }
+    
+    public function get_kd_d_tgl() {
+        return $this->_kd_d_tgl;
     }
 
     public function get_kd_d_konversi() {
@@ -299,6 +368,18 @@ class DataKppn {
     public function get_kd_d_rekon() {
         return $this->_kd_d_rekon;
     }
+    
+    public function get_kd_d_persepsi() {
+        return $this->_kd_d_persepsi;
+    }
+    
+    public function get_kd_d_terimaan() {
+        return $this->_kd_d_terimaan;
+    }
+    
+    public function get_kd_d_koreksi() {
+        return $this->_kd_d_koreksi;
+    }
 
     public function get_kd_d_infrastruktur() {
         return $this->_kd_d_infrastuktur;
@@ -306,6 +387,10 @@ class DataKppn {
 
     public function get_kd_d_jaringan() {
         return $this->_kd_d_jaringan;
+    }
+    
+    public function get_kd_d_masalah() {
+        return $this->_kd_d_masalah;
     }
 
     public function get_error() {

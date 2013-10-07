@@ -196,7 +196,7 @@ class DataTetap {
             $sql = "SELECT kd_d_tetap FROM '" . $this->_table . "' WHERE '" . $where . "'";
             $result = $this->db->select($sql);
             foreach ($result as $val) {
-                $this->set_kode_in($val['kd_d_tetap']);
+                $this->set_kd_d_tetap($val['kd_d_tetap']);
             }
         }
         return $this->_kd_d_tetap;

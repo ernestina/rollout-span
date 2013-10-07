@@ -6,7 +6,7 @@
 if (isset($this->d_ubah)) {
     echo 'Ubah Data KPPN';
 } else {
-    echo 'Tambah Data KPPN'; 
+    echo 'Tambah Data KPPN';
 }
 ?></legend>
             <div id="form-input"><div class="kiri">
@@ -14,23 +14,25 @@ if (isset($this->d_ubah)) {
                 if (isset($this->d_ubah)) {
                     echo URL . 'dataKppn/updDataKppn';
                 } else {
-                    $_SERVER['PHP_SELF']; 
+                    $_SERVER['PHP_SELF'];
                 }
 ?>">
-                          <?php
-                          if (isset($this->d_ubah)) {
-                              echo "<input type=hidden name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
-                          }
+                              <?php
+                              if (isset($this->d_ubah)) {
+                                  echo "<input type=hidden name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
+                              }
 
-                          if (isset($this->error)) {
-                              echo "<div class=error>" . $this->error . "</div>";
-                          }
-                          ?>
+                              if (isset($this->error)) {
+                                  echo "<div class=error>" . $this->error . "</div>";
+                              }
+                              ?>
 
                         <div id="wuser" class="error"></div>
                         <label>User</label><input type="text" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
                         <div id="wkonversi"  class="error"></div>
                         <label>Konversi</label><input type="text" name="kd_d_konversi" id="kd_d_konversi" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_konversi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_konversi() : ''); ?>">
+                        <div id="wtgl"  class="error"></div>
+                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div id="wnrs" class="error"></div>
                         <label>NRS</label><input type="text" name="kd_d_nrs" id="kd_d_nrs" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_nrs() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_nrs() : ''); ?>">
                         <div id="wnrk" class="error"></div>
@@ -43,10 +45,18 @@ if (isset($this->d_ubah)) {
                         <label>LHP</label><input type="text" name="kd_d_lhp" id="kd_d_lhp" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_lhp() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_lhp() : ''); ?>">
                         <div id="wrekon" class="error"></div>
                         <label>Rekon</label><input type="text" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                        <div id="wpersepsi" class="error"></div>
+                        <label>Persepsi</label><input type="text" name="kd_d_persepsi" id="kd_d_persepsi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_persepsi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_persepsi() : ''); ?>">
+                        <div id="wterimaan" class="error"></div>
+                        <label>Terimaan</label><input type="text" name="kd_d_terimaan" id="kd_d_terimaan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_terimaan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_terimaan() : ''); ?>">
+                        <div id="wkoreksi" class="error"></div>
+                        <label>Koreksi</label><input type="text" name="kd_d_koreksi" id="kd_d_koreksi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_koreksi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_koreksi() : ''); ?>">
                         <div id="winfrastruktur" class="error"></div>
                         <label>Infrastruktur</label><input type="text" name="kd_d_infrastruktur" id="kd_d_infrastruktur" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_infrastruktur() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_infrastruktur() : ''); ?>">
                         <div id="wjaringan" class="error"></div>
                         <label>Jaringan</label><input type="text" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>">
+                        <div id="wmasalah" class="error"></div>
+                        <label>Masalah</label><input type="text" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>">
                         </select>
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
@@ -65,6 +75,7 @@ if (isset($this->d_ubah)) {
                     <thead>
                     <th>No</th>
                     <th>User</th>
+                    <th>Tanggal</th>
                     <th>Konversi</th>
                     <th>NRS</th>
                     <th>NRK</th>
@@ -72,8 +83,12 @@ if (isset($this->d_ubah)) {
                     <th>SP2D</th>
                     <th>LHP</th>
                     <th>Rekon</th>
+                    <th>Bank Persepsi</th>
+                    <th>Konvirmasi Penerimaan</th>
+                    <th>Koreksi penerimaan</th>
                     <th>Infrastuktur</th>
                     <th>Jaringan</th>
+                    <th>Masalah</th>
                     <th width="50">Aksi</th>
                     </thead>
                     <tbody>
@@ -84,6 +99,7 @@ if (isset($this->d_ubah)) {
                             echo "<tr>";
                             echo "<td>$no</td>";
                             echo "<td>" . $val->get_kd_d_user() . "</td>";
+                            echo "<td>" . $val->get_kd_d_tgl() . "</td>";
                             echo "<td>" . $val->get_kd_d_konversi() . "</td>";
                             echo "<td>" . $val->get_kd_d_nrs() . "</td>";
                             echo "<td>" . $val->get_kd_d_nrk() . "</td>";
@@ -91,10 +107,14 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
                             echo "<td>" . $val->get_kd_d_lhp() . "</td>";
                             echo "<td>" . $val->get_kd_d_rekon() . "</td>";
+                            echo "<td>" . $val->get_kd_d_persepsi() . "</td>";
+                            echo "<td>" . $val->get_kd_d_terimaan() . "</td>";
+                            echo "<td>" . $val->get_kd_d_koreksi() . "</td>";
                             echo "<td>" . $val->get_kd_d_infrastruktur() . "</td>";
                             echo "<td>" . $val->get_kd_d_jaringan() . "</td>";
-                            echo "<td><a href=" . URL . "dataKppn/delDataKppn/" . $val->get_kd_d_user() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataKppn/addDataKppn/" . $val->get_kd_d_user() . "><i class=\"icon-pencil\"></i></a></td>";
+                            echo "<td>" . $val->get_kd_d_masalah() . "</td>";
+                            echo "<td><a href=" . URL . "dataKppn/delDataKppn/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
+                        <a href=" . URL . "dataKppn/addDataKppn/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;
                         }
@@ -120,6 +140,12 @@ if (isset($this->d_ubah)) {
         $('#kd_d_user').keyup(function(){
             if(document.getElementById('kd_d_user').value !=''){
                 $('#wuser').fadeOut(200);
+            }
+        })
+        
+        $('#kd_d_tgl').keyup(function(){
+            if(document.getElementById('kd_d_tgl').value !=''){
+                $('#wtgl').fadeOut(200);
             }
         })
     
@@ -164,6 +190,24 @@ if (isset($this->d_ubah)) {
                 $('#wrekon').fadeOut(200);
             }
         })
+        
+        $('#kd_d_persepsi').keyup(function(){
+            if(document.getElementById('kd_d_persepsi').value !=''){
+                $('#wpersepsi').fadeOut(200);
+            }
+        })
+        
+        $('#kd_d_terimaan').keyup(function(){
+            if(document.getElementById('kd_d_terimaan').value !=''){
+                $('#wterimaan').fadeOut(200);
+            }
+        })
+        
+        $('#kd_d_koreksi').keyup(function(){
+            if(document.getElementById('kd_d_koreksi').value !=''){
+                $('#wkoreksi').fadeOut(200);
+            }
+        })
     
         $('#kd_d_infrastruktur').keyup(function(){
             if(document.getElementById('kd_d_infrastruktur').value !=''){
@@ -176,11 +220,17 @@ if (isset($this->d_ubah)) {
                 $('#wjaringan').fadeOut(200);
             }
         })
+        
+        $('#kd_d_masalah').keyup(function(){
+            if(document.getElementById('kd_d_masalah').value !=''){
+                $('#wmasalah').fadeOut(200);
+            }
+        })
 
     }
 
     function del(user){
-        var text = "Yakin data Kantor "+user+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+unit+" berantakan!";
+        var text = "Yakin data Kantor "+user+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+user+" berantakan!";
         if(confirm(text)){
             return true;
         }else{
@@ -190,6 +240,7 @@ if (isset($this->d_ubah)) {
     
     function cek(){
         var kd_d_user = document.getElementById('kd_d_user').value;
+        var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_konversi = document.getElementById('kd_d_konversi').value;
         var kd_d_nrs = document.getElementById('kd_d_nrs').value;
         var kd_d_nrk = document.getElementById('kd_d_nrk').value;
@@ -197,13 +248,24 @@ if (isset($this->d_ubah)) {
         var kd_d_sp2d = document.getElementById('kd_d_sp2d').value;
         var kd_d_lhp = document.getElementById('kd_d_lhp').value;
         var kd_d_rekon = document.getElementById('kd_d_rekon').value;
+        var kd_d_persepsi = document.getElementById('kd_d_persepsi').value;
+        var kd_d_terimaan = document.getElementById('kd_d_terimaan').value;
+        var kd_d_koreksi = document.getElementById('kd_d_koreksi').value;
         var kd_d_infrastruktur = document.getElementById('kd_d_infrastruktur').value;
         var kd_d_jaringan = document.getElementById('kd_d_jaringan').value;
+        var kd_d_masalah = document.getElementById('kd_d_masalah').value;
         var jml=0;
         if(kd_d_user==''){
             var wuser= 'User harus diisi!';
             $('#wuser').fadeIn(0);
             $('#wuser').html(wuser);
+            jml++;
+        }
+        
+        if(kd_d_tgl==''){
+            var wtgl= 'Tanggal harus diisi!';
+            $('#wtgl').fadeIn(0);
+            $('#wtgl').html(wtgl);
             jml++;
         }
     
@@ -256,6 +318,27 @@ if (isset($this->d_ubah)) {
             $('#wrekon').html(wrekon);
             jml++;
         }
+        
+        if(kd_d_persepsi==''){
+            var wpersepsi= 'Jumlah Bank Persepsi harus diisi!';
+            $('#wpersepsi').fadeIn(0);
+            $('#wpersepsi').html(wpersepsi);
+            jml++;
+        }
+        
+        if(kd_d_terimaan==''){
+            var wterimaan= 'Jumlah Konfirmasi Bank Penerimaan harus diisi!';
+            $('#wterimaan').fadeIn(0);
+            $('#wterimaan').html(wterimaan);
+            jml++;
+        }
+        
+        if(kd_d_koreksi==''){
+            var wkoreksi= 'Koreksi Penerimaan harus diisi!';
+            $('#wkoreksi').fadeIn(0);
+            $('#wkoreksi').html(wkoreksi);
+            jml++;
+        }
     
         if(kd_d_infrastruktur==''){
             var winfrastruktur= 'Jumlah NRK harus diisi!';
@@ -271,12 +354,18 @@ if (isset($this->d_ubah)) {
             $('#wjaringan').html(wjaringan);
             jml++;
         }
+        
+        if(kd_d_masalah==''){
+            var wmasalah= 'Masalah harus diisi!';
+            $('#wmasalah').fadeIn(0);
+            $('#wmasalah').html(wmasalah);
+            jml++;
+        }
     
         if(jml>0){
             return false
         }else{
             return true;
         }
-    
     }
 </script>
