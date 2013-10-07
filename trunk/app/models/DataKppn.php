@@ -327,7 +327,7 @@ class DataKppn {
             $sql = "SELECT kd_d_kppn FROM '" . $this->_table . "' WHERE '" . $where . "'";
             $result = $this->db->select($sql);
             foreach ($result as $val) {
-                $this->set_kode_in($val['kd_d_kppn']);
+                $this->set_kd_d_kppn($val['kd_d_kppn']);
             }
         }
         return $this->_kd_d_kppn;
