@@ -71,8 +71,7 @@
                             <li><a href="<?php echo URL; ?>dataApk/addDataApk"><i class="icon-globe icon-white"></i>data APK</a></li>
                         </ul>
                     </li>
-<<<<<<< .mine
-=======
+
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataSmi/addDataSmi">SMI</a>
                         <ul>
@@ -85,10 +84,6 @@
                             <li><a href="<?php echo URL; ?>dataBlu/addDataBlu"><i class="icon-globe icon-white"></i>data BLU</a></li>
                         </ul>
                     </li>
-                    <li class="nav">
-                        <a class="blok" href="#"><img class="profil" src="<?php echo URL; ?>public/img/pic.jpg" /></a>
-                    </li>
->>>>>>> .r10
                 </ul>
             </div>
             <script>
