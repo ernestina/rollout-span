@@ -9,11 +9,13 @@
         <script src="<?php echo URL; ?>public/js/jquery-ui.js"></script>
         <script src="<?php echo URL; ?>public/js/myjs.js"></script>
         <script src="<?php echo URL; ?>public/js/teamdf-jquery-number/jquery.number.js"></script>
+		<script src="<?php echo URL; ?>public/js/gaugejs/raphael.2.1.0.min.js"></script>
+		<script src="<?php echo URL; ?>public/js/gaugejs/justgage.1.0.1.min.js"></script>
 <!--    <link href="<?php echo URL; ?>public/css/flick/jquery-ui-1.10.1.custom.css" rel="stylesheet">-->
     <!--link href="<?php echo URL; ?>public/css/jquery-ui.css" rel="stylesheet">
     <link href="<?php echo URL; ?>public/css/ui.theme.css" rel="stylesheet">
     <link href="<?php echo URL; ?>public/css/sims.css" rel="stylesheet"-->
-        <link href="<?php echo URL; ?>public/css/style.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>public/css/ernest.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/dialog.css" rel="stylesheet">
 
         <script type="text/javascript">
@@ -26,17 +28,6 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="header">
-                <div class="kolom1">
-                    <img src="<?php echo URL; ?>public/img/logo.png" style="padding-left: 20px; padding-bottom: 10px">
-                </div>
-				
-                <div id="jam" class="kolom2" >
-
-                    <p id="jam" onload="jam()"></p>
-
-                </div>
-            </div>
 
             <div id="menu">
                 <ul>
@@ -80,6 +71,8 @@
                             <li><a href="<?php echo URL; ?>dataApk/addDataApk"><i class="icon-globe icon-white"></i>data APK</a></li>
                         </ul>
                     </li>
+<<<<<<< .mine
+=======
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataSmi/addDataSmi">SMI</a>
                         <ul>
@@ -95,6 +88,7 @@
                     <li class="nav">
                         <a class="blok" href="#"><img class="profil" src="<?php echo URL; ?>public/img/pic.jpg" /></a>
                     </li>
+>>>>>>> .r10
                 </ul>
             </div>
             <script>
