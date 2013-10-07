@@ -104,8 +104,8 @@
 	
 
 	
-    <script src="../../../gaugejs/raphael.2.1.0.min.js"></script>
-    <script src="../../../gaugejs/justgage.1.0.1.min.js"></script>
+    <script src="../../public/js/gaugejs/raphael.2.1.0.min.js"></script>
+    <script src="../../js/gaugejs/justgage.1.0.1.min.js"></script>
     <script>
       var g1, g2, g3, g4;
       
