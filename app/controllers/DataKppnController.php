@@ -146,9 +146,9 @@ class DataKppnController extends BaseController {
         header('location:' . URL . 'dataKppn/addDataKppn');
     }
 	
-	public function showDasbor($id){
-		$d_kppn = new DataKppn($this->registry);
-		$this->view->data = $d_kppn->get_d_kppn_by_id($id);
+	public function showDasbor(){
+	$d_kppn = new DataKppn($this->registry);
+        $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('dasbor/level1');
 	}
 
