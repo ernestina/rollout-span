@@ -45,7 +45,7 @@ class DataKppn {
      */
 
     public function get_d_kppn($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ";
+        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl ";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }

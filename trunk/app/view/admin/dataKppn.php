@@ -228,6 +228,14 @@ if (isset($this->d_ubah)) {
         })
 
     }
+    
+    $(function() { 
+        $("#kd_d_tgl").datepicker({dateFormat: "yy-mm-dd"
+            //            buttonImage:'images/calendar.gif',
+            //            buttonImageOnly: true,
+            //            showOn: 'button'
+        }); 
+    });
 
     function del(user){
         var text = "Yakin data Kantor "+user+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+user+" berantakan!";
