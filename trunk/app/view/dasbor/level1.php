@@ -14,20 +14,20 @@
 	<div class="kolom2">
 	<table width="100%" style="margin: 0px; padding: 0px">
 		<tr>
-			<td><div id="g2"></div></td>
-			<td><div id="g3"></div></td>
-			<td><div id="g4"></div></td>
+			<td><button><div id="g2"></div></button></td>
+			<td><button><div id="g3"></div></button></td>
+			<td><button><div id="g4"></div></button></td>
 			
 		</tr>
 		<tr>
-			<td><div id="g5"></div></td>
-			<td><div id="g6"></div></td>
-			<td><div id="g7"></div></td>
+			<td><button><div id="g5"></div></button></td>
+			<td><button><div id="g6"></div></button></td>
+			<td><button><div id="g7"></div></button></td>
 			
 		</tr>
 		<tr>
-			<td><div id="g8"></div></td>
-			<td><div id="g9"></div></td>
+			<td><button><div id="g8"></div></button></td>
+			<td><button><div id="g9"></div></button></td>
 		</tr>
 	</table>
 		
@@ -49,7 +49,7 @@
           value: jum_sp2d,
           min: 0,
           max: 100,
-          title: "Pilotting SPAN",
+          title: "Piloting SPAN",
           label: "sukses"
         });
         
