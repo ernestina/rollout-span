@@ -28,6 +28,7 @@ class DataKppnController extends BaseController {
 
     public function addDataKppn($id = null) {
         $d_kppn = new DataKppn($this->registry);
+        $d_tetap = new DataTetap($this->registry);
         if (isset($_POST['add_d_kppn'])) {
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
@@ -71,7 +72,7 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_kppn($id);
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
-        
+        $this->view->tetap = $d_tetap->get_d_tetap();
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnList');
     }

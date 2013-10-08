@@ -27,6 +27,8 @@ class DataKppn {
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_kppn';
+    private $_t_tetap = 'd_tetap';
+    private $_kd_r_unit;
     public $registry;
 
     /*
@@ -42,10 +44,19 @@ class DataKppn {
      * mendapatkan data dari tabel Data Tetap
      * @param limit batas default null
      * return array objek Data Tetap
+     * $sql = "SELECT a.KD_FAKUL as KD_FAKUL,
+                b.NM_UNIV as KD_UNIV,
+                a.NM_FAKUL as NM_FAKUL,
+                a.ALMT_FAKUL as ALMT_FAKUL,
+                a.TELP_FAKUL as TELP_FAKUL
+                FROM " . $this->_table . " a
+                LEFT JOIN " . $this->_tb_univ . " b ON a.KD_UNIV=b.KD_UNIV";
      */
 
     public function get_d_kppn($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl ";
+        $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
+                LEFT JOIN " . $this->_t_tetap. " b 
+                ON a.kd_d_user = b.kd_d_tetap ORDER BY kd_d_tgl";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -54,7 +65,7 @@ class DataKppn {
         foreach ($result as $val) {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
-            $d_kppn->set_kd_d_user($val['kd_d_user']);
+            $d_kppn->set_kd_d_user($val['kd_r_unit']);
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_nrs($val['kd_d_nrs']);
@@ -69,6 +80,7 @@ class DataKppn {
             $d_kppn->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
             $d_kppn->set_kd_d_jaringan($val['kd_d_jaringan']);
             $d_kppn->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_kppn->set_kd_r_unit($val['kd_r_unit']);
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
@@ -86,9 +98,8 @@ class DataKppn {
     public function get_d_kppn_by_id($d_kppn = DataKppn) {
         if (is_null($d_kppn->get_kd_d_kppn())) {
             return false;
-        }
+        }        
         $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=" . $d_kppn->get_kd_d_kppn();
-//        var_dump($sql);
         $result = $this->db->select($sql);
         foreach ($result as $val) {
             $this->set_kd_d_kppn($val['kd_d_kppn']);
@@ -107,6 +118,7 @@ class DataKppn {
             $this->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
             $this->set_kd_d_jaringan($val['kd_d_jaringan']);
             $this->set_kd_d_masalah($val['kd_d_masalah']);
+            $this->set_kd_r_unit($val['kd_r_unit']);
         }
         return $this;
     }
@@ -317,6 +329,10 @@ class DataKppn {
     public function set_table($table) {
         $this->_table = $table;
     }
+    
+    public function set_kd_r_unit($unit) {
+        $this->_kd_r_unit = $unit;
+    }
 
     /*
      * getter
@@ -399,6 +415,10 @@ class DataKppn {
 
     public function get_valid() {
         return $this->_valid;
+    }
+    
+    public function get_kd_r_unit() {
+        return $this->_kd_r_unit;
     }
 
     /*

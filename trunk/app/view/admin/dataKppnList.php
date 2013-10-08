@@ -5,7 +5,7 @@
             <table class="table-bordered zebra scroll">
                 <thead>
                 <th>No</th>
-                <th>User</th>
+                <th>Unit</th>
                 <th>Tanggal</th>
                 <th>Konversi</th>
                 <th>NRS</th>
