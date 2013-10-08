@@ -26,12 +26,24 @@
             });
         </script>
     </head>
-    <body>
+    <header>logo <br>SPAN</header>
+	<body>
+		
         <div id="wrapper">
-
+			
             <div id="menu">
-                <ul>
+                
+				<ul>
                     <li class="nav">
+                        <a href="#"></a>
+                    </li>
+					<li class="nav">
+                        <a href="#"></a>
+                    </li>
+					<li class="nav">
+                        <a href="#"></a>
+                    </li>
+					<li class="nav">
                         <a href="<?php echo URL; ?>dataKppn/showDasbor">BERANDA</a>
                     </li>
                     <li class="subnav">
