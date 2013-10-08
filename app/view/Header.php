@@ -32,7 +32,7 @@
             <div id="menu">
                 <ul>
                     <li class="nav">
-                        <a href="<?php echo URL; ?>index">BERANDA</a>
+                        <a href="<?php echo URL; ?>dataKppn/showDasbor">BERANDA</a>
                     </li>
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataTetap/addDataTetap">ADMIN</a>
@@ -79,9 +79,9 @@
                         </ul>
                     </li>
                     <li class="subnav">
-                        <a href="<?php echo URL; ?>dataBlu/addDataBlu">BLU</a>
+                        <a href="<?php echo URL; ?>dataDjpu/addDataDjpu">DJPU</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataBlu/addDataBlu"><i class="icon-globe icon-white"></i>data BLU</a></li>
+                            <li><a href="<?php echo URL; ?>dataDjpu/addDataDjpu"><i class="icon-globe icon-white"></i>data DJPU</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -8,7 +8,7 @@
                         }
                         ?>
 					
-		<div class="kolom1" id="g1">
+		<div class="kolom1" id="g1" href="#">
 			<input type="hidden" id="sp2d" value= "<?php echo $sp2d ?>">
 		</div>
 	<div class="kolom2">
