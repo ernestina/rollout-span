@@ -1,26 +1,30 @@
-<div class="kolom4" id="table">
+<div id="top">
+
+<h2>MONITORING KPPN</h2>
+<div id="gambar"></div>
+<div class="fitur" id="table">
     <fieldset><legend>Data KPPN</legend>
         <div id="table-title"></div>
         <div id="table-content">
-            <table class="table-bordered zebra scroll">
-                <thead>
+            <table class="table-bordered zebra scroll" style="text-align: center">
+                <thead style="font-size:80%">
                 <th>No</th>
-                <th>Unit</th>
-                <th>Tanggal</th>
-                <th>Konversi</th>
-                <th>NRS</th>
-                <th>NRK</th>
-                <th>SPM</th>
-                <th>SP2D</th>
-                <th>LHP</th>
-                <th>Rekon</th>
-                <th>Bank Persepsi</th>
-                <th>Konvirmasi Penerimaan</th>
-                <th>Koreksi penerimaan</th>
-                <th>Infrastuktur</th>
-                <th>Jaringan</th>
+                <th width="10%" >Unit</th>
+                <th width="10%">Tanggal</th>
+                <th width="5%">Kon-versi</th>
+                <th width="5%">NRS</th>
+                <th width="5%">NRK</th>
+                <th width="5%">SPM</th>
+                <th width="5%">SP2D</th>
+                <th width="5%">LHP</th>
+                <th width="5%">Rekon</th>
+                <th width="5%">Bank Persepsi</th>
+                <th width="5%">Konfirm Peneri-maan</th>
+                <th width="5%">Koreksi Peneri-maan</th>
+                <th width="5%">Infra-stuktur</th>
+                <th>Jari-ngan</th>
                 <th>Masalah</th>
-                <th width="50">Aksi</th>
+                <th width="7%">Aksi</th>
                 </thead>
                 <tbody>
                     <?php
@@ -29,7 +33,7 @@
                         //var_dump($val);
                         echo "<tr>";
                         echo "<td>$no</td>";
-                        echo "<td>" . $val->get_kd_d_user() . "</td>";
+                        echo "<td style=\"text-align: left\">" . $val->get_kd_d_user() . "</td>";
                         echo "<td>" . $val->get_kd_d_tgl() . "</td>";
                         echo "<td>" . $val->get_kd_d_konversi() . "</td>";
                         echo "<td>" . $val->get_kd_d_nrs() . "</td>";
@@ -53,4 +57,5 @@
                 </tbody>
             </table>
         </div>
+</div>
 </div>
