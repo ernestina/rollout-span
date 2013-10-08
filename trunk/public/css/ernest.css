@@ -35,11 +35,14 @@ body {
 h1, h2, legend {
 	font-family: "Sub";
 	font-size: 24px;
+}
+h2 {
 	text-align: center;
 }
 
 h1 {
 	font-size: 300%;
+	text-align: center;
 }
 
 
@@ -61,6 +64,7 @@ header{
     -o-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
     box-shadow:2px 2px 0 rgba(0,0,0,0.1);
 }
+
 header:before{
     content:" ";
     background:url('../img/ribbon.png');
@@ -73,6 +77,17 @@ header:before{
     margin-left:-10px;
     z-index:1;
 }
+/*
+#gambar {
+    background-image:url('../img/line.png') ;
+	margin-top: 20px;
+	margin-left: auto; margin-right: auto;
+	width: 600px;
+	height: 200px;
+	max-height: 200px;
+	background-repeat: no-repeat;
+}
+*/
 
 #wrapper {
 	overflow: auto;
@@ -215,8 +230,8 @@ header:before{
 	}			
 	
 .kiri {
-	padding-left: 20px;
-	padding-bottom: 7px;}
+	padding: 0px 10px 0px 10px;
+	}
 
 .kanan {
 	float: right;
@@ -247,14 +262,14 @@ header:before{
 }
 
 .kolom3 {
-	width: 27%;
+	width: 25%;
 	float: left;
-	margin: 2px 0px 0px 0px;
+	margin: 0px;
 }
 .kolom4 {
-	width: 73%;
+	width: 70%;
 	float: left;
-	margin: 2px 0px 0px 0px;
+	margin: 0px 0px 0px 40px;
 }
 
 .kolom5 {
