@@ -28,15 +28,15 @@ if (isset($this->d_ubah)) {
                               ?>
 
                         <div id="wuser" class="error"></div>
-                        <label>User</label><input type="text" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
+                        <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
                         <div id="wtgl"  class="error"></div>
-                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                        <label>Tanggal</label><input type="number" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div id="wrekon" class="error"></div>
-                        <label>Rekon</label><input type="text" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                        <label>Rekon</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
                         <div id="wjaringan" class="error"></div>
-                        <label>Jaringan</label><input type="text" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>">
+                        <label>Jaringan</label><textarea type="text" rows="10" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>"></textarea>
                         <div id="wmasalah" class="error"></div>
-                        <label>Masalah</label><input type="text" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>">
+                        <label>Masalah</label><textarea type="text" rows="10" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>"></textarea>
                         </select>
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
@@ -147,6 +147,7 @@ if (isset($this->d_ubah)) {
     }
     
     function cek(){
+        var pattern = '^[0-9]$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_rekon = document.getElementById('kd_d_rekon').value;
@@ -166,6 +167,13 @@ if (isset($this->d_ubah)) {
             $('#wtgl').html(wtgl);
             jml++;
         }
+        
+        if(!kd_d_rekon.match(pattern)){
+            var wrekon = "Rekon harus dalam bentuk angka!";
+            $('#wrekon').html(wrekon);
+            $('#wrekon').fadeIn(200);
+            jml++;
+        }
     
         if(kd_d_rekon==''){
             var wrekon= 'Jumlah Rekon harus diisi!';
@@ -173,7 +181,7 @@ if (isset($this->d_ubah)) {
             $('#wrekon').html(wrekon);
             jml++;
         }
-                
+                     
         if(kd_d_jaringan==''){
             var wjaringan= 'Jaringan harus diisi!';
             $('#wjaringan').fadeIn(0);
@@ -187,6 +195,8 @@ if (isset($this->d_ubah)) {
             $('#wmasalah').html(wmasalah);
             jml++;
         }
+        
+        
     
         if(jml>0){
             return false

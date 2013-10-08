@@ -28,35 +28,35 @@ if (isset($this->d_ubah)) {
                               ?>
 
                         <div id="wuser" class="error"></div>
-                        <label>User</label><input type="text" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
+                        <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
                         <div id="wkonversi"  class="error"></div>
-                        <label>Konversi</label><input type="text" name="kd_d_konversi" id="kd_d_konversi" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_konversi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_konversi() : ''); ?>">
+                        <label>Konversi</label><input type="number" name="kd_d_konversi" id="kd_d_konversi" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_konversi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_konversi() : ''); ?>">
                         <div id="wtgl"  class="error"></div>
-                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                        <label>Tanggal</label><input type="number" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div id="wnrs" class="error"></div>
-                        <label>NRS</label><input type="text" name="kd_d_nrs" id="kd_d_nrs" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_nrs() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_nrs() : ''); ?>">
+                        <label>NRS</label><input type="number" name="kd_d_nrs" id="kd_d_nrs" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_nrs() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_nrs() : ''); ?>">
                         <div id="wnrk" class="error"></div>
-                        <label>NRK</label><input type="text" name="kd_d_nrk" id="kd_d_nrk" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_nrk() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_nrk() : ''); ?>">
+                        <label>NRK</label><input type="number" name="kd_d_nrk" id="kd_d_nrk" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_nrk() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_nrk() : ''); ?>">
                         <div id="wspm" class="error"></div>
-                        <label>SPM</label><input type="text" name="kd_d_spm" id="kd_d_spm" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm() : ''); ?>">
+                        <label>SPM</label><input type="number" name="kd_d_spm" id="kd_d_spm" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm() : ''); ?>">
                         <div id="wsp2d" class="error"></div>
-                        <label>SP2D</label><input type="text" name="kd_d_sp2d" id="kd_d_sp2d" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
+                        <label>SP2D</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
                         <div id="wlhp"  class="error"></div>
-                        <label>LHP</label><input type="text" name="kd_d_lhp" id="kd_d_lhp" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_lhp() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_lhp() : ''); ?>">
+                        <label>LHP</label><input type="number" name="kd_d_lhp" id="kd_d_lhp" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_lhp() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_lhp() : ''); ?>">
                         <div id="wrekon" class="error"></div>
-                        <label>Rekon</label><input type="text" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                        <label>Rekon</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
                         <div id="wpersepsi" class="error"></div>
-                        <label>Persepsi</label><input type="text" name="kd_d_persepsi" id="kd_d_persepsi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_persepsi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_persepsi() : ''); ?>">
+                        <label>Persepsi</label><input type="number" name="kd_d_persepsi" id="kd_d_persepsi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_persepsi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_persepsi() : ''); ?>">
                         <div id="wterimaan" class="error"></div>
-                        <label>Terimaan</label><input type="text" name="kd_d_terimaan" id="kd_d_terimaan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_terimaan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_terimaan() : ''); ?>">
+                        <label>Terimaan</label><input type="number" name="kd_d_terimaan" id="kd_d_terimaan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_terimaan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_terimaan() : ''); ?>">
                         <div id="wkoreksi" class="error"></div>
-                        <label>Koreksi</label><input type="text" name="kd_d_koreksi" id="kd_d_koreksi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_koreksi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_koreksi() : ''); ?>">
+                        <label>Koreksi</label><input type="number" name="kd_d_koreksi" id="kd_d_koreksi" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_koreksi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_koreksi() : ''); ?>">
                         <div id="winfrastruktur" class="error"></div>
-                        <label>Infrastruktur</label><input type="text" name="kd_d_infrastruktur" id="kd_d_infrastruktur" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_infrastruktur() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_infrastruktur() : ''); ?>">
+                        <label>Infrastruktur</label><textarea rows="10" type="text" name="kd_d_infrastruktur" id="kd_d_infrastruktur" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_infrastruktur() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_infrastruktur() : ''); ?>"></textarea>
                         <div id="wjaringan" class="error"></div>
-                        <label>Jaringan</label><input type="text" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>">
+                        <label>Jaringan</label><textarea rows="10" type="text" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>"></textarea>
                         <div id="wmasalah" class="error"></div>
-                        <label>Masalah</label><input type="text" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>">
+                        <label>Masalah</label><textarea type="text" rows="10" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>"></textarea>
                         </select>
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
@@ -67,63 +67,6 @@ if (isset($this->d_ubah)) {
             </div>
         </fieldset>
     </div>
-    <div class="kolom4" id="table">
-        <fieldset><legend>Data KPPN</legend>
-            <div id="table-title"></div>
-            <div id="table-content">
-                <table class="table-bordered zebra scroll">
-                    <thead>
-                    <th>No</th>
-                    <th>User</th>
-                    <th>Tanggal</th>
-                    <th>Konversi</th>
-                    <th>NRS</th>
-                    <th>NRK</th>
-                    <th>SPM</th>
-                    <th>SP2D</th>
-                    <th>LHP</th>
-                    <th>Rekon</th>
-                    <th>Bank Persepsi</th>
-                    <th>Konvirmasi Penerimaan</th>
-                    <th>Koreksi penerimaan</th>
-                    <th>Infrastuktur</th>
-                    <th>Jaringan</th>
-                    <th>Masalah</th>
-                    <th width="50">Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($this->data as $val) {
-                            //var_dump($val);
-                            echo "<tr>";
-                            echo "<td>$no</td>";
-                            echo "<td>" . $val->get_kd_d_user() . "</td>";
-                            echo "<td>" . $val->get_kd_d_tgl() . "</td>";
-                            echo "<td>" . $val->get_kd_d_konversi() . "</td>";
-                            echo "<td>" . $val->get_kd_d_nrs() . "</td>";
-                            echo "<td>" . $val->get_kd_d_nrk() . "</td>";
-                            echo "<td>" . $val->get_kd_d_spm() . "</td>";
-                            echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
-                            echo "<td>" . $val->get_kd_d_lhp() . "</td>";
-                            echo "<td>" . $val->get_kd_d_rekon() . "</td>";
-                            echo "<td>" . $val->get_kd_d_persepsi() . "</td>";
-                            echo "<td>" . $val->get_kd_d_terimaan() . "</td>";
-                            echo "<td>" . $val->get_kd_d_koreksi() . "</td>";
-                            echo "<td>" . $val->get_kd_d_infrastruktur() . "</td>";
-                            echo "<td>" . $val->get_kd_d_jaringan() . "</td>";
-                            echo "<td>" . $val->get_kd_d_masalah() . "</td>";
-                            echo "<td><a href=" . URL . "dataKppn/delDataKppn/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataKppn/addDataKppn/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
-                            echo "</tr>";
-                            $no++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-    </div>
-</div>
 </div>
 <script type="text/javascript">
     $(function(){
@@ -247,6 +190,7 @@ if (isset($this->d_ubah)) {
     }
     
     function cek(){
+        var pattern = '^[0-9]$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_konversi = document.getElementById('kd_d_konversi').value;
@@ -276,6 +220,13 @@ if (isset($this->d_ubah)) {
             $('#wtgl').html(wtgl);
             jml++;
         }
+        
+        if(!kd_d_konversi.match(pattern)){
+            var wkonversi = "Konversi harus dalam bentuk angka!";
+            $('#wkonversi').html(wkonversi);
+            $('#wkonversi').fadeIn(200);
+            jml++;
+        }
     
         if(kd_d_konversi==''){
             var wkonversi= 'Jumlah Konversi harus diisi!';
@@ -283,11 +234,25 @@ if (isset($this->d_ubah)) {
             $('#wkonversi').html(wkonversi);
             jml++;
         }
+        
+        if(!kd_d_nrs.match(pattern)){
+            var wnrs = "NRS harus dalam bentuk angka!";
+            $('#wnrs').html(wnrs);
+            $('#wnrs').fadeIn(200);
+            jml++;
+        }
     
         if(kd_d_nrs==''){
             var wnrs= 'Jumlah NRS harus diisi!';
             $('#wnrs').fadeIn(0);
             $('#wnrs').html(wnrs);
+            jml++;
+        }
+        
+        if(!kd_d_nrk.match(pattern)){
+            var wnrk = "NRK harus dalam bentuk angka!";
+            $('#wnrk').html(wnrk);
+            $('#wnrk').fadeIn(200);
             jml++;
         }
     
@@ -299,10 +264,24 @@ if (isset($this->d_ubah)) {
             
         }
     
+        if(!kd_d_spm.match(pattern)){
+            var wspm = "SPM harus dalam bentuk angka!";
+            $('#wspm').html(wspm);
+            $('#wspm').fadeIn(200);
+            jml++;
+        }
+    
         if(kd_d_spm==''){
             var wspm= 'Jumlah SPM harus diisi!';
             $('#wspm').fadeIn(0);
             $('#wspm').html(wspm);
+            jml++;
+        }
+        
+        if(!kd_d_sp2d.match(pattern)){
+            var wsp2d = "SP2D harus dalam bentuk angka!";
+            $('#wsp2d').html(wsp2d);
+            $('#wsp2d').fadeIn(200);
             jml++;
         }
         
@@ -313,10 +292,24 @@ if (isset($this->d_ubah)) {
             jml++;
         }
     
+        if(!kd_d_lhp.match(pattern)){
+            var wlhp = "LHP harus dalam bentuk angka!";
+            $('#wlhp').html(wnrs);
+            $('#wlhp').fadeIn(200);
+            jml++;
+        }
+        
         if(kd_d_lhp==''){
             var wlhp= 'Jumlah LHP harus diisi!';
             $('#wlhp').fadeIn(0);
             $('#wlhp').html(wlhp);
+            jml++;
+        }
+        
+        if(!kd_d_rekon.match(pattern)){
+            var wrekon = "Rekon harus dalam bentuk angka!";
+            $('#wrekon').html(wrekon);
+            $('#wrekon').fadeIn(200);
             jml++;
         }
     
@@ -327,6 +320,13 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
+        if(!kd_d_persepsi.match(pattern)){
+            var wpersepsi = "Persepsi harus dalam bentuk angka!";
+            $('#wpersepsi').html(wpersepsi);
+            $('#wpersepsi').fadeIn(200);
+            jml++;
+        }
+        
         if(kd_d_persepsi==''){
             var wpersepsi= 'Jumlah Bank Persepsi harus diisi!';
             $('#wpersepsi').fadeIn(0);
@@ -334,10 +334,24 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
+        if(!kd_d_terimaan.match(pattern)){
+            var wterimaan = "Penerimaan harus dalam bentuk angka!";
+            $('#wterimaan').html(wterimaan);
+            $('#wterimaan').fadeIn(200);
+            jml++;
+        }
+        
         if(kd_d_terimaan==''){
             var wterimaan= 'Jumlah Konfirmasi Bank Penerimaan harus diisi!';
             $('#wterimaan').fadeIn(0);
             $('#wterimaan').html(wterimaan);
+            jml++;
+        }
+        
+        if(!kd_d_koreksi.match(pattern)){
+            var wkoreksi = "Koreksi penerimaan harus dalam bentuk angka!";
+            $('#wkoreksi').html(wkoreksi);
+            $('#wkoreksi').fadeIn(200);
             jml++;
         }
         

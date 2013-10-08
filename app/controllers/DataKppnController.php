@@ -19,7 +19,7 @@ class DataKppnController extends BaseController {
      */
 
     public function index() {
-        $this->view->render('admin/dataKppn');
+        $this->view->render('admin/dataKppnList');
     }
 
     /*
@@ -73,7 +73,7 @@ class DataKppnController extends BaseController {
         }
         
         $this->view->data = $d_kppn->get_d_kppn();
-        $this->view->render('admin/dataKppn');
+        $this->view->render('admin/dataKppnList');
     }
 
     /*
@@ -122,7 +122,7 @@ class DataKppnController extends BaseController {
                 $this->view->d_ubah = $d_kppn;
                 $this->view->error = $d_kppn->get_error();
                 $this->view->data = $d_kppn->get_d_kppn();
-                $this->view->render('admin/dataKppn');
+                $this->view->render('admin/dataKppnList');
             } else {
                 header('location:' . URL . 'dataKppn/addDataKppn');
             }
