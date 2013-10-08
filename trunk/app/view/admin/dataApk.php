@@ -28,15 +28,15 @@ if (isset($this->d_ubah)) {
                               ?>
 
                         <div id="wuser" class="error"></div>
-                        <label>User</label><input type="text" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
+                        <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
                         <div id="wtgl"  class="error"></div>
-                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                        <label>Tanggal</label><input type="number" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div id="wakun"  class="error"></div>
-                        <label>Akun</label><input type="text" name="kd_d_akun" id="kd_d_akun" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_akun() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_akun() : ''); ?>">
+                        <label>Akun</label><input type="number" name="kd_d_akun" id="kd_d_akun" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_akun() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_akun() : ''); ?>">
                         <div id="wpel" class="error"></div>
-                        <label>Pelanggan</label><input type="text" name="kd_d_pel" id="kd_d_pel" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_pel() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_pel() : ''); ?>">
+                        <label>Pelanggan</label><input type="number" name="kd_d_pel" id="kd_d_pel" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_pel() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_pel() : ''); ?>">
                         <div id="wmasalah" class="error"></div>
-                        <label>Masalah</label><input type="text" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>">
+                        <label>Masalah</label><textarea type="text" rows="10" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>"></textarea>
                         </select>
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
@@ -147,6 +147,7 @@ if (isset($this->d_ubah)) {
     }
     
     function cek(){
+        var pattern = '^[0-9]$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_akun = document.getElementById('kd_d_akun').value;
@@ -166,11 +167,25 @@ if (isset($this->d_ubah)) {
             $('#wtgl').html(wtgl);
             jml++;
         }
+        
+        if(!kd_d_akun.match(pattern)){
+            var wakun = "Jumlah akun harus dalam bentuk angka!";
+            $('#wakun').html(wakun);
+            $('#wakun').fadeIn(200);
+            jml++;
+        }
             
         if(kd_d_akun==''){
             var wakun= 'AKUN harus diisi!';
             $('#wakun').fadeIn(0);
             $('#wakun').html(wakun);
+            jml++;
+        }
+        
+        if(!kd_d_pel.match(pattern)){
+            var wpel = "Jumlah Pelanggan harus dalam bentuk angka!";
+            $('#wpel').html(wpel);
+            $('#wpel').fadeIn(200);
             jml++;
         }
                 

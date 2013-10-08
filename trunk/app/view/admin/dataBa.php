@@ -28,17 +28,17 @@ if (isset($this->d_ubah)) {
                               ?>
 
                         <div id="wuser" class="error"></div>
-                        <label>User</label><input type="text" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
+                        <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
                         <div id="wtgl"  class="error"></div>
-                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                        <label>Tanggal</label><input type="number" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div id="wbayar"  class="error"></div>
-                        <label>Pembayaran</label><input type="text" name="kd_d_bayar" id="kd_d_bayar" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_bayar() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_bayar() : ''); ?>">
+                        <label>Pembayaran</label><input type="number" name="kd_d_bayar" id="kd_d_bayar" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_bayar() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_bayar() : ''); ?>">
                         <div id="wrekon" class="error"></div>
-                        <label>Rekon</label><input type="text" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                        <label>Rekon</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
                         <div id="wjaringan" class="error"></div>
-                        <label>Jaringan</label><input type="text" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>">
+                        <label>Jaringan</label><textarea type="text" rows="10" name="kd_d_jaringan" id="kd_d_jaringan" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_jaringan() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_jaringan() : ''); ?>"></textarea>
                         <div id="wmasalah" class="error"></div>
-                        <label>Masalah</label><input type="text" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>">
+                        <label>Masalah</label><textarea type="text" rows="10" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>"></textarea>
                         </select>
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
@@ -157,6 +157,7 @@ if (isset($this->d_ubah)) {
     }
     
     function cek(){
+        var pattern = '^[0-9]$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_bayar = document.getElementById('kd_d_bayar').value;
@@ -178,17 +179,31 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
-        if(kd_d_tgl==''){
-            var wtgl= 'Tanggal harus diisi!';
-            $('#wtgl').fadeIn(0);
-            $('#wtgl').html(wtgl);
+        if(!kd_d_bayar.match(pattern)){
+            var wbayar = "Jumlah pembayaran harus dalam bentuk angka!";
+            $('#wbayar').html(wbayar);
+            $('#wbayar').fadeIn(200);
             jml++;
         }
     
         if(kd_d_bayar==''){
-            var wbayar= 'Pembayaran Rekon harus diisi!';
+            var wbayar= 'Pembayaran harus diisi!';
             $('#wbayar').fadeIn(0);
-            $('#wbayar').html(wrekon);
+            $('#wbayar').html(wbayar);
+            jml++;
+        }
+        
+        if(!kd_d_rekon.match(pattern)){
+            var wrekon = "Rekon pembayaran harus dalam bentuk angka!";
+            $('#wrekon').html(wrekon);
+            $('#wrekon').fadeIn(200);
+            jml++;
+        }
+    
+        if(kd_d_rekon==''){
+            var wrekon= ' Rekon harus diisi!';
+            $('#wrekon').fadeIn(0);
+            $('#wrekon').html(wrekon);
             jml++;
         }
                 

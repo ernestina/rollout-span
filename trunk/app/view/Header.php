@@ -44,7 +44,7 @@
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataKppn/addDataKppn">KPPN</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataKppn/addDataKppn"><i class="icon-globe icon-white"></i>data KPPN</a></li>
+                            <li><a href="<?php echo URL; ?>dataKppn/addDataKppnList"><i class="icon-globe icon-white"></i>data KPPN</a></li>
                         </ul>
                     </li>
                     <li class="subnav">
