@@ -73,6 +73,7 @@ class DataKppnController extends BaseController {
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
         $this->view->tetap = $d_tetap->get_d_tetap();
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl();
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnList');
     }
@@ -151,6 +152,12 @@ class DataKppnController extends BaseController {
 	$d_kppn = new DataKppn($this->registry);
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('dasbor/level1');
+	}
+	
+	public function showDasbor1(){
+        $d_kppn = new DataKppn($this->registry);
+        $this->view->sp2d = $d_kppn->get_d_kppn();
+        $this->view->render('dasbor/line');
 	}
 
     public function __destruct() {
