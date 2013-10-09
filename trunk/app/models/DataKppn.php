@@ -90,8 +90,8 @@ class DataKppn {
     }
     
     public function get_d_kppn_per_tgl($limit = null, $batas = null) {
-        $sql = "SELECT kd_d_tgl, sum(kd_d_sp2d) as kd_d_sp2d, sum(kd_d_spm) as kd_d_spm
-                FROM " . $this->_table . "  a 
+        $sql = "SELECT kd_d_tgl, sum(kd_d_sp2d) as kd_d_sp2d, sum(kd_d_lhp) as kd_d_lhp, sum(kd_d_rekon) as kd_d_rekon
+                FROM " . $this->_table . "  a  
                 GROUP BY kd_d_tgl";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
@@ -102,7 +102,124 @@ class DataKppn {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
+    
+    public function get_d_kppn_jkt2($limit = null, $batas = null) {
+        $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
+                LEFT JOIN " . $this->_t_tetap. " b 
+                ON a.kd_d_user = b.kd_d_tetap where a.kd_d_user = 10002 ORDER BY kd_d_tgl";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
+            $d_kppn->set_kd_d_user($val['kd_r_unit']);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
+            $d_kppn->set_kd_d_nrs($val['kd_d_nrs']);
+            $d_kppn->set_kd_d_nrk($val['kd_d_nrk']);
             $d_kppn->set_kd_d_spm($val['kd_d_spm']);
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $d_kppn->set_kd_d_persepsi($val['kd_d_persepsi']);
+            $d_kppn->set_kd_d_terimaan($val['kd_d_terimaan']);
+            $d_kppn->set_kd_d_koreksi($val['kd_d_koreksi']);
+            $d_kppn->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
+            $d_kppn->set_kd_d_jaringan($val['kd_d_jaringan']);
+            $d_kppn->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_kppn->set_kd_r_unit($val['kd_r_unit']);
+
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
+    
+    public function get_d_kppn_per_tgl_jkt2($limit = null, $batas = null) {
+        $sql = "SELECT kd_d_tgl, sum(kd_d_sp2d) as kd_d_sp2d, sum(kd_d_lhp) as kd_d_lhp, sum(kd_d_rekon) as kd_d_rekon
+                FROM " . $this->_table . "  a  where a.kd_d_user = 10002
+                GROUP BY kd_d_tgl";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
+    
+    public function get_d_kppn_jkt6($limit = null, $batas = null) {
+        $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
+                LEFT JOIN " . $this->_t_tetap. " b 
+                ON a.kd_d_user = b.kd_d_tetap where a.kd_d_user = 10006 ORDER BY kd_d_tgl";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
+            $d_kppn->set_kd_d_user($val['kd_r_unit']);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
+            $d_kppn->set_kd_d_nrs($val['kd_d_nrs']);
+            $d_kppn->set_kd_d_nrk($val['kd_d_nrk']);
+            $d_kppn->set_kd_d_spm($val['kd_d_spm']);
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $d_kppn->set_kd_d_persepsi($val['kd_d_persepsi']);
+            $d_kppn->set_kd_d_terimaan($val['kd_d_terimaan']);
+            $d_kppn->set_kd_d_koreksi($val['kd_d_koreksi']);
+            $d_kppn->set_kd_d_infrastruktur($val['kd_d_infrastruktur']);
+            $d_kppn->set_kd_d_jaringan($val['kd_d_jaringan']);
+            $d_kppn->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_kppn->set_kd_r_unit($val['kd_r_unit']);
+
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
+    
+    public function get_d_kppn_per_tgl_jkt6($limit = null, $batas = null) {
+        $sql = "SELECT kd_d_tgl, sum(kd_d_sp2d) as kd_d_sp2d, sum(kd_d_lhp) as kd_d_lhp, sum(kd_d_rekon) as kd_d_rekon
+                FROM " . $this->_table . "  a  where a.kd_d_user = 10006
+                GROUP BY kd_d_tgl";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $data[] = $d_kppn;
             //var_dump($d_kppn);
         }
