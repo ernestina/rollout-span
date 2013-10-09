@@ -61,42 +61,10 @@
                         </ul>
                     </li>
                     <li class="subnav">
-                        <a href="<?php echo URL; ?>dataKanwil/addDataKanwil">KANWIL</a>
-                        <ul>
-                            <li><a href="<?php echo URL; ?>dataKanwil/addDataKanwil"><i class="icon-globe icon-white"></i>data Kanwil</a></li>
-                        </ul>
-                    </li>
-                    <li class="subnav">
                         <a href="<?php echo URL; ?>dataBa/addDataBa">BA 999</a>
                         <ul>
                             <li><a href="<?php echo URL; ?>dataBa/addDataBa"><i class="icon-globe icon-white"></i>data BA.999</a></li>
                         </ul>
-                    </li>
-                    <li class="subnav">
-                        <a href="<?php echo URL; ?>dataPkn/addDataPkn">PKN</a>
-                        <ul>
-                            <li><a href="<?php echo URL; ?>dataPkn/addDataPkn"><i class="icon-globe icon-white"></i>data PKN</a></li>
-                        </ul>
-                    </li>
-                    <li class="subnav">
-                        <a href="<?php echo URL; ?>dataApk/addDataApk">APK</a>
-                        <ul>
-                            <li><a href="<?php echo URL; ?>dataApk/addDataApk"><i class="icon-globe icon-white"></i>data APK</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="subnav">
-                        <a href="<?php echo URL; ?>dataSmi/addDataSmi">SMI</a>
-                        <ul>
-                            <li><a href="<?php echo URL; ?>dataSmi/addDataSmi"><i class="icon-globe icon-white"></i>data SMI</a></li>
-                        </ul>
-                    </li>
-                    <li class="subnav">
-                        <a href="<?php echo URL; ?>dataDjpu/addDataDjpu">DJPU</a>
-                        <ul>
-                            <li><a href="<?php echo URL; ?>dataDjpu/addDataDjpu"><i class="icon-globe icon-white"></i>data DJPU</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
             <script>
