@@ -88,6 +88,27 @@ class DataKppn {
 
         return $data;
     }
+    
+    public function get_d_kppn_per_tgl($limit = null, $batas = null) {
+        $sql = "SELECT kd_d_tgl, sum(kd_d_sp2d) as kd_d_sp2d, sum(kd_d_spm) as kd_d_spm
+                FROM " . $this->_table . "  a 
+                GROUP BY kd_d_tgl";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_spm($val['kd_d_spm']);
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
 
     /*
      * mendapatkan Data Tetap sesuai id
