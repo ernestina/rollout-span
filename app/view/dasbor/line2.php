@@ -15,9 +15,9 @@
         $ids3 = array();
         $tgl = array();
         foreach ($this->sp2d as $value) {
-            $ids[] = $value->get_kd_d_sp2d();
-            $ids2[] = $value->get_kd_d_lhp();
-            $ids3[] = $value->get_kd_d_rekon();
+            $ids[] = ceil(rand(90,100));
+            $ids2[] = ceil(rand(90,100));
+            $ids3[] = ceil(rand(90,100));
             $originalDate = $value->get_kd_d_tgl();
             $newDate = date("d/m/Y", strtotime($originalDate));
             $tgl[] = '"' . $newDate . '"';

@@ -26,7 +26,7 @@ class DataKppnController extends BaseController {
      * tambah data tetap
      */
 
-    public function addDataKppn($id = null) {
+    public function addDataKppnLvl3($id = null) {
         $d_kppn = new DataKppn($this->registry);
         $d_tetap = new DataTetap($this->registry);
         if (isset($_POST['add_d_kppn'])) {
@@ -75,7 +75,111 @@ class DataKppnController extends BaseController {
         $this->view->tetap = $d_tetap->get_d_tetap();
         $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl();
         $this->view->data = $d_kppn->get_d_kppn();
-        $this->view->render('admin/dataKppnList');
+        $this->view->render('admin/dataKppnLvl3');
+    }
+    
+    public function addDataKppnLvl3Jkt2($id = null) {
+        $d_kppn = new DataKppn($this->registry);
+        $d_tetap = new DataTetap($this->registry);
+        if (isset($_POST['add_d_kppn'])) {
+            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
+            $kd_d_konversi = $_POST['kd_d_konversi'];
+            $kd_d_nrs = $_POST['kd_d_nrs'];
+            $kd_d_nrk = $_POST['kd_d_nrk'];
+            $kd_d_spm = $_POST['kd_d_spm'];
+            $kd_d_sp2d = $_POST['kd_d_sp2d'];
+            $kd_d_lhp= $_POST['kd_d_lhp'];
+            $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_persepsi = $_POST['kd_d_persepsi'];
+            $kd_d_terimaan = $_POST['kd_d_terimaan'];
+            $kd_d_koreksi = $_POST['kd_d_koreksi'];
+            $kd_d_infrastuktur = $_POST['kd_d_infrastruktur'];
+            $kd_d_jaringan = $_POST['kd_d_jaringan'];
+            $kd_d_masalah = $_POST['kd_d_masalah'];
+
+            $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
+            $d_kppn->set_kd_d_konversi($kd_d_konversi);
+            $d_kppn->set_kd_d_nrs($kd_d_nrs);
+            $d_kppn->set_kd_d_nrk($kd_d_nrk);
+            $d_kppn->set_kd_d_spm($kd_d_spm);
+            $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
+            $d_kppn->set_kd_d_lhp($kd_d_lhp);
+            $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_persepsi($kd_d_persepsi);
+            $d_kppn->set_kd_d_terimaan($kd_d_terimaan);
+            $d_kppn->set_kd_d_koreksi($kd_d_koreksi);
+            $d_kppn->set_kd_d_infrastruktur($kd_d_infrastuktur);
+            $d_kppn->set_kd_d_jaringan($kd_d_jaringan);
+            $d_kppn->set_kd_d_masalah($kd_d_masalah);
+
+            if (!$d_kppn->add_d_kppn()) {
+                $this->view->d_rekam = $d_kppn;
+                $this->view->error = $d_kppn->get_error();
+            }
+        }
+        //var_dump($d_tetap->get_d_tetap());
+        if (!is_null($id)) {
+            $d_kppn->set_kd_d_kppn($id);
+            $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
+        }
+        $this->view->tetap = $d_tetap->get_d_tetap();
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl_jkt2();
+        $this->view->data = $d_kppn->get_d_kppn_jkt2();
+        $this->view->render('admin/dataKppnLvl3Jkt2');
+    }
+    
+    public function addDataKppnLvl3Jkt6($id = null) {
+        $d_kppn = new DataKppn($this->registry);
+        $d_tetap = new DataTetap($this->registry);
+        if (isset($_POST['add_d_kppn'])) {
+            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
+            $kd_d_konversi = $_POST['kd_d_konversi'];
+            $kd_d_nrs = $_POST['kd_d_nrs'];
+            $kd_d_nrk = $_POST['kd_d_nrk'];
+            $kd_d_spm = $_POST['kd_d_spm'];
+            $kd_d_sp2d = $_POST['kd_d_sp2d'];
+            $kd_d_lhp= $_POST['kd_d_lhp'];
+            $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_persepsi = $_POST['kd_d_persepsi'];
+            $kd_d_terimaan = $_POST['kd_d_terimaan'];
+            $kd_d_koreksi = $_POST['kd_d_koreksi'];
+            $kd_d_infrastuktur = $_POST['kd_d_infrastruktur'];
+            $kd_d_jaringan = $_POST['kd_d_jaringan'];
+            $kd_d_masalah = $_POST['kd_d_masalah'];
+
+            $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
+            $d_kppn->set_kd_d_konversi($kd_d_konversi);
+            $d_kppn->set_kd_d_nrs($kd_d_nrs);
+            $d_kppn->set_kd_d_nrk($kd_d_nrk);
+            $d_kppn->set_kd_d_spm($kd_d_spm);
+            $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
+            $d_kppn->set_kd_d_lhp($kd_d_lhp);
+            $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_persepsi($kd_d_persepsi);
+            $d_kppn->set_kd_d_terimaan($kd_d_terimaan);
+            $d_kppn->set_kd_d_koreksi($kd_d_koreksi);
+            $d_kppn->set_kd_d_infrastruktur($kd_d_infrastuktur);
+            $d_kppn->set_kd_d_jaringan($kd_d_jaringan);
+            $d_kppn->set_kd_d_masalah($kd_d_masalah);
+
+            if (!$d_kppn->add_d_kppn()) {
+                $this->view->d_rekam = $d_kppn;
+                $this->view->error = $d_kppn->get_error();
+            }
+        }
+        //var_dump($d_tetap->get_d_tetap());
+        if (!is_null($id)) {
+            $d_kppn->set_kd_d_kppn($id);
+            $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
+        }
+        $this->view->tetap = $d_tetap->get_d_tetap();
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl_jkt6();
+        $this->view->data = $d_kppn->get_d_kppn_jkt6();
+        $this->view->render('admin/dataKppnLvl3Jkt6');
     }
 
     /*
@@ -159,6 +263,8 @@ class DataKppnController extends BaseController {
         $this->view->sp2d = $d_kppn->get_d_kppn();
         $this->view->render('dasbor/line');
 	}
+        
+        
 
     public function __destruct() {
         ;
