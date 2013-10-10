@@ -27,7 +27,7 @@
             });
         </script>
     </head>
-    <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
+    <header>logo <br>SPAN</header>
 	<body>
 		
         <div id="wrapper">
@@ -52,12 +52,13 @@
                         <ul>
                             <li><a href="<?php echo URL; ?>dataTetap/addDataTetap"><i class="icon-globe icon-white"></i>Data Tetap</a></li>
                             <li><a href="<?php echo URL; ?>dataUser/addDataUser"><i class="icon-globe icon-white"></i>Data User</a></li>
+                            <li><a href="<?php echo URL; ?>dataTetap/addDataBobot"><i class="icon-globe icon-white"></i>Data Bobot</a></li>
                         </ul>
                     </li>
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataKppn/addDataKppnLvl3">KPPN</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataKppn/addDataKppnList"><i class="icon-globe icon-white"></i>data KPPN</a></li>
+                            <li><a href="<?php echo URL; ?>dataKppn/addDataKppnLvl3"><i class="icon-globe icon-white"></i>data KPPN</a></li>
                         </ul>
                     </li>
                     <li class="subnav">
