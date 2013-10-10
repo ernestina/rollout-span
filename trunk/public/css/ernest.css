@@ -228,6 +228,10 @@ header:before{
 	padding: 0px 10px 0px 10px;
 	}
 
+.kiris {
+	padding: 0px 30px 0px 30px;
+	}
+
 .kanan {
 	float: right;
 }
@@ -267,11 +271,9 @@ header:before{
 	margin: 0px 0px 0px 40px;
 }
 
-.kolom5 {
-	float:right;
-	width: 50%;
-	margin: 0px 0px 10px 10px;
-	
+.tiga .kolom {
+	width: 33%;
+	float: left;
 }
 
 .sukses {
