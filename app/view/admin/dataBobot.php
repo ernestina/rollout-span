@@ -1,7 +1,8 @@
 <div id="top">
     <div id="form">
         <h2>DATA BOBOT</h2></div>
-    <div class="kolom4">
+    <div class="tiga">
+		<div class="kolom">
         <fieldset>
             <legend>
                 <?php
@@ -12,7 +13,7 @@
                 }
                 ?>
             </legend>
-            <div id="form-input"><div class="kiri">
+            <div id="form-input"><div class="kiris">
                     <form method="POST" action="
                     <?php
                     if (isset($this->d_ubah)) {
@@ -45,13 +46,11 @@
                 </div>
             </div>
         </fieldset>
-    </div>
-</div>
-<div> </div>
-<div> </div>
-<div id="top">
-    <div id="form">
-        <div class="kolom4">
+    </div> <!--end kolom1-->
+
+
+    
+        <div class="kolom">
             <fieldset><legend><?php
                               if (isset($this->d_ubah)) {
                                   echo 'Ubah Level 1';
@@ -59,7 +58,7 @@
                                   echo 'Level 2 KPPN';
                               }
                               ?></legend>
-                <div id="form-input"><div class="kiri">
+                <div id="form-input"><div class="kiris">
                         <form method="POST" action="<?php
                     if (isset($this->d_ubah)) {
                         echo URL . 'dataTetap/updDataTetap';
@@ -92,12 +91,11 @@
                     </div>
                 </div>
             </fieldset>
-        </div>
-    </div>
-</div>
-<div id="top">
-    <div id="form">
-        <div class="kolom4">
+        </div> <!--end kolom2-->
+    
+
+    
+        <div class="kolom">
             <fieldset><legend><?php
                                   if (isset($this->d_ubah)) {
                                       echo 'Ubah Level 1';
@@ -105,7 +103,7 @@
                                       echo 'Level 2 BA.999';
                                   }
                                   ?></legend>
-                <div id="form-input"><div class="kiri">
+                <div id="form-input"><div class="kiris">
                         <form method="POST" action="<?php
                     if (isset($this->d_ubah)) {
                         echo URL . 'dataTetap/updDataTetap';
@@ -138,9 +136,11 @@
                     </div>
                 </div>
             </fieldset>
-        </div>
+        
     </div>
-</div>
+</div> <!--end tiga kolom-->
+</div> <!--end top-->
+
 <script type="text/javascript">
     $(function(){
         hideErrorId();
