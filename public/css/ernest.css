@@ -204,36 +204,9 @@ header:before{
 	background-color:rgba(0,121,185,0.5);
 	border: 2px solid rgba(0,121,185,1);
 }
-
-.foto {
-	float:right;
-	width: 250px;
-	margin: 0px 0px 10px 10px;
-}
-.profil {
-	padding-right: 0px; float: right;
-	height: 45px;
-	border: 2px solid #49afcd;
-	margin: 0px 0px 0px 70px;
-}
 .blok {
 	width: 100px;
 	background-color: #49afcd;
-}
-
-.profil a img:hover {
-	background-image:url("../img/home.png");
-	}
-
-.frame {	  
-	  padding: 4px;
-	  margin: 0px 0px 0px 45px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .isian {
@@ -348,16 +321,6 @@ button {
 	cursor: pointer; 
 	
 	}
-
-input.utama,
-select.utama,
-textarea.utama {
-	width: 450px;
-}
-input.unggah {
-	width: 140px;
-	margin-top: 0px;
-	margin-bottom: 0px;}
 	
 input.keterangan{
 	width: 210px;
