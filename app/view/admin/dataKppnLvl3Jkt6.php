@@ -65,15 +65,22 @@ if (isset($this->d_ubah)) {
                 <div id="table-content">
                     <table class="table-bordered zebra scroll" style="text-align: center">
                         <thead style="font-size:80%">
-                        <th>No</th>
-                        <th width ="15%">Tanggal</th>
-                        <th>SP2D Sukses</th>
-                        <th>SP2D Gagal</th>
-                        <th>LHP Sukses</th>
-                        <th>SP2D Gagal</th>
-                        <th>Rekon Sukses</th>
-                        <th>Rekon Gagal</th>
-                        <th>Aksi</th>
+                        <tr>
+							<th rowspan="2">No</th>
+							<th rowspan="2" width ="25%">Tanggal</th>
+							<th colspan="2">SP2D</th>
+							<th colspan="2">LHP</th>
+							<th colspan="2">Rekon</th>
+							<th rowspan="2" width ="15%">Aksi</th>
+                        </tr>
+						<tr>
+							<th width ="10%">Gagal</th>
+							<th width ="10%">Sukses</th>
+							<th width ="10%">Gagal</th>
+							<th width ="10%">Sukses</th>
+							<th width ="10%">Gagal</th>
+							<th width ="10%">Sukses</th>
+                        </tr>
                         </thead>
                         <tbody>
                             <?php

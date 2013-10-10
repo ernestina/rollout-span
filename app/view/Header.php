@@ -27,7 +27,7 @@
             });
         </script>
     </head>
-    <header>logo <br>SPAN</header>
+    <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
 	<body>
 		
         <div id="wrapper">
