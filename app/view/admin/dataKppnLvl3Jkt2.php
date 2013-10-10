@@ -1,15 +1,15 @@
 <div id="top">
     <h2>MONITORING KPPN JAKARTA 2</h2>
     <center><?php $this->load('dasbor/line') ?></center>
+	
     <div id="gambar"></div>
     <div class="fitur" id="table">
         <fieldset><legend>Data KPPN JAKARTA 2</legend>
             <div id="table-title"></div>
-            <div id="table-content">
+            <div id="table-content"><button href="<?php echo URL.'dasbor'?>" style="margin-right:20px"><i class="icon-plus icon-white"></i></button>
                 <table class="table-bordered zebra scroll" style="text-align: center">
                     <thead style="font-size:80%">
                      <th>No</th>
-                    <th>Unit</th>
                     <th>Tanggal</th>
                     <th>SP2D Sukses</th>
                     <th>SP2D Gagal</th>
@@ -26,7 +26,6 @@
                             //var_dump($val);
                             echo "<tr>";
                             echo "<td>$no</td>";
-                            echo "<td style=\"text-align: left\">" . $val->get_kd_d_user() . "</td>";
                             echo "<td>" . $val->get_kd_d_tgl() . "</td>";
                             echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
                             echo "<td>" . ceil($val->get_kd_d_sp2d()/rand(1,10)) . "</td>";
