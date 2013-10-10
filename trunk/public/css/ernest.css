@@ -32,11 +32,15 @@ body {
 	background-image:url('../img/bg.png');
 }
 
-h1, h2, legend {
-	font-family: "Sub";
-	font-size: 24px;
+h1, h2, h3, legend {
+	font-family: "Sub";	
 }
-h2 {
+h3 {
+	font-size: 12px;
+}
+
+h2, header {
+	font-size: 24px;
 	text-align: center;
 }
 
@@ -45,11 +49,10 @@ h1 {
 	text-align: center;
 }
 
-
 header{
-    position:relative;
+	position:relative;
     color:#fff;
-    background:#f43059;
+    background:rgba(0,121,185,1);
     font-size:1.5em;
     float:left;
     clear:both;
@@ -123,7 +126,7 @@ header:before{
 #menu {
 	padding: 0; margin: 0; 
 	background: #333;
-	border-bottom: 4px solid #49afcd;
+	border-bottom: 4px solid rgba(0,121,185,1);
 	font-family: 'Menu';
 	font-size: 15px; 
 	}
@@ -140,7 +143,7 @@ header:before{
 
 #menu ul li:hover > ul { visibility: visible;}
 #menu ul li:hover > a, #menu ul li:hover li.nav > a { 
-	background: #49afcd;
+	background: rgba(0,121,185,1);
     color: #FFF;}
 #menu ul ul {
 	bottom: 0; left: 0;
@@ -159,7 +162,7 @@ header:before{
     padding: 0 20px; 
 }
 #menu ul ul a {
-	background: #49afcd;
+	background: rgba(0,121,185,1);
     color: #FFF;
     border-top: 1px solid #2f96b4;
     line-height: 100%;
@@ -181,6 +184,25 @@ header:before{
 #menu ul li.subnav > a:after {
       content: '+';
       margin-left: 5px; 
+}
+
+#bundar {
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	 
+}
+.ungu {
+	background-color:rgba(106,30,115,0.3);
+	border: 2px solid rgba(106,30,115,1);
+}
+.kuning {
+	background-color:rgba(243,190,0,0.3);
+	border: 2px solid rgba(243,190,0,1);
+}
+.birutua {
+	background-color:rgba(0,121,185,0.5);
+	border: 2px solid rgba(0,121,185,1);
 }
 
 .foto {
@@ -472,7 +494,7 @@ table.fix {
 .scroll {
 	display: block;
 	border: 1px;
-	height: 370px;
+	height: 388px;
 	overflow-y: scroll;
 }
 
