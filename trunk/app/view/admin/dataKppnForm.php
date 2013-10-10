@@ -3,12 +3,12 @@
         <h2>DATA KPPN</h2></div>
     <div class="kolom3">
         <fieldset><legend><?php
-if (isset($this->d_ubah)) {
-    echo 'Ubah Data KPPN';
-} else {
-    echo 'Tambah Data KPPN';
-}
-?></legend>
+        if (isset($this->d_ubah)) {
+            echo 'Ubah Data KPPN';
+        } else {
+            echo 'Tambah Data KPPN';
+        }
+        ?></legend>
             <div id="form-input"><div class="kiri">
                     <form method="POST" action="<?php
                 if (isset($this->d_ubah)) {
@@ -16,16 +16,16 @@ if (isset($this->d_ubah)) {
                 } else {
                     $_SERVER['PHP_SELF'];
                 }
-?>">
-                              <?php
-                              if (isset($this->d_ubah)) {
-                                  echo "<input type=hidden name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
-                              }
+                ?>">
+                <?php
+                if (isset($this->d_ubah)) {
+                    echo "<input type=hidden name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
+                }
 
-                              if (isset($this->error)) {
-                                  echo "<div class=error>" . $this->error . "</div>";
-                              }
-                              ?>
+                if (isset($this->error)) {
+                    echo "<div class=error>" . $this->error . "</div>";
+                }
+                ?>
 
                         <div id="wuser" class="error"></div>
                         <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
