@@ -24,14 +24,6 @@
         }
         ?>
         <canvas id="canvas" height="400" width="900"></canvas>
-		<ul class="inline">
-			<li><div id="bundar" class="ungu"></div></li>
-			<li><h3>Tren SP2D  &nbsp &nbsp </h3></li>
-			<li><div id="bundar" class="kuning"></div></li>
-			<li><h3>Tren LHP &nbsp &nbsp </h3></li>
-			<li><div id="bundar" class="birutua"></div></li>
-			<li><h3>Tren Rekon &nbsp &nbsp</h3></li>
-		</ul>
     </body>
 </html>
 
@@ -44,26 +36,23 @@
         labels : label,
         datasets : [
             {
-                //kuning
-				fillColor : "rgba(243,190,0,0.3)",
-                strokeColor : "rgba(243,190,0,1)",
-                pointColor : "rgba(243,190,0,1)",
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
                 pointStrokeColor : "#fff",
                 data : val
             },
             {
-                //biru
-				fillColor : "rgba(0,121,185,0.3)",
-                strokeColor : "rgba(0,121,185,1)",
-                pointColor : "rgba(0,121,185,1)",
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
                 pointStrokeColor : "#fff",
                 data : val2
             },
             {
-                //ungu
-				fillColor : "rgba(106,30,115,0.3)",
-                strokeColor : "rgba(106,30,115,1)",
-                pointColor : "rgba(106,30,115,1)",
+                fillColor : "rgba(100,100,100,0.5)",
+                strokeColor : "rgba(100,100,100,1)",
+                pointColor : "rgba(100,100,100,1)",
                 pointStrokeColor : "#fff",
                 data : val3
             }
