@@ -83,21 +83,21 @@ if (isset($this->d_ubah)) {
                                 //var_dump($val);
                                 echo "<tr>";
                                 echo "<td>$no</td>";
-                                $sat = $val->get_kd_d_user();
+                                $sat=$val->get_kd_d_user();
                                 echo "<td>" . $val->get_kd_d_tgl() . "</td>";
-                                if ($sat == 1) {
-                                    echo "<td>PKN</td>";
-                                } else if ($sat == 2) {
-                                    echo "<td>APK</td>";
+                                if ($sat==1){
+                                echo "<td>PKN</td>";
+                                } else if ($sat==2){
+                                echo "<td>APK</td>";
                                 } else {
                                     echo "<td>Satker tidak ditemukan</td>";
                                 }
                                 echo "<td>" . $val->get_kd_d_bayar() . "</td>";
-                                echo "<td>" . ceil($val->get_kd_d_bayar() / rand(10, 20)) . "</td>";
+                                echo "<td>" . ceil($val->get_kd_d_bayar()/rand(10,20)) . "</td>";
                                 echo "<td>" . $val->get_kd_d_rekon() . "</td>";
-                                echo "<td>" . ceil($val->get_kd_d_rekon() / rand(10, 20)) . "</td>";
+                                echo "<td>" . ceil($val->get_kd_d_rekon()/rand(10,20)) . "</td>";
                                 echo "<td>" . $val->get_kd_d_jaringan() . "</td>";
-                                echo "<td>" . ceil($val->get_kd_d_jaringan() / rand(10, 20)) . "</td>";
+                                echo "<td>" . ceil($val->get_kd_d_jaringan()/rand(10,20)) . "</td>";
                                 echo "<td><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
                                 echo "</tr>";
