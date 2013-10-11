@@ -180,7 +180,7 @@ class DataKppn {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
             $d_kppn->set_kd_d_user($val['kd_r_unit']);
-            $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_kppn->set_kd_d_tgl(date("d/m/y", strtotime($val['kd_d_tgl'])));
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
             $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
