@@ -15,13 +15,13 @@
         $ids3 = array();
         $ids4 = array ();
         $tgl = array();
-        foreach ($this->data as $value) {
+        foreach ($this->sp2d as $value) {
             $ids[] = $value->get_kd_d_konversi_persen();
             $ids2[] = $value->get_kd_d_sp2d_persen();
             $ids3[] = $value->get_kd_d_lhp_persen();
             $ids4[] = $value->get_kd_d_rekon_persen();
             $originalDate = $value->get_kd_d_tgl();
-            $newDate = date("m/d", strtotime($originalDate));
+            $newDate = date("d/m", strtotime($originalDate));
             $tgl[] = '"' . $newDate . '"';
         }
         ?>
