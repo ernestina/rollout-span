@@ -1,6 +1,6 @@
 <div id="top">
     <h2>MONITORING KPPN </h2>
-    <center><?php $this->load('dasbor/line2') ?></center>
+    <center><?php $this->load('dasbor/dasborKppnLvl2') ?></center>
     <div id="gambar"></div>
     <div class="fitur" id="table">
         <fieldset><legend>Data KPPN </legend>
