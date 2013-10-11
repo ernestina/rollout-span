@@ -13,12 +13,15 @@ class DataKppn {
     private $_kd_d_tgl;
     private $_kd_d_konversi;
     private $_kd_d_konversi_gagal;
+    private $_kd_d_konversi_persen;
     private $_kd_d_sp2d;
     private $_kd_d_sp2d_gagal;
+    private $_kd_d_sp2d_persen;
     private $_kd_d_lhp;
     private $_kd_d_lhp_gagal;
     private $_kd_d_rekon;
     private $_kd_d_rekon_gagal;
+    private $_kd_d_rekon_persen;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_kppn';
@@ -180,12 +183,16 @@ class DataKppn {
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
+            $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            $d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
             $d_kppn->set_kd_d_lhp_gagal($val['kd_d_lhp_gagal']);
+            $d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
+            $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
@@ -373,6 +380,10 @@ class DataKppn {
     public function set_kd_d_konversi_gagal($konversi_gagal) {
         $this->_kd_d_konversi_gagal = $konversi_gagal;
     }
+    
+    public function set_kd_d_konversi_persen($konversi_persen) {
+        $this->_kd_d_konversi_persen = $konversi_persen;
+    }
 
     public function set_kd_d_sp2d($sp2d) {
         $this->_kd_d_sp2d = $sp2d;
@@ -380,6 +391,10 @@ class DataKppn {
 
     public function set_kd_d_sp2d_gagal($sp2d_gagal) {
         $this->_kd_d_sp2d_gagal = $sp2d_gagal;
+    }
+    
+    public function set_kd_d_sp2d_persen($sp2d_persen) {
+        $this->_kd_d_sp2d_persen = $sp2d_persen;
     }
 
     public function set_kd_d_lhp($lhp) {
@@ -389,6 +404,10 @@ class DataKppn {
     public function set_kd_d_lhp_gagal($lhp_gagal) {
         $this->_kd_d_lhp_gagal = $lhp_gagal;
     }
+    
+    public function set_kd_d_lhp_persen($lhp_persen) {
+        $this->_kd_d_lhp_persen = $lhp_persen;
+    }
 
     public function set_kd_d_rekon($rekon) {
         $this->_kd_d_rekon = $rekon;
@@ -396,6 +415,14 @@ class DataKppn {
 
     public function set_kd_d_rekon_gagal($rekon_gagal) {
         $this->_kd_d_rekon_gagal = $rekon_gagal;
+    }
+    
+    public function set_kd_d_rekon_persen($rekon_persen) {
+        $this->_kd_d_rekon_persen = $rekon_persen;
+    }
+    
+    public function set_kd_r_unit($unit) {
+        $this->_kd_r_unit = $unit;
     }
 
     /*
@@ -428,6 +455,10 @@ class DataKppn {
     public function get_kd_d_konversi_gagal() {
         return $this->_kd_d_konversi_gagal;
     }
+    
+    public function get_kd_d_konversi_persen() {
+        return $this->_kd_d_konversi_persen;
+    }
 
     public function get_kd_d_sp2d() {
         return $this->_kd_d_sp2d;
@@ -435,6 +466,10 @@ class DataKppn {
 
     public function get_kd_d_sp2d_gagal() {
         return $this->_kd_d_sp2d_gagal;
+    }
+    
+    public function get_kd_d_sp2d_persen() {
+        return $this->_kd_d_sp2d_persen;
     }
 
     public function get_kd_d_lhp() {
@@ -444,6 +479,10 @@ class DataKppn {
     public function get_kd_d_lhp_gagal() {
         return $this->_kd_d_lhp_gagal;
     }
+    
+    public function get_kd_d_lhp_persen() {
+        return $this->_kd_d_lhp_persen;
+    }
 
     public function get_kd_d_rekon() {
         return $this->_kd_d_rekon;
@@ -451,6 +490,10 @@ class DataKppn {
 
     public function get_kd_d_rekon_gagal() {
         return $this->_kd_d_rekon_gagal;
+    }
+    
+    public function get_kd_d_rekon_persen() {
+        return $this->_kd_d_rekon_persen;
     }
 
     public function get_error() {
