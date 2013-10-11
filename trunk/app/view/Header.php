@@ -27,7 +27,7 @@
             });
         </script>
     </head>
-    <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="50px" height="60px"></header>
+    <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
 	<body>
 		
         <div id="wrapper">
@@ -56,16 +56,23 @@
                         </ul>
                     </li>
                     <li class="subnav">
-                        <a href="<?php echo URL; ?>dataKppn/addDataKppnLvl3">KPPN</a>
+                        <a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl2">KPPN</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataKppn/addDataKppnList"><i class="icon-globe icon-white"></i>data KPPN</a></li>
+                            <li><a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl2"><i class="icon-globe icon-white"></i>data KPPN</a></li>
                         </ul>
                     </li>
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataBa/addDataBa">BA 999</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataBa/addDataBa"><i class="icon-globe icon-white"></i>data BA.999</a></li>
+                            <li><a href="<?php echo URL; ?>dataBa/addDataBa"><i class="icon-globe icon-white"></i>data BA 999</a></li>
                         </ul>
+                    </li>
+                    <li class="subnav">
+                        <a href="<?php echo URL; ?>dataPkn/addDataPkn">PKN</a>
+                        <ul>
+                            <li><a href="<?php echo URL; ?>dataPkn/addDataPkn"><i class="icon-globe icon-white"></i>data PKN</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <script>
