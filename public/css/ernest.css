@@ -192,6 +192,8 @@ header:before{
 	height: 20px;
 	 
 }
+
+/*legenda*/
 .ungu {
 	background-color:rgba(106,30,115,0.3);
 	border: 2px solid rgba(106,30,115,1);
@@ -204,6 +206,9 @@ header:before{
 	background-color:rgba(0,121,185,0.5);
 	border: 2px solid rgba(0,121,185,1);
 }
+
+
+
 .blok {
 	width: 100px;
 	background-color: #49afcd;
