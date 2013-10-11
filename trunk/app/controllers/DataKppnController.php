@@ -28,6 +28,8 @@ class DataKppnController extends BaseController {
 
     public function viewDataKppnLvl2() {
         $d_kppn = new DataKppn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
         $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnLvl2');
@@ -35,7 +37,6 @@ class DataKppnController extends BaseController {
     
     public function addDataKppnLvl3Jkt2($id = null) {
         $d_kppn = new DataKppn($this->registry);
-        $d_tetap = new DataTetap($this->registry);
         if (isset($_POST['add_d_kppn'])) {
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
@@ -69,7 +70,6 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_kppn($id);
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
-        $this->view->tetap = $d_tetap->get_d_tetap();
         $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl_jkt2();
         $this->view->data = $d_kppn->get_d_kppn_jkt2();
         $this->view->render('admin/dataKppnLvl3Jkt2');
