@@ -39,6 +39,12 @@
         }
         ?>
         <canvas id="canvas" height="400" width="900"></canvas>
+        <ul class="inline">
+            <li><div id="bundar" class="kuning"></div></li>
+            <li><h3>Tren Jkt 2  &nbsp &nbsp </h3></li>
+            <li><div id="bundar" class="biru"></div></li>
+            <li><h3>Tren Jkt 6 &nbsp &nbsp </h3></li>
+        </ul>
     </body>
 </html>
 
@@ -50,16 +56,16 @@
         labels : label,
         datasets : [
             {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                pointColor : "rgba(220,220,220,1)",
+                fillColor : "rgba(243,190,0,0.3)",
+                strokeColor : "rgba(243,190,0,1)",
+                pointColor : "rgba(243,190,0,1)",
                 pointStrokeColor : "#fff",
                 data : val
             },
             {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                pointColor : "rgba(151,187,205,1)",
+                fillColor : "rgba(0,121,185,0.3)",
+                strokeColor : "rgba(0,121,185,1)",
+                pointColor : "rgba(0,121,185,1)",
                 pointStrokeColor : "#fff",
                 data : val2
             }

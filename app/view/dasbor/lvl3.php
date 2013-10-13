@@ -50,7 +50,7 @@
         datasets : [
             {
                 //kuning
-                fillColor : "rgba(243,190,0,0.3)",
+                fillColor : "rgba(243,190,0,0)",
                 strokeColor : "rgba(243,190,0,1)",
                 pointColor : "rgba(243,190,0,1)",
                 pointStrokeColor : "#fff",
@@ -58,7 +58,7 @@
             },
             {
                 //biru
-                fillColor : "rgba(0,121,185,0.3)",
+                fillColor : "rgba(0,121,185,0)",
                 strokeColor : "rgba(0,121,185,1)",
                 pointColor : "rgba(0,121,185,1)",
                 pointStrokeColor : "#fff",
@@ -66,7 +66,7 @@
             },
             {
                 //ungu
-                fillColor : "rgba(106,30,115,0.3)",
+                fillColor : "rgba(106,30,115,0)",
                 strokeColor : "rgba(106,30,115,1)",
                 pointColor : "rgba(106,30,115,1)",
                 pointStrokeColor : "#fff",
@@ -74,7 +74,7 @@
             },
             {
                 //ungu
-                fillColor : "rgba(106,30,115,0.3)",
+                fillColor : "rgba(106,30,115,0)",
                 strokeColor : "rgba(106,30,115,1)",
                 pointColor : "rgba(106,30,115,1)",
                 pointStrokeColor : "#fff",

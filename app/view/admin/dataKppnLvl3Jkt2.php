@@ -158,7 +158,7 @@ if (isset($this->d_ubah)) {
     
         $('#kd_d_konversi_gagal').keyup(function(){
             if(document.getElementById('kd_d_konversi_gagal').value !=''){
-                $('#wkonversi').fadeOut(200);
+                $('#wkonversi_gagal').fadeOut(200);
             }
         })
     
@@ -237,12 +237,12 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
-        if(kd_d_tgl==''){
-            var wtgl= 'Tanggal harus diisi!';
-            $('#wtgl').fadeIn(0);
-            $('#wtgl').html(wtgl);
-            jml++;
-        }
+//        if(kd_d_tgl==''){
+//            var wtgl= 'Tanggal harus diisi!';
+//            $('#wtgl').fadeIn(0);
+//            $('#wtgl').html(wtgl);
+//            jml++;
+//        }
         
         if(!kd_d_konversi.match(pattern)){
             var wkonversi = "Konversi harus dalam bentuk angka!";
