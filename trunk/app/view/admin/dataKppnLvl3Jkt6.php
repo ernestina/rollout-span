@@ -236,12 +236,12 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
-//        if(kd_d_tgl==''){
-//            var wtgl= 'Tanggal harus diisi!';
-//            $('#wtgl').fadeIn(0);
-//            $('#wtgl').html(wtgl);
-//            jml++;
-//        }
+        if(kd_d_tgl==''){
+            var wtgl= 'Tanggal harus diisi!';
+            $('#wtgl').fadeIn(0);
+            $('#wtgl').html(wtgl);
+            jml++;
+        }
         
         if(!kd_d_konversi.match(pattern)){
             var wkonversi = "Konversi harus dalam bentuk angka!";

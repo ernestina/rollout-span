@@ -11,15 +11,17 @@
 
         <?php
         $ids = array();
-        $ids2 = array();
-        $ids3 = array();
         $tgl = array();
-        foreach ($this->data as $value) {
-            $ids[] = ceil(rand(90,100));
-            $ids2[] = ceil(rand(90,100));
-            $ids3[] = ceil(rand(90,100));
+        foreach ($this->bobot as $bot) {
+            $s = $bot->get_spm_ba() / 100;
+            $r = $bot->get_rekon_ba() / 100;
+            $k = $bot->get_kontrak_ba() / 100;
+        }
+        foreach ($this->dasbor as $value) {
+            $persen = ceil(($value->get_kd_d_spm_persen() * $s + $value->get_kd_d_rekon_persen() * $r + $value->get_kd_d_kontrak_persen() * $k));
+            $ids[] = $persen;
             $originalDate = $value->get_kd_d_tgl();
-            $newDate = date("d/m/Y", strtotime($originalDate));
+            $newDate = date("d/m", strtotime($originalDate));
             $tgl[] = '"' . $newDate . '"';
         }
         ?>
@@ -29,8 +31,6 @@
 
 <script>
     val = new Array(<?php echo implode(',', $ids) ?>)
-    val2 = new Array(<?php echo implode(',', $ids2) ?>)
-    val3 = new Array(<?php echo implode(',', $ids3) ?>)
     label = new Array(<?php echo implode(',', $tgl) ?>)
     var lineChartData = {
         labels : label,
@@ -41,20 +41,6 @@
                 pointColor : "rgba(220,220,220,1)",
                 pointStrokeColor : "#fff",
                 data : val
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                pointColor : "rgba(151,187,205,1)",
-                pointStrokeColor : "#fff",
-                data : val2
-            },
-            {
-                fillColor : "rgba(100,100,100,0.5)",
-                strokeColor : "rgba(100,100,100,1)",
-                pointColor : "rgba(100,100,100,1)",
-                pointStrokeColor : "#fff",
-                data : val3
             }
         ]
 			

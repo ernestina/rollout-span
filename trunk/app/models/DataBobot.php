@@ -12,6 +12,9 @@ class DataBobot {
     private $_sp2d;
     private $_lhp;
     private $_rekon;
+    private $_spm_ba;
+    private $_kontrak_ba;
+    private $_rekon_ba;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_bobot';
@@ -42,6 +45,22 @@ class DataBobot {
         }
         return $data;
     }    
+    
+    public function get_bobot_ba_lvl2(){
+        $sql = "SELECT *
+                FROM " . $this->_table;
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_bobot = new $this($this->registry);
+            $d_bobot->set_spm_ba($val['spm_ba']);
+            $d_bobot->set_rekon_ba($val['rekon_ba']);
+            $d_bobot->set_kontrak_ba($val['kontrak_ba']);
+            
+            $data[] = $d_bobot;
+        }
+        return $data;
+    }
 //
 //    public function get_d_kppn($limit = null, $batas = null) {
 //        $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
@@ -367,6 +386,18 @@ class DataBobot {
     public function set_rekon($rekon) {
         $this->_rekon = $rekon;
     }
+    
+    public function set_spm_ba($spm_ba) {
+        $this->_spm_ba = $spm_ba;
+    }
+    
+    public function set_rekon_ba($rekon_ba) {
+        $this->_rekon_ba = $rekon_ba;
+    }
+    
+    public function set_kontrak_ba($kontrak_ba) {
+        $this->_kontrak_ba = $kontrak_ba;
+    }
 
     /*
      * getter
@@ -386,6 +417,18 @@ class DataBobot {
 
     public function get_rekon() {
         return $this->_rekon;
+    }
+    
+    public function get_spm_ba() {
+        return $this->_spm_ba;
+    }
+
+    public function get_rekon_ba() {
+        return $this->_rekon_ba;
+    }
+
+    public function get_kontrak_ba() {
+        return $this->_kontrak_ba;
     }
 
     public function get_error() {

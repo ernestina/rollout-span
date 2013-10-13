@@ -10,11 +10,17 @@ class DataBa {
     private $db;
     private $_kd_d_ba;
     private $_kd_d_user;
+    private $_kd_d_user_ba;
     private $_kd_d_tgl;
-    private $_kd_d_bayar;
+    private $_kd_d_spm;
+    private $_kd_d_spm_gagal;
+    private $_kd_d_spm_persen;
     private $_kd_d_rekon;
-    private $_kd_d_jaringan;
-    private $_kd_d_masalah;
+    private $_kd_d_rekon_gagal;
+    private $_kd_d_rekon_persen;
+    private $_kd_d_kontrak;
+    private $_kd_d_kontrak_gagal;
+    private $_kd_d_kontrak_persen;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_ba';
@@ -36,7 +42,7 @@ class DataBa {
      */
 
     public function get_d_ba($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl";
+        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl desc ";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -46,14 +52,44 @@ class DataBa {
             $d_ba = new $this($this->registry);
             $d_ba->set_kd_d_ba($val['kd_d_ba']);
             $d_ba->set_kd_d_user($val['kd_d_user']);
+            $d_ba->set_kd_d_user_ba($val['kd_d_user_ba']);
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
-            $d_ba->set_kd_d_bayar($val['kd_d_bayar']);
+            $d_ba->set_kd_d_spm($val['kd_d_spm']);
+            $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
+            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
-            $d_ba->set_kd_d_jaringan($val['kd_d_jaringan']);
-            $d_ba->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
+            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
+            $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
+            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
 
             $data[] = $d_ba;
             //var_dump($d_ba);
+        }
+
+        return $data;
+    }
+    
+    public function get_d_ba_per_tgl($limit = null, $batas = null) {
+        $sql = "SELECT *
+                FROM " . $this->_table . " 
+                GROUP BY kd_d_tgl asc";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_ba = new $this($this->registry);
+            $d_ba->set_kd_d_user($val['kd_d_user']);
+            $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+
+            $data[] = $d_ba;
+            //var_dump($this);
         }
 
         return $data;
@@ -73,13 +109,19 @@ class DataBa {
 //        var_dump($sql);
         $result = $this->db->select($sql);
         foreach ($result as $val) {
-            $this->set_kd_d_ba($val['kd_d_ba']);
-            $this->set_kd_d_user($val['kd_d_user']);
-            $this->set_kd_d_tgl($val['kd_d_tgl']);
-            $this->set_kd_d_rekon($val['kd_d_rekon']);
-            $this->set_kd_d_bayar($val['kd_d_bayar']);
-            $this->set_kd_d_jaringan($val['kd_d_jaringan']);
-            $this->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_ba->set_kd_d_ba($val['kd_d_ba']);
+            $d_ba->set_kd_d_user($val['kd_d_user']);
+            $d_ba->set_kd_d_user_ba($val['kd_d_user_ba']);
+            $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_ba->set_kd_d_spm($val['kd_d_spm']);
+            $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
+            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+            $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
+            $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
+            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
+            $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
+            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
         }
         return $this;
     }
@@ -92,11 +134,14 @@ class DataBa {
     public function add_d_ba() {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
+            'kd_d_user_ba' => $this->get_kd_d_user_ba(),
             'kd_d_tgl' => $this->get_kd_d_tgl(),
-            'kd_d_bayar' => $this->get_kd_d_bayar(),
+            'kd_d_spm' => $this->get_kd_d_spm(),
+            'kd_d_spm_gagal' => $this->get_kd_d_spm_gagal(),
             'kd_d_rekon' => $this->get_kd_d_rekon(),
-            'kd_d_jaringan' => $this->get_kd_d_jaringan(),
-            'kd_d_masalah' => $this->get_kd_d_masalah()
+            'kd_d_rekon_gagal' => $this->get_kd_d_rekon_gagal(),
+            'kd_d_kontrak' => $this->get_kd_d_kontrak(),
+            'kd_d_kontrak_gagal' => $this->get_kd_d_kontrak_gagal()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -114,11 +159,14 @@ class DataBa {
     public function update_d_ba() {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
+            'kd_d_user_ba' => $this->get_kd_d_user_ba(),
             'kd_d_tgl' => $this->get_kd_d_tgl(),
-            'kd_d_bayar' => $this->get_kd_d_bayar(),
+            'kd_d_spm' => $this->get_kd_d_spm(),
+            'kd_d_spm_gagal' => $this->get_kd_d_spm_gagal(),
             'kd_d_rekon' => $this->get_kd_d_rekon(),
-            'kd_d_jaringan' => $this->get_kd_d_jaringan(),
-            'kd_d_masalah' => $this->get_kd_d_masalah()
+            'kd_d_rekon_gagal' => $this->get_kd_d_rekon_gagal(),
+            'kd_d_kontrak' => $this->get_kd_d_kontrak(),
+            'kd_d_kontrak_gagal' => $this->get_kd_d_kontrak_gagal()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -139,28 +187,40 @@ class DataBa {
     }
 
     public function validate() {
-        if ($this->get_kd_d_user() == 0) {
+        if ($this->get_kd_d_user() == "") {
             $this->_error .= "User belum dipilih!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_tgl() == 0) {
+        if ($this->get_kd_d_user_ba() == "") {
+            $this->_error .= "User BA belum dipilih!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_tgl() == "") {
             $this->_error .= "Tangal belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_bayar() == "" ) {
-            $this->_error .= "Pembayaran belum diinput!</br>";
+        if ($this->get_kd_d_spm() == "") {
+            $this->_error .= "SPM belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_rekon() == "" ) {
+        if ($this->get_kd_d_spm_gagal() == "") {
+            $this->_error .= "SPM belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_rekon() == "") {
             $this->_error .= "Rekon belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_jaringan() == "" ) {
-            $this->_error .= "Jaringan belum diinput!</br>";
+        if ($this->get_kd_d_rekon_gagal() == "") {
+            $this->_error .= "Rekon belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_masalah() == "" ) {
-            $this->_error .= "Masalah belum diinput!</br>";
+        if ($this->get_kd_d_kontrak() == "") {
+            $this->_error .= "Kontrak belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_kontrak() == "") {
+            $this->_error .= "Kontrak gagal belum diinput!</br>";
             $this->_valid = FALSE;
         }
     }
@@ -176,25 +236,49 @@ class DataBa {
     public function set_kd_d_user($user) {
         $this->_kd_d_user = $user;
     }
-    
+
+    public function set_kd_d_user_ba($user_ba) {
+        $this->_kd_d_user_ba = $user_ba;
+    }
+
     public function set_kd_d_tgl($tgl) {
         $this->_kd_d_tgl = $tgl;
     }
-    
-    public function set_kd_d_bayar($bayar) {
-        $this->_kd_d_bayar = $bayar;
+
+    public function set_kd_d_spm($spm) {
+        $this->_kd_d_spm = $spm;
     }
-    
+
+    public function set_kd_d_spm_gagal($spm_gagal) {
+        $this->_kd_d_spm_gagal = $spm_gagal;
+    }
+
+    public function set_kd_d_spm_persen($spm_persen) {
+        $this->_kd_d_spm_persen = $spm_persen;
+    }
+
     public function set_kd_d_rekon($rekon) {
         $this->_kd_d_rekon = $rekon;
     }
-        
-    public function set_kd_d_jaringan($jaringan) {
-        $this->_kd_d_jaringan = $jaringan;
+
+    public function set_kd_d_rekon_gagal($rekon_gagal) {
+        $this->_kd_d_rekon_gagal = $rekon_gagal;
     }
-    
-    public function set_kd_d_masalah($masalah) {
-        $this->_kd_d_masalah = $masalah;
+
+    public function set_kd_d_rekon_persen($rekon_persen) {
+        $this->_kd_d_rekon_persen = $rekon_persen;
+    }
+
+    public function set_kd_d_kontrak($kontrak) {
+        $this->_kd_d_kontrak = $kontrak;
+    }
+
+    public function set_kd_d_kontrak_gagal($kontrak_gagal) {
+        $this->_kd_d_kontrak_gagal = $kontrak_gagal;
+    }
+
+    public function set_kd_d_kontrak_persen($kontrak_persen) {
+        $this->_kd_d_kontrak_persen = $kontrak_persen;
     }
 
     public function set_table($table) {
@@ -219,25 +303,49 @@ class DataBa {
     public function get_kd_d_user() {
         return $this->_kd_d_user;
     }
-    
+
+    public function get_kd_d_user_ba() {
+        return $this->_kd_d_user_ba;
+    }
+
     public function get_kd_d_tgl() {
         return $this->_kd_d_tgl;
     }
 
-    public function get_kd_d_bayar() {
-        return $this->_kd_d_bayar;
+    public function get_kd_d_spm() {
+        return $this->_kd_d_spm;
     }
-    
+
+    public function get_kd_d_spm_gagal() {
+        return $this->_kd_d_spm_gagal;
+    }
+
+    public function get_kd_d_spm_persen() {
+        return $this->_kd_d_spm_persen;
+    }
+
     public function get_kd_d_rekon() {
         return $this->_kd_d_rekon;
     }
-    
-    public function get_kd_d_jaringan() {
-        return $this->_kd_d_jaringan;
+
+    public function get_kd_d_rekon_gagal() {
+        return $this->_kd_d_rekon_gagal;
     }
     
-    public function get_kd_d_masalah() {
-        return $this->_kd_d_masalah;
+    public function get_kd_d_rekon_persen() {
+        return $this->_kd_d_rekon_persen;
+    }
+
+    public function get_kd_d_kontrak() {
+        return $this->_kd_d_kontrak;
+    }
+
+    public function get_kd_d_kontrak_gagal() {
+        return $this->_kd_d_kontrak_gagal;
+    }
+
+    public function get_kd_d_kontrak_persen() {
+        return $this->_kd_d_kontrak_persen;
     }
 
     public function get_error() {
