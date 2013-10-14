@@ -67,7 +67,7 @@ if (isset($this->d_ubah)) {
             <fieldset><legend>Data</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
-                    <table class="table-bordered zebra scroll" style="text-align: center">
+                    <table class="table-bordered zebra scroll" style="text-align: center; margin-left: -4px; margin-right: 7px">
                         <thead style="font-size:80%">
                             <tr>
                                 <th rowspan="2">No</th>
@@ -80,20 +80,20 @@ if (isset($this->d_ubah)) {
                             </tr>
                             <tr>
                                 <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
+                                <th width ="8%">Gagal</th>
+                                <th width ="8%">%</th>
                                 <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
+                                <th width ="8%">Gagal</th>
+                                <th width ="8%">%</th>
                                 <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
+                                <th width ="8%">Gagal</th>
+                                <th width ="8%">%</th>
                                 <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
+                                <th width ="8%">Gagal</th>
+                                <th width ="8%">%</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size:80%">
                             <?php
                             $no = 1;
                             foreach ($this->data as $val) {

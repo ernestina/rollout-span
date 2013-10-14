@@ -78,11 +78,11 @@ $nilai_total=ceil($nilai_kppn*$bobot_kppn+$nilai_ba*$bobot_ba+$nilai_pkn*$bobot_
     <input type="hidden" id="nilai_total" value= "<?php echo $nilai_total ?>">
 </div>
 <div class="kolom2">
-    <center>
-        <button><a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl2" target="_blank"><div id="g2"></div></a></button><br></br>
-        <button><a href="<?php echo URL; ?>dataBa/addDataBa" target="_blank"><div id="g3"></div></a></button><br></br>
-        <button><a href="<?php echo URL; ?>dataPkn/addDataPkn" target="_blank"><div id="g4"></div></a></button>
-    </center>
+    
+        <button><a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl2" target="_blank"><div id="g2"></div></a></button><br><br>
+		<button><a href="<?php echo URL; ?>dataBa/addDataBa" target="_blank"><div id="g3"></div></a></button><br><br>
+		<button><a href="<?php echo URL; ?>dataPkn/addDataPkn" target="_blank"><div id="g4"></div></a></button>
+
 </div>
 
 
