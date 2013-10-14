@@ -8,7 +8,7 @@
         </style>
     </head>
     <body>
-
+		
         <?php
         $ids = array();
         $ids2 = array();
@@ -38,13 +38,16 @@
             }
         }
         ?>
+	
         <canvas id="canvas" height="400" width="900"></canvas>
+	
         <ul class="inline">
             <li><div id="bundar" class="kuning"></div></li>
             <li><h3>Tren Jkt 2  &nbsp &nbsp </h3></li>
-            <li><div id="bundar" class="biru"></div></li>
+            <li><div id="bundar" class="birutua"></div></li>
             <li><h3>Tren Jkt 6 &nbsp &nbsp </h3></li>
         </ul>
+	
     </body>
 </html>
 

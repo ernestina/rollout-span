@@ -8,7 +8,7 @@
         </style>
     </head>
     <body>
-
+		<div class="bg">
         <?php
         $ids = array();
         $ids2 = array();
@@ -26,6 +26,7 @@
         }
         ?>
         <canvas id="canvas" height="400" width="900"></canvas>
+		</div>
         <ul class="inline">
             <li><div id="bundar" class="kuning"></div></li>
             <li><h3>Tren Konversi  &nbsp &nbsp </h3></li>
@@ -33,9 +34,10 @@
             <li><h3>Tren SP2D &nbsp &nbsp </h3></li>
             <li><div id="bundar" class="ungu"></div></li>
             <li><h3>Tren LHP &nbsp &nbsp</h3></li>
-            <li><div id="bundar" class="biru"></div></li>
+            <li><div id="bundar" class="hijau"></div></li>
             <li><h3>Tren Rekon &nbsp &nbsp</h3></li>
         </ul>
+		
     </body>
 </html>
 
@@ -73,10 +75,10 @@
                 data : val3
             },
             {
-                //ungu
-                fillColor : "rgba(106,30,115,0)",
-                strokeColor : "rgba(106,30,115,1)",
-                pointColor : "rgba(106,30,115,1)",
+                //hijau
+                fillColor : "rgba(94,140,106,0)",
+                strokeColor : "rgba(94,140,106,1)",
+                pointColor : "rgba(94,140,106,1)",
                 pointStrokeColor : "#fff",
                 data : val4
             }
