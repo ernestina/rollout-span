@@ -45,7 +45,7 @@
                         <a href="#"></a>
                     </li>
 					<li class="nav">
-                        <a href="<?php echo URL; ?>dataKppn/showDasbor">BERANDA</a>
+                        <a href="<?php echo URL; ?>index">BERANDA</a>
                     </li>
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataTetap/addDataTetap">ADMIN</a>

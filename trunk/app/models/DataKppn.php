@@ -22,6 +22,7 @@ class DataKppn {
     private $_kd_d_rekon;
     private $_kd_d_rekon_gagal;
     private $_kd_d_rekon_persen;
+    private $_kd_d_kppn_lvl2;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_kppn';
