@@ -130,12 +130,6 @@ class DataBaController extends BaseController {
         header('location:' . URL . 'dataBa/addDataBa');
     }
 
-    public function showDasbor() {
-        $d_ba = new DataBa($this->registry);
-        $this->view->data = $d_ba->get_d_ba();
-        $this->view->render('dasbor/level1');
-    }
-
     public function __destruct() {
         ;
     }
