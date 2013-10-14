@@ -28,20 +28,22 @@ class DataPknController extends BaseController {
 
     public function addDataPkn($id = null) {
         $d_pkn = new DataPkn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
         if (isset($_POST['add_d_pkn'])) {
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
-            $kd_d_bat = $_POST['kd_d_bat'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
-            $kd_d_bank = $_POST['kd_d_bank'];
-            $kd_d_masalah = $_POST['kd_d_masalah'];
+            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+            $kd_d_spt = $_POST['kd_d_spt'];
+            $kd_d_spt_gagal = $_POST['kd_d_spt_gagal'];
 
             $d_pkn->set_kd_d_user($kd_d_user);
             $d_pkn->set_kd_d_tgl($kd_d_tgl);
-            $d_pkn->set_kd_d_bat($kd_d_bat);
             $d_pkn->set_kd_d_sp2d($kd_d_sp2d);
-            $d_pkn->set_kd_d_bank($kd_d_bank);
-            $d_pkn->set_kd_d_masalah($kd_d_masalah);
+            $d_pkn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+            $d_pkn->set_kd_d_spt($kd_d_spt);
+            $d_pkn->set_kd_d_spt_gagal($kd_d_spt_gagal);
 
             if (!$d_pkn->add_d_pkn()) {
                 $this->view->d_rekam = $d_pkn;
@@ -53,7 +55,8 @@ class DataPknController extends BaseController {
             $d_pkn->set_kd_d_pkn($id);
             $this->view->d_ubah = $d_pkn->get_d_pkn_by_id($d_pkn);
         }
-        
+
+        $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
         $this->view->data = $d_pkn->get_d_pkn();
         $this->view->render('admin/dataPkn');
     }
@@ -65,29 +68,33 @@ class DataPknController extends BaseController {
 
     public function updDataPkn() {
         $d_pkn = new DataPkn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
         if (isset($_POST['upd_d_pkn'])) {
             $kd_d_pkn = $_POST['kd_d_pkn'];
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
-            $kd_d_bat = $_POST['kd_d_bat'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
-            $kd_d_bank = $_POST['kd_d_bank'];
-            $kd_d_masalah = $_POST['kd_d_masalah'];
+            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+            $kd_d_spt = $_POST['kd_d_spt'];
+            $kd_d_spt_gagal = $_POST['kd_d_spt_gagal'];
 
             $d_pkn->set_kd_d_pkn($kd_d_pkn);
             $d_pkn->set_kd_d_user($kd_d_user);
             $d_pkn->set_kd_d_tgl($kd_d_tgl);
-            $d_pkn->set_kd_d_bat($kd_d_bat);
             $d_pkn->set_kd_d_sp2d($kd_d_sp2d);
-            $d_pkn->set_kd_d_bank($kd_d_bank);
-            $d_pkn->set_kd_d_masalah($kd_d_masalah);
+            $d_pkn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+            $d_pkn->set_kd_d_spt($kd_d_spt);
+            $d_pkn->set_kd_d_spt_gagal($kd_d_spt_gagal);
 
             if (!$d_pkn->update_d_pkn()) {
                 $this->view->d_ubah = $d_pkn;
+                $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
                 $this->view->error = $d_pkn->get_error();
                 $this->view->data = $d_pkn->get_d_pkn();
                 $this->view->render('admin/dataPkn');
             } else {
+                $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
                 header('location:' . URL . 'dataPkn/addDataPkn');
             }
         }
@@ -109,12 +116,12 @@ class DataPknController extends BaseController {
         $d_pkn->delete_d_pkn();
         header('location:' . URL . 'dataPkn/addDataPkn');
     }
-	
-	public function showDasbor(){
-	$d_pkn = new DataPkn($this->registry);
+
+    public function showDasbor() {
+        $d_pkn = new DataPkn($this->registry);
         $this->view->data = $d_pkn->get_d_pkn();
         $this->view->render('dasbor/level1');
-	}
+    }
 
     public function __destruct() {
         ;

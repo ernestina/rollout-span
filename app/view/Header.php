@@ -50,7 +50,7 @@
                     <li class="subnav">
                         <a href="<?php echo URL; ?>dataTetap/addDataTetap">ADMIN</a>
                         <ul>
-                            <li><a href="<?php echo URL; ?>dataUser/addDataBobot"><i class="icon-globe icon-white"></i>Data Bobot</a></li>
+                            <li><a href="<?php echo URL; ?>dataBobot/viewDataBobot"><i class="icon-globe icon-white"></i>Data Bobot</a></li>
 							<li><a href="<?php echo URL; ?>dataTetap/addDataTetap"><i class="icon-globe icon-white"></i>Data Tetap</a></li>
                             <li><a href="<?php echo URL; ?>dataUser/addDataUser"><i class="icon-globe icon-white"></i>Data User</a></li>
                         </ul>

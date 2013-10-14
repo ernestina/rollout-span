@@ -1,6 +1,7 @@
+<h2>DATA PKN</h2>
+<center><?php $this->load('dasbor/pknLvl2') ?></center>
 <div id="top">
-    <div id="form">
-        <h2>DATA PKN</h2></div>
+    <div id="form"></div>
     <div class="kolom3">
         <fieldset><legend><?php
 if (isset($this->d_ubah)) {
@@ -27,19 +28,17 @@ if (isset($this->d_ubah)) {
                               }
                               ?>
 
-                        <div id="wuser" class="error"></div>
-                        <label>User</label><input type="number" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : ''); ?>">
+                        <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
                         <div id="wtgl"  class="error"></div>
-                        <label>Tanggal</label><input type="number" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
-                        <div id="wbat"  class="error"></div>
-                        <label>Bat</label><input type="number" name="kd_d_bat" id="kd_d_bat" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_bat() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_bat() : ''); ?>">
-                        <div id="wsp2d" class="error"></div>
-                        <label>SP2d</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
-                        <div id="wbank" class="error"></div>
-                        <label>Bank Settlement</label><input type="number" name="kd_d_bank" id="kd_d_bank" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_bank() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_bank() : ''); ?>">
-                        <div id="wmasalah" class="error"></div>
-                        <label>Masalah</label><textarea type="text" rows="10" name="kd_d_masalah" id="kd_d_masalah" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_masalah() : ''); ?>"></textarea>
-                        </select>
+                        <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                        <div id="wsp2d"  class="error"></div>
+                        <label>SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
+                        <div id="wsp2d_gagal" class="error"></div>
+                        <label>SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
+                        <div id="wspt" class="error"></div>
+                        <label>SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
+                        <div id="wspt_gagal" class="error"></div>
+                        <label>SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
                         <ul class="inline tengah">
                             <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
                             <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick="return cek();"></li>
@@ -55,14 +54,21 @@ if (isset($this->d_ubah)) {
             <div id="table-content">
                 <table class="table-bordered zebra scroll">
                     <thead>
-                    <th>No</th>
-                    <th>User</th>
-                    <th>Tanggal</th>
-                    <th>BAT</th>
-                    <th>SP2D</th>
-                    <th>Bank Settlement</th>
-                    <th>Masalah</th>
-                    <th width="50">Aksi</th>
+                        <tr>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2" width ="25%">Tanggal</th>
+                            <th colspan="3">SP2D</th>
+                            <th colspan="3">SPT</th>
+                            <th rowspan="2" width ="15%">Aksi</th>
+                        </tr>
+                        <tr>
+                            <th width ="10%">Sukses</th>
+                            <th width ="10%">Gagal</th>
+                            <th width ="10%">%</th>
+                            <th width ="10%">Sukses</th>
+                            <th width ="10%">Gagal</th>
+                            <th width ="10%">%</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <?php
@@ -71,12 +77,13 @@ if (isset($this->d_ubah)) {
                             //var_dump($val);
                             echo "<tr>";
                             echo "<td>$no</td>";
-                            echo "<td>" . $val->get_kd_d_user() . "</td>";
-                            echo "<td>" . $val->get_kd_d_tgl() . "</td>";
-                            echo "<td>" . $val->get_kd_d_bat() . "</td>";
+                            echo "<td>" . date("d/m", strtotime($val->get_kd_d_tgl())) . "</td>";
                             echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
-                            echo "<td>" . $val->get_kd_d_bank() . "</td>";
-                            echo "<td>" . $val->get_kd_d_masalah() . "</td>";
+                            echo "<td>" . $val->get_kd_d_sp2d_gagal() . "</td>";
+                            echo "<td>" . $val->get_kd_d_sp2d_persen() . "%</td>";
+                            echo "<td>" . $val->get_kd_d_spt() . "</td>";
+                            echo "<td>" . $val->get_kd_d_spt_gagal() . "</td>";
+                            echo "<td>" . $val->get_kd_d_spt_persen() . "%</td>";
                             echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
@@ -86,6 +93,7 @@ if (isset($this->d_ubah)) {
                     </tbody>
                 </table>
             </div>
+        </fieldset>
     </div>
 </div>
 </div>
@@ -107,33 +115,33 @@ if (isset($this->d_ubah)) {
             }
         })
         
-        $('#kd_d_tgl').keyup(function(){
+        $('#kd_d_tgl').change(function(){
             if(document.getElementById('kd_d_tgl').value !=''){
                 $('#wtgl').fadeOut(200);
             }
         })
         
-        $('#kd_d_bat').keyup(function(){
-            if(document.getElementById('kd_d_bat').value !=''){
-                $('#wbat').fadeOut(200);
-            }
-        })
-    
         $('#kd_d_sp2d').keyup(function(){
             if(document.getElementById('kd_d_sp2d').value !=''){
                 $('#wsp2d').fadeOut(200);
             }
         })
-        
-        $('#kd_d_bank').keyup(function(){
-            if(document.getElementById('kd_d_bank').value !=''){
-                $('#wbank').fadeOut(200);
+    
+        $('#kd_d_sp2d_gagal').keyup(function(){
+            if(document.getElementById('kd_d_sp2d_gagal').value !=''){
+                $('#wsp2d_gagal').fadeOut(200);
             }
         })
         
-        $('#kd_d_masalah').keyup(function(){
-            if(document.getElementById('kd_d_masalah').value !=''){
-                $('#wmasalah').fadeOut(200);
+        $('#kd_d_spt').keyup(function(){
+            if(document.getElementById('kd_d_spt').value !=''){
+                $('#wspt').fadeOut(200);
+            }
+        })
+        
+        $('#kd_d_spt_gagal').keyup(function(){
+            if(document.getElementById('kd_d_spt_gagal').value !=''){
+                $('#wspt_gagal').fadeOut(200);
             }
         })
 
@@ -157,13 +165,13 @@ if (isset($this->d_ubah)) {
     }
     
     function cek(){
-        var pattern = '^[0-9]$';
+        var pattern = '^[0-9]+$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
-        var kd_d_bat = document.getElementById('kd_d_bat').value;
         var kd_d_sp2d = document.getElementById('kd_d_sp2d').value;
-        var kd_d_bank = document.getElementById('kd_d_bank').value;
-        var kd_d_masalah = document.getElementById('kd_d_masalah').value;
+        var kd_d_sp2d_gagal = document.getElementById('kd_d_sp2d_gagal').value;
+        var kd_d_spt = document.getElementById('kd_d_spt').value;
+        var kd_d_spt_gagal = document.getElementById('kd_d_spt_gagal').value;
         var jml=0;
         if(kd_d_user==''){
             var wuser= 'User harus diisi!';
@@ -179,52 +187,59 @@ if (isset($this->d_ubah)) {
             jml++;
         }
         
-        if(!kd_d_bat.match(pattern)){
-            var wbat = "Jumlah BAT harus dalam bentuk angka!";
-            $('#wbat').html(wbat);
-            $('#wbat').fadeIn(200);
-            jml++;
-        }
-            
-        if(kd_d_bat==''){
-            var wbat= 'BAT harus diisi!';
-            $('#wbat').fadeIn(0);
-            $('#wbat').html(wbat);
-            jml++;
-        }
-        
         if(!kd_d_sp2d.match(pattern)){
             var wsp2d = "Jumlah SP2D harus dalam bentuk angka!";
             $('#wsp2d').html(wsp2d);
-            $('#wsp2d').fadeIn(200);
+            $('#wsp2dt').fadeIn(200);
             jml++;
         }
-                
+            
         if(kd_d_sp2d==''){
-            var wsp2d= 'SP2D harus diisi!';
+            var wsp2d= 'SP2d harus diisi!';
             $('#wsp2d').fadeIn(0);
             $('#wsp2d').html(wsp2d);
             jml++;
         }
         
-        if(!kd_d_bank.match(pattern)){
-            var wbank = "Jumlah Bank Settlement harus dalam bentuk angka!";
-            $('#wbank').html(wbat);
-            $('#wbank').fadeIn(200);
+        if(!kd_d_sp2d_gagal.match(pattern)){
+            var wsp2d_gagal = "Jumlah SP2D harus dalam bentuk angka!";
+            $('#wsp2d_gagal').html(wsp2d_gagal);
+            $('#wsp2d_gagal').fadeIn(200);
+            jml++;
+        }
+                
+        if(kd_d_sp2d_gagal==''){
+            var wsp2d_gagal= 'SP2D harus diisi!';
+            $('#wsp2d_gagal').fadeIn(0);
+            $('#wsp2d_gagal').html(wsp2d_gagal);
             jml++;
         }
         
-        if(kd_d_bank==''){
-            var wbank= 'Bank Settlement harus diisi!';
-            $('#wbank').fadeIn(0);
-            $('#wbank').html(wbank);
+        if(!kd_d_spt.match(pattern)){
+            var wspt = "Jumlah SPT harus dalam bentuk angka!";
+            $('#wspt').html(wspt);
+            $('#wspt').fadeIn(200);
             jml++;
         }
         
-        if(kd_d_masalah==''){
-            var wmasalah= 'Masalah harus diisi!';
-            $('#wmasalah').fadeIn(0);
-            $('#wmasalah').html(wmasalah);
+        if(kd_d_spt==''){
+            var wspt= 'SPT harus diisi!';
+            $('#wspt').fadeIn(0);
+            $('#wspt').html(wspt);
+            jml++;
+        }
+        
+        if(!kd_d_spt_gagal.match(pattern)){
+            var wspt_gagal = "Jumlah SPT harus dalam bentuk angka!";
+            $('#wspt_gagal').html(wspt_gagal);
+            $('#wspt_gagal').fadeIn(200);
+            jml++;
+        }
+        
+        if(kd_d_spt_gagal==''){
+            var wspt_gagal= 'SPT harus diisi!';
+            $('#wspt_gagal').fadeIn(0);
+            $('#wspt_gagal').html(wspt_gagal);
             jml++;
         }
     

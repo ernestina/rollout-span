@@ -11,10 +11,12 @@ class DataPkn {
     private $_kd_d_pkn;
     private $_kd_d_user;
     private $_kd_d_tgl;
-    private $_kd_d_bat;
     private $_kd_d_sp2d;
-    private $_kd_d_bank;
-    private $_kd_d_masalah;
+    private $_kd_d_sp2d_gagal;
+    private $_kd_d_sp2d_persen;
+    private $_kd_d_spt;
+    private $_kd_d_spt_gagal;
+    private $_kd_d_spt_persen;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_pkn';
@@ -36,7 +38,7 @@ class DataPkn {
      */
 
     public function get_d_pkn($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl";
+        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl desc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -47,10 +49,33 @@ class DataPkn {
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
             $d_pkn->set_kd_d_user($val['kd_d_user']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
-            $d_pkn->set_kd_d_bat($val['kd_d_bat']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
-            $d_pkn->set_kd_d_bank($val['kd_d_bank']);
-            $d_pkn->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+
+            $data[] = $d_pkn;
+            //var_dump($d_pkn);
+        }
+
+        return $data;
+    }
+
+    public function get_d_pkn_per_tgl($limit = null, $batas = null) {
+        $sql = "SELECT * FROM " . $this->_table . " GROUP BY kd_d_tgl asc";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_pkn = new $this($this->registry);
+            $d_pkn->set_kd_d_user($val['kd_d_user']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
 
             $data[] = $d_pkn;
             //var_dump($d_pkn);
@@ -73,13 +98,15 @@ class DataPkn {
 //        var_dump($sql);
         $result = $this->db->select($sql);
         foreach ($result as $val) {
-            $this->set_kd_d_pkn($val['kd_d_pkn']);
-            $this->set_kd_d_user($val['kd_d_user']);
-            $this->set_kd_d_tgl($val['kd_d_tgl']);
-            $this->set_kd_d_bat($val['kd_d_bat']);
-            $this->set_kd_d_sp2d($val['kd_d_sp2d']);
-            $this->set_kd_d_bank($val['kd_d_bank']);
-            $this->set_kd_d_masalah($val['kd_d_masalah']);
+            $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
+            $d_pkn->set_kd_d_user($val['kd_d_user']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
         }
         return $this;
     }
@@ -93,10 +120,10 @@ class DataPkn {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
             'kd_d_tgl' => $this->get_kd_d_tgl(),
-            'kd_d_bat' => $this->get_kd_d_bat(),
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
-            'kd_d_bank' => $this->get_kd_d_bank(),
-            'kd_d_masalah' => $this->get_kd_d_masalah()
+            'kd_d_sp2d_gagal' => $this->get_kd_d_sp2d_gagal(),
+            'kd_d_spt' => $this->get_kd_d_spt(),
+            'kd_d_spt_gagal' => $this->get_kd_d_spt_gagal()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -115,10 +142,10 @@ class DataPkn {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
             'kd_d_tgl' => $this->get_kd_d_tgl(),
-            'kd_d_bat' => $this->get_kd_d_bat(),
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
-            'kd_d_bank' => $this->get_kd_d_bank(),
-            'kd_d_masalah' => $this->get_kd_d_masalah()
+            'kd_d_sp2d_gagal' => $this->get_kd_d_sp2d_gagal(),
+            'kd_d_spt' => $this->get_kd_d_spt(),
+            'kd_d_spt_gagal' => $this->get_kd_d_spt_gagal()
         );
         $this->validate();
         if (!$this->get_valid())
@@ -147,20 +174,20 @@ class DataPkn {
             $this->_error .= "Tangal belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_bat() == "" ) {
-            $this->_error .= "PBAT belum diinput!</br>";
-            $this->_valid = FALSE;
-        }
-        if ($this->get_kd_d_sp2d() == "" ) {
+        if ($this->get_kd_d_sp2d() == "") {
             $this->_error .= "SP2D belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_bank() == "" ) {
-            $this->_error .= "Bank Jaringan belum diinput!</br>";
+        if ($this->get_kd_d_sp2d_gagal() == "") {
+            $this->_error .= "SP2D belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_d_masalah() == "" ) {
-            $this->_error .= "Masalah belum diinput!</br>";
+        if ($this->get_kd_d_spt() == "") {
+            $this->_error .= "SPT Jaringan belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_spt() == "") {
+            $this->_error .= "SPT belum diinput!</br>";
             $this->_valid = FALSE;
         }
     }
@@ -176,25 +203,33 @@ class DataPkn {
     public function set_kd_d_user($user) {
         $this->_kd_d_user = $user;
     }
-    
+
     public function set_kd_d_tgl($tgl) {
         $this->_kd_d_tgl = $tgl;
     }
-    
-    public function set_kd_d_bat($bat) {
-        $this->_kd_d_bat = $bat;
-    }
-    
+
     public function set_kd_d_sp2d($sp2d) {
         $this->_kd_d_sp2d = $sp2d;
     }
-        
-    public function set_kd_d_bank($bank) {
-        $this->_kd_d_bank = $bank;
+
+    public function set_kd_d_sp2d_gagal($sp2d_gagal) {
+        $this->_kd_d_sp2d_gagal = $sp2d_gagal;
     }
-    
-    public function set_kd_d_masalah($masalah) {
-        $this->_kd_d_masalah = $masalah;
+
+    public function set_kd_d_sp2d_persen($sp2d_persen) {
+        $this->_kd_d_sp2d_persen = $sp2d_persen;
+    }
+
+    public function set_kd_d_spt($spt) {
+        $this->_kd_d_spt = $spt;
+    }
+
+    public function set_kd_d_spt_gagal($spt_gagal) {
+        $this->_kd_d_spt_gagal = $spt_gagal;
+    }
+
+    public function set_kd_d_spt_persen($spt_persen) {
+        $this->_kd_d_spt_persen = $spt_persen;
     }
 
     public function set_table($table) {
@@ -219,25 +254,33 @@ class DataPkn {
     public function get_kd_d_user() {
         return $this->_kd_d_user;
     }
-    
+
     public function get_kd_d_tgl() {
         return $this->_kd_d_tgl;
     }
 
-    public function get_kd_d_bat() {
-        return $this->_kd_d_bat;
-    }
-    
     public function get_kd_d_sp2d() {
         return $this->_kd_d_sp2d;
     }
-    
-    public function get_kd_d_bank() {
-        return $this->_kd_d_bank;
+
+    public function get_kd_d_sp2d_gagal() {
+        return $this->_kd_d_sp2d_gagal;
     }
-    
-    public function get_kd_d_masalah() {
-        return $this->_kd_d_masalah;
+
+    public function get_kd_d_sp2d_persen() {
+        return $this->_kd_d_sp2d_persen;
+    }
+
+    public function get_kd_d_spt() {
+        return $this->_kd_d_spt;
+    }
+
+    public function get_kd_d_spt_gagal() {
+        return $this->_kd_d_spt_gagal;
+    }
+
+    public function get_kd_d_spt_persen() {
+        return $this->_kd_d_spt_persen;
     }
 
     public function get_error() {

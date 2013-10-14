@@ -245,7 +245,7 @@ if (isset($this->d_ubah)) {
 //        }
         
         if(!kd_d_konversi.match(pattern)){
-            var wkonversi = "Konversi harus dalam bentuk angka!";
+            var wkonversi = 'Konversi harus dalam bentuk angka!';
             $('#wkonversi').html(wkonversi);
             $('#wkonversi').fadeIn(200);
             jml++;
@@ -259,7 +259,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_konversi_gagal.match(pattern)){
-            var wkonversi_gagal = "Konversi harus dalam bentuk angka!";
+            var wkonversi_gagal = 'Konversi harus dalam bentuk angka!';
             $('#wkonversi_gagal').html(wkonversi_gagal);
             $('#wkonversi_gagal').fadeIn(200);
             jml++;
@@ -273,7 +273,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_sp2d.match(pattern)){
-            var wsp2d = "SP2D harus dalam bentuk angka!";
+            var wsp2d = 'SP2D harus dalam bentuk angka!';
             $('#wsp2d').html(wsp2d);
             $('#wsp2d').fadeIn(200);
             jml++;
@@ -287,7 +287,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_sp2d_gagal.match(pattern)){
-            var wsp2d_gagal = "SP2D harus dalam bentuk angka!";
+            var wsp2d_gagal = 'SP2D harus dalam bentuk angka!';
             $('#wsp2d_gagal').html(wsp2d_gagal);
             $('#wsp2d_gagal').fadeIn(200);
             jml++;
@@ -301,7 +301,7 @@ if (isset($this->d_ubah)) {
         }
     
         if(!kd_d_lhp.match(pattern)){
-            var wlhp = "LHP harus dalam bentuk angka!";
+            var wlhp = 'LHP harus dalam bentuk angka!';
             $('#wlhp').html(wlhp);
             $('#wlhp').fadeIn(200);
             jml++;
@@ -315,7 +315,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_lhp_gagal.match(pattern)){
-            var wlhp_gagal = "LHP harus dalam bentuk angka!";
+            var wlhp_gagal = 'LHP harus dalam bentuk angka!';
             $('#wlhp_gagal').html(wlhp_gagal);
             $('#wlhp_gagal').fadeIn(200);
             jml++;
@@ -329,7 +329,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_rekon.match(pattern)){
-            var wrekon = "Rekon harus dalam bentuk angka!";
+            var wrekon = 'Rekon harus dalam bentuk angka!';
             $('#wrekon').html(wrekon);
             $('#wrekon').fadeIn(200);
             jml++;
@@ -343,7 +343,7 @@ if (isset($this->d_ubah)) {
         }
         
         if(!kd_d_rekon_gagal.match(pattern)){
-            var wrekon_gagal = "Rekon harus dalam bentuk angka!";
+            var wrekon_gagal = 'Rekon harus dalam bentuk angka!';
             $('#wrekon_gagal').html(wrekon_gagal);
             $('#wrekon_gagal').fadeIn(200);
             jml++;
