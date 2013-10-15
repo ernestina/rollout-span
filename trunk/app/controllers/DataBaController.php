@@ -23,7 +23,7 @@ class DataBaController extends BaseController {
     }
 
     /*
-     * tambah data tetap
+     * tambah data BA.999
      */
 
     public function addDataBa($id = null) {
@@ -56,7 +56,6 @@ class DataBaController extends BaseController {
                 $this->view->error = $d_ba->get_error();
             }
         }
-        //var_dump($d_tetap->get_d_tetap());
         if (!is_null($id)) {
             $d_ba->set_kd_d_ba($id);
             $this->view->d_ubah = $d_ba->get_d_ba_by_id($d_ba);
@@ -68,8 +67,8 @@ class DataBaController extends BaseController {
     }
 
     /*
-     * ubah data tetap
-     * @param kd_d_tetap
+     * update data BA.999
+     * 
      */
 
     public function updDataBa() {
@@ -104,7 +103,6 @@ class DataBaController extends BaseController {
                 $this->view->d_ubah = $d_ba;
                 $this->view->error = $d_ba->get_error();
                 $this->view->data = $d_ba->get_d_ba();
-                //var_dump($d_ba->get_d_ba());
                 $this->view->render('admin/dataBa');
             } else {
                 $this->view->dasbor = $d_ba->get_d_ba_per_tgl();
@@ -114,7 +112,7 @@ class DataBaController extends BaseController {
     }
 
     /*
-     * hapus data tetap
+     * hapus data BA.999
      * @param kd_d_tetap
      */
 

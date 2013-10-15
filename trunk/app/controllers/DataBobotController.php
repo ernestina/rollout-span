@@ -23,8 +23,8 @@ class DataBobotController extends BaseController {
     }
 
     /*
-     * ubah data user
-     * @param kd_d_user
+     * melihat dan merubah data Bobot
+     * 
      */
 
     public function viewDataBobot() {
@@ -42,7 +42,7 @@ class DataBobotController extends BaseController {
             $kppn = $_POST['kppn'];
             $ba = $_POST['ba'];
             $pkn = $_POST['pkn'];
-            
+
             $d_bobot->set_konversi($konversi);
             $d_bobot->set_sp2d($sp2d);
             $d_bobot->set_lhp($lhp);

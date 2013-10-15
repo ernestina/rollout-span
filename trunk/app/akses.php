@@ -14,7 +14,7 @@ $akses['Auth'] = array(
 /*
  * akses modul Data Tetap
  */
-$akses['dataTetap'] = array(
+$akses['DataTetap'] = array(
     '__construct',
     'index',
     'addDataTetap',
@@ -26,7 +26,7 @@ $akses['dataTetap'] = array(
 /*
  * akses modul Data User
  */
-$akses['dataUser'] = array(
+$akses['DataUser'] = array(
     '__construct',
     'index',
     'addDataUser',
@@ -38,7 +38,7 @@ $akses['dataUser'] = array(
 /*
  * akses modul Data UserBobot
  */
-$akses['dataBobot'] = array(
+$akses['DataBobot'] = array(
     '__construct',
     'index',
     'viewDataBobot',
@@ -48,7 +48,7 @@ $akses['dataBobot'] = array(
 /*
  * akses modul data KPPN
  */
-$akses['dataKppn'] = array(
+$akses['DataKppn'] = array(
     '__construct',
     'index',
     'addDataKppnLvl3Jkt2',
@@ -65,7 +65,7 @@ $akses['dataKppn'] = array(
 /*
  * akses modul data BA.999
  */
-$akses['dataBa'] = array(
+$akses['DataBa'] = array(
     '__construct',
     'index',
     'addDataBa',
@@ -77,7 +77,7 @@ $akses['dataBa'] = array(
 /*
  * akses modul data BA.999
  */
-$akses['dataBa'] = array(
+$akses['DataPkn'] = array(
     '__construct',
     'index',
     'addDataPkn',

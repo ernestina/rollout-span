@@ -23,7 +23,7 @@ class DataUserController extends BaseController {
     }
 
     /*
-     * tambah data tetap
+     * tambah data user
      */
 
     public function addDataUser($id = null) {
@@ -33,7 +33,7 @@ class DataUserController extends BaseController {
             $kd_r_unit = $_POST['kd_r_unit'];
             $nama_user = $_POST['nama_user'];
             $pass_user = $_POST['pass_user'];
-            
+
             $d_user->set_kd_r_jenis($kd_r_jenis);
             $d_user->set_kd_r_unit($kd_r_unit);
             $d_user->set_nama_user($nama_user);
@@ -44,19 +44,17 @@ class DataUserController extends BaseController {
                 $this->view->error = $d_user->get_error();
             }
         }
-        //var_dump($d_tetap->get_d_user());
         if (!is_null($id)) {
             $d_user->set_kd_d_user($id);
             $this->view->d_ubah = $d_user->get_d_user_by_id($d_user);
         }
-        
+
         $this->view->data = $d_user->get_d_user();
         $this->view->render('admin/dataUser');
     }
 
     /*
      * ubah data user
-     * @param kd_d_user
      */
 
     public function updDataUser() {
@@ -67,7 +65,7 @@ class DataUserController extends BaseController {
             $kd_r_unit = $_POST['kd_r_unit'];
             $nama_user = $_POST['nama_user'];
             $pass_user = $_POST['pass_user'];
-            
+
             $d_user->set_kd_d_user($kd_d_user);
             $d_user->set_kd_r_jenis($kd_r_jenis);
             $d_user->set_kd_r_unit($kd_r_unit);
@@ -101,6 +99,10 @@ class DataUserController extends BaseController {
         $d_user->delete_d_user();
         header('location:' . URL . 'dataUser/addDatauser');
     }
+
+    /*
+     * Destruktor
+     */
 
     public function __destruct() {
         ;

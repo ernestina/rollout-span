@@ -7,10 +7,14 @@ class Bootstrap {
     private $method;
     private $param;
     private $file;
+    private $role;
     private $url = array();
 
     public function __construct($registry) {
         $this->registry = $registry;
+        Session::createSession();
+        $logged = Session::get('loggedin');
+        $this->role = ($logged)?(Session::get('role')==1?'admin':(Session::get('role')==2?'kppn':(Session::get('role')==4?'ba':'pkn'))):'guest';
     }
     
     /*
@@ -20,7 +24,6 @@ class Bootstrap {
         $page = ($_GET['page']) ? $_GET['page'] : 'index';
         $page = rtrim($page, '/');
         $this->url = explode('/', $page);
-
         if (isset($this->url[0])) {
             $this->file = ROOT . '/app/controllers/' . ucfirst($this->url[0]) . 'Controller.php';
             if (is_readable($this->file)) {
@@ -57,6 +60,20 @@ class Bootstrap {
         
         $this->getAction();
         
+        $loggedin = $this->cek_session();
+        if((!$loggedin && !($this->controller instanceof AuthController) && $this->method!='index')){
+            $this->controller = new AuthController($this->registry);
+            $this->method = 'index';
+        }
+//       var_dump($this->registry->auth->is_allowed($this->role,$this->url[0],$this->method));
+//        if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role!='guest'){
+//            $this->controller = new Index($this->registry);
+//            $this->method = 'index';
+//        }else if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role=='guest'){
+//            $this->controller = new AuthController($this->registry);
+//            $this->method = 'index';
+//        }
+        
         /*         * * check if the action is callable ** */
         if (is_callable(array($this->controller, $this->method)) == false) {
             $action = 'index';
@@ -67,17 +84,35 @@ class Bootstrap {
         /*         * * load arguments for action ** */
         $arguments = array();
         $i = 0;
+//        var_dump($this->url);
         foreach ($this->url as $key => $val) {
-            if ($key > 1) {
-                $arguments[$this->url[$key - 1]] = $val;
-                $i++;
+            if ($i > 1) {
+                $arguments[] = $val;
+//                var_dump($arguments);
+//                $i++;
             }
+            $i++;
         }
-
         if ($i > 1)
-            call_user_func(array($this->controller, $action), $arguments);
-        else
             call_user_func_array(array($this->controller, $action), $arguments);
+        else
+            call_user_func(array($this->controller, $action), $arguments);
+    }
+    
+    private function cek_session(){
+        @Session::createSession();
+        if(isset($_SESSION) && Session::get('loggedin')==TRUE && Session::get('user')!='' && Session::get('role')!=''){
+            return true;
+        }
+        return false;
+    }
+    
+    public function get_controller(){
+        return $this->controller;
+    }
+    
+    public function get_method(){
+        return $this->controller;
     }
 
     public function __destruct() {

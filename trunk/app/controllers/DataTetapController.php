@@ -46,19 +46,17 @@ class DataTetapController extends BaseController {
                 $this->view->error = $d_tetap->get_error();
             }
         }
-        //var_dump($d_tetap->get_d_tetap());
         if (!is_null($id)) {
             $d_tetap->set_kd_d_tetap($id);
             $this->view->d_ubah = $d_tetap->get_d_tetap_by_id($d_tetap);
         }
-        
+
         $this->view->data = $d_tetap->get_d_tetap();
         $this->view->render('admin/dataTetap');
     }
 
     /*
      * ubah data tetap
-     * @param kd_d_tetap
      */
 
     public function updDataTetap() {
@@ -105,7 +103,11 @@ class DataTetapController extends BaseController {
         $d_tetap->delete_d_tetap();
         header('location:' . URL . 'dataTetap/addDataTetap');
     }
-    
+
+    /*
+     * DESTRUKTOR
+     */
+
     public function __destruct() {
         ;
     }
