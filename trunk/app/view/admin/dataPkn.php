@@ -84,7 +84,7 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . $val->get_kd_d_spt() . "</td>";
                             echo "<td>" . $val->get_kd_d_spt_gagal() . "</td>";
                             echo "<td>" . $val->get_kd_d_spt_persen() . "%</td>";
-                            echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . $val->get_kd_d_user() . "')\"><i class=\"icon-trash\"></i></a>
+                            echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;
@@ -156,7 +156,7 @@ if (isset($this->d_ubah)) {
     });
 
     function del(user){
-        var text = "Yakin data Kantor "+user+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+user+" berantakan!";
+        var text = "Yakin data Tanggal "+user+" akan dihapus?";
         if(confirm(text)){
             return true;
         }else{

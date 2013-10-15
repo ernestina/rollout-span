@@ -42,6 +42,24 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="17">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
                             </select>
                             <div id="wtgl"  class="error"></div>
                             <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
@@ -108,7 +126,51 @@
                                     echo "<td>PKN</td>";
                                 } else if ($sat == 2) {
                                     echo "<td>APK</td>";
-                                } else {
+                                }else if ($sat == 3) {
+                                    echo "<td>3</td>";
+                                }else if ($sat == 4) {
+                                    echo "<td>4</td>";
+                                }else if ($sat == 5) {
+                                    echo "<td>5</td>";
+                                }else if ($sat == 6) {
+                                    echo "<td>6</td>";
+                                }else if ($sat == 7) {
+                                    echo "<td>7</td>";
+                                }else if ($sat == 8) {
+                                    echo "<td>8</td>";
+                                }else if ($sat == 9) {
+                                    echo "<td>9</td>";
+                                }else if ($sat == 10) {
+                                    echo "<td>10</td>";
+                                } elseif ($sat == 11) {
+                                    echo "<td>11</td>";
+                                } else if ($sat == 12) {
+                                    echo "<td>12</td>";
+                                }else if ($sat == 13) {
+                                    echo "<td>13</td>";
+                                }else if ($sat == 14) {
+                                    echo "<td>14</td>";
+                                }else if ($sat == 15) {
+                                    echo "<td>15</td>";
+                                }else if ($sat == 16) {
+                                    echo "<td>16</td>";
+                                }else if ($sat == 17) {
+                                    echo "<td>17</td>";
+                                }else if ($sat == 18) {
+                                    echo "<td>18</td>";
+                                }else if ($sat == 19) {
+                                    echo "<td>19</td>";
+                                }else if ($sat == 20) {
+                                    echo "<td>20</td>";
+                                }else if ($sat == 21) {
+                                    echo "<td>21</td>";
+                                }else if ($sat == 22) {
+                                    echo "<td>22</td>";
+                                }else if ($sat == 23) {
+                                    echo "<td>23</td>";
+                                }else if ($sat == 24) {
+                                    echo "<td>24</td>";
+                                }else {
                                     echo "<td>Satker tidak ditemukan</td>";
                                 }
                                 echo "<td>" . $val->get_kd_d_spm() . "</td>";
@@ -120,7 +182,7 @@
                                 echo "<td>" . $val->get_kd_d_kontrak() . "</td>";
                                 echo "<td>" . $val->get_kd_d_kontrak_gagal() . "</td>";
                                 echo "<td>" . $val->get_kd_d_kontrak_persen() . " %</td>";
-                                echo "<td><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . $val->get_kd_d_user_ba() . "')\"><i class=\"icon-trash\"></i></a>
+                                echo "<td><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
                                 echo "</tr>";
                                 $no++;
@@ -209,7 +271,7 @@
     });
 
     function del(user){
-        var text = "Yakin data Kantor "+user+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+user+" berantakan!";
+        var text = "Yakin data Tanggal "+user+" akan dihapus?";
         if(confirm(text)){
             return true;
         }else{
