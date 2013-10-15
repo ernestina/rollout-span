@@ -36,9 +36,9 @@
                             echo "<td>$no</td>";
                             $unit1=$val->get_kd_d_user();
                             if ($unit1==10002) {
-                            echo "<td style=\"text-align: left\"><a href='addDataKppnLvl3Jkt2' target='_blank'> KPPN JAKARTA II</a></td>";
+                            echo "<td style=\"text-align: left\">KPPN JAKARTA II</td>";
                             } else if ($unit1==10006) {
-                                echo "<td style=\"text-align: left\"><a href='addDataKppnLvl3Jkt6' target='_blank'> KPPN JAKARTA VI</a></td>";
+                                echo "<td style=\"text-align: left\">KPPN JAKARTA VI</td>";
                             }
                             echo "<td>" . $val->get_kd_d_tgl() . "</td>";
                             echo "<td>" . $val->get_kd_d_konversi_persen() . "%</td>";

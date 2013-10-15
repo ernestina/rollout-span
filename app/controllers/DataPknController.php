@@ -23,7 +23,7 @@ class DataPknController extends BaseController {
     }
 
     /*
-     * tambah data tetap
+     * tambah data PKN
      */
 
     public function addDataPkn($id = null) {
@@ -62,8 +62,8 @@ class DataPknController extends BaseController {
     }
 
     /*
-     * ubah data tetap
-     * @param kd_d_tetap
+     * ubah data PKN
+     * 
      */
 
     public function updDataPkn() {
@@ -101,8 +101,8 @@ class DataPknController extends BaseController {
     }
 
     /*
-     * hapus data tetap
-     * @param kd_d_tetap
+     * hapus data PKN
+     * @param kd_d_pkn
      */
 
     public function delDataPkn($id) {
@@ -116,6 +116,10 @@ class DataPknController extends BaseController {
         $d_pkn->delete_d_pkn();
         header('location:' . URL . 'dataPkn/addDataPkn');
     }
+
+    /*
+     * DESTRUKTOR
+     */
 
     public function __destruct() {
         ;

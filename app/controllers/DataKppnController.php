@@ -23,7 +23,7 @@ class DataKppnController extends BaseController {
     }
 
     /*
-     * tambah data tetap
+     * view Data KPPN 
      */
 
     public function viewDataKppnLvl2() {
@@ -34,6 +34,10 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnLvl2');
     }
+    
+    /*
+     * tambah Data KPPN Jakarta 2
+     */
 
     public function addDataKppnLvl3Jkt2($id = null) {
         $d_kppn = new DataKppn($this->registry);
@@ -74,6 +78,10 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_jkt2();
         $this->view->render('admin/dataKppnLvl3Jkt2');
     }
+    
+    /*
+     * tambah Data KPPN Jakarta 6
+     */
 
     public function addDataKppnLvl3Jkt6($id = null) {
         $d_kppn = new DataKppn($this->registry);
@@ -116,8 +124,8 @@ class DataKppnController extends BaseController {
     }
 
     /*
-     * ubah data tetap
-     * @param kd_d_tetap
+     * ubah data KPPN Jakarta 2
+     * 
      */
 
     public function updDataKppnLvl3Jkt2() {
@@ -157,6 +165,10 @@ class DataKppnController extends BaseController {
             }
         }
     }
+    
+    /*
+     * ubah data Jakarta 6
+     */
 
     public function updDataKppnLvl3Jkt6() {
         $d_kppn = new DataKppn($this->registry);
@@ -197,7 +209,7 @@ class DataKppnController extends BaseController {
     }
 
     /*
-     * hapus data tetap
+     * hapus data KPPN
      * @param kd_d_tetap
      */
 
@@ -212,6 +224,11 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppn');
     }
+    
+    /*
+     * hapus data KPPN Jakarta 2
+     * @param kd_d_tetap
+     */
 
     public function delDataKppnLvl3Jkt2($id) {
         $d_kppn = new DataKppn($this->registry);
@@ -225,6 +242,11 @@ class DataKppnController extends BaseController {
         header('location:' . URL . 'dataKppn/addDataKppnLvl3Jkt2');
     }
 
+    /*
+     * hapus data KPPN Jakarta 6
+     * @param kd_d_tetap
+     */
+    
     public function delDataKppnLvl3Jkt6($id) {
         $d_kppn = new DataKppn($this->registry);
         if (is_null($id)) {

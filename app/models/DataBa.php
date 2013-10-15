@@ -36,9 +36,9 @@ class DataBa {
     }
 
     /*
-     * mendapatkan data dari tabel Data Tetap
+     * mendapatkan data dari tabel Data BA.999
      * @param limit batas default null
-     * return array objek Data Tetap
+     * return array objek Data BA.999
      */
 
     public function get_d_ba($limit = null, $batas = null) {
@@ -96,9 +96,9 @@ class DataBa {
     }
 
     /*
-     * mendapatkan Data Tetap sesuai id
-     * @param objek Data Tetap
-     * return objek Data Tetap
+     * mendapatkan Data BA.999 sesuai id
+     * @param objek Data BA.999
+     * return objek Data BA.999
      */
 
     public function get_d_ba_by_id($d_ba = DataBa) {
@@ -127,7 +127,7 @@ class DataBa {
     }
 
     /*
-     * tambah data Data Tetap
+     * tambah data Data BA.999
      * param array data array key=>value, nama kolom=>data
      */
 
@@ -152,7 +152,7 @@ class DataBa {
     }
 
     /*
-     * update Data Tetap, id harus di set terlebih dahulu
+     * update Data BA.999, id harus di set terlebih dahulu
      * param data array
      */
 
@@ -178,7 +178,7 @@ class DataBa {
     }
 
     /*
-     * hapus Data Tetap, id harus di set terlebih dahulu
+     * hapus Data BA.999, id harus di set terlebih dahulu
      */
 
     public function delete_d_ba() {
