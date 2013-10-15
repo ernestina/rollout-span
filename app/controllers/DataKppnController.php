@@ -34,7 +34,7 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnLvl2');
     }
-    
+
     public function addDataKppnLvl3Jkt2($id = null) {
         $d_kppn = new DataKppn($this->registry);
         if (isset($_POST['add_d_kppn'])) {
@@ -44,8 +44,8 @@ class DataKppnController extends BaseController {
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_lhp= $_POST['kd_d_lhp'];
-            $kd_d_lhp_gagal= $_POST['kd_d_lhp_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
             $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
 
@@ -74,7 +74,7 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_jkt2();
         $this->view->render('admin/dataKppnLvl3Jkt2');
     }
-    
+
     public function addDataKppnLvl3Jkt6($id = null) {
         $d_kppn = new DataKppn($this->registry);
         if (isset($_POST['add_d_kppn'])) {
@@ -84,8 +84,8 @@ class DataKppnController extends BaseController {
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_lhp= $_POST['kd_d_lhp'];
-            $kd_d_lhp_gagal= $_POST['kd_d_lhp_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
             $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
 
@@ -130,8 +130,8 @@ class DataKppnController extends BaseController {
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_lhp= $_POST['kd_d_lhp'];
-            $kd_d_lhp_gagal= $_POST['kd_d_lhp_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
             $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
 
@@ -157,7 +157,7 @@ class DataKppnController extends BaseController {
             }
         }
     }
-    
+
     public function updDataKppnLvl3Jkt6() {
         $d_kppn = new DataKppn($this->registry);
         if (isset($_POST['upd_d_kppn'])) {
@@ -168,8 +168,8 @@ class DataKppnController extends BaseController {
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_lhp= $_POST['kd_d_lhp'];
-            $kd_d_lhp_gagal= $_POST['kd_d_lhp_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
             $kd_d_rekon = $_POST['kd_d_rekon'];
             $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
 
@@ -212,7 +212,7 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppn');
     }
-    
+
     public function delDataKppnLvl3Jkt2($id) {
         $d_kppn = new DataKppn($this->registry);
         if (is_null($id)) {
@@ -224,7 +224,7 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppnLvl3Jkt2');
     }
-    
+
     public function delDataKppnLvl3Jkt6($id) {
         $d_kppn = new DataKppn($this->registry);
         if (is_null($id)) {
@@ -236,20 +236,6 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppnLvl3Jkt6');
     }
-	
-	public function showDasbor(){
-	$d_kppn = new DataKppn($this->registry);
-        $this->view->data = $d_kppn->get_d_kppn();
-        $this->view->render('dasbor/level1');
-	}
-	
-	public function showDasbor1(){
-        $d_kppn = new DataKppn($this->registry);
-        $this->view->sp2d = $d_kppn->get_d_kppn();
-        $this->view->render('dasbor/line');
-	}
-        
-        
 
     public function __destruct() {
         ;

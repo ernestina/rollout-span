@@ -117,12 +117,6 @@ class DataPknController extends BaseController {
         header('location:' . URL . 'dataPkn/addDataPkn');
     }
 
-    public function showDasbor() {
-        $d_pkn = new DataPkn($this->registry);
-        $this->view->data = $d_pkn->get_d_pkn();
-        $this->view->render('dasbor/level1');
-    }
-
     public function __destruct() {
         ;
     }

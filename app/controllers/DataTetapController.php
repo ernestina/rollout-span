@@ -105,10 +105,6 @@ class DataTetapController extends BaseController {
         $d_tetap->delete_d_tetap();
         header('location:' . URL . 'dataTetap/addDataTetap');
     }
-
-    public function addDataBobot($id = null) {
-        $this->view->render('admin/dataBobot');
-    }
     
     public function __destruct() {
         ;
