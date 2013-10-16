@@ -9,34 +9,47 @@
         <script src="<?php echo URL; ?>public/js/jquery.form.js"></script>
         <script src="<?php echo URL; ?>public/js/myjs.js"></script>
         <script src="<?php echo URL; ?>public/js/teamdf-jquery-number/jquery.number.js"></script>
-        <link href="<?php echo URL; ?>public/css/style.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>public/css/ernest.css" rel="stylesheet">
         <link href="<?php echo URL; ?>public/css/form.css" rel="stylesheet">
     </head>
-    <body>
+        <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
+	<body>
         <?php
         if (isset($this->error)) {
             echo "<div style='color:red' id=notfound><h2>" . $this->error . "<h2></div>";
         }
         ?>
-        <div class="login-container">
+	<div id="log">
+		<div class="login-container">
                 <?php
                 if (isset($this->error)) {
                     echo "<div style='color:red' id=notfound><h2>" . $this->error . "<h2></div>";
                 }
                 ?>
-                <h1>Login</h1>
-                <form id="login-form" action="<?php echo URL; ?>auth/login" method="post">	<div class="row">
-                        <label>Username <input name="user" id="nuser" type="text" /> </label>
-                        <div class="error" id="wuser" style="display:none"></div>	</div>
-                    <div class="row">
-                        <label>Password <input style="" name="pass" id="pass" type="password" /> </label>
-                        <div class="error" id="wpass" style="display:none"></div>	</div>
-                    <div class="row buttons">
-                        <label> <input id="button" type="submit" name="yt0" value="Login" onClick="return cek()"/> </label>
-                    </div>
+				
+			<div class="kolom5" style="margin-top: 40px">
+				<h1>Login</h1>
+                <form id="login-form" action="<?php echo URL; ?>auth/login" method="post">	
+					
+                        <label class="isian">Username</label> 
+						<input name="user" id="nuser" type="text" /> 
+                        <div class="error" id="wuser" style="display:none"></div>	
+						
+                    
+                        <label class="isian">Password</label>
+						<input style="" name="pass" id="pass" type="password" /> 
+                        <div class="error" id="wpass" style="display:none"></div>	
+						
+                   
+                        <ul class="inline" style="margin-left: 290px"> 
+							<li><input id="button" type="submit" class="sukses" name="yt0" value="Login" onClick="return cek()"/> 
+							</li>
+						</ul>
                 </form>
             </div>
         </div>
+	</div>
+	
     </body>
 </html>
 

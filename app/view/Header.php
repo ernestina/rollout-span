@@ -29,9 +29,9 @@
     </head>
     <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
     <body>
-    <center>
+    <!--center>
         <div style="float: top">Willkomnen 
-            <?php
+            <?php /*
             echo Session::get('user') . '</br>anda login sebagai ';
             if (Session::get('role') == 1) {
                 echo 'admin';
@@ -43,8 +43,8 @@
                 echo 'PKN';
             } else {
                 echo "anda ilegal";
-            }
-            ?></div></center>
+            } */
+            ?></div></center-->
     <div id="wrapper">
 
         <div id="menu">
@@ -115,11 +115,13 @@
                 <li class="subnav">
                     <a href="<?php echo URL; ?>auth/logout">Logout</a>
                 </li>
+				<li class="nav" style="float: right">
+                    <a>Selamat datang, 
+					<?php
+						echo Session::get('user')?></a>
+                </li>
             </ul>
         </div>
-        <script>
-            jam();
-        </script>
 
 
 
