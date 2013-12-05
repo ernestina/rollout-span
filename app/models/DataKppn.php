@@ -52,15 +52,18 @@ class DataKppn {
       LEFT JOIN " . $this->_tb_univ . " b ON a.KD_UNIV=b.KD_UNIV";
      */
 
-    public function get_d_kppn($limit = null, $batas = null) {
+    public function get_d_kppn($kd_user=null, $limit = null, $batas = null) {
         $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
                 LEFT JOIN " . $this->_t_tetap . " b 
-                ON a.kd_d_user = b.kd_d_tetap ORDER BY kd_d_tgl desc";
+                ON a.kd_d_user = b.kd_d_tetap";
+        if(!is_null($kd_user)) $sql .= " WHERE a.kd_d_user=".$kd_user;
+        $sql .=  " ORDER BY kd_d_tgl desc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
         $result = $this->db->select($sql);
-        $data = array();
+        
+            $data = array();   
         foreach ($result as $val) {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_kppn($val['kd_d_kppn']);
@@ -86,14 +89,16 @@ class DataKppn {
         return $data;
     }
 
-    public function get_d_kppn_per_tgl($limit = null, $batas = null) {
+    public function get_d_kppn_per_tgl($kd_user=null, $limit = null, $batas = null) {
         $sql = "SELECT *
-                FROM " . $this->_table . "  a  
-                GROUP BY kd_d_tgl, kd_d_user";
+                FROM " . $this->_table . "  a";
+        if(!is_null($kd_user)) $sql .= " WHERE kd_d_user=".$kd_user;
+        $sql .= " GROUP BY kd_d_tgl, kd_d_user";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
         $result = $this->db->select($sql);
+        
         $data = array();
         foreach ($result as $val) {
             $d_kppn = new $this($this->registry);

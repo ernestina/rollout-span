@@ -34,6 +34,50 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnLvl2');
     }
+
+    /*
+     * tambah Data KPPN Level 3
+     */
+
+    public function addDataKppnLvl3($id=null){
+        $d_kppn = new DataKppn($this->registry);
+        if (isset($_POST['add_d_kppn'])) {
+            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
+            $kd_d_konversi = $_POST['kd_d_konversi'];
+            $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+            $kd_d_sp2d = $_POST['kd_d_sp2d'];
+            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
+            $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
+
+            $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
+            $d_kppn->set_kd_d_konversi($kd_d_konversi);
+            $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+            $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
+            $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+            $d_kppn->set_kd_d_lhp($kd_d_lhp);
+            $d_kppn->set_kd_d_lhp_gagal($kd_d_lhp_gagal);
+            $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_rekon_gagal($kd_d_rekon_gagal);
+
+            if (!$d_kppn->add_d_kppn()) {
+                $this->view->d_rekam = $d_kppn;
+                $this->view->error = $d_kppn->get_error();
+            }
+        }
+        //var_dump($d_tetap->get_d_tetap());
+        if (!is_null($id)) {
+            $d_kppn->set_kd_d_kppn($id);
+            $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
+        }
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl(Session::get('id_user'));
+        $this->view->data = $d_kppn->get_d_kppn(Session::get('id_user'));
+        $this->view->render('admin/dataKppnLvl3');
+    }
     
     /*
      * tambah Data KPPN Jakarta 2
@@ -74,8 +118,8 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_kppn($id);
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
-        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl_jkt2();
-        $this->view->data = $d_kppn->get_d_kppn_jkt2();
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl(Session::get('id_user'));
+        $this->view->data = $d_kppn->get_d_kppn(Session::get('id_user'));
         $this->view->render('admin/dataKppnLvl3Jkt2');
     }
     
