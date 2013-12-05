@@ -10,6 +10,9 @@
             echo strtoupper(Session::get('user'));
         ?>
         </h2></div>
+        <div>
+            <input id="add_data" class="normal" type="button" onclick="" value="TAMBAH DATA">
+        </div></br></br>
     <div class="kolom3">
         <fieldset style="display:none"><legend><?php
 if (isset($this->d_ubah)) {
@@ -58,7 +61,7 @@ if (isset($this->d_ubah)) {
                         <label>LHP Gagal</label><input type="number" name="kd_d_lhp_gagal" id="kd_d_lhp_gagal" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_lhp_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_lhp_gagal() : ''); ?>">
                         </select>
                         <ul class="inline tengah">
-                            <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
+                            <li><input class="normal" type="reset" onclick="" value="BATAL"></li>
                             <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_kppn' : 'add_d_kppn'; ?>" value="SIMPAN" onClick="return cek();"></li>
                         </ul>
                     </form>
