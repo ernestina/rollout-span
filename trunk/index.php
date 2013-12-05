@@ -23,6 +23,15 @@ $base_url = 'http://'.$_SERVER['HTTP_HOST'].'/dasbor/';
 //echo $base_url;
 define('URL',$base_url);
 
+/*
+ * define role
+ */
+define('KPPN',2);
+define('KANWIL',3);
+define('ADMIN',1);
+define('PKN',4);
+define('BA999',5);
+
 $path = array(
     ROOT.'/libs/',
     ROOT.'/app/controllers/',

@@ -29,10 +29,12 @@ class User {
         foreach ($result as $v) {
             $role = $v['kd_r_jenis'];
             $kd = $v['nama_user'];
+            $id = $v['kd_d_user'];
         }
         $return[] = count($result);
         $return[] = $role;
         $return[] = $kd;
+        $return[] = $id;
         return $return;
     }
 
