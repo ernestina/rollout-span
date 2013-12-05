@@ -223,6 +223,11 @@ h2, legend {
 	
 }
 
+.kolom6{
+  width: 100%;
+  margin: 2px 2px 2px 2px;  
+}
+
 .sukses {
 	border: 1px solid #5bb75b;
 	background-color: #5bb75b;
