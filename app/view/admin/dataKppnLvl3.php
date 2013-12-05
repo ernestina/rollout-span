@@ -1,10 +1,17 @@
-<h2>MONITORING KPPN JAKARTA 2</h2>
+<h2>MONITORING 
+        <?php 
+            echo strtoupper(Session::get('user'));
+        ?></h2>
 <center><?php $this->load('dasbor/lvl3') ?></center>
 <div id="top">
     <div id="form">
-        <h2>DATA KPPN JAKARTA 2</h2></div>
+        <h2>DATA 
+        <?php 
+            echo strtoupper(Session::get('user'));
+        ?>
+        </h2></div>
     <div class="kolom3">
-        <fieldset><legend><?php
+        <fieldset style="display:none"><legend><?php
 if (isset($this->d_ubah)) {
     echo 'Ubah Data';
 } else {
@@ -14,7 +21,7 @@ if (isset($this->d_ubah)) {
             <div id="form-input"><div class="kiri">
                     <form method="POST" action="<?php
                 if (isset($this->d_ubah)) {
-                    echo URL . 'dataKppn/updDataKppnLvl3Jkt2';
+                    echo URL . 'dataKppn/updDataKppnLvl3';
                 } else {
                     $_SERVER['PHP_SELF'];
                 }
@@ -63,7 +70,7 @@ if (isset($this->d_ubah)) {
 <div id="top">
     <div id="gambar"></div>
     <div class="fitur" id="table">
-        <div class="kolom4">
+        <div class="kolom6">
             <fieldset><legend>Data</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
@@ -71,12 +78,12 @@ if (isset($this->d_ubah)) {
                         <thead style="font-size:80%">
                             <tr>
                                 <th rowspan="2">No</th>
-                                <th rowspan="2" width ="25%">Tanggal</th>
+                                <th rowspan="2" width ="15%">Tanggal</th>
                                 <th colspan="3">Konversi</th>
                                 <th colspan="3">SP2D</th>
                                 <th colspan="3">LHP</th>
                                 <th colspan="3">Rekon</th>
-                                <th rowspan="2" width ="15%">Aksi</th>
+                                <th rowspan="2" width ="20%">Aksi</th>
                             </tr>
                             <tr>
                                 <th width ="10%">Sukses</th>
