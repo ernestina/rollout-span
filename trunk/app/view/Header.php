@@ -60,7 +60,7 @@
                     <a href="#"></a>
                 </li>
                 <?php
-                if (Session::get('role') == 1) {
+                if (Session::get('role') == ADMIN) {
                     echo '<li class="nav">
                     <a href=' . URL . 'index>BERANDA</a>
                 </li>';
@@ -76,37 +76,37 @@
                 }
                 ?>
                 <?php
-                if (Session::get('role') == 1 OR Session::get('role') == 2) {
-                    if (Session::get('role') == 1) {
+                if (Session::get('role') == ADMIN OR Session::get('role') == KPPN) {
+                    if (Session::get('role') == ADMIN) {
                         echo'<li class="subnav">
                             <a href=' . URL . 'dataKppn/viewDataKppnLvl2>KPPN</a>
                             <ul>
-                            <li><a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data KPPN Jakart II</a></li>
+                            <li><a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a></li>
                             <li><a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt6><i class="icon-globe icon-white"></i>data KPPN Jakart VI</a></li>
                             </ul>
                             </li>';
                     }
-                    if (Session::get('user') == "KPPN JAKARTA II") {
+                    //if (Session::get('user') == "KPPN JAKARTA II") {
                         echo '<li class="subnav">
-                             <a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data KPPN Jakart II</a>
+                             <a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a>
                              </li>';
-                    }
-                    if (Session::get('user') == "KPPN JAKARTA VI") {
-                        echo '<li>
-                            <a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt6><i class="icon-globe icon-white"></i>data KPPN Jakart VI</a>
-                            </li>';
-                    }
+                    //}
+                    //if (Session::get('user') == "KPPN JAKARTA VI") {
+                        //echo '<li>
+                            //<a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt6><i class="icon-globe icon-white"></i>data KPPN Jakart VI</a>
+                            //</li>';
+                    //}
                 }
                 ?>
                 <?php
-                if (Session::get('role') == 1 OR Session::get('role') == 4) {
+                if (Session::get('role') == 1 OR Session::get('role') == BA999) {
                     echo '<li class="subnav">
                     <a href=' . URL . 'dataBa/addDataBa>BA 999</a>
                 </li>';
                 }
                 ?>
                 <?php
-                if (Session::get('role') == 1 OR Session::get('role') == 5) {
+                if (Session::get('role') == 1 OR Session::get('role') == PKN) {
                     echo '<li class="subnav">
                     <a href=' . URL . 'dataPkn/addDataPkn>PKN</a>
                 </li>';
