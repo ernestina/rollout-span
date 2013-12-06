@@ -25,13 +25,7 @@ class Index extends BaseController{
             //$this->view->mslh = $d_mslh->get_d_mslh_per_tgl();
             $this->view->render('dasbor/level1');
         } elseif (Session::get('role') == KPPN) {
-            //if (Session::get('user') == 'KPPN JAKARTA II') {
             header('location:' . URL . 'dataKppn/addDataKppnLvl3');
-            //} elseif (Session::get('user') == 'KPPN JAKARTA VI') {
-                //header('location:' . URL . 'dataKppn/addDataKppnLvl3Jkt6');
-            //} else {
-                //header('location:' . URL . 'auth/login');
-            //}
         } elseif (Session::get('role') == BA999) {
             header('location:' . URL . 'dataBa/adddataBa');
         } elseif (Session::get('role') == PKN) {

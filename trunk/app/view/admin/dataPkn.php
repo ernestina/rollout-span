@@ -1,8 +1,11 @@
 <h2>DATA PKN</h2>
 <center><?php $this->load('dasbor/pknLvl2') ?></center>
+<div>
+	<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
+</div></br></br>
 <div id="top">
     <div id="form"></div>
-    <div class="kolom3">
+    <div class="kolom3" style="display:none">
         <fieldset><legend><?php
 if (isset($this->d_ubah)) {
     echo 'Ubah Data PKN';
@@ -10,7 +13,7 @@ if (isset($this->d_ubah)) {
     echo 'Tambah Data PKN';
 }
 ?></legend>
-            <div id="form-input"><div class="kiri">
+            <div id="form_input"><div class="kiri">
                     <form method="POST" action="<?php
                 if (isset($this->d_ubah)) {
                     echo URL . 'dataPkn/updDataPkn';
@@ -31,24 +34,28 @@ if (isset($this->d_ubah)) {
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
                         <div id="wtgl"  class="error"></div>
                         <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
-                        <div id="wsp2d"  class="error"></div>
+                        <div class="kolom1" style="width:160px">
+						<div id="wsp2d"  class="error"></div>
                         <label>SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
                         <div id="wsp2d_gagal" class="error"></div>
                         <label>SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
-                        <div id="wspt" class="error"></div>
+                        </div>
+						<div class="kolom2" style="width:160px">
+						<div id="wspt" class="error"></div>
                         <label>SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
                         <div id="wspt_gagal" class="error"></div>
                         <label>SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
-                        <ul class="inline tengah">
-                            <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
-                            <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick="return cek();"></li>
+                        </div>
+						<ul class="inline tengah">
+                            <li><input id="batal" class="normal" type="reset" onclick="" value="BATAL"></li>
+                            <li><input id="submit" class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick="return cek();"></li>
                         </ul>
                     </form>
                 </div>
             </div>
         </fieldset>
     </div>
-    <div class="kolom4" id="table">
+    <div class="kolom6" id="table">
         <fieldset><legend>Data PKN</legend>
             <div id="table-title"></div>
             <div id="table-content">
@@ -102,7 +109,50 @@ if (isset($this->d_ubah)) {
         hideErrorId();
         hideWarning();
         
+		$('#batal').click(function(){
+			emptyField();
+			hideErrorId();
+			hideWarning();
+			$('#form_input').dialog('close');
+		})
+		
+		$('#submit').click(function(){
+			return cek();
+			$('#form_input').dialog('close');
+			
+		});
+		
+		<?php if(isset($this->d_ubah)){ ?>
+			$('#form_input').dialog('open');
+		<?php } ?>
+		
     });
+	
+	function emptyField(){
+		$('#kd_d_tgl').val('');
+		$('#kd_d_sp2d').val('');
+		$('#kd_d_sp2d_gagal').val('');
+		$('#kd_d_spt').val('');
+		$('#kd_d_spt_gagal').val('');
+	}
+	
+	function addData(){
+		//TODO open dialog form add data kppn
+		$('#form_input').dialog('open');
+	}
+	
+	$('#form_input').dialog({
+		autoOpen: false,
+		width: 400,
+		height: 300,
+		modal: true,
+		close: function(){
+			emptyField();
+			hideErrorId();
+			hideWarning();
+		}
+		
+	});
     
     function hideErrorId(){
         $('.error').fadeOut(0);

@@ -2,7 +2,10 @@
 <center><?php $this->load('dasbor/baLvl2') ?></center>
 <div id="top">
     <div id="form">
-        <div class="kolom3">
+	<div>
+		<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
+	</div></br></br>
+        <div class="kolom3" style="display:none">
             <fieldset>
                 <legend>
                     <?php
@@ -13,7 +16,7 @@
                     }
                     ?>
                 </legend>
-                <div id="form-input">
+                <div id="form_input">
                     <div class="kiri">
                         <form method="POST" action="
                         <?php
@@ -33,7 +36,8 @@
                                   }
                                   ?>
                             <input type="hidden" name="kd_d_user" id="wuser" size="8" value="99999">
-                            <div id="wuser_ba"  class="error"></div>
+                            <div class="kolom1" style="width:600spx">
+							<div id="wuser_ba"  class="error"></div>
                             <label >Pilih Satker</label>
                             <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 100px" type="text">
                                 <option value="1">PKN</option>
@@ -68,24 +72,26 @@
                              <div id="wspm_gagal"  class="error"></div>
                             <label>SPM Gagal</label><input type="number" name="kd_d_spm_gagal" id="kd_d_spm_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm_gagal() : ''); ?>">
                              <div id="wrekon"  class="error"></div>
-                            <label>Rekon Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                            </div>
+							<div class="kolom2" style="width:160px">
+							<label>Rekon Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
                              <div id="wrekon_gagal"  class="error"></div>
                             <label>Rekon Gagal</label><input type="number" name="kd_d_rekon_gagal" id="kd_d_rekon_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon_gagal() : ''); ?>">
                              <div id="wkontrak"  class="error"></div>
                             <label>Kontrak Sukses</label><input type="number" name="kd_d_kontrak" id="kd_d_kontrak" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak() : ''); ?>">
                              <div id="wkontrak_gagal"  class="error"></div>
                             <label>Kontrak Gagal</label><input type="number" name="kd_d_kontrak_gagal" id="kd_d_kontrak_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak_gagal() : ''); ?>">
-                            </select>
+							</div>
                             <ul class="inline tengah">
-                                <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
-                                <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_ba' : 'add_d_ba'; ?>" value="SIMPAN" onClick="return cek();"></li>
+                                <li><input id="batal" class="normal" type="reset" onclick="" value="BATAL"></li>
+                                <li><input id="submit" class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_ba' : 'add_d_ba'; ?>" value="SIMPAN" onClick=""></li>
                             </ul>
                         </form>
                     </div>
                 </div>
             </fieldset>
         </div>
-        <div class="kolom4" id="table">
+        <div class="kolom6" id="table">
             <fieldset>
                 <legend>Data BA 999</legend>
                 <div id="table-title"></div>
@@ -200,7 +206,51 @@
         hideErrorId();
         hideWarning();
         
+		$('#batal').click(function(){
+			emptyField();
+			hideErrorId();
+			hideWarning();
+			$('#form_input').dialog('close');
+		})
+		
+		$('#submit').click(function(){
+			return cek();
+			$('#form_input').dialog('close');
+			
+		});
+		
+		<?php if(isset($this->d_ubah)){ ?>
+			$('#form_input').dialog('open');
+		<?php } ?>
     });
+	
+	function emptyField(){
+		$('#kd_d_tgl').val('');
+		$('#kd_d_spm').val('');
+		$('#kd_d_spm_gagal').val('');
+		$('#kd_d_kontrak').val('');
+		$('#kd_d_kontrak_gagal').val('');
+		$('#kd_d_rekon').val('');
+		$('#kd_d_rekon_gagal').val('');
+	}
+	
+	function addData(){
+		//TODO open dialog form add data kppn
+		$('#form_input').dialog('open');
+	}
+	
+	$('#form_input').dialog({
+		autoOpen: false,
+		width: 500,
+		height: 400,
+		modal: true,
+		close: function(){
+			emptyField();
+			hideErrorId();
+			hideWarning();
+		}
+		
+	});
     
     function hideErrorId(){
         $('.error').fadeOut(0);

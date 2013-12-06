@@ -29,8 +29,8 @@ define('URL',$base_url);
 define('KPPN',2);
 define('KANWIL',3);
 define('ADMIN',1);
-define('PKN',4);
-define('BA999',5);
+define('PKN',5);
+define('BA999',4);
 
 $path = array(
     ROOT.'/libs/',

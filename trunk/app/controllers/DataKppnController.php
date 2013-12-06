@@ -166,6 +166,48 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_jkt6();
         $this->view->render('admin/dataKppnLvl3Jkt6');
     }
+	
+	/*
+	 * ubah data KPPN
+	 */
+	 
+	 public function updDataKppnLvl3() {
+        $d_kppn = new DataKppn($this->registry);
+        if (isset($_POST['upd_d_kppn'])) {
+            $kd_d_kppn = $_POST['kd_d_kppn'];
+            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_tgl = $_POST['kd_d_tgl'];
+            $kd_d_konversi = $_POST['kd_d_konversi'];
+            $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+            $kd_d_sp2d = $_POST['kd_d_sp2d'];
+            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+            $kd_d_lhp = $_POST['kd_d_lhp'];
+            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
+            $kd_d_rekon = $_POST['kd_d_rekon'];
+            $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
+
+            $d_kppn->set_kd_d_kppn($kd_d_kppn);
+            $d_kppn->set_kd_d_user($kd_d_user);
+            $d_kppn->set_kd_d_tgl($kd_d_tgl);
+            $d_kppn->set_kd_d_konversi($kd_d_konversi);
+            $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+            $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
+            $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+            $d_kppn->set_kd_d_lhp($kd_d_lhp);
+            $d_kppn->set_kd_d_lhp_gagal($kd_d_lhp_gagal);
+            $d_kppn->set_kd_d_rekon($kd_d_rekon);
+            $d_kppn->set_kd_d_rekon_gagal($kd_d_rekon_gagal);
+
+            if (!$d_kppn->update_d_kppn()) {
+                $this->view->d_ubah = $d_kppn;
+                $this->view->error = $d_kppn->get_error();
+                $this->view->data = $d_kppn->get_d_kppn();
+                $this->view->render('admin/dataKppnLvl3');
+            } else {
+                header('location:' . URL . 'dataKppn/addDataKppnLvl3');
+            }
+        }
+    }
 
     /*
      * ubah data KPPN Jakarta 2
@@ -270,6 +312,23 @@ class DataKppnController extends BaseController {
     }
     
     /*
+     * hapus data KPPN 
+     * @param kd_d_tetap
+     */
+
+    public function delDataKppnLvl3($id) {
+        $d_kppn = new DataKppn($this->registry);
+        if (is_null($id)) {
+            throw new Exception;
+            echo "id belum dimasukkan!";
+            return;
+        }
+        $d_kppn->set_kd_d_kppn($id);
+        $d_kppn->delete_d_kppn();
+        header('location:' . URL . 'dataKppn/addDataKppnLvl3');
+    }
+	
+	/*
      * hapus data KPPN Jakarta 2
      * @param kd_d_tetap
      */

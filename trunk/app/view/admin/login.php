@@ -15,9 +15,9 @@
         <header><img src="<?php echo URL; ?>public/img/span-putih.png" width="40px" height="48px"></header>
 	<body>
         <?php
-        if (isset($this->error)) {
-            echo "<div style='color:red' id=notfound><h2>" . $this->error . "<h2></div>";
-        }
+        //if (isset($this->error)) {
+            //echo "<div style='color:red' id=notfound><h2>" . $this->error . "<h2></div>";
+        //}
         ?>
 	<div id="log">
 		<div class="login-container">
