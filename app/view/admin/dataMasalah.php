@@ -68,7 +68,7 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . date("d/m", strtotime($val->get_tgl_mslh())) . "</td>";
                             echo "<td>" . $val->get_masalah() . "</td>";
 
-                            echo "<td><a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . $val->get_kd_tgl_mslh() . "')\"><i class=\"icon-trash\"></i></a>
+                            echo "<td><a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . $val->get_tgl_mslh() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;

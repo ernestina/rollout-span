@@ -85,7 +85,7 @@ class DataMasalah {
             return false;
         }
         $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_mslh=" . $d_mslh->get_kd_d_mslh();
-//        var_dump($sql);
+//      var_dump($sql);
         $result = $this->db->select($sql);
         foreach ($result as $val) {
             $d_mslh->set_kd_d_mslh($val['kd_d_mslh']);
@@ -178,7 +178,7 @@ class DataMasalah {
     }
 
     public function set_masalah($bmslh) {
-        $this->_masalah = $bsmslh;
+        $this->_masalah = $bmslh;
     }
 
     public function set_table($table) {
