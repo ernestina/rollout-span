@@ -45,7 +45,8 @@
                 echo "anda ilegal";
             } */
             ?></div></center-->
-    <div id="wrapper">
+  
+	<div id="wrapper">
 
         <div id="menu">
 
@@ -100,26 +101,29 @@
                 ?>
                 <?php
                 if (Session::get('role') == 1 OR Session::get('role') == BA999) {
-                    echo '<li class="subnav">
+                    echo '<li class="nav">
                     <a href=' . URL . 'dataBa/addDataBa>BA 999</a>
                 </li>';
                 }
                 ?>
                 <?php
                 if (Session::get('role') == 1 OR Session::get('role') == PKN) {
-                    echo '<li class="subnav">
+                    echo '<li class="nav">
                     <a href=' . URL . 'dataPkn/addDataPkn>PKN</a>
                 </li>';
                 }
                 ?>
-                <li class="subnav">
+                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> InputMasalah</a>
+                </li>';
+				?>
+				<li class="nav">
                     <a href="<?php echo URL; ?>auth/logout">Logout</a>
                 </li>
-				<li class="nav" style="float: right">
-                    <a>Selamat datang, 
+				<li class="nav" style="float: right; font-size: 70%">
+                    <a style="color: #F2C45A ">Selamat datang, 
 					<?php
 						echo Session::get('user')?></a>
-                </li>
+                </li-->
             </ul>
         </div>
 
