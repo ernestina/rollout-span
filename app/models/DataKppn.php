@@ -53,6 +53,7 @@ class DataKppn {
      */
 
     public function get_d_kppn($kd_user=null, $limit = null, $batas = null) {
+
         $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
                 LEFT JOIN " . $this->_t_tetap . " b 
                 ON a.kd_d_user = b.kd_d_tetap";
@@ -81,6 +82,57 @@ class DataKppn {
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
             $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
+	
+	public function get_d_kppn_lvl1($kd_user=null, $limit = null, $batas = null) {
+		$sql="SELECT kd_d_user, substr(nama_user,20) nama_user
+				FROM d_user
+				WHERE kd_r_jenis = 3";
+		if (!is_null($limit) AND !is_null($batas)) {
+			$sql .= " LIMIT " . $limit . "," . $batas;
+        }
+		
+		// SELECT 
+		// avg(a.kd_d_konversi)/((a.kd_d_konversi)+(a.kd_d_konversi_gagal))*100 as konversi , 
+		// avg(a.kd_d_sp2d)/((a.kd_d_sp2d)+(a.kd_d_sp2d_gagal))*100 as sp2d ,
+		// avg(a.kd_d_lhp)/((a.kd_d_lhp)+(a.kd_d_lhp_gagal))*100 as lhp ,
+		// avg(a.kd_d_rekon)/((a.kd_d_rekon)+(a.kd_d_rekon_gagal))*100 as rekon ,
+		// b.kd_d_user, 
+		// b.nama_user FROM d_kppn a 
+		// LEFT JOIN d_user b 
+		// ON a.kd_d_user = b.kd_d_user
+		// WHERE (a.kd_d_user between 10000 and 10999 )
+		
+        
+        $result = $this->db->select($sql);
+        
+        $data = array();   
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+			$kd_d_user = $val['kd_d_user'];
+			$plus=$kd_d_user+999;
+            $d_kppn->set_kd_d_kppn($val['nama_user']);
+            $d_kppn->set_kd_d_user($kd_d_user);
+			$sql2="SELECT 
+					avg (kd_d_konversi/(kd_d_konversi+kd_d_konversi_gagal)*100) as kd_d_konversi_persen ,
+					avg (kd_d_sp2d/(kd_d_sp2d+kd_d_sp2d_gagal)*100) as kd_d_sp2d_persen ,
+					avg (kd_d_lhp/(kd_d_lhp+kd_d_lhp_gagal)*100) as kd_d_lhp_persen ,
+					avg (kd_d_rekon/(kd_d_rekon+kd_d_rekon_gagal)*100) as kd_d_rekon_persen
+					FROM d_kppn
+					WHERE (kd_d_user between ".$kd_d_user." and ".$plus." )";
+			$result2 = $this->db->select($sql2);
+			foreach ($result2 as $val2) {
+            $d_kppn->set_kd_d_konversi_persen(ceil($val2['kd_d_konversi_persen']));
+			$d_kppn->set_kd_d_sp2d_persen(ceil($val2['kd_d_sp2d_persen']));
+			$d_kppn->set_kd_d_lhp_persen(ceil($val2['kd_d_lhp_persen']));
+			$d_kppn->set_kd_d_rekon_persen(ceil($val2['kd_d_rekon_persen']));
+			}
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
