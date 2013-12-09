@@ -49,6 +49,7 @@ class DataMasalahController extends BaseController {
             $d_mslh->set_kd_d_mslh($id);
             $this->view->d_ubah = $d_mslh->get_d_mslh_by_id($d_mslh);
         }
+		
 
         //$this->view->dasbor = $d_mslh->get_d_pkn_per_tgl();
         $this->view->data = $d_mslh->get_d_mslh();

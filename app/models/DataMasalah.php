@@ -31,9 +31,11 @@ class DataMasalah {
      * @param limit batas default null
      * return array objek Data Tetap
      */
-
+	
     public function get_d_mslh($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY tgl_mslh desc";
+		$sql = "SELECT * FROM " . $this->_table . //" WHERE kd_d_user= " . $d_mslh->get_kd_d_user() .
+		" ORDER BY tgl_mslh desc";
+		
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
