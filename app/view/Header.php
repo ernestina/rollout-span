@@ -80,11 +80,7 @@
                 if (Session::get('role') == ADMIN OR Session::get('role') == KPPN) {
                     if (Session::get('role') == ADMIN) {
                         echo'<li class="subnav">
-                            <a href=' . URL . 'dataKppn/viewDataKppnLvl2>KPPN</a>
-                            <ul>
-                            <li><a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a></li>
-                            <li><a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt6><i class="icon-globe icon-white"></i>data KPPN Jakart VI</a></li>
-                            </ul>
+                            <a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a>
                             </li>';
                     }
                     //if (Session::get('user') == "KPPN JAKARTA II") {
