@@ -109,7 +109,7 @@
                 </li>';
                 }
                 ?>
-                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> InputMasalah</a>
+                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah/> InputMasalah</a>
                 </li>';
 				?>
 				<li class="nav">

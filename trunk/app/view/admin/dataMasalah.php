@@ -60,8 +60,11 @@ if (isset($this->d_ubah)) {
                     </thead>
                     <tbody>
                         <?php
-                        $no = 1;
+                        //$x = Session::get('id_user');
+						//echo $x;
+						$no = 1;
                         foreach ($this->data as $val) {
+						//if $x = $val->get_kd_d_user() {
                             //var_dump($val);
                             echo "<tr>";
                             echo "<td>$no</td>";
@@ -72,7 +75,9 @@ if (isset($this->d_ubah)) {
                         <a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;
-                        }
+							
+                        //}
+						}
                         ?>
                     </tbody>
                 </table>
