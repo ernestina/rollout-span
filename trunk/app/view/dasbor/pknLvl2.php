@@ -35,9 +35,9 @@
         labels : label,
         datasets : [
             {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                pointColor : "rgba(220,220,220,1)",
+                fillColor : "rgba(0,121,185,0.3)",
+                strokeColor : "rgba(0,121,185,1)",
+                pointColor : "rgba(0,121,185,1)",
                 pointStrokeColor : "#fff",
                 data : val
             }
