@@ -47,6 +47,16 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_lvl2($kanwil);
         $this->view->render('admin/dataKppnLvl2');
     }
+	
+	public function viewDataKppnLvl3($kppn=null) {
+        $d_kppn = new DataKppn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
+        $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
+        $this->view->data = $d_kppn->get_d_kppn_lvl3($kppn);
+		$this->view->sp2d = $d_kppn->get_d_kppn_per_tgl($kppn);
+        $this->view->render('admin/dataKppnLvl3');
+    }
 
     /*
      * tambah Data KPPN Level 3

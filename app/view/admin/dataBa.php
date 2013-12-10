@@ -2,9 +2,11 @@
 <center><?php $this->load('dasbor/baLvl2') ?></center>
 <div id="top">
     <div id="form">
-	<div>
-		<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
-	</div></br></br>
+	<?php if (Session::get('role') == 4) { 
+	echo "<div><input id='add_data' class='normal' type='button' onclick='addData()' value='TAMBAH DATA'>
+	</div></br></br>";
+	}
+	?>
         <div class="kolom3" style="display:none">
             <fieldset>
                 <legend>
@@ -99,7 +101,10 @@
                                 <th colspan="3" width="20%">SPM</th>
                                 <th colspan="3" width="20%">Rekon</th>
                                 <th colspan="3" width="20%">Kontrak</th>
-                                <th rowspan="2" width="10%">Aksi</th>
+								<?php if (Session::get('role') == 4) { 
+								echo "<th rowspan='2' width='10%'>Aksi</th>";
+								}
+								?>
                             </tr>
                             <tr>
                                 <th width="7%" >Sukses</th>
@@ -170,9 +175,11 @@
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_persen() . "%</td>";
+								if (Session::get('role') == 5) { 
                                 echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
-                                echo "</tr>";
+								}
+								echo "</tr>";
                                 $no++;
                             }
                             ?>

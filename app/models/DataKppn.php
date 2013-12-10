@@ -178,6 +178,43 @@ class DataKppn {
 
         return $data;
     }
+	
+	public function get_d_kppn_lvl3($kppn=null, $limit = null, $batas = null) {
+        $sql = "SELECT a . * , b.nama_user
+				FROM d_kppn a
+				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user
+				WHERE a.kd_d_user =".$kppn." 
+				ORDER BY a.kd_d_tgl DESC ";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        
+        $data = array();   
+        foreach ($result as $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_kppn($val['nama_user']);
+            $d_kppn->set_kd_d_user($val['kd_d_user']);
+            $d_kppn->set_kd_d_tgl(date("d/m/y", strtotime($val['kd_d_tgl'])));
+            $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
+            $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
+            $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+            $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            $d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+            $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
+            $d_kppn->set_kd_d_lhp_gagal($val['kd_d_lhp_gagal']);
+            $d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+            $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
+            $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
+            $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+        return $data;
+    }
 
     public function get_d_kppn_per_tgl($kd_user=null, $limit = null, $batas = null) {
         $sql = "SELECT *

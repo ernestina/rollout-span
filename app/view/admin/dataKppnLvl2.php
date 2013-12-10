@@ -36,7 +36,7 @@
                         foreach ($this->data as $val) {
                             echo "<tr>";
                             echo "<td>$no</td>";
-							echo "<td style=\"text-align: left\"><a href=".URL."dataKppn/addDataKppnLvl3/".$val->get_kd_d_user()." target=_blank>" . $val->get_kd_d_kppn() . "</td>";
+							echo "<td style=\"text-align: left\"><a href=".URL."dataKppn/viewDataKppnLvl3/".$val->get_kd_d_user()." target=_blank>" . $val->get_kd_d_kppn() . "</td>";
                             echo "<td>" . $val->get_kd_d_konversi_persen() . "%</td>";
                             echo "<td>" . $val->get_kd_d_sp2d_persen() . "%</td>";
                             echo "<td>" . $val->get_kd_d_lhp_persen() . "%</td>";

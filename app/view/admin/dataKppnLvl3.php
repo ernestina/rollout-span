@@ -1,18 +1,36 @@
 <h2>MONITORING 
         <?php 
+			$id_user=Session::get('id_user');
+            if (Session::get('role') == 2) {
             echo strtoupper(Session::get('user'));
+		} else {
+			foreach ($this->data as $val){ 
+				$kppn=$val->get_kd_d_kppn();
+			}
+			echo $kppn;
+		}
         ?></h2>
 <center><?php $this->load('dasbor/lvl3') ?></center>
 <div id="top">
     <div id="form">
         <h2>DATA 
         <?php 
+		if (Session::get('role') == 2) {
             echo strtoupper(Session::get('user'));
+		} else {
+			foreach ($this->data as $val){ 
+				$kppn=$val->get_kd_d_kppn();
+			}
+			echo $kppn;
+		}
         ?>
         </h2></div>
-        <div>
-            <input id="add_data" class="normal" type="button" onclick="addData('<?php echo Session::get('id_user');?>')" value="TAMBAH DATA">
-        </div></br></br>
+		<?php if (Session::get('role') == 2) {
+        echo "<div>
+            <input id='add_data' class='normal' type='button' onclick='addData(".$id_user.")' value='TAMBAH DATA'>
+        </div></br></br> ";
+		}
+		?>
     <div class="kolom3" style="display:none">
         <fieldset ><legend><?php
 if (isset($this->d_ubah)) {
@@ -94,7 +112,10 @@ if (isset($this->d_ubah)) {
                                 <th colspan="3">SP2D</th>
                                 <th colspan="3">LHP</th>
                                 <th colspan="3">Rekon</th>
-                                <th rowspan="2" width ="20%">Aksi</th>
+								<?php if (Session::get('role') == 2) { 
+                                echo "<th rowspan='2' width ='20%'>Aksi</th>";
+								}
+								?>
                             </tr>
                             <tr>
                                 <th width ="10%">Sukses</th>
@@ -131,9 +152,11 @@ if (isset($this->d_ubah)) {
                                 echo "<td>" . $val->get_kd_d_rekon() . "</td>";
                                 echo "<td>" . $val->get_kd_d_rekon_gagal() . "</td>";
                                 echo "<td>" . $val->get_kd_d_rekon_persen() . "%</td>";
-                                echo "<td><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
-                                <a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
-                                echo "</tr>";
+								if (Session::get('role') == 2) { 
+									echo "<td><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
+									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
+								}
+								echo "</tr>";
                                 $no++;
                             }
                             ?>
