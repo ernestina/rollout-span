@@ -40,30 +40,24 @@
 							<div id="wuser_ba"  class="error"></div>
                             <label >Pilih Satker</label>
                             <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 100px" type="text">
-                                <option value="1">PKN</option>
-                                <option value="2">APK</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="17">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
+                                <option value="1">DJA 979321</option>
+                                <option value="2">DJA 999200</option>
+                                <option value="3">DJA 984501</option>
+                                <option value="4">DJKN 977191</option>
+                                <option value="5">DJPK 999201</option>
+                                <option value="6">DJPK 999202</option>
+                                <option value="7">DJPK 999204</option>
+                                <option value="8">DSP 987361</option>
+                                <option value="9">DSP 984475</option>
+                                <option value="10">PKN 440780</option>
+                                <option value="11">PKN 999001</option>
+                                <option value="12">SMI 997386</option>
+                                <option value="13">SMI 983783</option>
+                                <option value="14">SMI 961671</option>
+                                <option value="15">DJPK 985251 2</option>
+                                <option value="16">DJPK 985251 6</option>
+                                <option value="17">DJPU 960186</option>
+                                <option value="18">DJPU 977263</option>
                             </select>
                             <div id="wtgl"  class="error"></div>
                             <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
@@ -99,24 +93,24 @@
                     <table class="table-bordered zebra scroll">
                         <thead>
                             <tr>
-                                <th rowspan="2">No</th>
-                                <th rowspan="2" width ="25%">Tanggal</th>
-                                <th rowspan="2" >Satker</th>
-                                <th colspan="3">SPM</th>
-                                <th colspan="3">Rekon</th>
-                                <th colspan="3">Kontrak</th>
-                                <th rowspan="2" width ="15%">Aksi</th>
+                                <th rowspan="2" width="5%">No</th>
+                                <th rowspan="2" width="10%">Tanggal</th>
+                                <th rowspan="2" width="15%">Satker</th>
+                                <th colspan="3" width="20%">SPM</th>
+                                <th colspan="3" width="20%">Rekon</th>
+                                <th colspan="3" width="20%">Kontrak</th>
+                                <th rowspan="2" width="10%">Aksi</th>
                             </tr>
                             <tr>
-                                <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
-                                <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
-                                <th width ="10%">Sukses</th>
-                                <th width ="10%">Gagal</th>
-                                <th width ="10%">%</th>
+                                <th width="7%" >Sukses</th>
+                                <th width="7%">Gagal</th>
+                                <th width="6%">%</th>
+                                <th width="7%">Sukses</th>
+                                <th width="7%">Gagal</th>
+                                <th width="6%">%</th>
+                                <th width="7%">Sukses</th>
+                                <th width="7%">Gagal</th>
+                                <th width="6%">%</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,70 +119,58 @@
                             foreach ($this->data as $val) {
                                 //var_dump($val);
                                 echo "<tr>";
-                                echo "<td>$no</td>";
+                                echo "<td style=\"text-align: center\">$no</td>";
                                 $sat = $val->get_kd_d_user_ba();
-                                echo "<td>" . date("d/m", strtotime($val->get_kd_d_tgl())) . "</td>";
+                                echo "<td>" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "</td>";
                                 if ($sat == 1) {
-                                    echo "<td>PKN</td>";
+                                    echo "<td>DJA 979321</td>";
                                 } else if ($sat == 2) {
-                                    echo "<td>APK</td>";
+                                    echo "<td>DJA 999200</td>";
                                 }else if ($sat == 3) {
-                                    echo "<td>3</td>";
+                                    echo "<td>DJA 984501</td>";
                                 }else if ($sat == 4) {
-                                    echo "<td>4</td>";
+                                    echo "<td>DJKN 977191</td>";
                                 }else if ($sat == 5) {
-                                    echo "<td>5</td>";
+                                    echo "<td>DJPK 999201</td>";
                                 }else if ($sat == 6) {
-                                    echo "<td>6</td>";
+                                    echo "<td>DJPK 999202</td>";									
                                 }else if ($sat == 7) {
-                                    echo "<td>7</td>";
+                                    echo "<td>DJPK 999204</td>";
                                 }else if ($sat == 8) {
-                                    echo "<td>8</td>";
+                                    echo "<td>DSP 987361</td>";
                                 }else if ($sat == 9) {
-                                    echo "<td>9</td>";
+                                    echo "<td>DSP 984475</td>";
                                 }else if ($sat == 10) {
-                                    echo "<td>10</td>";
+                                    echo "<td>PKN 440780</td>";
                                 } elseif ($sat == 11) {
-                                    echo "<td>11</td>";
+                                    echo "<td>PKN 999001</td>";
                                 } else if ($sat == 12) {
-                                    echo "<td>12</td>";
+                                    echo "<td>SMI 997386</td>";
                                 }else if ($sat == 13) {
-                                    echo "<td>13</td>";
+                                    echo "<td>SMI 983783</td>";
                                 }else if ($sat == 14) {
-                                    echo "<td>14</td>";
+                                    echo "<td>SMI 961671</td>";
                                 }else if ($sat == 15) {
-                                    echo "<td>15</td>";
+                                    echo "<td>DJPK 985251 2</td>";
                                 }else if ($sat == 16) {
-                                    echo "<td>16</td>";
+                                    echo "<td>DJPK 985251 6</td>";
                                 }else if ($sat == 17) {
-                                    echo "<td>17</td>";
+                                    echo "<td>DJPU 960186</td>";
                                 }else if ($sat == 18) {
-                                    echo "<td>18</td>";
-                                }else if ($sat == 19) {
-                                    echo "<td>19</td>";
-                                }else if ($sat == 20) {
-                                    echo "<td>20</td>";
-                                }else if ($sat == 21) {
-                                    echo "<td>21</td>";
-                                }else if ($sat == 22) {
-                                    echo "<td>22</td>";
-                                }else if ($sat == 23) {
-                                    echo "<td>23</td>";
-                                }else if ($sat == 24) {
-                                    echo "<td>24</td>";
+                                    echo "<td>DJPU 977263</td>";
                                 }else {
                                     echo "<td>Satker tidak ditemukan</td>";
                                 }
-                                echo "<td>" . $val->get_kd_d_spm() . "</td>";
-                                echo "<td>" . $val->get_kd_d_spm_gagal() . "</td>";
-                                echo "<td>" . $val->get_kd_d_spm_persen() . " %</td>";
-                                echo "<td>" . $val->get_kd_d_rekon() . "</td>";
-                                echo "<td>" . $val->get_kd_d_rekon_gagal() . "</td>";
-                                echo "<td>" . $val->get_kd_d_rekon_persen() . " %</td>";
-                                echo "<td>" . $val->get_kd_d_kontrak() . "</td>";
-                                echo "<td>" . $val->get_kd_d_kontrak_gagal() . "</td>";
-                                echo "<td>" . $val->get_kd_d_kontrak_persen() . " %</td>";
-                                echo "<td><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm_gagal() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon_gagal() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
+                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
                                 echo "</tr>";
                                 $no++;

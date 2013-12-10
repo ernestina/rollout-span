@@ -1,10 +1,10 @@
 <h2>DATA PKN</h2>
 <center><?php $this->load('dasbor/pknLvl2') ?></center>
-<div>
+<div id="top">
+    <div id="form">
+	<div>
 	<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
 </div></br></br>
-<div id="top">
-    <div id="form"></div>
     <div class="kolom3" style="display:none">
         <fieldset><legend><?php
 if (isset($this->d_ubah)) {
@@ -62,19 +62,19 @@ if (isset($this->d_ubah)) {
                 <table class="table-bordered zebra scroll">
                     <thead>
                         <tr>
-                            <th rowspan="2">No</th>
-                            <th rowspan="2" width ="25%">Tanggal</th>
-                            <th colspan="3">SP2D</th>
-                            <th colspan="3">SPT</th>
+                            <th rowspan="2" width ="5%">No</th>
+                            <th rowspan="2" width ="15%">Tanggal</th>
+                            <th colspan="3" width ="25%">SP2D</th>
+                            <th colspan="3" width ="25%">SPT</th>
                             <th rowspan="2" width ="15%">Aksi</th>
                         </tr>
                         <tr>
-                            <th width ="10%">Sukses</th>
-                            <th width ="10%">Gagal</th>
-                            <th width ="10%">%</th>
-                            <th width ="10%">Sukses</th>
-                            <th width ="10%">Gagal</th>
-                            <th width ="10%">%</th>
+                            <th>Sukses</th>
+                            <th>Gagal</th>
+                            <th>%</th>
+                            <th>Sukses</th>
+                            <th>Gagal</th>
+                            <th>%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,15 +83,15 @@ if (isset($this->d_ubah)) {
                         foreach ($this->data as $val) {
                             //var_dump($val);
                             echo "<tr>";
-                            echo "<td>$no</td>";
-                            echo "<td>" . date("d/m", strtotime($val->get_kd_d_tgl())) . "</td>";
-                            echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
-                            echo "<td>" . $val->get_kd_d_sp2d_gagal() . "</td>";
-                            echo "<td>" . $val->get_kd_d_sp2d_persen() . "%</td>";
-                            echo "<td>" . $val->get_kd_d_spt() . "</td>";
-                            echo "<td>" . $val->get_kd_d_spt_gagal() . "</td>";
-                            echo "<td>" . $val->get_kd_d_spt_persen() . "%</td>";
-                            echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
+                            echo "<td style=\"text-align: center\">$no</td>";
+                            echo "<td>" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d() . "</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d_gagal() . "</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d_persen() . "%</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt() . "</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt_gagal() . "</td>";
+                            echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt_persen() . "%</td>";
+                            echo "<td style=\"text-align: center\"><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;

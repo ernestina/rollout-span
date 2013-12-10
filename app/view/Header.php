@@ -83,16 +83,9 @@
                             <a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a>
                             </li>';
                     }
-                    //if (Session::get('user') == "KPPN JAKARTA II") {
                         echo '<li class="subnav">
-                             <a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt2><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a>
+                             <a href=' . URL . 'dataKppn/addDataKppnLvl3><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a>
                              </li>';
-                    //}
-                    //if (Session::get('user') == "KPPN JAKARTA VI") {
-                        //echo '<li>
-                            //<a href=' . URL . 'dataKppn/addDataKppnLvl3Jkt6><i class="icon-globe icon-white"></i>data KPPN Jakart VI</a>
-                            //</li>';
-                    //}
                 }
                 ?>
                 <?php
@@ -109,7 +102,7 @@
                 </li>';
                 }
                 ?>
-                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah/> InputMasalah</a>
+                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> InputMasalah</a>
                 </li>';
 				?>
 				<li class="nav">
