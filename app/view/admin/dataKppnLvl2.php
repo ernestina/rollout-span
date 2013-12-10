@@ -14,11 +14,11 @@
                     <thead style="font-size:80%">
                     <th width="5%">No</th>
                     <th width="10%">KPPN</th>
-                    <th width="10%">Persentase Konversi Sukses</th>
-                    <th width="10%">Persentase SP2D Sukses</th>
-                    <th width="10%">Persentase LHP Sukses</th>
-                    <th width="10%">Persentase Rekon Sukses</th>
-                    <th width="10%">Persentase Total/Bobot</th>
+                    <th width="10%">Konversi Sukses</th>
+                    <th width="10%">SP2D Sukses</th>
+                    <th width="10%">LHP Sukses</th>
+                    <th width="10%">Rekon Sukses</th>
+                    <th width="10%">Total/Bobot</th>
                     </thead>
                     <tbody>
                         <?php
