@@ -51,6 +51,7 @@ $akses['DataBobot'] = array(
 $akses['DataKppn'] = array(
     '__construct',
     'index',
+    'addDataKppnLvl4',
     'addDataKppnLvl3Jkt2',
     'addDataKppnLvl3Jkt6',
     'updDataKppnLvl3Jkt2',
@@ -58,7 +59,8 @@ $akses['DataKppn'] = array(
     'delDataKppnLvl3Jkt2',
     'delDataKppnLvl3Jkt6',
     'delDataKppn',
-    'viewDataKppn',
+    'viewDataKppnLvl2',
+    'viewDataKppnLvl3',
     '__destruct'
 );
 

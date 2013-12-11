@@ -70,7 +70,7 @@ class DataPknController extends BaseController {
         $d_pkn = new DataPkn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
-        if (isset($_POST['upd_d_pkn'])) {
+        //if (isset($_POST['upd_d_pkn'])) {
             $kd_d_pkn = $_POST['kd_d_pkn'];
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
@@ -97,7 +97,7 @@ class DataPknController extends BaseController {
                 $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
                 header('location:' . URL . 'dataPkn/addDataPkn');
             }
-        }
+        //}
     }
 
     /*

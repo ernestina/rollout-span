@@ -65,14 +65,15 @@ class Bootstrap {
             $this->controller = new AuthController($this->registry);
             $this->method = 'index';
         }
-//       var_dump($this->registry->auth->is_allowed($this->role,$this->url[0],$this->method));
-//        if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role!='guest'){
-//            $this->controller = new Index($this->registry);
-//            $this->method = 'index';
-//        }else if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role=='guest'){
-//            $this->controller = new AuthController($this->registry);
-//            $this->method = 'index';
-//        }
+        //echo $this->role.",".$this->url[0].",".$this->method;
+        //var_dump($this->registry->auth->is_allowed($this->role,$this->url[0],$this->method));
+        if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role!='guest'){
+            $this->controller = new Index($this->registry);
+            $this->method = 'index';
+        }else if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role=='guest'){
+            $this->controller = new AuthController($this->registry);
+            $this->method = 'index';
+        }
         
         /*         * * check if the action is callable ** */
         if (is_callable(array($this->controller, $this->method)) == false) {

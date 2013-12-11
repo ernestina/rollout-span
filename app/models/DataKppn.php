@@ -242,6 +242,39 @@ class DataKppn {
         return $data;
     }
 
+    /*
+     * data seluruh kanwil 
+     */
+
+    public function get_d_kanwil(){
+        $d_kppn = $this->get_d_kppn();
+        $sql = "SELECT kd_d_user FROM d_kanwil";
+        $d_kanwil = $this->db->select($sql);
+        $return = array();
+        foreach ($d_kppn as $key => $val) {
+            foreach ($d_kanwil as $value) {
+                $kd_kppn = (int) $val->get_kd_d_user();
+                $kd_kanwil = (int) $value['kd_d_user'];
+                $is_data = $kd_kppn<=($kd_kanwil+999) && $kd_kppn>$kd_kanwil;
+                if($is_data){
+                    $data_insert = .25*$val->get_kd_d_konversi_persen() +
+                                    .20*$val->get_kd_d_sp2d_persen()+
+                                    .30*$val->get_kd_d_lhp_persen()+
+                                    .25*$val->get_kd_d_rekon_persen();
+                    if(array_key_exists($kd_kanwil, $return)){
+                        $return[$kd_kanwil][0]++;
+                        $return[$kd_kanwil][1] = ($return[$kd_kanwil][1]+$data_insert)/$return[$kd_kanwil][0];
+                    }else{
+                        $return[$kd_kanwil] = array();
+                        $return[$kd_kanwil][] = 1;
+                        $return[$kd_kanwil][] = $data_insert;
+                    }
+                }
+            }
+        }
+        return $return;
+    }
+
     public function get_d_kppn_jkt2($limit = null, $batas = null) {
         $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
                 LEFT JOIN " . $this->_t_tetap . " b 

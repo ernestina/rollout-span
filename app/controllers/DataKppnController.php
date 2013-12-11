@@ -36,8 +36,9 @@ class DataKppnController extends BaseController {
     }
 
     /*
-     * view Data KPPN 
+     * view Data seluruh Kanwil 
      */
+
 
     public function viewDataKppnLvl2($kanwil=null) {
         $d_kppn = new DataKppn($this->registry);
@@ -56,6 +57,32 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_lvl3($kppn);
 		$this->view->sp2d = $d_kppn->get_d_kppn_per_tgl($kppn);
         $this->view->render('admin/dataKppnLvl3');
+    }
+
+    /*
+     * view Data KPPN dalam Kanwil 
+     */
+
+    public function viewDataKppnLvl3($id_kanwil) { 
+        $d_kppn = new DataKppn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
+        $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
+        $this->view->data = $d_kppn->get_d_kppn();
+        $this->view->render('admin/dataKppnLvl3');
+    }
+
+    /*
+     * view Data KPPN  
+     */
+
+    public function viewDataKppnLvl4($id_kppn) { 
+        $d_kppn = new DataKppn($this->registry);
+        $d_bobot = new DataBobot($this->registry);
+        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
+        $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
+        $this->view->data = $d_kppn->get_d_kppn();
+        $this->view->render('admin/dataKppnLvl4');
     }
 
     /*
@@ -97,6 +124,7 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_kppn($id);
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
+        print_r($d_kppn->get_d_kanwil());
         $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl(Session::get('id_user'));
         $this->view->data = $d_kppn->get_d_kppn(Session::get('id_user'));
         $this->view->render('admin/dataKppnLvl3');
@@ -108,7 +136,7 @@ class DataKppnController extends BaseController {
 
     public function addDataKppnLvl3Jkt2($id = null) {
         $d_kppn = new DataKppn($this->registry);
-        if (isset($_POST['add_d_kppn'])) {
+        if (isset($_POST['add_dt_kppn'])) {
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
             $kd_d_konversi = $_POST['kd_d_konversi'];
@@ -196,7 +224,7 @@ class DataKppnController extends BaseController {
 	 
 	 public function updDataKppnLvl3() {
         $d_kppn = new DataKppn($this->registry);
-        if (isset($_POST['upd_d_kppn'])) {
+        //if (isset($_POST['upd_d_kppn'])) {
             $kd_d_kppn = $_POST['kd_d_kppn'];
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_tgl = $_POST['kd_d_tgl'];
@@ -229,7 +257,7 @@ class DataKppnController extends BaseController {
             } else {
                 header('location:' . URL . 'dataKppn/addDataKppnLvl3');
             }
-        }
+        //}
     }
 
     /*

@@ -2,11 +2,16 @@
 <center><?php $this->load('dasbor/baLvl2') ?></center>
 <div id="top">
     <div id="form">
-	<?php if (Session::get('role') == 4) { 
+	<?php if(Session::get('role')==BA999) { ?>
+		<div>
+			<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
+		</div></br></br></br>
+	<?php } ?>
+	<!--<?php if (Session::get('role') == 4) { 
 	echo "<div><input id='add_data' class='normal' type='button' onclick='addData()' value='TAMBAH DATA'>
 	</div></br></br>";
 	}
-	?>
+	?>-->
         <div class="kolom3" style="display:none">
             <fieldset>
                 <legend>
@@ -20,15 +25,17 @@
                 </legend>
                 <div id="form_input">
                     <div class="kiri">
-                        <form method="POST" action="
+                        <form id="form_rekam">
+                        <!--method="POST" action="
                         <?php
                         if (isset($this->d_ubah)) {
                             echo URL . 'dataBa/updDataBa';
                         } else {
                             $_SERVER['PHP_SELF'];
                         }
-                        ?>">
+                        ?>"-->
                                   <?php
+                                  echo "<input type='hidden' name='add_d_ba' value=''>";
                                   if (isset($this->d_ubah)) {
                                       echo "<input type=hidden name='kd_d_ba' value=" . $this->d_ubah->get_kd_d_ba() . ">";
                                   }
@@ -37,7 +44,7 @@
                                       echo "<div class=error>" . $this->error . "</div>";
                                   }
                                   ?>
-                            <input type="hidden" name="kd_d_user" id="wuser" size="8" value="99999">
+                            <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="99999">
                             <div class="kolom1" style="width:600spx">
 							<div id="wuser_ba"  class="error"></div>
                             <label >Pilih Satker</label>
@@ -79,8 +86,8 @@
                             <label>Kontrak Gagal</label><input type="number" name="kd_d_kontrak_gagal" id="kd_d_kontrak_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak_gagal() : ''); ?>">
 							</div>
                             <ul class="inline tengah">
-                                <li><input id="batal" class="normal" type="reset" onclick="" value="BATAL"></li>
-                                <li><input id="submit" class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_ba' : 'add_d_ba'; ?>" value="SIMPAN" onClick=""></li>
+                                <li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li>
+                                <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_ba' : 'add_d_ba'; ?>" value="SIMPAN" onClick=""></li>
                             </ul>
                         </form>
                     </div>
@@ -191,6 +198,7 @@
     </div>
 </div>
 <script type="text/javascript">
+    var add_data = false;
     $(function(){
         hideErrorId();
         hideWarning();
@@ -213,6 +221,28 @@
 		<?php } ?>
     });
 	
+    function rekam(){
+        var formData = new FormData($('#form_rekam')[0]);
+        if(add_data){
+            var url = "<?php echo URL; ?>dataBa/addDataBa";
+        }else{
+            var url = "<?php echo URL; ?>dataBa/updDataBa";
+        }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            async: false,
+            success: function(){
+                $('#form_input').dialog('close');
+                window.location.href='<?php echo URL;?>dataBa/addDataBa'
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+
 	function emptyField(){
 		$('#kd_d_tgl').val('');
 		$('#kd_d_spm').val('');
@@ -225,6 +255,7 @@
 	
 	function addData(){
 		//TODO open dialog form add data kppn
+        add_data = true;
 		$('#form_input').dialog('open');
 	}
 	
@@ -438,6 +469,7 @@
         if(jml>0){
             return false
         }else{
+            rekam();
             return true;
         }
     }

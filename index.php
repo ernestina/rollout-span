@@ -26,11 +26,11 @@ define('URL',$base_url);
 /*
  * define role
  */
-define('KPPN',2);
-define('KANWIL',3);
-define('ADMIN',1);
-define('PKN',5);
-define('BA999',4);
+define('KPPN','kppn');
+define('KANWIL','kanwil');
+define('ADMIN','admin');
+define('PKN','pkn');
+define('BA999','ba');
 
 $path = array(
     ROOT.'/libs/',
@@ -51,19 +51,19 @@ $registry->upload = new Upload();
 $registry->view = new View();
 $registry->db = new Database();
 $registry->auth = new Auth();
-$registry->auth->add_roles('admin');
+$registry->auth->add_roles('admin'); //admin
 $registry->auth->add_access('dataTetap','admin',$akses['DataTetap']);
 $registry->auth->add_access('dataUser','admin',$akses['DataUser']);
 $registry->auth->add_access('dataBobot','admin',$akses['DataBobot']);
 $registry->auth->add_access('dataKppn','admin',$akses['DataKppn']);
 $registry->auth->add_access('auth','admin','logout');
-$registry->auth->add_roles('kppn');
+$registry->auth->add_roles('kppn'); //kppn
 $registry->auth->add_access('dataKppn','kppn',$akses['DataKppn']);
 $registry->auth->add_access('auth','kppn','logout');
-$registry->auth->add_roles('ba');
+$registry->auth->add_roles('ba'); //ba 999
 $registry->auth->add_access('dataBa','ba',$akses['DataBa']);
 $registry->auth->add_access('auth','ba','logout');
-$registry->auth->add_roles('pkn');
+$registry->auth->add_roles('pkn'); //pkn
 $registry->auth->add_access('dataPkn','pkn',$akses['DataPkn']);
 $registry->auth->add_access('auth','pkn','logout');
 $registry->auth->add_access('auth','guest',$akses['Auth']);
