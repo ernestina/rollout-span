@@ -10,8 +10,8 @@
         <fieldset><legend>Data KPPN </legend>
             <div id="table-title"></div>
             <div id="table-content">
-                <table class="table-bordered zebra scroll" style="text-align: center">
-                    <thead style="font-size:80%">
+                <table class="table-bordered zebra" style="text-align: center">
+                    <thead>
                     <th width="5%">No</th>
                     <th width="10%">KPPN</th>
                     <th width="10%">Konversi Sukses</th>

@@ -29,7 +29,7 @@ if (isset($this->d_ubah)) {
 
                         <div id="wjenis" class="error"></div>
                         <label>Jenis</label>
-                        <select id="kd_r_jenis" name="kd_r_jenis" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_r_jenis() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_r_jenis() : '-pilih-'); ?>">
+                        <select id="kd_r_jenis" name="kd_r_jenis" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_r_jenis() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_r_jenis() : '-pilih-'); ?>" type="text">
                             <option value="">--Pilih--</option>
                             <option value="1">Admin</option>
                             <option value="2">KPPN</option>
@@ -65,11 +65,11 @@ if (isset($this->d_ubah)) {
             <div id="table-content">
                 <table class="table-bordered zebra scroll">
                     <thead>
-                    <th>No</th>
-                    <th>Level</th>
-                    <th>Unit</th>
-                    <th>Nama</th>
-                    <th width="50">Aksi</th>
+                    <th >No</th>
+                    <th width="15%">Level</th>
+                    <th width="15%">Unit</th>
+                    <th width="55%">Nama</th>
+                    <th width="15%">Aksi</th>
                     </thead>
                     <tbody>
                         <?php
@@ -80,7 +80,7 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . Wewenang::status_int_string($val->get_kd_r_jenis()) . "</td>";
                             echo "<td>" . $val->get_kd_r_unit() . "</td>";
                             echo "<td>" . $val->get_nama_user() . "</td>";
-                            echo "<td><a href=" . URL . "dataUser/delDataUser/" . $val->get_kd_d_user() . " onclick=\"return del('" . $val->get_nama_user() . "')\"><i class=\"icon-trash\"></i></a>
+                            echo "<td style='text-align: center'><a href=" . URL . "dataUser/delDataUser/" . $val->get_kd_d_user() . " onclick=\"return del('" . $val->get_nama_user() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataUser/addDataUser/" . $val->get_kd_d_user() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;

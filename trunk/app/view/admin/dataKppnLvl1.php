@@ -7,7 +7,7 @@
             <div id="table-title"></div>
             <div id="table-content">
                 <table class="table-bordered zebra scroll" style="text-align: center">
-                    <thead style="font-size:80%">
+                    <thead>
                     <th width="5%">No</th>
                     <th width="10%">KANWIL</th>
                     <!--<th width="10%">Tanggal</th>-->

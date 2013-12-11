@@ -72,7 +72,7 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . $val->get_d_tetap_trainer() . "</td>";
                             echo "<td>" . $val->get_d_tetap_pendamping() . "</td>";
                             echo "<td>" . $val->get_d_tetap_dsu() . "</td>";
-                            echo "<td><a href=" . URL . "dataTetap/delDataTetap/" . $val->get_kd_d_tetap() . " onclick=\"return del('" . $val->get_kd_r_unit() . "')\"><i class=\"icon-trash\"></i></a>
+                            echo "<td style=\"text-align: center\"><a href=" . URL . "dataTetap/delDataTetap/" . $val->get_kd_d_tetap() . " onclick=\"return del('" . $val->get_kd_r_unit() . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataTetap/addDataTetap/" . $val->get_kd_d_tetap() . "><i class=\"icon-pencil\"></i></a></td>";
                             echo "</tr>";
                             $no++;
