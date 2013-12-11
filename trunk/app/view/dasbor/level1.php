@@ -79,9 +79,9 @@ $nilai_total=ceil($nilai_kppn*$bobot_kppn+$nilai_ba*$bobot_ba+$nilai_pkn*$bobot_
 </div>
 <div class="kolom2">
     
-        <button><a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl2" target="_blank"><div id="g2"></div></a></button><br><br>
-		<button><a href="<?php echo URL; ?>dataBa/addDataBa" target="_blank"><div id="g3"></div></a></button><br><br>
-		<button><a href="<?php echo URL; ?>dataPkn/addDataPkn" target="_blank"><div id="g4"></div></a></button>
+        <a href="<?php echo URL; ?>dataKppn/viewDataKppnLvl1" target="_blank"><div id="g2"></div></a><br><br>
+		<a href="<?php echo URL; ?>dataBa/addDataBa" target="_blank"><div id="g3"></div></a><br><br>
+		<a href="<?php echo URL; ?>dataPkn/addDataPkn" target="_blank"><div id="g4"></div></a>
 
 </div>
 

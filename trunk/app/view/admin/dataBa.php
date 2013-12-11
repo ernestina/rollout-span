@@ -175,7 +175,7 @@
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_persen() . "%</td>";
-								if (Session::get('role') == 5) { 
+								if (Session::get('role') == 4) { 
                                 echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
 								}

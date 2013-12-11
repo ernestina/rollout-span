@@ -77,15 +77,15 @@
                 }
                 ?>
                 <?php
-                if (Session::get('role') == ADMIN OR Session::get('role') == KPPN) {
-                    if (Session::get('role') == ADMIN) {
-                        echo'<li class="subnav">
-                            <a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a>
-                            </li>';
-                    }
-                        echo '<li class="subnav">
-                             <a href=' . URL . 'dataKppn/addDataKppnLvl3><i class="icon-globe icon-white"></i>data '.Session::get('user').'</a>
-                             </li>';
+                if (Session::get('role') == 1) {
+                    echo'<li class="nav">
+                        <a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a>
+                        </li>';
+                }
+				if (Session::get('role') == 2) {
+                    echo'<li class="nav">
+                        <a href=' . URL . 'dataKppn/addDataKppnLvl3>Data Harian</a>
+                        </li>';
                 }
                 ?>
                 <?php
@@ -99,10 +99,10 @@
                 if (Session::get('role') == 1 OR Session::get('role') == PKN) {
                     echo '<li class="nav">
                     <a href=' . URL . 'dataPkn/addDataPkn>PKN</a>
-                </li>';
+					</li>';
                 }
                 ?>
-                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> InputMasalah</a>
+                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> Input Masalah</a>
                 </li>';
 				?>
 				<li class="nav">
