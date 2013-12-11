@@ -56,13 +56,13 @@
                             <input type="hidden" name="sp2d_pkn" id="" size="8" value="<?php echo $sp2d_pkn ?>">
                             <input type="hidden" name="spt_pkn" id="" size="8" value="<?php echo $spt_pkn ?>">
                             <div id="wkppn" class="error"></div>
-                            <label>KPPN</label><input type="number" name="kppn" id="kppn" size="8" value="<?php echo $kppn ?>">
+                            <label class="isian" >KPPN</label><input type="number" name="kppn" id="kppn" size="8" value="<?php echo $kppn ?>">
                             <div id="wba" class="error"></div>
-                            <label>BA.999</label><input type="number" name="ba" id="ba" size="8" value="<?php echo $ba ?>">
+                            <label class="isian" >BA.999</label><input type="number" name="ba" id="ba" size="8" value="<?php echo $ba ?>">
                             <div id="wpkn" class="error"></div>
-                            <label>PKN</label><input type="number" name="pkn" id="pkn" size="8" value="<?php echo $pkn ?>">
+                            <label class="isian">PKN</label><input type="number" name="pkn" id="pkn" size="8" value="<?php echo $pkn ?>">
                             </select>
-                            <ul class="inline tengah">
+                            <ul class="inline tengah1">
                                 <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
                                 <li><input class="sukses" type="submit" name="upd_bobot" value="SIMPAN" onclick="return ceklvl1();"></li>
                             </ul>
@@ -74,7 +74,7 @@
 
 
 
-        <div class="kolom">
+        <div class="kolomx">
             <fieldset><legend><?php
                                   echo 'Level 2 KPPN';
                                   ?></legend>
@@ -94,15 +94,15 @@
                             <input type="hidden" name="sp2d_pkn" id="" size="8" value="<?php echo $sp2d_pkn ?>">
                             <input type="hidden" name="spt_pkn" id="" size="8" value="<?php echo $spt_pkn ?>">
                             <div id="wkonversi" class="error"></div>
-                            <label>Konversi</label><input type="number" name="konversi" id="konversi" size="8" value="<?php echo $konversi ?>">
+                            <label class="isian">Konversi</label><input type="number" name="konversi" id="konversi" size="8" value="<?php echo $konversi ?>">
                             <div id="wsp2d" class="error"></div>
-                            <label>SP2D</label><input type="number" name="sp2d" id="sp2d" size="8" value="<?php echo $sp2d ?>">
+                            <label class="isian">SP2D</label><input type="number" name="sp2d" id="sp2d" size="8" value="<?php echo $sp2d ?>">
                             <div id="wlhp" class="error"></div>
-                            <label>LHP</label><input type="number" name="lhp" id="lhp" size="8" value="<?php echo $lhp ?>">
+                            <label class="isian">LHP</label><input type="number" name="lhp" id="lhp" size="8" value="<?php echo $lhp ?>">
                             <div id="wrekon"  class="error"></div>
-                            <label>REKON</label><input type="number" name="rekon" id="rekon" size="50" value="<?php echo $rekon ?>">
+                            <label class="isian">REKON</label><input type="number" name="rekon" id="rekon" size="50" value="<?php echo $rekon ?>">
                             </select>
-                            <ul class="inline tengah">
+                            <ul class="inline tengah1">
                                 <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
                                 <li><input class="sukses" type="submit" name="upd_bobot" value="SIMPAN" onclick="return ceklvl2kppn();"></li>
                             </ul>
@@ -114,7 +114,7 @@
 
 
 
-        <div class="kolom">
+        <div class="kolomy">
             <fieldset><legend><?php
                                   echo 'Level 2 BA.999';
                                   ?></legend>
@@ -138,13 +138,13 @@
                             <input type="hidden" name="sp2d_pkn" id="" size="8" value="<?php echo $sp2d_pkn ?>">
                             <input type="hidden" name="spt_pkn" id="" size="8" value="<?php echo $spt_pkn ?>">
                             <div id="wspm_ba" class="error"></div>
-                            <label>SPM</label><input type="number" name="spm_ba" id="spm_ba" size="8" value="<?php echo $spm_ba ?>">
+                            <label class="isian">SPM</label><input type="number" name="spm_ba" id="spm_ba" size="8" value="<?php echo $spm_ba ?>">
                             <div id="wkontrak_ba" class="error"></div>
-                            <label>KONTRAK</label><input type="number" name="kontrak_ba" id="kontrak_ba" size="8" value="<?php echo $kontrak_ba ?>">
+                            <label class="isian">KONTRAK</label><input type="number" name="kontrak_ba" id="kontrak_ba" size="8" value="<?php echo $kontrak_ba ?>">
                             <div id="wrekon_ba"  class="error"></div>
-                            <label>REKON</label><input type="number" name="rekon_ba" id="rekon_ba" size="50" value="<?php echo $rekon_ba ?>">
+                            <label class="isian">REKON</label><input type="number" name="rekon_ba" id="rekon_ba" size="50" value="<?php echo $rekon_ba ?>">
                             </select>
-                            <ul class="inline tengah">
+                            <ul class="inline tengah1">
                                 <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
                                 <li><input class="sukses" type="submit" name="upd_bobot" value="SIMPAN" onclick="return ceklvl2ba();"></li>
                             </ul>
@@ -155,7 +155,7 @@
 
         </div>
 
-        <div class="kolom">
+        <div class="kolomz">
             <fieldset><legend><?php
                                   echo 'Level 2 PKN';
                                   ?></legend>
@@ -180,11 +180,11 @@
                             <input type="hidden" name="rekon_ba" id="" size="8" value="<?php echo $rekon_ba ?>">
                             <input type="hidden" name="kontrak_ba" id="" size="8" value="<?php echo $kontrak_ba ?>">
                             <div id="wsp2d_pkn" class="error"></div>
-                            <label>SP2D</label><input type="number" name="sp2d_pkn" id="sp2d_pkn" size="8" value="<?php echo $sp2d_pkn ?>">
+                            <label class="isian">SP2D</label><input type="number" name="sp2d_pkn" id="sp2d_pkn" size="8" value="<?php echo $sp2d_pkn ?>">
                             <div id="wspt_pkn" class="error"></div>
-                            <label>SPT</label><input type="number" name="spt_pkn" id="spt_pkn" size="8" value="<?php echo $spt_pkn ?>">
+                            <label class="isian">SPT</label><input type="number" name="spt_pkn" id="spt_pkn" size="8" value="<?php echo $spt_pkn ?>">
                             </select>
-                            <ul class="inline tengah">
+                            <ul class="inline tengah1">
                                 <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
                                 <li><input class="sukses" type="submit" name="upd_bobot" value="SIMPAN" onclick="return ceklvl2pkn();"></li>
                             </ul>

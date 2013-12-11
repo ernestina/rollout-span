@@ -223,7 +223,7 @@ header:before{
 
 .isian {
 	float: left;
-	width: 200px;
+	width: 120px;
 	text-align: right;
 	padding-right: 10px;
 	padding-top: 5px;
@@ -248,14 +248,18 @@ header:before{
 	padding-left: 10px;
 }	
 
+.tengah1 {
+	padding-left: 40px;
+}
 
-.kolom1, .kolom2 {
-	width: 50%;
+
+.kolomx, .kolomy, .kolomz {
+	width: 33%;
 	float: left;
 	margin: 20px 0px 0px 0px;
 }
 
-.kolom2 {
+.kolomz {
 	margin-right: 0%;
 	
 }
@@ -356,6 +360,10 @@ select[type="text"]{
 	color: #5a5854;
 	border: 1px solid #bdbdbd;
 	}
+select[type="text"]{
+	width: 222px;
+	height: 30px;
+}
 
 input[type="number"]{
 	width: 100px;

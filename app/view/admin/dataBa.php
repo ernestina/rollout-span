@@ -96,11 +96,11 @@
                         <thead>
                             <tr>
                                 <th rowspan="2" width="5%">No</th>
-                                <th rowspan="2" width="10%">Tanggal</th>
-                                <th rowspan="2" width="15%">Satker</th>
-                                <th colspan="3" width="20%">SPM</th>
-                                <th colspan="3" width="20%">Rekon</th>
-                                <th colspan="3" width="20%">Kontrak</th>
+                                <th rowspan="2" width="5%">Tanggal</th>
+                                <th rowspan="2" width="10%">Satker</th>
+                                <th colspan="3" width="25%">SPM</th>
+                                <th colspan="3" width="25%">Rekon</th>
+                                <th colspan="3" width="25%">Kontrak</th>
 								<?php if (Session::get('role') == 4) { 
 								echo "<th rowspan='2' width='10%'>Aksi</th>";
 								}
@@ -168,13 +168,13 @@
                                 }
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm_gagal() . "</td>";
-                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_spm_persen() . "%</b></td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon_gagal() . "</td>";
-                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_rekon_persen() . "%</b></td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
-                                echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_persen() . "%</td>";
+                                echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_kontrak_persen() . "%</b></td>";
 								if (Session::get('role') == 4) { 
                                 echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
