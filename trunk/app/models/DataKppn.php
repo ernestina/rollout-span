@@ -248,7 +248,7 @@ class DataKppn {
 
     public function get_d_kanwil(){
         $d_kppn = $this->get_d_kppn();
-        $sql = "SELECT kd_d_user FROM d_kanwil";
+        $sql = "SELECT kd_d_user FROM d_user WHERE kd_r_jenis=3";
         $d_kanwil = $this->db->select($sql);
         $return = array();
         foreach ($d_kppn as $key => $val) {
@@ -271,6 +271,13 @@ class DataKppn {
                     }
                 }
             }
+        }
+
+        /*
+         * menghapus data pertama tiap array data yg berisi data pembagi
+         */
+        for($i=0;$i<count($return);$i++){
+            $tmp = array_shift($return[$i]);
         }
         return $return;
     }
