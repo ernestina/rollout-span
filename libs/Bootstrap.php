@@ -14,7 +14,7 @@ class Bootstrap {
         $this->registry = $registry;
         Session::createSession();
         $logged = Session::get('loggedin');
-        $this->role = ($logged)?(Session::get('role')==1?'admin':(Session::get('role')==2?'kppn':(Session::get('role')==4?'ba':'pkn'))):'guest';
+        $this->role = ($logged)?(Session::get('role')==ADMIN?'admin':(Session::get('role')==KPPN?'kppn':(Session::get('role')==BA999?'ba':'pkn'))):'guest';
     }
     
     /*
@@ -65,8 +65,8 @@ class Bootstrap {
             $this->controller = new AuthController($this->registry);
             $this->method = 'index';
         }
-        //echo $this->role.",".$this->url[0].",".$this->method;
-        //var_dump($this->registry->auth->is_allowed($this->role,$this->url[0],$this->method));
+        echo $this->role.",".$this->url[0].",".$this->method;
+        var_dump($this->registry->auth->is_allowed($this->role,$this->url[0],$this->method));
         if(!$this->registry->auth->is_allowed($this->role,$this->url[0],$this->method) && $this->role!='guest'){
             $this->controller = new Index($this->registry);
             $this->method = 'index';
