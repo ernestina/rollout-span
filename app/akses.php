@@ -87,4 +87,16 @@ $akses['DataPkn'] = array(
     'delDataPkn',
     '__destruct'
 );
+
+/*
+ * akses Input Masalah
+ */
+$akses['DataMasalah'] = array(
+    '__construct',
+    'index',
+    'addDataMasalah',
+    'updDataMasalah',
+    'delDataMasalah',
+    '__destruct'
+);
 ?>

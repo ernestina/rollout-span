@@ -8,6 +8,7 @@ if (isset($this->d_ubah)) {
     echo 'Ubah Data Masalah';
 } else {
     echo 'Tambah Data Masalah';
+	echo Session::get('id_user');
 }
 ?></legend>
             <div id="form-input"><div class="kiri">

@@ -12,6 +12,7 @@ class DataMasalahController extends BaseController {
 
     public function __construct($registry) {
         parent::__construct($registry);
+		//$this->kd_d_user = Session::get('kd_d_user');
     }
 
     /*
@@ -31,7 +32,7 @@ class DataMasalahController extends BaseController {
         //$d_bobot = new DataBobot($this->registry);
         //$this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
         if (isset($_POST['add_d_mslh'])) {
-            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_user = Session::get('id_user');
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
            
@@ -67,7 +68,7 @@ class DataMasalahController extends BaseController {
         //$this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
         if (isset($_POST['upd_d_mslh'])) {
             $kd_d_mslh = $_POST['kd_d_mslh'];
-            $kd_d_user = $_POST['kd_d_user'];
+            $kd_d_user = Session::get('id_user');
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
          
