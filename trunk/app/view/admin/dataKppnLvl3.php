@@ -25,12 +25,17 @@
 		}
         ?>
         </h2></div>
-		<?php if (Session::get('role') == 2) {
+        <?php if(Session::get('role')==KPPN){ ?>
+			<div>
+				<input id="add_data" class="normal" type="button" onclick="addData('<?php echo Session::get('id_user');?>')" value="TAMBAH DATA">
+			</div></br></br></br>
+		<?php } ?>
+		<!--<?php if (Session::get('role') == 2) {
         echo "<div>
             <input id='add_data' class='normal' type='button' onclick='addData(".$id_user.")' value='TAMBAH DATA'>
         </div></br></br> ";
 		}
-		?>
+		?>-->
     <div class="kolom3" style="display:none">
         <fieldset ><legend><?php
 if (isset($this->d_ubah)) {
@@ -40,14 +45,16 @@ if (isset($this->d_ubah)) {
 }
 ?></legend>
             <div id="form_input"><div class="kiri">
-                    <form method="POST" action="<?php
+                    <form id="form_rekam">
+                        <!--method="POST" action="<?php
                 if (isset($this->d_ubah)) {
                     echo URL . 'dataKppn/updDataKppnLvl3';
                 } else {
                     $_SERVER['PHP_SELF'];
                 }
-?>">
+?>"-->
                               <?php
+                              echo "<input type='hidden' name='add_d_kppn' value=''>";  
                               if (isset($this->d_ubah)) {
                                   echo "<input type='hidden' name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
                               }
@@ -58,7 +65,7 @@ if (isset($this->d_ubah)) {
                               ?>
 
 
-                        <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="10002">
+                        <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo Session::get('id_user');?>">
                         <div>
 							
 							<div id="wtgl"  class="error"></div>
@@ -86,8 +93,8 @@ if (isset($this->d_ubah)) {
 						</div>
 						<div>
 							<ul class="inline tengah">
-								<li><input id="batal" class="normal" type="reset" onclick="" value="BATAL"></li>
-								<li><input id="submit" class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_kppn' : 'add_d_kppn'; ?>" value="SIMPAN" onClick=""></li>
+								<li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li>
+								<li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_kppn' : 'add_d_kppn'; ?>" value="SIMPAN" onClick=""></li>
 							</ul>
 						</div>
                     </form>
@@ -168,6 +175,8 @@ if (isset($this->d_ubah)) {
     </div>
 </div>
 <script type="text/javascript">
+    var add_data = false;
+    console.log(add_data);
     $(function(){
         hideErrorId();
         hideWarning();
@@ -181,13 +190,12 @@ if (isset($this->d_ubah)) {
 			emptyField();
 			hideErrorId();
 			hideWarning();
-			$('#form_input').dialog('close');
+			$('#form_input').dialog('close');    
+
 		})
 		
 		$('#submit').click(function(){
 			return cek();
-			$('#form_input').dialog('close');
-			
 		});
 		
 		<?php if(isset($this->d_ubah)){ ?>
@@ -195,17 +203,48 @@ if (isset($this->d_ubah)) {
 		<?php } ?>
         
     });
+    
+    function rekam(){
+        var formData = new FormData($('#form_rekam')[0]);
+        if(add_data){
+            var url = "<?php echo URL; ?>dataKppn/addDataKppnLvl3";
+        }else{
+            var url = "<?php echo URL; ?>dataKppn/updDataKppnLvl3";
+        }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            async: false,
+            success: function(){
+                $('#form_input').dialog('close');
+                window.location.href='<?php echo URL;?>dataKppn/addDataKppnLvl3'
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+}
 	
 	function emptyField(){
-		$('#kd_d_tanggal').val('');
-		$('#kd_d_konversi').val('');
-		$('#kd_d_konversi_gagal').val('');
-		$('#kd_d_sp2d').val('');
-		$('#kd_d_sp2d_gagal').val('');
-		$('#kd_d_rekon').val('');
-		$('#kd_d_rekon_gagal').val('');
-		$('#kd_d_lhp').val('');
-		$('#kd_d_lhp_gagal').val('');
+//		$('#kd_d_tgl').val(''); 
+        document.getElementById('kd_d_tgl').value= '';
+//		$('#kd_d_konversi').val('');
+        document.getElementById('kd_d_konversi').value= '';
+//		$('#kd_d_konversi_gagal').val('');
+        document.getElementById('kd_d_konversi_gagal').value= '';
+//		$('#kd_d_sp2d').val('');
+        document.getElementById('kd_d_sp2d').value= '';
+//		$('#kd_d_sp2d_gagal').val('');
+        document.getElementById('kd_d_sp2d_gagal').value= '';
+//		$('#kd_d_rekon').val('');
+        document.getElementById('kd_d_rekon').value= '';
+//		$('#kd_d_rekon_gagal').val('');
+        document.getElementById('kd_d_rekon_gagal').value= '';
+//		$('#kd_d_lhp').val('');
+        document.getElementById('kd_d_lhp').value= '';
+//		$('#kd_d_lhp_gagal').val('');
+        document.getElementById('kd_d_lhp_gagal').value= '';
 	}
 	
     function hideErrorId(){
@@ -277,6 +316,8 @@ if (isset($this->d_ubah)) {
 	
 	function addData(id_kppn){
 		//TODO open dialog form add data kppn
+        add_data = true;
+        console.log(add_data);
 		$('#form_input').dialog('open');
 	}
 
@@ -297,8 +338,7 @@ if (isset($this->d_ubah)) {
 		close: function(){
 			emptyField();
 			hideErrorId();
-			hideWarning();
-		}
+			hideWarning();		}
 		
 	});
     
@@ -444,6 +484,7 @@ if (isset($this->d_ubah)) {
         if(jml>0){
             return false
         }else{
+            rekam();
             return true;
         }
     }

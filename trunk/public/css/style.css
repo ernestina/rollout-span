@@ -314,7 +314,7 @@ input[type="email"] :focus, input[type="email"]:hover {
 select[type="text"] :focus, select[type="text"]:hover {
 	border: 1px solid #2f96b4;}
 
-input[type="submit"], input[type="reset"]{
+input[type="submit"], input[type="reset"], input[type="button"]{
 	color: #ffffff;
 	width: 100px;
 	cursor: pointer;
@@ -333,7 +333,7 @@ input[type="checkbox"] {
 	
 }
 
-input[type="button"], button{
+button{
 	color: #ffffff;
 	background-color: #49afcd;
 	width: 100px;
@@ -358,13 +358,13 @@ input.warning[type="submit"] :focus, input.warning[type="submit"]:hover {
 	background-color: #f89406;
 }
 
-input.normal[type="submit"] :focus, input.normal[type="submit"]:hover {
+input.normal[type="submit"] :focus, input.normal[type="submit"]:hover, input.normal[type="button"] :focus, input.normal[type="button"]:hover {
 	color: #ffffff;
 	background-color: #bd362f;
 	border-color: #bd362f;
 }
 
-button :focus, button:hover, input[type="button"] :focus, input[type="button"] :hover {
+button :focus, button:hover{
 	color: #ffffff;
 	background-color: #2f96b4;
 	border-color: #2f96b4;

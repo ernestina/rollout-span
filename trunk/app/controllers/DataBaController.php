@@ -75,7 +75,7 @@ class DataBaController extends BaseController {
         $d_ba = new DataBa($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_ba_lvl2();
-        if (isset($_POST['upd_d_ba'])) {
+        //if (isset($_POST['upd_d_ba'])) {
             $kd_d_ba = $_POST['kd_d_ba'];
             $kd_d_user = $_POST['kd_d_user'];
             $kd_d_user_ba = $_POST['kd_d_user_ba'];
@@ -108,7 +108,7 @@ class DataBaController extends BaseController {
                 $this->view->dasbor = $d_ba->get_d_ba_per_tgl();
                 header('location:' . URL . 'dataBa/addDataBa');
             }
-        }
+        //}
     }
 
     /*
