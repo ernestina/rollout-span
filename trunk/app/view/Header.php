@@ -104,21 +104,21 @@
                         <a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a>
                         </li>';
                 }
-				if (Session::get('role') == 2) {
+				if (Session::get('role') == KPPN) {
                     echo'<li class="nav">
                         <a href=' . URL . 'dataKppn/addDataKppnLvl3>Data Harian</a>
                         </li>';
                 }
                 ?>
                 <?php
-                if (Session::get('role') == 1 OR Session::get('role') == BA999) {
+                if (Session::get('role') == ADMIN OR Session::get('role') == BA999) {
                     echo '<li class="nav">
                     <a href=' . URL . 'dataBa/addDataBa>BA 999</a>
                 </li>';
                 }
                 ?>
                 <?php
-                if (Session::get('role') == 1 OR Session::get('role') == PKN) {
+                if (Session::get('role') == ADMIN OR Session::get('role') == PKN) {
                     echo '<li class="nav">
                     <a href=' . URL . 'dataPkn/addDataPkn>PKN</a>
 					</li>';

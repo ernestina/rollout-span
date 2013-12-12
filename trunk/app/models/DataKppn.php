@@ -248,26 +248,51 @@ class DataKppn {
 
     public function get_d_kanwil(){
         $d_kppn = $this->get_d_kppn();
-        $sql = "SELECT kd_d_user FROM d_user WHERE kd_r_jenis=3";
+        $sql = "SELECT kd_d_user, nama_user FROM d_user WHERE kd_r_jenis=3";
         $d_kanwil = $this->db->select($sql);
         $return = array();
         foreach ($d_kppn as $key => $val) {
             foreach ($d_kanwil as $value) {
                 $kd_kppn = (int) $val->get_kd_d_user();
                 $kd_kanwil = (int) $value['kd_d_user'];
+                $nm_kanwil = $value['nama_user'];
                 $is_data = $kd_kppn<=($kd_kanwil+999) && $kd_kppn>$kd_kanwil;
                 if($is_data){
-                    $data_insert = .25*$val->get_kd_d_konversi_persen() +
+                    /*echo $val->get_kd_d_konversi_persen()." ".$val->get_kd_d_sp2d_persen()." ".$val->get_kd_d_lhp_persen()." ".$val->get_kd_d_rekon_persen()." ".
+                                    ($val->get_kd_d_konversi_persen()/4 +
+                                    $val->get_kd_d_sp2d_persen()/5+
+                                    ($val->get_kd_d_lhp_persen()*3/10)+
+                                    ($val->get_kd_d_rekon_persen()/4))."--</br>";*/
+
+                    $data_insert = (.25*$val->get_kd_d_konversi_persen() +
                                     .20*$val->get_kd_d_sp2d_persen()+
                                     .30*$val->get_kd_d_lhp_persen()+
-                                    .25*$val->get_kd_d_rekon_persen();
+                                    .25*$val->get_kd_d_rekon_persen());
                     if(array_key_exists($kd_kanwil, $return)){
-                        $return[$kd_kanwil][0]++;
-                        $return[$kd_kanwil][1] = ($return[$kd_kanwil][1]+$data_insert)/$return[$kd_kanwil][0];
+                        $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['sum'];
+                        $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['sum'];
+                        $tmp_sp2d = $return[$kd_kanwil]['sp2d']*$return[$kd_kanwil]['sum'];
+                        $tmp_lhp = $return[$kd_kanwil]['lhp']*$return[$kd_kanwil]['sum'];
+                        $tmp_rekon = $return[$kd_kanwil]['rekon']*$return[$kd_kanwil]['sum'];
+                        $return[$kd_kanwil]['jml_data']++;
+                        $return[$kd_kanwil]['konversi'] = ($tmp_konversi+$val->get_kd_d_konversi_persen())/$return[$kd_kanwil]['sum'];
+                        $return[$kd_kanwil]['sp2d'] = ($tmp_sp2d+$val->get_kd_d_sp2d_persen())/$return[$kd_kanwil]['sum'];
+                        $return[$kd_kanwil]['lhp'] = ($tmp_lhp+$val->get_kd_d_lhp_persen())/$return[$kd_kanwil]['sum'];
+                        $return[$kd_kanwil]['rekon'] = ($tmp_rekon+$val->get_kd_d_rekon_persen())/$return[$kd_kanwil]['sum'];
+                        $return[$kd_kanwil]['sum'] = ($tmp_value+$data_insert)/$return[$kd_kanwil]['sum'];
                     }else{
+                        $tmp = explode(" ", $nm_kanwil);
+                        $len = count($tmp);
+                        $singkat_kanwil = $tmp[$len-1];
                         $return[$kd_kanwil] = array();
-                        $return[$kd_kanwil][] = 1;
-                        $return[$kd_kanwil][] = $data_insert;
+                        $return[$kd_kanwil]['jml_data'] = 1;
+                        $return[$kd_kanwil]['nm_kanwil'] = $nm_kanwil;
+                        $return[$kd_kanwil]['singkat_kanwil'] = $singkat_kanwil;
+                        $return[$kd_kanwil]['konversi'] = $val->get_kd_d_konversi_persen();
+                        $return[$kd_kanwil]['sp2d'] = $val->get_kd_d_sp2d_persen();
+                        $return[$kd_kanwil]['lhp'] = $val->get_kd_d_lhp_persen();
+                        $return[$kd_kanwil]['rekon'] = $val->get_kd_d_rekon_persen();
+                        $return[$kd_kanwil]['sum'] = $data_insert;
                     }
                 }
             }
@@ -276,8 +301,8 @@ class DataKppn {
         /*
          * menghapus data pertama tiap array data yg berisi data pembagi
          */
-        for($i=0;$i<count($return);$i++){
-            $tmp = array_shift($return[$i]);
+        foreach ($return as $key => $value) {
+            $tmp = array_shift($return[$key]);
         }
         return $return;
     }
