@@ -29,8 +29,8 @@
     var mod = min%10;
     min -= mod;
     var step = (100-min)/10; 
-    console.log(label);
-    console.log(data_bar);
+    //console.log(label);
+    //console.log(data_bar);
     var data = {
     labels : label,
     datasets : [
