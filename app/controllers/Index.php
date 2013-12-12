@@ -12,7 +12,7 @@ class Index extends BaseController{
     }
     
     public function index(){
-        echo Session::get('role');
+        //echo Session::get('role');
         if (Session::get('role') == ADMIN) {
             $d_bobot = new DataBobot($this->registry);
             $this->view->bobot = $d_bobot->get_bobot();

@@ -77,6 +77,16 @@ class DataUser {
         return $this;
     }
 
+    public function get_kanwil_name(){
+        $sql = "SELECT nama_user FROM d_user WHERE kd_r_jenis=3";
+        $data = $this->db->select($sql);
+        $return = array();
+        foreach ($data as $value) {
+            $return[] = $value['nama_user'];
+        }
+        return $return;
+    }
+
     /*
      * tambah data Data Tetap
      * param array data array key=>value, nama kolom=>data

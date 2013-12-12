@@ -29,10 +29,10 @@ class DataKppnController extends BaseController {
     public function viewDataKppnLvl1() {
         $d_kppn = new DataKppn($this->registry);
         $d_bobot = new DataBobot($this->registry);
-        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
-        $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
-        $this->view->data = $d_kppn->get_d_kppn_lvl1();
-        $this->view->render('admin/dataKppnLvl1');
+        $d_user = new DataUser($this->registry);
+        $this->view->data = $d_kppn->get_d_kanwil(); print_r($d_kppn->get_d_kanwil());
+        $this->view->d_kanwil = $d_user->get_kanwil_name();
+        $this->view->render('admin/dataEselonI');
     }
 
     /*
@@ -61,7 +61,7 @@ class DataKppnController extends BaseController {
 
     /*
      * view Data KPPN dalam Kanwil 
-     */
+     
 
     public function viewDataKppnLvl3($id_kanwil) { 
         $d_kppn = new DataKppn($this->registry);
@@ -71,6 +71,7 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn();
         $this->view->render('admin/dataKppnLvl3');
     }
+    */
 
     /*
      * view Data KPPN  
