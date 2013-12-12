@@ -37,20 +37,14 @@ foreach ($this->bobot as $bot) {
     $bobot_spt_pkn = $bot->get_spt_pkn() / 100;
 }
 
-$nokppn2 = 0;
-$nokppn6 = 0;
+$nokppn = 0;
 foreach ($this->kppn as $valkppn) {
     $unit = $valkppn->get_kd_d_user();
     $persen = ceil(($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon));
-    if ($unit == 10002) {
-        $nilai_kppn2 += $persen;
-        $nokppn2++;
-    } elseif ($unit == 10006) {
-        $nilai_kppn6 += $persen;
-        $nokppn6++;
-    }
+        $nilai_kppn += $persen;
+        $nokppn++;
 }
-$nilai_kppn = ceil(($nilai_kppn2 / $nokppn2 + $nilai_kppn6 / $nokppn6) / 2);
+$nilai_kppn = ceil($nilai_kppn / $nokppn);
 
 $noba = 0;
 foreach ($this->ba as $valba) {

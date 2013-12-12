@@ -56,13 +56,25 @@ class DataBa {
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
-            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+			if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
+			    $d_ba->set_kd_d_spm_persen(100);
+			} else {
+			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+			}
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
             $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_ba->set_kd_d_rekon_persen(100);
+			} else {
+			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
             $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
             $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
-            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
+			    $d_ba->set_kd_d_kontrak_persen(100);
+			} else {
+			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+			}
 
             $data[] = $d_ba;
             //var_dump($d_ba);
@@ -84,9 +96,21 @@ class DataBa {
             $d_ba = new $this($this->registry);
             $d_ba->set_kd_d_user($val['kd_d_user']);
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
-            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
-            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
-            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+            if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
+			    $d_ba->set_kd_d_spm_persen(100);
+			} else {
+			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+			}
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_ba->set_kd_d_rekon_persen(100);
+			} else {
+			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
+            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
+			    $d_ba->set_kd_d_kontrak_persen(100);
+			} else {
+			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+			}
 
             $data[] = $d_ba;
             //var_dump($this);
@@ -115,13 +139,25 @@ class DataBa {
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
-            $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+            if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
+			    $d_ba->set_kd_d_spm_persen(100);
+			} else {
+			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
+			}
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
             $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_ba->set_kd_d_rekon_persen(100);
+			} else {
+			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
             $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
             $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
-            $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
+			    $d_ba->set_kd_d_kontrak_persen(100);
+			} else {
+			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
+			}
         }
         return $this;
     }
