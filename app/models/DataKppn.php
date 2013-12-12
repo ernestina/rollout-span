@@ -251,6 +251,18 @@ class DataKppn {
         $sql = "SELECT kd_d_user, nama_user FROM d_user WHERE kd_r_jenis=3";
         $d_kanwil = $this->db->select($sql);
         $return = array();
+        $bobot = new DataBobot($this->registry);
+        $bobot = $bobot->get_bobot();
+        $k=0;
+        $s=0;
+        $l=0;
+        $r=0;
+        foreach ($bobot as $bot) {
+            $k=$bot->get_konversi()/100;
+            $s=$bot->get_sp2d()/100;
+            $l=$bot->get_lhp()/100;
+            $r=$bot->get_rekon()/100;
+        }
         foreach ($d_kppn as $key => $val) {
             foreach ($d_kanwil as $value) {
                 $kd_kppn = (int) $val->get_kd_d_user();
@@ -264,10 +276,10 @@ class DataKppn {
                                     ($val->get_kd_d_lhp_persen()*3/10)+
                                     ($val->get_kd_d_rekon_persen()/4))."--</br>";*/
 
-                    $data_insert = (.25*$val->get_kd_d_konversi_persen() +
-                                    .20*$val->get_kd_d_sp2d_persen()+
-                                    .30*$val->get_kd_d_lhp_persen()+
-                                    .25*$val->get_kd_d_rekon_persen());
+                    $data_insert = ($k*$val->get_kd_d_konversi_persen() +
+                                    $s*$val->get_kd_d_sp2d_persen()+
+                                    $l*$val->get_kd_d_lhp_persen()+
+                                    $r*$val->get_kd_d_rekon_persen());
                     if(array_key_exists($kd_kanwil, $return)){
                         $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['sum'];
                         $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['sum'];

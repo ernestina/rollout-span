@@ -30,7 +30,7 @@ class DataKppnController extends BaseController {
         $d_kppn = new DataKppn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $d_user = new DataUser($this->registry);
-        $this->view->data = $d_kppn->get_d_kanwil(); print_r($d_kppn->get_d_kanwil());
+        $this->view->data = $d_kppn->get_d_kanwil();
         $this->view->d_kanwil = $d_user->get_kanwil_name();
         $this->view->render('admin/dataEselonI');
     }
