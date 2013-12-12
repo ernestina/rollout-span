@@ -72,16 +72,32 @@ class DataKppn {
             $d_kppn->set_kd_d_tgl(date("d/m/y", strtotime($val['kd_d_tgl'])));
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
-            $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+			if (($val['kd_d_konversi'])+($val['kd_d_konversi_gagal'])==0){
+			    $d_kppn->set_kd_d_konversi_persen(100);
+			} else {
+				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+			}
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-            $d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+            if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
+			    $d_kppn->set_kd_d_sp2d_persen(100);
+			} else {
+				$d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+			}
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
             $d_kppn->set_kd_d_lhp_gagal($val['kd_d_lhp_gagal']);
-            $d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+            if (($val['kd_d_lhp'])+($val['kd_d_lhp_gagal'])==0){
+			    $d_kppn->set_kd_d_lhp_persen(100);
+			} else {
+				$d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+			}
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_kppn->set_kd_d_rekon_persen(100);
+			} else {
+				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
@@ -198,16 +214,32 @@ class DataKppn {
             $d_kppn->set_kd_d_tgl(date("d/m/y", strtotime($val['kd_d_tgl'])));
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
-            $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+			if (($val['kd_d_konversi'])+($val['kd_d_konversi_gagal'])==0){
+			    $d_kppn->set_kd_d_konversi_persen(100);
+			} else {
+				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+			}
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-            $d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+            if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
+			    $d_kppn->set_kd_d_sp2d_persen(100);
+			} else {
+				$d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+			}
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
             $d_kppn->set_kd_d_lhp_gagal($val['kd_d_lhp_gagal']);
-            $d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+            if (($val['kd_d_lhp'])+($val['kd_d_lhp_gagal'])==0){
+			    $d_kppn->set_kd_d_lhp_persen(100);
+			} else {
+				$d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+			}
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_kppn->set_kd_d_rekon_persen(100);
+			} else {
+				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
 
             $data[] = $d_kppn;
             //var_dump($d_kppn);
@@ -231,10 +263,26 @@ class DataKppn {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_user($val['kd_d_user']);
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
-            $d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
-            $d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
-            $d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
-            $d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+            if (($val['kd_d_konversi'])+($val['kd_d_konversi_gagal'])==0){
+			    $d_kppn->set_kd_d_konversi_persen(100);
+			} else {
+				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
+			}
+            if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
+			    $d_kppn->set_kd_d_sp2d_persen(100);
+			} else {
+				$d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
+			}
+            if (($val['kd_d_lhp'])+($val['kd_d_lhp_gagal'])==0){
+			    $d_kppn->set_kd_d_lhp_persen(100);
+			} else {
+				$d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
+			}
+            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
+			    $d_kppn->set_kd_d_rekon_persen(100);
+			} else {
+				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
+			}
             $data[] = $d_kppn;
             //var_dump($d_kppn);
         }

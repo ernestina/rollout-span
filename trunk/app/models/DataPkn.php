@@ -51,10 +51,18 @@ class DataPkn {
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+			if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
+			   $d_pkn->set_kd_d_sp2d_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+			}
             $d_pkn->set_kd_d_spt($val['kd_d_spt']);
             $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
-            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
+			   $d_pkn->set_kd_d_spt_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+			}
 
             $data[] = $d_pkn;
             //var_dump($d_pkn);
@@ -74,8 +82,16 @@ class DataPkn {
             $d_pkn = new $this($this->registry);
             $d_pkn->set_kd_d_user($val['kd_d_user']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
-            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
-            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
+			   $d_pkn->set_kd_d_sp2d_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+			}
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
+			   $d_pkn->set_kd_d_spt_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+			}
 
             $data[] = $d_pkn;
             //var_dump($d_pkn);
@@ -103,10 +119,18 @@ class DataPkn {
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-            $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
+			   $d_pkn->set_kd_d_sp2d_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+			}
             $d_pkn->set_kd_d_spt($val['kd_d_spt']);
             $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
-            $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
+			   $d_pkn->set_kd_d_spt_persen(100);
+			} else {
+			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+			}
         }
         return $this;
     }
