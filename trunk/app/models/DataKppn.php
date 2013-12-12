@@ -159,26 +159,89 @@ class DataKppn {
 	
 	public function get_d_kppn_lvl2($kanwil=null, $limit = null, $batas = null) {
 		$plus=$kanwil+999;
-        $sql = "SELECT 
+        /*$sql = "SELECT 
 				a.kd_d_user, 
 				substr(b.nama_user,6) nama_user,
 				substr(c.nama_user, 20 ) nama_kanwil,
 				avg(kd_d_konversi/(kd_d_konversi+kd_d_konversi_gagal)*100) as kd_d_konversi_persen ,
 				avg(kd_d_sp2d/(kd_d_sp2d+kd_d_sp2d_gagal)*100) as kd_d_sp2d_persen ,
 				avg(kd_d_lhp/(kd_d_lhp+kd_d_lhp_gagal)*100) as kd_d_lhp_persen ,
-				avg(kd_d_rekon/(kd_d_rekon+kd_d_rekon_gagal)*100) as kd_d_rekon_persen
-				FROM d_kppn a 
+				avg(kd_d_rekon/(kd_d_rekon+kd_d_rekon_gagal)*100) as kd_d_rekon_persen";
+        */
+        $sql = "SELECT 
+                a.kd_d_user, 
+                substr(b.nama_user,6) nama_user,
+                substr(c.nama_user, 20 ) nama_kanwil,
+                kd_d_konversi, kd_d_konversi_gagal,
+                kd_d_sp2d, kd_d_sp2d_gagal,
+                kd_d_lhp,kd_d_lhp_gagal,
+                kd_d_rekon,kd_d_rekon_gagal";        
+
+		$sql .= " FROM d_kppn a 
 				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user
 				LEFT JOIN d_user c ON c.kd_d_user =".$kanwil."
-				WHERE (a.kd_d_user between ".$kanwil." and ".$plus.")
-				GROUP BY a.kd_d_user";
+				WHERE (a.kd_d_user between ".$kanwil." and ".$plus.")";
+				//GROUP BY a.kd_d_user";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
-        $result = $this->db->select($sql);
-        
+
+        $d_kppn = $this->db->select($sql); //print_r($d_kppn);
+        $result = array();
+        foreach ($d_kppn as $value) {
+            $kd_kppn = $value['kd_d_user'];
+            //konversi
+            if($value['kd_d_konversi']+$value['kd_d_konversi_gagal']==0){
+                $konversi = 100;
+            }else{
+                $konversi = $value['kd_d_konversi']/($value['kd_d_konversi']+$value['kd_d_konversi_gagal'])*100;    
+            }
+
+            //sp2d
+            if($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal']==0){
+                $sp2d = 100;
+            }else{
+                $sp2d = $value['kd_d_sp2d']/($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal'])*100;    
+            }
+
+            //lhp
+            if($value['kd_d_lhp']+$value['kd_d_lhp_gagal']==0){
+                $lhp = 100;
+            }else{
+                $lhp = $value['kd_d_lhp']/($value['kd_d_lhp']+$value['kd_d_lhp_gagal'])*100;    
+            }
+
+            //rekon
+            if($value['kd_d_rekon']+$value['kd_d_rekon_gagal']==0){
+                $rekon = 100;
+            }else{
+                $rekon = $value['kd_d_rekon']/($value['kd_d_rekon']+$value['kd_d_rekon_gagal'])*100;    
+            }
+            if(array_key_exists($kd_kppn, $result)){
+                $result[$kd_kppn]['count_data']++;
+                $konversi = (($result[$kd_kppn]['kd_d_konversi_persen']*($result[$kd_kppn]['count_data']-1))+$konversi)/ $result[$kd_kppn]['count_data'];
+                $sp2d = (($result[$kd_kppn]['kd_d_sp2d_persen']*($result[$kd_kppn]['count_data']-1))+$sp2d)/ $result[$kd_kppn]['count_data'];
+                $lhp = (($result[$kd_kppn]['kd_d_lhp_persen']*($result[$kd_kppn]['count_data']-1))+$lhp)/ $result[$kd_kppn]['count_data'];
+                $rekon = (($result[$kd_kppn]['kd_d_rekon_persen']*($result[$kd_kppn]['count_data']-1))+$rekon)/ $result[$kd_kppn]['count_data'];
+                $result[$kd_kppn]['kd_d_konversi_persen'] = ceil($konversi);
+                $result[$kd_kppn]['kd_d_sp2d_persen'] = ceil($sp2d);
+                $result[$kd_kppn]['kd_d_lhp_persen'] = ceil($lhp);
+                $result[$kd_kppn]['kd_d_rekon_persen'] = ceil($rekon);
+            }else{
+                $result[$kd_kppn] = array();
+                $result[$kd_kppn]['count_data'] = 1;
+                $result[$kd_kppn]['nama_user'] = $value['nama_user'];
+                $result[$kd_kppn]['nama_kanwil'] = $value['nama_kanwil'];
+                $result[$kd_kppn]['kd_d_user'] = $value['kd_d_user'];
+                $result[$kd_kppn]['kd_d_konversi_persen'] = $konversi;
+                $result[$kd_kppn]['kd_d_sp2d_persen'] = $sp2d;
+                $result[$kd_kppn]['kd_d_lhp_persen'] = $lhp;
+                $result[$kd_kppn]['kd_d_rekon_persen'] = $rekon;
+            }
+            
+        }
         $data = array();   
-        foreach ($result as $val) {
+        foreach ($result as $key=> $val) {
             $d_kppn = new $this($this->registry);
             $d_kppn->set_kd_d_kppn($val['nama_user']);
 			$d_kppn->set_kd_d_kanwil($val['nama_kanwil']);
@@ -306,7 +369,7 @@ class DataKppn {
         $l=0;
         $r=0;
         foreach ($bobot as $bot) {
-            $k=$bot->get_konversi()/100;
+            $k=$bot->get_konversi()/100; 
             $s=$bot->get_sp2d()/100;
             $l=$bot->get_lhp()/100;
             $r=$bot->get_rekon()/100;
@@ -343,7 +406,12 @@ class DataKppn {
                     }else{
                         $tmp = explode(" ", $nm_kanwil);
                         $len = count($tmp);
-                        $singkat_kanwil = $tmp[$len-1];
+                        if($tmp[$len-1]=='' || is_null($tmp[$len-1])){
+                            $singkat_kanwil = $tmp[$len-2];
+                        }else{
+                            $singkat_kanwil = $tmp[$len-1];
+                        }
+                        //$singkat_kanwil = $tmp[$len-1]; echo $singkat_kanwil."<br>";
                         $return[$kd_kanwil] = array();
                         $return[$kd_kanwil]['jml_data'] = 1;
                         $return[$kd_kanwil]['nm_kanwil'] = $nm_kanwil;
