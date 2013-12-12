@@ -64,10 +64,9 @@ if (isset($this->d_ubah)) {
                               }
                               ?>
 
-
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo Session::get('id_user');?>">
                         <div>
-							
+                            <div id="wdouble" class="error"></div>							
 							<div id="wtgl"  class="error"></div>
 							<label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
 							<div class="kolom1" style="width:150px">
@@ -341,6 +340,20 @@ if (isset($this->d_ubah)) {
 			hideWarning();		}
 		
 	});
+
+    function isDoubleData(){
+        var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
+        $.post("<?php echo URL;?>dataKppn/is_double_data",{tgl:tgl_input},
+            function(data){
+                if(data > 0){
+                    console.log(data);
+                    var warn = "data pernah direkam, lakukan ubah data!";
+                    $('#wdouble').fadeIn();
+                    $('#wdouble').html(warn);
+                    return false; 
+                }
+        });
+    }
     
     function cek(){
         var pattern = '^[0-9]+$';
@@ -484,6 +497,11 @@ if (isset($this->d_ubah)) {
         if(jml>0){
             return false
         }else{
+            if(add_data){
+                return isDoubleData();
+            }
+            console.log('test');
+            $('#form_input').dialog('close');
             rekam();
             return true;
         }
