@@ -15,7 +15,7 @@
     <div id="form">
         <h2>DATA 
         <?php 
-		if (Session::get('role') == 2) {
+		if (Session::get('role') == KPPN) {
             echo strtoupper(Session::get('user'));
 		} else {
 			foreach ($this->data as $val){ 
@@ -118,7 +118,7 @@ if (isset($this->d_ubah)) {
                                 <th colspan="3">SP2D</th>
                                 <th colspan="3">LHP</th>
                                 <th colspan="3">Rekon</th>
-								<?php if (Session::get('role') == 2) { 
+								<?php if (Session::get('role') == KPPN) { 
                                 echo "<th rowspan='2' width ='20%'>Aksi</th>";
 								}
 								?>
@@ -158,7 +158,7 @@ if (isset($this->d_ubah)) {
                                 echo "<td>" . $val->get_kd_d_rekon() . "</td>";
                                 echo "<td>" . $val->get_kd_d_rekon_gagal() . "</td>";
                                 echo "<td><b>" . $val->get_kd_d_rekon_persen() . "%</b></td>";
-								if (Session::get('role') == 2) { 
+								if (Session::get('role') == KPPN) { 
 									echo "<td><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
 									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
 								}
@@ -343,10 +343,10 @@ if (isset($this->d_ubah)) {
 
     function isDoubleData(){
         var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
-        $.post("<?php echo URL;?>dataKppn/is_double_data",{tgl:tgl_input},
+        $.post("<?php echo URL;?>dataKppn/is_double_data",{tgl:""+tgl_input+""},
             function(data){
+                var count = parseInt(data);
                 if(data > 0){
-                    console.log(data);
                     var warn = "data pernah direkam, lakukan ubah data!";
                     $('#wdouble').fadeIn();
                     $('#wdouble').html(warn);
@@ -500,8 +500,7 @@ if (isset($this->d_ubah)) {
             if(add_data){
                 return isDoubleData();
             }
-            console.log('test');
-            $('#form_input').dialog('close');
+            //$('#form_input').dialog('close');
             rekam();
             return true;
         }

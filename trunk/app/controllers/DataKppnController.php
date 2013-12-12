@@ -135,9 +135,9 @@ class DataKppnController extends BaseController {
      * cek data dobel ketika input data
      */
 
-    public function is_double_data($tgl){
+    public function is_double_data(){
         $kd_user = Session::get('id_user');
-        //$tgl = $_POST['tgl'];
+        $tgl = $_POST['tgl'];
         $kppn = new DataKppn($this->registry);
         $count = $kppn->is_double_data($kd_user,$tgl);
         echo $count;
