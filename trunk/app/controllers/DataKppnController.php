@@ -125,10 +125,22 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_kppn($id);
             $this->view->d_ubah = $d_kppn->get_d_kppn_by_id($d_kppn);
         }
-        print_r($d_kppn->get_d_kanwil());
+        //print_r($d_kppn->get_d_kanwil());
         $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl(Session::get('id_user'));
         $this->view->data = $d_kppn->get_d_kppn(Session::get('id_user'));
         $this->view->render('admin/dataKppnLvl3');
+    }
+
+    /*
+     * cek data dobel ketika input data
+     */
+
+    public function is_double_data($tgl){
+        $kd_user = Session::get('id_user');
+        //$tgl = $_POST['tgl'];
+        $kppn = new DataKppn($this->registry);
+        $count = $kppn->is_double_data($kd_user,$tgl);
+        echo $count;
     }
     
     /*
