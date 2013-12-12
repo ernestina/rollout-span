@@ -281,11 +281,11 @@ class DataKppn {
                                     $l*$val->get_kd_d_lhp_persen()+
                                     $r*$val->get_kd_d_rekon_persen());
                     if(array_key_exists($kd_kanwil, $return)){
-                        $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['sum'];
-                        $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['sum'];
-                        $tmp_sp2d = $return[$kd_kanwil]['sp2d']*$return[$kd_kanwil]['sum'];
-                        $tmp_lhp = $return[$kd_kanwil]['lhp']*$return[$kd_kanwil]['sum'];
-                        $tmp_rekon = $return[$kd_kanwil]['rekon']*$return[$kd_kanwil]['sum'];
+                        $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['jml_data'];
+                        $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['jml_data'];
+                        $tmp_sp2d = $return[$kd_kanwil]['sp2d']*$return[$kd_kanwil]['jml_data'];
+                        $tmp_lhp = $return[$kd_kanwil]['lhp']*$return[$kd_kanwil]['jml_data'];
+                        $tmp_rekon = $return[$kd_kanwil]['rekon']*$return[$kd_kanwil]['jml_data'];
                         $return[$kd_kanwil]['jml_data']++;
                         $return[$kd_kanwil]['konversi'] = ($tmp_konversi+$val->get_kd_d_konversi_persen())/$return[$kd_kanwil]['sum'];
                         $return[$kd_kanwil]['sp2d'] = ($tmp_sp2d+$val->get_kd_d_sp2d_persen())/$return[$kd_kanwil]['sum'];
