@@ -1,18 +1,19 @@
 <h2>DATA PKN</h2>
 <center><?php $this->load('dasbor/pknLvl2') ?></center>
 <?php if(Session::get('role')==PKN) { ?>
+<div id="top">
 	<div>
 		<input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
-	</div></br></br>
+	</div>
 <?php } ?>
-<!--<div id="top">
+
     <div id="form">
 	<div>
 	<?php if (Session::get('role') == 5) { 
 	echo "<input id='add_data' class='normal' type='button' onclick='addData()' value='TAMBAH DATA'>";
 	}
 	?>
-</div></br></br>-->
+</div></br></br>
     <div class="kolom3" style="display:none">
         <fieldset><legend><?php
 if (isset($this->d_ubah)) {
@@ -118,6 +119,7 @@ if (isset($this->d_ubah)) {
             </div>
         </fieldset>
     </div>
+</div>
 </div>
 </div>
 <script type="text/javascript">

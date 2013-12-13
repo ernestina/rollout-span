@@ -283,6 +283,11 @@ header:before{
 	margin: 0px 0px 0px 40px;
 }
 
+.kolom4 {
+	margin-right: 0%;
+	border: 1px solid #5bb75b;
+}
+
 .kolom5 {
 	float:right;
 	width: 50%;
@@ -400,7 +405,7 @@ input[type="checkbox"] {
 	
 }
 
-input[type="button"]{
+input[type="button"], a.modal {
 	color: #ffffff;
 	background-color: #49afcd;
 	width: 100px;
@@ -410,7 +415,12 @@ input[type="button"]{
 	margin-bottom: 0px;
 	border: 1px solid #49afcd
 }
-
+a.modal {
+	text-decoration: none;
+	padding: 5px;
+	border: 2px solid #49afcd;
+	border-radius: 5px;
+}
 input[type="button"].lihat {
 	width: 65px;
 }
@@ -1132,7 +1142,7 @@ th, td {
 /*coba modal*/
 .modalDialog {
 		position: fixed;
-		font-family: Menu;
+		font-family: Nexa;
 		top: 0;
 		right: 0;
 		bottom: 0;
@@ -1171,7 +1181,7 @@ th, td {
 		width: 425px;
 		position: relative;
 		margin: 10% auto;
-		padding: 5px 20px 13px 20px;
+		padding: 5px 0px 13px 0px;
 		border-radius: 5px;
 		background: #fff;
 		/*background: -moz-linear-gradient(#fff, #999);
