@@ -1,18 +1,27 @@
 <h2>DATA PERMASALAHAN</h2>
-<!--center><?php //$this->load('dasbor/pknLvl2') ?></center-->
 <div id="top">
-    <div id="form"></div>
-    <div class="kolom3">
-        <fieldset><legend><?php
-if (isset($this->d_ubah)) {
-    echo 'Ubah Data Masalah';
-} else {
-    echo 'Tambah Data Masalah';
-	echo Session::get('id_user');
-}
-?></legend>
-            <div id="form-input"><div class="kiri">
-                    <form method="POST" action="<?php
+<?php if (Session::get('role') != ADMIN) { ?>
+	<a href="#oModal" class="modal">INPUT MASALAH</a><br><br>
+	<div id="oModal" class="modalDialog" >
+	<div>
+		<!--h2>INPUT MASALAH</h2-->
+		<h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px">
+		<?php
+				if (isset($this->d_ubah)) {
+					echo 'Ubah Data Masalah';
+				} else {
+					echo 'Tambah Data Masalah';
+					//echo Session::get('id_user');
+				}
+		?></h2>
+	
+		<a href="<?php if (isset($this->d_ubah)) {
+                    echo URL . 'dataMasalah/addDataMasalah';
+                } else {
+                    $_SERVER['PHP_SELF'];
+                } ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+	<div id="top">
+		<form method="POST" action="<?php
                 if (isset($this->d_ubah)) {
                     echo URL . 'dataMasalah/updDataMasalah';
                 } else {
@@ -28,35 +37,34 @@ if (isset($this->d_ubah)) {
                                   echo "<div class=error>" . $this->error . "</div>";
                               }
                               ?>
-
+		
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
                         
 						<div id="wtgl"  class="error"></div>
-						<label>Tanggal</label><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>">
+						<label class="isian">Tanggal</label><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>">
                         
 						<div id="wmslh"  class="error"></div>
-						<label>Uraian Permasalahan</label><textarea type="text" name="masalah" id="masalah" rows="7" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : ''); ?>"></textarea>
+						<label class="isian">Uraian Permasalahan</label><textarea type="text" name="masalah" id="masalah" rows="7" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : ''); ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
                         
-                        <ul class="inline tengah">
-                            <li><input class="normal" type="submit" onclick="" value="BATAL"></li>
+                        <ul class="inline" style="margin-left: 200px">
                             <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick="return cek();"></li>
+							<!--li><input class="normal" type="reset" onclick="" value="BATAL"></li-->
                         </ul>
                     </form>
-                </div>
-            </div>
-        </fieldset>
-    </div>
-    <div class="kolom4" id="table">
+		</div>
+	</div>
+</div>
+	
+<?php } ?>
+		<div class="kolom" id="table">
         <fieldset><legend>Data Masalah</legend>
-            <div id="table-title"></div>
-            <div id="table-content">
-                <table class="table-bordered zebra scroll">
+		<table class="table-bordered zebra scroll">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th width ="25%">Tanggal</th>
-                            <th width ="60%">Masalah</th>
-                            <th width ="15%">Aksi</th>
+                            <th width ="20%">Tanggal</th>
+                            <th width ="70%">Masalah</th>
+                            <th width ="10%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,19 +77,22 @@ if (isset($this->d_ubah)) {
                             echo "<td>" . date("d/m", strtotime($val->get_tgl_mslh())) . "</td>";
                             echo "<td>" . $val->get_masalah() . "</td>";
 
-                            echo "<td><a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . $val->get_tgl_mslh() . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "><i class=\"icon-pencil\"></i></a></td>";
+                            echo "<td style='text-align: center'>
+							
+							<a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . $val->get_tgl_mslh() . "')\"><i class=\"icon-trash\"></i></a>
+                        
+							<a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "#oModal><i class=\"icon-pencil\"></i></a>
+							</td>";
                             echo "</tr>";
                             $no++;
                         }
                         ?>
                     </tbody>
                 </table>
-            </div>
         </fieldset>
-    </div>
-</div>
-</div>
+	</div>
+</div><!--end top-->
+
 <script type="text/javascript">
     $(function(){
         hideErrorId();

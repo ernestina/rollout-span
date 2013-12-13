@@ -124,8 +124,14 @@
 					</li>';
                 }
                 ?>
-                <?php echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah> Input Masalah</a>
+				<?php 
+				if (Session::get('role') == ADMIN) {
+					echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Daftar Masalah</a>
                 </li>';
+				} else {
+				echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Input Masalah</a>
+                </li>';
+				}
 				?>
 				<li class="nav">
                     <a href="<?php echo URL; ?>auth/logout">Logout</a>

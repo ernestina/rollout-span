@@ -34,8 +34,13 @@ class DataMasalah {
 	
     public function get_d_mslh($limit = null, $batas = null) {
 		$id_user=Session::get('id_user');
-		$sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_user= " . $id_user .
-		" ORDER BY tgl_mslh desc";
+		$sql = "SELECT * FROM " . $this->_table;
+		if($id_user != 1){
+			$sql .= " WHERE kd_d_user= " . $id_user;
+			} 
+			
+		$sql .= " ORDER BY tgl_mslh desc";
+		
 		
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
