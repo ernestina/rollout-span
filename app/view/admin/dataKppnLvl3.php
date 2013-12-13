@@ -59,10 +59,9 @@ if (isset($this->d_ubah)) {
                               }
                               ?>
 
-
+						<div id="wdouble" class="error"></div>
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo Session::get('id_user');?>">
                         <div>
-							<div id="wdouble" class="error">
 							<div id="wtgl"  class="error"></div>
 							<label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
 							<div class="kolom1" style="width:150px">
