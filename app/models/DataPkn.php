@@ -216,6 +216,17 @@ class DataPkn {
         }
     }
 
+    public function is_double_data($tgl){
+        $sql = "SELECT COUNT(*) as hitung FROM ".$this->_table." WHERE kd_d_tgl='".$tgl."'";
+        $return = 0;
+        $data = $this->db->select($sql);
+        foreach ($data as $key => $value) {
+            $return = $value['hitung'];
+        }
+
+        return $return;
+    }
+
     /*
      * setter
      */

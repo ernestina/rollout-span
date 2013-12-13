@@ -128,6 +128,18 @@ class DataBaController extends BaseController {
         header('location:' . URL . 'dataBa/addDataBa');
     }
 
+    /*
+     * cek data dobel ketika input data
+     */
+
+    public function is_double_data(){
+        $kd_user = $_POST['jenis'];
+        $tgl = $_POST['tgl'];
+        $kppn = new DataBa($this->registry);
+        $count = $kppn->is_double_data($kd_user,$tgl);
+        echo $count;
+    }
+
     public function __destruct() {
         ;
     }
