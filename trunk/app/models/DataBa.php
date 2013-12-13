@@ -84,7 +84,15 @@ class DataBa {
     }
     
     public function get_d_ba_per_tgl($limit = null, $batas = null) {
-        $sql = "SELECT *
+        $sql = "SELECT 
+				kd_d_user,
+				kd_d_tgl,
+				sum(kd_d_spm) as kd_d_spm,
+				sum(kd_d_spm_gagal) as kd_d_spm_gagal, 
+				sum(kd_d_rekon) as kd_d_rekon,
+				sum(kd_d_rekon) as kd_d_spm_rekon, 
+				sum(kd_d_kontrak) as kd_d_kontrak,
+				sum(kd_d_kontrak_gagal) as kd_d_kontrak_gagal
                 FROM " . $this->_table . " 
                 GROUP BY kd_d_tgl asc";
         if (!is_null($limit) AND !is_null($batas)) {

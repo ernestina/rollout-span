@@ -48,11 +48,12 @@ $nilai_kppn = ceil($nilai_kppn / $nokppn);
 
 $noba = 0;
 foreach ($this->ba as $valba) {
-    $persen = ceil(($valba->get_kd_d_spm_persen() * $bobot_spm_ba + $valba->get_kd_d_rekon_persen() * $bobot_rekon_ba + $valba->get_kd_d_kontrak_persen() * $bobot_kontrak_ba));
+    $persen = (int)(($valba->get_kd_d_spm_persen() * $bobot_spm_ba + $valba->get_kd_d_rekon_persen() * $bobot_rekon_ba + $valba->get_kd_d_kontrak_persen() * $bobot_kontrak_ba));
     $nilai_ba1 += $persen;
     $noba++;
+	echo $nilai_ba1;
 }
-$nilai_ba = ceil($nilai_ba1 / $noba);
+$nilai_ba = (int)($nilai_ba1 / $noba);
 
 $nopkn = 0;
 foreach ($this->pkn as $valpkn) {
