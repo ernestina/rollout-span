@@ -53,7 +53,7 @@ foreach ($this->ba as $valba) {
     $noba++;
 	
 }
-$nilai_ba = (int)$nilai_ba1 / $noba);
+$nilai_ba = (int)($nilai_ba1 / $noba);
 
 $nopkn = 0;
 foreach ($this->pkn as $valpkn) {
