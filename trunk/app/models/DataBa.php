@@ -90,7 +90,7 @@ class DataBa {
 				sum(kd_d_spm) as kd_d_spm,
 				sum(kd_d_spm_gagal) as kd_d_spm_gagal, 
 				sum(kd_d_rekon) as kd_d_rekon,
-				sum(kd_d_rekon) as kd_d_spm_rekon, 
+				sum(kd_d_rekon_gagal) as kd_d_rekon_gagal, 
 				sum(kd_d_kontrak) as kd_d_kontrak,
 				sum(kd_d_kontrak_gagal) as kd_d_kontrak_gagal
                 FROM " . $this->_table . " 

@@ -43,7 +43,7 @@ if (isset($this->d_ubah)) {
 
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
                         <div id="wdouble" class="error"></div>
-                        <div id="wtgl"  class="error"></div>
+						<div id="wtgl"  class="error"></div>
                         <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
                         <div class="kolom1" style="width:160px">
 						<div id="wsp2d"  class="error"></div>
@@ -77,7 +77,7 @@ if (isset($this->d_ubah)) {
                             <th rowspan="2" width ="5%">Tanggal</th>
                             <th colspan="3" width ="45%">SP2D</th>
                             <th colspan="3" width ="45%">SPT</th>
-							<?php if (Session::get('role') == 5) { 
+							<?php if (Session::get('role') == PKN) { 
 							echo "<th rowspan='2' width ='15%'>Aksi</th>";
 							}
 							?>
@@ -105,7 +105,7 @@ if (isset($this->d_ubah)) {
                             echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt() . "</td>";
                             echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt_gagal() . "</td>";
                             echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_spt_persen() . "%</b></td>";
-							if (Session::get('role') == 5) {
+							if (Session::get('role') == PKN) {
                             echo "<td style=\"text-align: center\"><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
                             }
@@ -197,8 +197,8 @@ if (isset($this->d_ubah)) {
     function hideErrorId(){
         $('.error').fadeOut(0);
     }
-
-    function isDoubleData(){
+	
+	function isDoubleData(){
         var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
         $.post("<?php echo URL;?>dataPkn/is_double_data",{tgl:""+tgl_input+""},
             function(data){
@@ -350,7 +350,7 @@ if (isset($this->d_ubah)) {
         if(jml>0){
             return false
         }else{
-             if(add_data){
+			if(add_data){
                 return isDoubleData();
             }
             rekam();

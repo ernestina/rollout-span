@@ -1,24 +1,19 @@
 <h2>MONITORING 
         <?php 
-			$id_user=Session::get('id_user');
-            if (Session::get('role') == 2) {
-            echo strtoupper(Session::get('user'));
-		} else {
-			foreach ($this->data as $val){ 
+        if (Session::get('role') == 'admin') {
+            foreach ($this->data as $val){ 
 				$kppn=$val->get_kd_d_kppn();
 			}
 			echo $kppn;
-		}
+		} 
         ?></h2>
 <center><?php $this->load('dasbor/lvl3') ?></center>
 <div id="top">
     <div id="form">
         <h2>DATA 
         <?php 
-		if (Session::get('role') == KPPN) {
-            echo strtoupper(Session::get('user'));
-		} else {
-			foreach ($this->data as $val){ 
+		if (Session::get('role') == 'admin') {
+            foreach ($this->data as $val){ 
 				$kppn=$val->get_kd_d_kppn();
 			}
 			echo $kppn;
@@ -64,9 +59,10 @@ if (isset($this->d_ubah)) {
                               }
                               ?>
 
+
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo Session::get('id_user');?>">
                         <div>
-                            <div id="wdouble" class="error"></div>							
+							<div id="wdouble" class="error">
 							<div id="wtgl"  class="error"></div>
 							<label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
 							<div class="kolom1" style="width:150px">
@@ -340,8 +336,8 @@ if (isset($this->d_ubah)) {
 			hideWarning();		}
 		
 	});
-
-    function isDoubleData(){
+	
+	function isDoubleData(){
         var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
         $.post("<?php echo URL;?>dataKppn/is_double_data",{tgl:""+tgl_input+""},
             function(data){
@@ -497,7 +493,7 @@ if (isset($this->d_ubah)) {
         if(jml>0){
             return false
         }else{
-            if(add_data){
+			if(add_data){
                 return isDoubleData();
             }
             //$('#form_input').dialog('close');
