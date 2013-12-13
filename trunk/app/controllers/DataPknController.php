@@ -118,6 +118,17 @@ class DataPknController extends BaseController {
     }
 
     /*
+     * cek data dobel ketika input data
+     */
+
+    public function is_double_data(){
+        $tgl = $_POST['tgl'];
+        $kppn = new DataPkn($this->registry);
+        $count = $kppn->is_double_data($tgl);
+        echo $count;
+    }
+
+    /*
      * DESTRUKTOR
      */
 

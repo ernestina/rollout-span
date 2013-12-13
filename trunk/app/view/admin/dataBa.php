@@ -46,6 +46,7 @@
                                   ?>
                             <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="99999">
                             <div class="kolom1" style="width:600spx">
+                            <div id="wdouble" class="error"></div>
 							<div id="wuser_ba"  class="error"></div>
                             <label >Pilih Satker</label>
                             <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 100px" type="text">
@@ -272,6 +273,21 @@
 		
 	});
     
+    function isDoubleData(){
+        var id_user = document.getElementById('kd_d_user_ba').value; console.log(id_user);
+        var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
+        $.post("<?php echo URL;?>dataBa/is_double_data",{tgl:""+tgl_input+"",jenis:id_user},
+            function(data){
+                var count = parseInt(data); console.log(data);
+                if(data > 0){
+                    var warn = "data pernah direkam, lakukan ubah data!";
+                    $('#wdouble').fadeIn();
+                    $('#wdouble').html(warn);
+                    return false; 
+                }
+        });
+    }
+
     function hideErrorId(){
         $('.error').fadeOut(0);
     }
@@ -469,6 +485,9 @@
         if(jml>0){
             return false
         }else{
+            if(add_data){
+                return isDoubleData();
+            }
             rekam();
             return true;
         }
