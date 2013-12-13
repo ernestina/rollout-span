@@ -19,7 +19,7 @@ define('ROOT',$sitepath);
  * define the sitepath url
  */
 
-$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/dasbor/';
+$base_url = 'http://'.$_SERVER['HTTP_HOST'].'/dasb/';
 //echo $base_url;
 define('URL',$base_url);
 
