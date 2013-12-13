@@ -40,20 +40,20 @@ foreach ($this->bobot as $bot) {
 $nokppn = 0;
 foreach ($this->kppn as $valkppn) {
     $unit = $valkppn->get_kd_d_user();
-    $persen = ceil(($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon));
+    $persen = (int)(($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon));
         $nilai_kppn += $persen;
         $nokppn++;
 }
-$nilai_kppn = ceil($nilai_kppn / $nokppn);
+$nilai_kppn = (int)($nilai_kppn / $nokppn);
 
 $noba = 0;
 foreach ($this->ba as $valba) {
     $persen = (int)(($valba->get_kd_d_spm_persen() * $bobot_spm_ba + $valba->get_kd_d_rekon_persen() * $bobot_rekon_ba + $valba->get_kd_d_kontrak_persen() * $bobot_kontrak_ba));
     $nilai_ba1 += $persen;
     $noba++;
-	echo $nilai_ba1;
+	
 }
-$nilai_ba = (int)($nilai_ba1 / $noba);
+$nilai_ba = (int)$nilai_ba1 / $noba);
 
 $nopkn = 0;
 foreach ($this->pkn as $valpkn) {
@@ -61,9 +61,9 @@ foreach ($this->pkn as $valpkn) {
     $nilai_pkn1 += $persen;
     $nopkn++;
 }
-$nilai_pkn = ceil($nilai_pkn1 / $nopkn);
+$nilai_pkn = (int)($nilai_pkn1 / $nopkn);
 
-$nilai_total=ceil($nilai_kppn*$bobot_kppn+$nilai_ba*$bobot_ba+$nilai_pkn*$bobot_pkn) ;
+$nilai_total=(int)($nilai_kppn*$bobot_kppn+$nilai_ba*$bobot_ba+$nilai_pkn*$bobot_pkn) ;
 ?>
 
 <div class="kolom1" id="g1" href="#">

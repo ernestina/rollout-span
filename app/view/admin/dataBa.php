@@ -46,7 +46,7 @@
                                   ?>
                             <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="99999">
                             <div class="kolom1" style="width:600spx">
-                            <div id="wdouble" class="error"></div>
+							<div id="wdouble" class="error"></div>
 							<div id="wuser_ba"  class="error"></div>
                             <label >Pilih Satker</label>
                             <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 100px" type="text">
@@ -109,7 +109,7 @@
                                 <th colspan="3" width="25%">SPM</th>
                                 <th colspan="3" width="25%">Rekon</th>
                                 <th colspan="3" width="25%">Kontrak</th>
-								<?php if (Session::get('role') == 4) { 
+								<?php if (Session::get('role') == BA999) { 
 								echo "<th rowspan='2' width='10%'>Aksi</th>";
 								}
 								?>
@@ -183,7 +183,7 @@
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
                                 echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
                                 echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_kontrak_persen() . "%</b></td>";
-								if (Session::get('role') == 4) { 
+								if (Session::get('role') == BA999) { 
                                 echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
 								}
@@ -272,8 +272,8 @@
 		}
 		
 	});
-    
-    function isDoubleData(){
+	
+	function isDoubleData(){
         var id_user = document.getElementById('kd_d_user_ba').value; console.log(id_user);
         var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
         $.post("<?php echo URL;?>dataBa/is_double_data",{tgl:""+tgl_input+"",jenis:id_user},
@@ -288,6 +288,7 @@
         });
     }
 
+    
     function hideErrorId(){
         $('.error').fadeOut(0);
     }
@@ -485,7 +486,7 @@
         if(jml>0){
             return false
         }else{
-            if(add_data){
+			if(add_data){
                 return isDoubleData();
             }
             rekam();

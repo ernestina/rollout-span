@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2013 at 02:16 AM
+-- Generation Time: Dec 13, 2013 at 02:50 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -4347,6 +4347,28 @@ INSERT INTO `d_kppn` (`kd_d_kppn`, `kd_d_user`, `kd_d_tgl`, `kd_d_konversi`, `kd
 (2518, 27008, '2013-12-18', 2058, 183, 3206, 66, 1070, 849, 5114, 464),
 (2519, 27009, '2013-12-18', 9251, 454, 2653, 822, 9966, 132, 7412, 658),
 (2520, 27010, '2013-12-18', 3108, 1000, 9454, 648, 8212, 820, 4821, 162);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `d_mslh`
+--
+
+CREATE TABLE IF NOT EXISTS `d_mslh` (
+  `kd_d_mslh` int(11) NOT NULL AUTO_INCREMENT,
+  `kd_d_user` int(11) NOT NULL,
+  `tgl_mslh` date NOT NULL,
+  `masalah` text NOT NULL,
+  PRIMARY KEY (`kd_d_mslh`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `d_mslh`
+--
+
+INSERT INTO `d_mslh` (`kd_d_mslh`, `kd_d_user`, `tgl_mslh`, `masalah`) VALUES
+(1, 1, '2013-12-06', 'wwwwww'),
+(7, 88888, '2013-12-18', 'rrrrrrrrrr');
 
 -- --------------------------------------------------------
 
