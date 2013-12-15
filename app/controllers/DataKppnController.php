@@ -142,6 +142,54 @@ class DataKppnController extends BaseController {
         $count = $kppn->is_double_data($kd_user,$tgl);
         echo $count;
     }
+
+    /*
+     * paging halaman
+     */
+    public function data_nav(){
+        $hal = $_POST['halaman'];
+        $max = $_POST['max_data'];
+        $id = Session::get('id_user');
+        $kppn = new DataKppn($this->registry);
+        $d_kppn = $kppn->get_d_kppn($id);
+        $count = count($d_kppn);
+        $jml_hal = ceil($count/$max);
+        $start = ($hal-1)*$max;
+        $end = (($hal-1)*$max)+$max;
+        $this->view->data = array_slice($d_kppn, $start,$end);
+        $this->view->load('admin/tableDataKppnLvl3');
+    }
+
+    /*
+     * paging halaman
+     */
+    public function get_data_kppn_array(){
+        $id = Session::get('id_user');
+        $kppn = new DataKppn($this->registry);
+        $d_kppn = $kppn->get_d_kppn($id);
+        $return = array();
+        foreach ($d_kppn as $key => $val) {
+            $tmp = array();
+            $tmp['kd_d_kppn'] = $val->get_kd_d_kppn();
+            $tmp['kd_d_user'] = $val->get_kd_d_user();
+            $tmp['kd_d_tgl'] = $val->get_kd_d_tgl();
+            $tmp['kd_d_konversi'] = $val->get_kd_d_konversi();
+            $tmp['kd_d_konversi_gagal'] = $val->get_kd_d_konversi_gagal(); 
+            $tmp['kd_d_sp2d'] = $val->get_kd_d_sp2d();
+            $tmp['kd_d_sp2d_gagal'] = $val->get_kd_d_sp2d_gagal();
+            $tmp['kd_d_lhp'] = $val->get_kd_d_lhp();
+            $tmp['kd_d_lhp_gagal'] = $val->get_kd_d_lhp_gagal();
+            $tmp['kd_d_rekon'] = $val->get_kd_d_rekon();
+            $tmp['kd_d_rekon_gagal'] = $val->get_kd_d_rekon_gagal();
+            $tmp['kd_d_konversi_persen'] = $val->get_kd_d_konversi_persen();
+            $tmp['kd_d_sp2d_persen'] = $val->get_kd_d_sp2d_persen();
+            $tmp['kd_d_lhp_persen'] = $val->get_kd_d_lhp_persen();
+            $tmp['kd_d_rekon_persen'] = $val->get_kd_d_rekon_persen();
+            $return[$val->get_kd_d_tgl()] = $tmp;
+        }
+
+        echo json_encode($return);
+    }
     
     /*
      * tambah Data KPPN Jakarta 2

@@ -129,6 +129,46 @@ class DataPknController extends BaseController {
     }
 
     /*
+     * paging halaman
+     */
+    public function data_nav(){
+        $hal = $_POST['halaman'];
+        $max = $_POST['max_data'];
+        $pkn = new DataPkn($this->registry);
+        $d_pkn = $pkn->get_d_pkn();
+        $count = count($d_pkn);
+        $jml_hal = ceil($count/$max);
+        $start = ($hal-1)*$max; echo $start;
+        $end = (($hal-1)*$max)+$max; echo $end;
+        $this->view->data = array_slice($d_pkn, $start,$end);
+        $this->view->load('admin/tableDataPkn');
+    }
+
+    /*
+     * paging halaman
+     */
+    public function get_data_pkn_array(){
+        $pkn = new DataPkn($this->registry);
+        $d_pkn = $pkn->get_d_pkn();
+        $return = array();
+        foreach ($d_pkn as $key => $val) {
+            $tmp = array();
+            $tmp['kd_d_pkn'] = $val->get_kd_d_pkn();
+            $tmp['kd_d_user'] = $val->get_kd_d_user();
+            $tmp['kd_d_tgl'] = $val->get_kd_d_tgl();
+            $tmp['kd_d_sp2d'] = $val->get_kd_d_sp2d();
+            $tmp['kd_d_sp2d_gagal'] = $val->get_kd_d_sp2d_gagal();
+            $tmp['kd_d_spt'] = $val->get_kd_d_spt();
+            $tmp['kd_d_spt_gagal'] = $val->get_kd_d_spt_gagal();
+            $tmp['kd_d_sp2d_persen'] = $val->get_kd_d_sp2d_persen();
+            $tmp['kd_d_spt_persen'] = $val->get_kd_d_spt_persen();
+            $return[$val->get_kd_d_tgl()] = $tmp;
+        }
+
+        echo json_encode($return);
+    }
+
+    /*
      * DESTRUKTOR
      */
 

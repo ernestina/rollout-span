@@ -140,6 +140,50 @@ class DataBaController extends BaseController {
         echo $count;
     }
 
+    /*
+     * paging halaman
+     */
+    public function data_nav(){
+        $hal = $_POST['halaman'];
+        $max = $_POST['max_data'];
+        $ba = new DataBa($this->registry);
+        $d_ba = $ba->get_d_ba();
+        $count = count($d_ba);
+        $jml_hal = ceil($count/$max);
+        $start = ($hal-1)*$max;
+        $end = (($hal-1)*$max)+$max;
+        $this->view->data = array_slice($d_ba, $start,$end);
+        $this->view->load('admin/tableDataBa');
+    }
+
+    /*
+     * paging halaman
+     */
+    public function get_data_ba_array(){
+        $ba = new DataBa($this->registry);
+        $d_ba = $ba->get_d_ba();
+        $return = array();
+        foreach ($d_ba as $key => $val) {
+            $tmp = array();
+            $tmp['kd_d_ba'] = $val->get_kd_d_user_ba();
+            $tmp['kd_d_user'] = $val->get_kd_d_user();
+            $tmp['kd_d_user_ba'] = $val->get_kd_d_user_ba();
+            $tmp['kd_d_tgl'] = $val->get_kd_d_tgl();
+            $tmp['kd_d_spm'] = $val->get_kd_d_spm();
+            $tmp['kd_d_spm_gagal'] = $val->get_kd_d_spm_gagal();
+            $tmp['kd_d_rekon'] = $val->get_kd_d_rekon();
+            $tmp['kd_d_rekon_gagal'] = $val->get_kd_d_rekon_gagal();
+            $tmp['kd_d_kontrak'] = $val->get_kd_d_kontrak();
+            $tmp['kd_d_kontrak_gagal'] = $val->get_kd_d_kontrak_gagal();
+            $tmp['kd_d_kontrak_persen'] = $val->get_kd_d_kontrak_persen();
+            $tmp['kd_d_spm_persen'] = $val->get_kd_d_spm_persen();
+            $tmp['kd_d_rekon_persen'] = $val->get_kd_d_rekon_persen();
+            $return[$val->get_kd_d_tgl()] = $tmp;
+        }
+
+        echo json_encode($return);
+    }
+
     public function __destruct() {
         ;
     }

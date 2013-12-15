@@ -12,6 +12,7 @@
         <script src="<?php echo URL; ?>public/js/gaugejs/raphael.2.1.0.min.js"></script>
         <script src="<?php echo URL; ?>public/js/gaugejs/justgage.1.0.1.min.js"></script>
         <script src="<?php echo URL; ?>public/js/Chart.js"></script>
+        <script src="<?php echo URL; ?>public/js/paging.js"></script>
 <!--    <link href="<?php echo URL; ?>public/css/flick/jquery-ui-1.10.1.custom.css" rel="stylesheet">-->
 <!--link href="<?php echo URL; ?>public/css/jquery-ui.css" rel="stylesheet">
 <link href="<?php echo URL; ?>public/css/ui.theme.css" rel="stylesheet">
