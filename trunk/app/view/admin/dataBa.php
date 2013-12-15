@@ -96,7 +96,7 @@
             </fieldset>
         </div>
         <div class="kolom6" id="table">
-            <fieldset>
+            <!--<fieldset>
                 <legend>Data BA 999</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
@@ -194,13 +194,24 @@
                         </tbody>
                     </table>
                 </div>
-            </fieldset>
-        </div>
+            </fieldset>-->
+        </div><div id="nav"></div>
     </div>
 </div>
 <script type="text/javascript">
     var add_data = false;
     $(function(){
+        page = 1;
+        maxPerPage = 10;
+        dataPosition = 1;
+        numOfPage = 0;
+        data = null;
+        url = '<?php echo URL; ?>dataBa/data_nav';
+        url_data = '<?php echo URL;?>dataBa/get_data_ba_array';
+        var divContainer = "table";
+        maxPerPage = 10;
+        //console.log(PagingClass);
+        createPaging(url,url_data,page,maxPerPage,divContainer);
         hideErrorId();
         hideWarning();
         

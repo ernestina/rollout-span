@@ -100,8 +100,8 @@ if (isset($this->d_ubah)) {
 <div id="top">
     <div id="gambar"></div>
     <div class="fitur" id="table">
-        <div class="kolom6">
-            <fieldset><legend>Data</legend>
+        <div class="kolom6" id="data_table">
+            <!--<fieldset><legend>Data</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
                     <table class="table-bordered zebra scroll" style="text-align: center; margin-left: -4px; margin-right: 7px">
@@ -164,14 +164,26 @@ if (isset($this->d_ubah)) {
                         </tbody>
                     </table>
                 </div>
-            </fieldset>
-        </div>
+            </fieldset>-->
+        </div><div id="nav"></div>
     </div>
 </div>
 <script type="text/javascript">
     var add_data = false;
     console.log(add_data);
     $(function(){
+        //var PagingClass = new Paging();
+        page = 1;
+        maxPerPage = 30;
+        dataPosition = 1;
+        numOfPage = 0;
+        data = null;
+        url = '<?php echo URL; ?>dataKppn/data_nav';
+        url_data = '<?php echo URL;?>dataKppn/get_data_kppn_array';
+        var divContainer = "data_table";
+        maxPerPage = 10;
+        //console.log(PagingClass);
+        createPaging(url,url_data,page,maxPerPage,divContainer);
         hideErrorId();
         hideWarning();
 		$("#kd_d_tgl").datepicker({dateFormat: "yy-mm-dd"

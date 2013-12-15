@@ -55,6 +55,8 @@ $akses['DataKppn'] = array(
     'addDataKppnLvl4',
     'addDataKppnLvl3Jkt2',
     'addDataKppnLvl3Jkt6',
+    'get_data_kppn_array',
+    'data_nav',
     'updDataKppnLvl3Jkt2',
     'updDataKppnLvl3Jkt6',
     'delDataKppnLvl3Jkt2',

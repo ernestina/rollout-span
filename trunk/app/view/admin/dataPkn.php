@@ -68,7 +68,7 @@ if (isset($this->d_ubah)) {
         </fieldset>
     </div>
     <div class="kolom6" id="table">
-        <fieldset><legend>Data PKN</legend>
+        <!--<fieldset><legend>Data PKN</legend>
             <div id="table-title"></div>
             <div id="table-content">
                 <table class="table-bordered zebra scroll">
@@ -117,14 +117,25 @@ if (isset($this->d_ubah)) {
                     </tbody>
                 </table>
             </div>
-        </fieldset>
-    </div>
+        </fieldset>-->
+    </div><div id="nav"></div>
 </div>
 </div>
 </div>
 <script type="text/javascript">
     var add_data = false;
     $(function(){
+        page = 1;
+        maxPerPage = 10;
+        dataPosition = 1;
+        numOfPage = 0;
+        data = null;
+        url = '<?php echo URL; ?>dataPkn/data_nav';
+        url_data = '<?php echo URL;?>dataPkn/get_data_pkn_array';
+        var divContainer = "table";
+        maxPerPage = 10;
+        //console.log(PagingClass);
+        createPaging(url,url_data,page,maxPerPage,divContainer);
         hideErrorId();
         hideWarning();
         
