@@ -161,12 +161,12 @@ if (isset($this->d_ubah)) {
     function rekam(){
         var formData = new FormData($('#form_rekam')[0]);
         if(add_data){
-            var url = "<?php echo URL; ?>dataPkn/addDataPkn";
+            var url_rekam = "<?php echo URL; ?>dataPkn/addDataPkn";
         }else{
-            var url = "<?php echo URL; ?>dataPkn/updDataPkn";
+            var url_rekam = "<?php echo URL; ?>dataPkn/updDataPkn";
         }
         $.ajax({
-            url: url,
+            url: url_rekam,
             type: 'POST',
             data: formData,
             async: false,
@@ -214,13 +214,16 @@ if (isset($this->d_ubah)) {
 	function isDoubleData(){
         var tgl_input = document.getElementById('kd_d_tgl').value; console.log(tgl_input);
         $.post("<?php echo URL;?>dataPkn/is_double_data",{tgl:""+tgl_input+""},
-            function(data){
+            function(data){ console.log(data);
                 var count = parseInt(data);
                 if(data > 0){
                     var warn = "data pernah direkam, lakukan ubah data!";
                     $('#wdouble').fadeIn();
                     $('#wdouble').html(warn);
                     return false; 
+                }else{
+                    rekam();
+                    return true;
                 }
         });
     }
@@ -364,6 +367,7 @@ if (isset($this->d_ubah)) {
             return false
         }else{
 			if(add_data){
+                console.log(isDoubleData());
                 return isDoubleData();
             }
             rekam();

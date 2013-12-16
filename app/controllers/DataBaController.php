@@ -152,6 +152,7 @@ class DataBaController extends BaseController {
         $jml_hal = ceil($count/$max);
         $start = ($hal-1)*$max;
         //$end = (($hal-1)*$max)+$max;
+        $this->view->mulai = $start+1;
         $this->view->data = array_slice($d_ba, $start,$max);
         $this->view->load('admin/tableDataBa');
     }

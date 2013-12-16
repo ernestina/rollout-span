@@ -218,12 +218,12 @@ if (isset($this->d_ubah)) {
     function rekam(){
         var formData = new FormData($('#form_rekam')[0]);
         if(add_data){
-            var url = "<?php echo URL; ?>dataKppn/addDataKppnLvl3";
+            var url_rekam = "<?php echo URL; ?>dataKppn/addDataKppnLvl3";
         }else{
-            var url = "<?php echo URL; ?>dataKppn/updDataKppnLvl3";
+            var url_rekam = "<?php echo URL; ?>dataKppn/updDataKppnLvl3";
         }
         $.ajax({
-            url: url,
+            url: url_rekam,
             type: 'POST',
             data: formData,
             async: false,
@@ -363,6 +363,9 @@ if (isset($this->d_ubah)) {
                     $('#wdouble').fadeIn();
                     $('#wdouble').html(warn);
                     return false; 
+                }else{
+                    rekam();
+                    return true;
                 }
         });
     }
