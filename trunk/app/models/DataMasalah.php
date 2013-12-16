@@ -34,12 +34,17 @@ class DataMasalah {
 	
     public function get_d_mslh($limit = null, $batas = null) {
 		$id_user=Session::get('id_user');
-		$sql = "SELECT * FROM " . $this->_table;
+		$sql = "SELECT 
+				a.kd_d_mslh kd_d_mslh,
+				a.tgl_mslh tgl_mslh,
+				a.masalah masalah,
+				b.nama_user nama_user
+				FROM " . $this->_table ." a
+				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user ";
 		if($id_user != 1){
-			$sql .= " WHERE kd_d_user= " . $id_user;
-			} 
-			
-		$sql .= " ORDER BY tgl_mslh desc";
+			$sql .= " WHERE a.kd_d_user= " . $id_user;
+		} 
+		$sql .= " ORDER BY a.tgl_mslh desc";
 		
 		
         if (!is_null($limit) AND !is_null($batas)) {
@@ -50,7 +55,7 @@ class DataMasalah {
         foreach ($result as $val) {
             $d_mslh = new $this($this->registry);
             $d_mslh->set_kd_d_mslh($val['kd_d_mslh']);
-            $d_mslh->set_kd_d_user($val['kd_d_user']);
+            $d_mslh->set_kd_d_user($val['nama_user']);
             $d_mslh->set_tgl_mslh($val['tgl_mslh']);
             $d_mslh->set_masalah($val['masalah']);
             

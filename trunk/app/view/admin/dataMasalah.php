@@ -61,10 +61,21 @@
 		<table class="table-bordered zebra scroll">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th width ="20%">Tanggal</th>
-                            <th width ="70%">Masalah</th>
-                            <th width ="10%">Aksi</th>
+							<?php
+							if (Session::get('role') == ADMIN) {
+								echo "<th>No</th>";
+								echo "<th width ='20%'>Tanggal</th>";
+								echo "<th width ='20%'>User</th>";
+								echo "<th width ='60%'>Masalah</th>";
+							} else {
+								echo "<th>No</th>";
+								echo "<th width ='20%'>Tanggal</th>";
+								echo "<th width ='70%'>Masalah</th>";
+								echo "<th width ='10%'>Aksi</th>";
+							}
+							?>
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -75,15 +86,20 @@
                             echo "<tr>";
                             echo "<td>$no</td>";
                             echo "<td>" . date("d/m", strtotime($val->get_tgl_mslh())) . "</td>";
-                            echo "<td>" . $val->get_masalah() . "</td>";
+							if (Session::get('role') == ADMIN) {
+								echo "<td>" . $val->get_kd_d_user() . "</td>";
+								echo "<td>" . $val->get_masalah() . "</td>";
+							} else {
+								echo "<td>" . $val->get_masalah() . "</td>";
 
-                            echo "<td style='text-align: center'>
+								echo "<td style='text-align: center'>
+								
+								<a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_tgl_mslh())) . "')\"><i class=\"icon-trash\"></i></a>
 							
-							<a href=" . URL . "dataMasalah/delDataMasalah/" . $val->get_kd_d_mslh() . " onclick=\"return del('" . $val->get_tgl_mslh() . "')\"><i class=\"icon-trash\"></i></a>
-                        
-							<a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "#oModal><i class=\"icon-pencil\"></i></a>
-							</td>";
-                            echo "</tr>";
+								<a href=" . URL . "dataMasalah/addDataMasalah/" . $val->get_kd_d_mslh() . "#oModal><i class=\"icon-pencil\"></i></a>
+								</td>";
+							}
+							echo "</tr>";
                             $no++;
                         }
                         ?>
