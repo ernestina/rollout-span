@@ -267,6 +267,10 @@ class DataBa {
             $this->_error .= "Kontrak gagal belum diinput!</br>";
             $this->_valid = FALSE;
         }
+
+        /*if($this->is_double_data($this->get_kd_d_user_ba(),$this->get_kd_d_tgl())>0){
+            $this->_valid = FALSE;
+        }*/
     }
 
     public function is_double_data($kd_user, $tgl){

@@ -214,6 +214,10 @@ class DataPkn {
             $this->_error .= "SPT belum diinput!</br>";
             $this->_valid = FALSE;
         }
+
+        if($this->is_double_data($this->get_kd_d_tgl())>0){
+            $this->_valid = FALSE;
+        }
     }
 
     public function is_double_data($tgl){
