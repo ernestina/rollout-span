@@ -146,10 +146,10 @@ class DataKppnController extends BaseController {
     /*
      * paging halaman
      */
-    public function data_nav(){
+    public function data_nav($id){
         $hal = $_POST['halaman'];
         $max = $_POST['max_data'];
-        $id = Session::get('id_user');
+        //$id = Session::get('id_user');
         $kppn = new DataKppn($this->registry);
         $d_kppn = $kppn->get_d_kppn($id);
         $count = count($d_kppn);
@@ -163,8 +163,8 @@ class DataKppnController extends BaseController {
     /*
      * paging halaman
      */
-    public function get_data_kppn_array(){
-        $id = Session::get('id_user');
+    public function get_data_kppn_array($id){
+        //$id = Session::get('id_user');
         $kppn = new DataKppn($this->registry);
         $d_kppn = $kppn->get_d_kppn($id);
         $return = array();
