@@ -375,6 +375,15 @@ input[disabled]{
 	background-color: #eeeeee;
 }
 
+input.paging {
+    border-radius: 0px;
+}
+
+input.paging-kecil {
+    border-radius: 0px;
+    width: 30px;
+}
+
 textarea :focus, textarea:hover {
 	border: 1px solid #2f96b4;}
 

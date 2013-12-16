@@ -64,7 +64,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		nextOne = document.createElement('input');
 		nextOne.type = "button";
 		nextOne.value = "Next";
-		nextOne.className = "button";
+		nextOne.className = "paging";
 		nextOne.setAttribute("id",idNextOne);
 		//console.log(nextOne); 
 	}
@@ -76,7 +76,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		next = document.createElement('input');
 		next.type = "button";
 		next.value = ">";
-		next.className = "button";
+		next.className = "paging-kecil";
 		next.setAttribute("id",idNext);
 	}
 
@@ -86,7 +86,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		prevOne = document.createElement('input');
 		prevOne.type = "button";
 		prevOne.value = "Prev";
-		prevOne.className = "button";
+		prevOne.className = "paging";
 		prevOne.setAttribute("id",idPrevOne);
 	}
 
@@ -96,7 +96,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		prev = document.createElement('input');
 		prev.type = "button";
 		prev.value = "<";
-		prev.className = "button";
+		prev.className = "paging-kecil";
 		prev.setAttribute("id",idPrev);
 	}
 
@@ -106,7 +106,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		first = document.createElement('input');
 		first.type = "button";
 		first.value = "<<";
-		first.className = "button";
+		first.className = "paging-kecil";
 		first.setAttribute("id",idFirst);
 	}
 
@@ -116,7 +116,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		last = document.createElement('input');
 		last.type = "button";
 		last.value = ">>";
-		last.className = "button";
+		last.className = "paging-kecil";
 		last.setAttribute("id",idLast);
 	}
 
@@ -154,10 +154,10 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 			page = numOfPage;
 			createPaging(url,url_data,page,maxPerPage,divContainerId);	
 		}
-		divNav.appendChild(first);
-		divNav.appendChild(prev);
-		divNav.appendChild(next);
 		divNav.appendChild(last);
+		divNav.appendChild(next);
+		divNav.appendChild(prev);
+		divNav.appendChild(first);
 	}else if(page==numOfPage){
 		//TODO cek komponen lain, jika ada, hapus dari container
 		//first,prev,next,last,nextOne
