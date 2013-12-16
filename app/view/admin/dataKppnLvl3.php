@@ -178,8 +178,9 @@ if (isset($this->d_ubah)) {
         dataPosition = 1;
         numOfPage = 0;
         data = null;
-        url = '<?php echo URL; ?>dataKppn/data_nav';
-        url_data = '<?php echo URL;?>dataKppn/get_data_kppn_array';
+        id = <?php echo Session::get('id_user')?>;
+        url = '<?php echo URL; ?>dataKppn/data_nav/'+id;
+        url_data = '<?php echo URL;?>dataKppn/get_data_kppn_array/'+id;
         var divContainer = "data_table";
         maxPerPage = 10;
         //console.log(PagingClass);
