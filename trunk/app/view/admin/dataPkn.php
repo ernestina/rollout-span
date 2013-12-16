@@ -146,8 +146,9 @@ if (isset($this->d_ubah)) {
 			$('#form_input').dialog('close');
 		})
 		
-		$('#submit').click(function(){
+		$('#submit').click(function(e){
 			return cek();
+            e.preventDefault();
 			$('#form_input').dialog('close');
 			
 		});
@@ -165,19 +166,24 @@ if (isset($this->d_ubah)) {
         }else{
             var url_rekam = "<?php echo URL; ?>dataPkn/updDataPkn";
         }
-        $.ajax({
-            url: url_rekam,
-            type: 'POST',
-            data: formData,
-            async: false,
-            success: function(){
-                $('#form_input').dialog('close');
-                window.location.href='<?php echo URL;?>dataPkn/addDataPkn'
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
+        //var request,timeout;
+        //if(!request){
+            //request = 
+            $.ajax({
+                url: url_rekam,
+                type: 'POST',
+                data: formData,
+                async: false,
+                success: function(){
+                    //request = timeout = null;
+                    $('#form_input').dialog('close');
+                    window.location.href='<?php echo URL;?>dataPkn/addDataPkn'
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        //}
     }
 	
 	function emptyField(){
