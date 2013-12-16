@@ -140,6 +140,7 @@ class DataPknController extends BaseController {
         $jml_hal = ceil($count/$max);
         $start = ($hal-1)*$max; echo $start."-";
         //$end = $start+$max; echo $end."<br>";
+        $this->view->mulai = $start+1;
         $this->view->data = array_slice($d_pkn, $start,$max);
         $this->view->load('admin/tableDataPkn');
     }

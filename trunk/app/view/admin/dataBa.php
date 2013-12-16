@@ -236,12 +236,12 @@
     function rekam(){
         var formData = new FormData($('#form_rekam')[0]);
         if(add_data){
-            var url = "<?php echo URL; ?>dataBa/addDataBa";
+            var url_rekam = "<?php echo URL; ?>dataBa/addDataBa";
         }else{
-            var url = "<?php echo URL; ?>dataBa/updDataBa";
+            var url_rekam = "<?php echo URL; ?>dataBa/updDataBa";
         }
         $.ajax({
-            url: url,
+            url: url_rekam,
             type: 'POST',
             data: formData,
             async: false,
@@ -295,6 +295,9 @@
                     $('#wdouble').fadeIn();
                     $('#wdouble').html(warn);
                     return false; 
+                }else{
+                    rekam();
+                    return true;
                 }
         });
     }

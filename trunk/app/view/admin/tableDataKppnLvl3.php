@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            $no = 1;
+                            $no = $this->mulai;
                             foreach ($this->data as $val) {
                                 //var_dump($val);
                                 echo "<tr>";
