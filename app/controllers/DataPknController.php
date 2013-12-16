@@ -132,15 +132,15 @@ class DataPknController extends BaseController {
      * paging halaman
      */
     public function data_nav(){
-        $hal = $_POST['halaman'];
+        $hal = $_POST['halaman']; echo $hal."-";
         $max = $_POST['max_data'];
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
         $count = count($d_pkn);
         $jml_hal = ceil($count/$max);
-        $start = ($hal-1)*$max; echo $start;
-        $end = (($hal-1)*$max)+$max; echo $end;
-        $this->view->data = array_slice($d_pkn, $start,$end);
+        $start = ($hal-1)*$max; echo $start."-";
+        //$end = $start+$max; echo $end."<br>";
+        $this->view->data = array_slice($d_pkn, $start,$max);
         $this->view->load('admin/tableDataPkn');
     }
 
