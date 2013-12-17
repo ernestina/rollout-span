@@ -3,29 +3,29 @@
         <h2>DATA USER</h2></div>
     <div class="kolom3">
         <fieldset><legend><?php
-if (isset($this->d_ubah)) {
-    echo 'Ubah Data User';
-} else {
-    echo 'Tambah Data User'; 
-}
-?></legend>
+                if (isset($this->d_ubah)) {
+                    echo 'Ubah Data User';
+                } else {
+                    echo 'Tambah Data User';
+                }
+                ?></legend>
             <div id="form-input"><div class="kiri">
                     <form method="POST" action="<?php
-                if (isset($this->d_ubah)) {
-                    echo URL . 'dataUser/updDataUser';
-                } else {
-                    $_SERVER['PHP_SELF']; 
-                }
-?>">
-                          <?php
-                          if (isset($this->d_ubah)) {
-                              echo "<input type=hidden name='kd_d_user' value=" . $this->d_ubah->get_kd_d_user() . ">";
-                          }
+                    if (isset($this->d_ubah)) {
+                        echo URL . 'dataUser/updDataUser';
+                    } else {
+                        $_SERVER['PHP_SELF'];
+                    }
+                    ?>">
+                              <?php
+                              if (isset($this->d_ubah)) {
+                                  echo "<input type=hidden name='kd_d_user' value=" . $this->d_ubah->get_kd_d_user() . ">";
+                              }
 
-                          if (isset($this->error)) {
-                              echo "<div class=error>" . $this->error . "</div>";
-                          }
-                          ?>
+                              if (isset($this->error)) {
+                                  echo "<div class=error>" . $this->error . "</div>";
+                              }
+                              ?>
 
                         <div id="wjenis" class="error"></div>
                         <label>Jenis</label>
@@ -93,112 +93,112 @@ if (isset($this->d_ubah)) {
 </div>
 </div>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         hideErrorId();
         hideWarning();
-        
+
     });
-    
-    function hideErrorId(){
+
+    function hideErrorId() {
         $('.error').fadeOut(0);
     }
 
-    function hideWarning(){
-        $('#kd_r_jenis').keyup(function(){
-            if(document.getElementById('kd_r_jenis').value !=''){
+    function hideWarning() {
+        $('#kd_r_jenis').keyup(function() {
+            if (document.getElementById('kd_r_jenis').value != '') {
                 $('#wjenis').fadeOut(200);
             }
         })
-        
-        $('#kd_r_unit').keyup(function(){
-            if(document.getElementById('kd_r_unit').value !=''){
+
+        $('#kd_r_unit').keyup(function() {
+            if (document.getElementById('kd_r_unit').value != '') {
                 $('#wunit').fadeOut(200);
             }
         })
-    
-        $('#nama_user').keyup(function(){
-            if(document.getElementById('nama_user').value !=''){
+
+        $('#nama_user').keyup(function() {
+            if (document.getElementById('nama_user').value != '') {
                 $('#wnama').fadeOut(200);
             }
         })
-    
-        $('#pass_user').keyup(function(){
-            if(document.getElementById('pass_user').value !=''){
+
+        $('#pass_user').keyup(function() {
+            if (document.getElementById('pass_user').value != '') {
                 $('#wpass').fadeOut(200);
             }
         })
-        
-        $('#pass_user2').keyup(function(){
-            if(document.getElementById('pass_user2').value !=''){
+
+        $('#pass_user2').keyup(function() {
+            if (document.getElementById('pass_user2').value != '') {
                 $('#wpass2').fadeOut(200);
             }
         })
 
     }
 
-    function del(user){
-        var text = "Yakin data User "+user+" akan dihapus?\npenghapusan akan mengakibatkan data user "+user+" berantakan!";
-        if(confirm(text)){
+    function del(user) {
+        var text = "Yakin data User " + user + " akan dihapus?\npenghapusan akan mengakibatkan data user " + user + " berantakan!";
+        if (confirm(text)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    function cek(){
+
+    function cek() {
         var kd_r_jenis = document.getElementById('kd_r_jenis').value;
         var kd_r_unit = document.getElementById('kd_r_unit').value;
         var nama_user = document.getElementById('nama_user').value;
         var pass_user = document.getElementById('pass_user').value;
         var pass_user2 = document.getElementById('pass_user2').value;
-        var jml=0;
-        if(kd_r_jenis==''){
-            var wjenis= 'Jenis User harus diisi!';
+        var jml = 0;
+        if (kd_r_jenis == '') {
+            var wjenis = 'Jenis User harus diisi!';
             $('#wjenis').fadeIn(0);
             $('#wjenis').html(wjenis);
             jml++;
         }
-        
-        if(kd_r_unit==''){
-            var wunit= 'Unit harus diisi!';
+
+        if (kd_r_unit == '') {
+            var wunit = 'Unit harus diisi!';
             $('#wunit').fadeIn(0);
             $('#wunit').html(wunit);
             jml++;
         }
-    
-        if(nama_user==''){
-            var wnama= 'Nama User harus diisi!';
+
+        if (nama_user == '') {
+            var wnama = 'Nama User harus diisi!';
             $('#wnama').fadeIn(0);
             $('#wnama').html(wnama);
             jml++;
         }
-    
-        if(pass_user==''){
-            var wpass= 'Pass harus diisi!';
+
+        if (pass_user == '') {
+            var wpass = 'Pass harus diisi!';
             $('#wpass').fadeIn(0);
             $('#wpass').html(wpass);
             jml++;
         }
-        
-        if(pass_user2==''){
-            var wpass2= 'Pass harus diisi!';
+
+        if (pass_user2 == '') {
+            var wpass2 = 'Pass harus diisi!';
             $('#wpass2').fadeIn(0);
             $('#wpass2').html(wpass2);
             jml++;
         }
-        
-        if(pass_user!=pass_user2){
-            var wpass2= 'Pass tidak sama!';
+
+        if (pass_user != pass_user2) {
+            var wpass2 = 'Pass tidak sama!';
             $('#wpass2').fadeIn(0);
             $('#wpass2').html(wpass2);
             jml++;
         }
-    
-        if(jml>0){
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
 </script>

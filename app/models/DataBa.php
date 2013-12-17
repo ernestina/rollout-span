@@ -56,25 +56,25 @@ class DataBa {
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
-			if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
-			    $d_ba->set_kd_d_spm_persen(100);
-			} else {
-			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
-			}
+            if (($val['kd_d_spm']) + ($val['kd_d_spm_gagal']) == 0) {
+                $d_ba->set_kd_d_spm_persen(100);
+            } else {
+                $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm']) / (($val['kd_d_spm']) + ($val['kd_d_spm_gagal'])) * 100));
+            }
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
             $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_ba->set_kd_d_rekon_persen(100);
-			} else {
-			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
-			}
+            if (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal']) == 0) {
+                $d_ba->set_kd_d_rekon_persen(100);
+            } else {
+                $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon']) / (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal'])) * 100));
+            }
             $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
             $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
-            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
-			    $d_ba->set_kd_d_kontrak_persen(100);
-			} else {
-			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
-			}
+            if (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal']) == 0) {
+                $d_ba->set_kd_d_kontrak_persen(100);
+            } else {
+                $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak']) / (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal'])) * 100));
+            }
 
             $data[] = $d_ba;
             //var_dump($d_ba);
@@ -82,7 +82,7 @@ class DataBa {
 
         return $data;
     }
-    
+
     public function get_d_ba_per_tgl($limit = null, $batas = null) {
         $sql = "SELECT 
 				kd_d_user,
@@ -104,21 +104,21 @@ class DataBa {
             $d_ba = new $this($this->registry);
             $d_ba->set_kd_d_user($val['kd_d_user']);
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
-            if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
-			    $d_ba->set_kd_d_spm_persen(100);
-			} else {
-			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
-			}
-            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_ba->set_kd_d_rekon_persen(100);
-			} else {
-			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
-			}
-            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
-			    $d_ba->set_kd_d_kontrak_persen(100);
-			} else {
-			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
-			}
+            if (($val['kd_d_spm']) + ($val['kd_d_spm_gagal']) == 0) {
+                $d_ba->set_kd_d_spm_persen(100);
+            } else {
+                $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm']) / (($val['kd_d_spm']) + ($val['kd_d_spm_gagal'])) * 100));
+            }
+            if (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal']) == 0) {
+                $d_ba->set_kd_d_rekon_persen(100);
+            } else {
+                $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon']) / (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal'])) * 100));
+            }
+            if (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal']) == 0) {
+                $d_ba->set_kd_d_kontrak_persen(100);
+            } else {
+                $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak']) / (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal'])) * 100));
+            }
 
             $data[] = $d_ba;
             //var_dump($this);
@@ -147,25 +147,25 @@ class DataBa {
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
-            if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
-			    $d_ba->set_kd_d_spm_persen(100);
-			} else {
-			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
-			}
+            if (($val['kd_d_spm']) + ($val['kd_d_spm_gagal']) == 0) {
+                $d_ba->set_kd_d_spm_persen(100);
+            } else {
+                $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm']) / (($val['kd_d_spm']) + ($val['kd_d_spm_gagal'])) * 100));
+            }
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
             $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
-            if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_ba->set_kd_d_rekon_persen(100);
-			} else {
-			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
-			}
+            if (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal']) == 0) {
+                $d_ba->set_kd_d_rekon_persen(100);
+            } else {
+                $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon']) / (($val['kd_d_rekon']) + ($val['kd_d_rekon_gagal'])) * 100));
+            }
             $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
             $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
-            if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
-			    $d_ba->set_kd_d_kontrak_persen(100);
-			} else {
-			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
-			}
+            if (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal']) == 0) {
+                $d_ba->set_kd_d_kontrak_persen(100);
+            } else {
+                $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak']) / (($val['kd_d_kontrak']) + ($val['kd_d_kontrak_gagal'])) * 100));
+            }
         }
         return $this;
     }
@@ -267,14 +267,10 @@ class DataBa {
             $this->_error .= "Kontrak gagal belum diinput!</br>";
             $this->_valid = FALSE;
         }
-
-        /*if($this->is_double_data($this->get_kd_d_user_ba(),$this->get_kd_d_tgl())>0){
-            $this->_valid = FALSE;
-        }*/
     }
 
-    public function is_double_data($kd_user, $tgl){
-        $sql = "SELECT COUNT(*) as hitung FROM ".$this->_table." WHERE kd_d_user_ba=".$kd_user." AND kd_d_tgl='".$tgl."'";
+    public function is_double_data($kd_user, $tgl) {
+        $sql = "SELECT COUNT(*) as hitung FROM " . $this->_table . " WHERE kd_d_user_ba=" . $kd_user . " AND kd_d_tgl='" . $tgl . "'";
         $return = 0;
         $data = $this->db->select($sql);
         foreach ($data as $key => $value) {
@@ -390,7 +386,7 @@ class DataBa {
     public function get_kd_d_rekon_gagal() {
         return $this->_kd_d_rekon_gagal;
     }
-    
+
     public function get_kd_d_rekon_persen() {
         return $this->_kd_d_rekon_persen;
     }

@@ -33,19 +33,19 @@
     val = new Array(<?php echo implode(',', $ids) ?>)
     label = new Array(<?php echo implode(',', $tgl) ?>)
     var lineChartData = {
-        labels : label,
-        datasets : [
+        labels: label,
+        datasets: [
             {
-                fillColor : "rgba(0,121,185,0.3)",
-                strokeColor : "rgba(0,121,185,1)",
-                pointColor : "rgba(0,121,185,1)",
-                pointStrokeColor : "#fff",
-                data : val
+                fillColor: "rgba(0,121,185,0.3)",
+                strokeColor: "rgba(0,121,185,1)",
+                pointColor: "rgba(0,121,185,1)",
+                pointStrokeColor: "#fff",
+                data: val
             }
         ]
-			
+
     }
 
     var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-	
+
 </script>

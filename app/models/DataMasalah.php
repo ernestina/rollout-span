@@ -31,22 +31,22 @@ class DataMasalah {
      * @param limit batas default null
      * return array objek Data Tetap
      */
-	
+
     public function get_d_mslh($limit = null, $batas = null) {
-		$id_user=Session::get('id_user');
-		$sql = "SELECT 
+        $id_user = Session::get('id_user');
+        $sql = "SELECT 
 				a.kd_d_mslh kd_d_mslh,
 				a.tgl_mslh tgl_mslh,
 				a.masalah masalah,
 				b.nama_user nama_user
-				FROM " . $this->_table ." a
+				FROM " . $this->_table . " a
 				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user ";
-		if($id_user != 1){
-			$sql .= " WHERE a.kd_d_user= " . $id_user;
-		} 
-		$sql .= " ORDER BY a.tgl_mslh desc";
-		
-		
+        if ($id_user != 1) {
+            $sql .= " WHERE a.kd_d_user= " . $id_user;
+        }
+        $sql .= " ORDER BY a.tgl_mslh desc";
+
+
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -58,7 +58,7 @@ class DataMasalah {
             $d_mslh->set_kd_d_user($val['nama_user']);
             $d_mslh->set_tgl_mslh($val['tgl_mslh']);
             $d_mslh->set_masalah($val['masalah']);
-            
+
             $data[] = $d_mslh;
             //var_dump($d_mslh);
         }
@@ -66,8 +66,7 @@ class DataMasalah {
         return $data;
     }
 
-    
-	public function get_d_mslh_per_tgl($limit = null, $batas = null) {
+    public function get_d_mslh_per_tgl($limit = null, $batas = null) {
         $sql = "SELECT * FROM " . $this->_table . " GROUP BY tgl_mslh asc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
@@ -78,7 +77,7 @@ class DataMasalah {
             $d_mslh = new $this($this->registry);
             $d_mslh->set_kd_d_user($val['kd_d_user']);
             $d_mslh->set_tgl_mslh($val['tgl_mslh']);
-			$d_mslh->set_masalah($val['masalah']);
+            $d_mslh->set_masalah($val['masalah']);
 
             $data[] = $d_mslh;
             //var_dump($d_pkn);
@@ -92,7 +91,7 @@ class DataMasalah {
      * @param objek Data Tetap
      * return objek Data Tetap
      */
-	
+
     public function get_d_mslh_by_id($d_mslh = DataMasalah) {
         if (is_null($d_mslh->get_kd_d_mslh())) {
             return false;
@@ -138,7 +137,6 @@ class DataMasalah {
             'kd_d_user' => $this->get_kd_d_user(),
             'tgl_mslh' => $this->get_tgl_mslh(),
             'masalah' => $this->get_masalah()
-            
         );
         $this->validate();
         if (!$this->get_valid())
@@ -171,7 +169,6 @@ class DataMasalah {
             $this->_error .= "Masalah belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        
     }
 
     /*

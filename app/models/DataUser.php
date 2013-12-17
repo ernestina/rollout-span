@@ -77,7 +77,7 @@ class DataUser {
         return $this;
     }
 
-    public function get_kanwil_name(){
+    public function get_kanwil_name() {
         $sql = "SELECT nama_user FROM d_user WHERE kd_r_jenis=3";
         $data = $this->db->select($sql);
         $return = array();
@@ -143,15 +143,15 @@ class DataUser {
             $this->_error .= "Jenis user belum diinput!<?br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_kd_r_unit() == "" ) {
+        if ($this->get_kd_r_unit() == "") {
             $this->_error .= "Unit User belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_nama_user() == "" ) {
+        if ($this->get_nama_user() == "") {
             $this->_error .= "Nama belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_pass_user() == "" ) {
+        if ($this->get_pass_user() == "") {
             $this->_error .= "Pass belum diinput!</br>";
             $this->_valid = FALSE;
         }
@@ -168,7 +168,7 @@ class DataUser {
     public function set_kd_r_jenis($jenis) {
         $this->_kd_r_jenis = $jenis;
     }
-    
+
     public function set_kd_r_unit($unit) {
         $this->_kd_r_unit = $unit;
     }
@@ -203,7 +203,7 @@ class DataUser {
     public function get_kd_r_jenis() {
         return $this->_kd_r_jenis;
     }
-    
+
     public function get_kd_r_unit() {
         return $this->_kd_r_unit;
     }

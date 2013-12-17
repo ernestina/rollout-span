@@ -237,7 +237,7 @@ class MysqlAdapter {
         $stmt = $this->query($sql, $bind);
         return $stmt->fetchColumn(0);
     }
-    
+
     public function __destruct() {
         ;
     }

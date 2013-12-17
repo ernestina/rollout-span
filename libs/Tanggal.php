@@ -5,54 +5,53 @@
  * and open the template in the editor.
  */
 
-class Tanggal{
-    
-    public static function ubahFormatTanggal($tgl){
-        if(substr($tgl, 4, 1)=='-'){
+class Tanggal {
+
+    public static function ubahFormatTanggal($tgl) {
+        if (substr($tgl, 4, 1) == '-') {
             return $tgl;
-        }        
+        }
         $tgl = explode('/', $tgl);
         $temp = array(
             $tgl[2],
             $tgl[0],
             $tgl[1]
         );
-        
-        $tgl = implode('-',$temp);
-        
+
+        $tgl = implode('-', $temp);
+
         //list($month, $day, $year) = split('[/.-]',$tgl);
         //$tgl = $year.'-'.$month.'-'.$day;
         return $tgl;
     }
-    
-    public static function ubahFormatToDatePicker($tgl){
-               
+
+    public static function ubahFormatToDatePicker($tgl) {
+
         $tgl = explode('-', $tgl);
         $temp = array(
             $tgl[1],
             $tgl[2],
             $tgl[0]
         );
-        
-        $tgl = implode('/',$temp);
-        
+
+        $tgl = implode('/', $temp);
+
         //list($month, $day, $year) = split('[/.-]',$tgl);
         //$tgl = $year.'-'.$month.'-'.$day;
         return $tgl;
     }
 
-
-    public static function tgl_indo($tgl){
-        $tgl=  explode('-', $tgl);
+    public static function tgl_indo($tgl) {
+        $tgl = explode('-', $tgl);
         $month = self::bulan_indo($tgl[1]);
-        
-        return $tgl[2].' '.$month.' '.$tgl[0];
+
+        return $tgl[2] . ' ' . $month . ' ' . $tgl[0];
     }
-    
-    public static function bulan_indo($bulan){
-        $month ='';
-        
-        switch($bulan){
+
+    public static function bulan_indo($bulan) {
+        $month = '';
+
+        switch ($bulan) {
             case '01':
                 $month = 'Januari';
                 break;
@@ -90,14 +89,14 @@ class Tanggal{
                 $month = 'Desember';
                 break;
         }
-        
+
         return $month;
     }
-    
-    public static function bulan_num($bulan){
-        $month ='';
-        
-        switch($bulan){
+
+    public static function bulan_num($bulan) {
+        $month = '';
+
+        switch ($bulan) {
             case 'Januari':
                 $month = '01';
                 break;
@@ -135,16 +134,18 @@ class Tanggal{
                 $month = '12';
                 break;
         }
-        
+
         return $month;
     }
-    
-    public static function getTglSekarang(){
+
+    public static function getTglSekarang() {
         return date('Y-m-d');
     }
-    
-    public static function getTimeSekarang(){
+
+    public static function getTimeSekarang() {
         return date('Y-m-d H:i:s');
     }
+
 }
+
 ?>

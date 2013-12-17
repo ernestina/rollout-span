@@ -99,8 +99,7 @@ class MysqlSelect {
             if (is_array($value)) {
                 $value = implode(',', $value);
                 $condition = str_replace('?', $value, $condition);
-            }
-            else
+            } else
                 $condition = $this->quote($condition, $value);
         }
 
@@ -190,7 +189,7 @@ class MysqlSelect {
 
         return $query;
     }
-    
+
     public function __destruct() {
         ;
     }

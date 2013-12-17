@@ -3,29 +3,29 @@
         <h2>DATA TETAP</h2></div>
     <div class="kolom3">
         <fieldset><legend><?php
-if (isset($this->d_ubah)) {
-    echo 'Ubah Data Tetap';
-} else {
-    echo 'Tambah Data tetap'; 
-}
-?></legend>
+                if (isset($this->d_ubah)) {
+                    echo 'Ubah Data Tetap';
+                } else {
+                    echo 'Tambah Data tetap';
+                }
+                ?></legend>
             <div id="form-input"><div class="kiri">
                     <form method="POST" action="<?php
-                if (isset($this->d_ubah)) {
-                    echo URL . 'dataTetap/updDataTetap';
-                } else {
-                    $_SERVER['PHP_SELF']; 
-                }
-?>">
-                          <?php
-                          if (isset($this->d_ubah)) {
-                              echo "<input type=hidden name='kd_d_tetap' value=" . $this->d_ubah->get_kd_d_tetap() . ">";
-                          }
+                    if (isset($this->d_ubah)) {
+                        echo URL . 'dataTetap/updDataTetap';
+                    } else {
+                        $_SERVER['PHP_SELF'];
+                    }
+                    ?>">
+                              <?php
+                              if (isset($this->d_ubah)) {
+                                  echo "<input type=hidden name='kd_d_tetap' value=" . $this->d_ubah->get_kd_d_tetap() . ">";
+                              }
 
-                          if (isset($this->error)) {
-                              echo "<div class=error>" . $this->error . "</div>";
-                          }
-                          ?>
+                              if (isset($this->error)) {
+                                  echo "<div class=error>" . $this->error . "</div>";
+                              }
+                              ?>
 
                         <div id="wunit" class="error"></div>
                         <label>Unit</label><input type="text" name="kd_r_unit" id="kd_r_unit" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_r_unit() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_r_unit() : ''); ?>">
@@ -85,106 +85,106 @@ if (isset($this->d_ubah)) {
 </div>
 </div>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         hideErrorId();
         hideWarning();
-        
+
     });
-    
-    function hideErrorId(){
+
+    function hideErrorId() {
         $('.error').fadeOut(0);
     }
 
-    function hideWarning(){
-        $('#kd_r_unit').keyup(function(){
-            if(document.getElementById('kd_r_unit').value !=''){
+    function hideWarning() {
+        $('#kd_r_unit').keyup(function() {
+            if (document.getElementById('kd_r_unit').value != '') {
                 $('#wunit').fadeOut(200);
             }
         })
-    
-        $('#d_tetap_fo1').keyup(function(){
-            if(document.getElementById('d_tetap_fo1').value !=''){
+
+        $('#d_tetap_fo1').keyup(function() {
+            if (document.getElementById('d_tetap_fo1').value != '') {
                 $('#wfo1').fadeOut(200);
             }
         })
-    
-        $('#d_tetap_trainer').keyup(function(){
-            if(document.getElementById('d_tetap_trainer').value !=''){
+
+        $('#d_tetap_trainer').keyup(function() {
+            if (document.getElementById('d_tetap_trainer').value != '') {
                 $('#wtrainer').fadeOut(200);
             }
         })
-    
-        $('#d_tetap_pendamping').keyup(function(){
-            if(document.getElementById('d_tetap_pendamping').value !=''){
+
+        $('#d_tetap_pendamping').keyup(function() {
+            if (document.getElementById('d_tetap_pendamping').value != '') {
                 $('#wpendamping').fadeOut(200);
             }
         })
-    
-        $('#d_tetap_dsu').keyup(function(){
-            if(document.getElementById('d_tetap_dsu').value !=''){
+
+        $('#d_tetap_dsu').keyup(function() {
+            if (document.getElementById('d_tetap_dsu').value != '') {
                 $('#wdsu').fadeOut(200);
             }
         })
 
     }
 
-    function del(unit){
-        var text = "Yakin data Kantor "+unit+" akan dihapus?\npenghapusan akan mengakibatkan data kantor "+unit+" berantakan!";
-        if(confirm(text)){
+    function del(unit) {
+        var text = "Yakin data Kantor " + unit + " akan dihapus?\npenghapusan akan mengakibatkan data kantor " + unit + " berantakan!";
+        if (confirm(text)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    function cek(){
+
+    function cek() {
         var kd_r_unit = document.getElementById('kd_r_unit').value;
         var d_tetap_fo1 = document.getElementById('d_tetap_fo1').value;
         var d_tetap_trainer = document.getElementById('d_tetap_trainer').value;
         var d_tetap_pendamping = document.getElementById('d_tetap_pendamping').value;
         var d_tetap_dsu = document.getElementById('d_tetap_dsu').value;
-        var jml=0;
-        if(kd_r_unit==''){
-            var wunit= 'Unit harus diisi!';
+        var jml = 0;
+        if (kd_r_unit == '') {
+            var wunit = 'Unit harus diisi!';
             $('#wunit').fadeIn(0);
             $('#wunit').html(wunit);
             jml++;
         }
-    
-        if(d_tetap_fo1==''){
-            var wfo1= 'Nama FO 1 harus diisi!';
+
+        if (d_tetap_fo1 == '') {
+            var wfo1 = 'Nama FO 1 harus diisi!';
             $('#wfo1').fadeIn(0);
             $('#wfo1').html(wfo1);
             jml++;
         }
-    
-        if(d_tetap_trainer==''){
-            var wtrainer= 'Nama Trainer harus diisi!';
+
+        if (d_tetap_trainer == '') {
+            var wtrainer = 'Nama Trainer harus diisi!';
             $('#wtrainer').fadeIn(0);
             $('#wtrainer').html(wtrainer);
             jml++;
         }
-    
-        if(d_tetap_pendamping==''){
-            var wpendamping= 'Nama Pendamping harus diisi!';
+
+        if (d_tetap_pendamping == '') {
+            var wpendamping = 'Nama Pendamping harus diisi!';
             $('#wpendamping').fadeIn(0);
             $('#wpendamping').html(wpendamping);
             jml++;
-            
+
         }
-    
-        if(d_tetap_dsu==''){
-            var wdsu= 'Nama Duta SPAN harus diisi!';
+
+        if (d_tetap_dsu == '') {
+            var wdsu = 'Nama Duta SPAN harus diisi!';
             $('#wdsu').fadeIn(0);
             $('#wdsu').html(wdsu);
             jml++;
         }
-    
-        if(jml>0){
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
 </script>

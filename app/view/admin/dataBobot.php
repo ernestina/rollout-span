@@ -76,12 +76,12 @@
 
         <div class="kolomx">
             <fieldset><legend><?php
-                                  echo 'Level 2 KPPN';
-                                  ?></legend>
+                    echo 'Level 2 KPPN';
+                    ?></legend>
                 <div id="form-input"><div class="kiris">
                         <form method="POST" action="<?php
-                    $_SERVER['PHP_SELF'];
-                                  ?>">
+                        $_SERVER['PHP_SELF'];
+                        ?>">
                                   <?php
                                   echo "<div class=error>" . $this->error . "</div>";
                                   ?>
@@ -116,12 +116,12 @@
 
         <div class="kolomy">
             <fieldset><legend><?php
-                                  echo 'Level 2 BA.999';
-                                  ?></legend>
+                    echo 'Level 2 BA.999';
+                    ?></legend>
                 <div id="form-input"><div class="kiris">
                         <form method="POST" action="<?php
-                    $_SERVER['PHP_SELF'];
-                                  ?>">
+                        $_SERVER['PHP_SELF'];
+                        ?>">
                                   <?php
                                   if (isset($this->error)) {
                                       echo "<div class=error>" . $this->error . "</div>";
@@ -157,12 +157,12 @@
 
         <div class="kolomz">
             <fieldset><legend><?php
-                                  echo 'Level 2 PKN';
-                                  ?></legend>
+                    echo 'Level 2 PKN';
+                    ?></legend>
                 <div id="form-input"><div class="kiris">
                         <form method="POST" action="<?php
-                    $_SERVER['PHP_SELF'];
-                                  ?>">
+                        $_SERVER['PHP_SELF'];
+                        ?>">
                                   <?php
                                   if (isset($this->error)) {
                                       echo "<div class=error>" . $this->error . "</div>";
@@ -198,405 +198,405 @@
 </div> <!--end top-->
 
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         hideErrorId();
         hideWarning();
-        
+
     });
-    
-    function hideErrorId(){
+
+    function hideErrorId() {
         $('.error').fadeOut(0);
     }
 
-    function hideWarning(){
-        $('#kppn').keyup(function(){
-            if(document.getElementById('kppn').value !=''){
+    function hideWarning() {
+        $('#kppn').keyup(function() {
+            if (document.getElementById('kppn').value != '') {
                 $('#wkppn').fadeOut(200);
             }
-            if((parseInt(document.getElementById('kppn').value)+parseInt(document.getElementById('ba').value)+parseInt(document.getElementById('pkn').value)) ==100){
+            if ((parseInt(document.getElementById('kppn').value) + parseInt(document.getElementById('ba').value) + parseInt(document.getElementById('pkn').value)) == 100) {
                 $('#wkppn').fadeOut(200);
             }
         })
-    
-        $('#ba').keyup(function(){
-            if(document.getElementById('ba').value !=''){
+
+        $('#ba').keyup(function() {
+            if (document.getElementById('ba').value != '') {
                 $('#wba').fadeOut(200);
             }
-            if((parseInt(document.getElementById('kppn').value)+parseInt(document.getElementById('ba').value)+parseInt(document.getElementById('pkn').value)) ==100){
+            if ((parseInt(document.getElementById('kppn').value) + parseInt(document.getElementById('ba').value) + parseInt(document.getElementById('pkn').value)) == 100) {
                 $('#wkppn').fadeOut(200);
             }
         })
-    
-        $('#pkn').keyup(function(){
-            if(document.getElementById('pkn').value !=''){
+
+        $('#pkn').keyup(function() {
+            if (document.getElementById('pkn').value != '') {
                 $('#wpkn').fadeOut(200);
             }
-            if((parseInt(document.getElementById('kppn').value)+parseInt(document.getElementById('ba').value)+parseInt(document.getElementById('pkn').value)) ==100){
+            if ((parseInt(document.getElementById('kppn').value) + parseInt(document.getElementById('ba').value) + parseInt(document.getElementById('pkn').value)) == 100) {
                 $('#wkppn').fadeOut(200);
             }
         })
-    
-        $('#konversi').keyup(function(){
-            if(document.getElementById('konversi').value !=''){
+
+        $('#konversi').keyup(function() {
+            if (document.getElementById('konversi').value != '') {
                 $('#wkonversi').fadeOut(200);
             }
-            if((parseInt(document.getElementById('konversi').value)
-                +parseInt(document.getElementById('sp2d').value)
-                +parseInt(document.getElementById('lhp').value)
-                +parseInt(document.getElementById('rekon').value)) ==100){
+            if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('sp2d').value)
+                    + parseInt(document.getElementById('lhp').value)
+                    + parseInt(document.getElementById('rekon').value)) == 100) {
                 $('#wkonversi').fadeOut(200);
             }
         })
-    
-        $('#sp2d').keyup(function(){
-            if(document.getElementById('sp2d').value !=''){
+
+        $('#sp2d').keyup(function() {
+            if (document.getElementById('sp2d').value != '') {
                 $('#wsp2d').fadeOut(200);
             }
-            if((parseInt(document.getElementById('konversi').value)
-                +parseInt(document.getElementById('sp2d').value)
-                +parseInt(document.getElementById('lhp').value)
-                +parseInt(document.getElementById('rekon').value)) ==100){
+            if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('sp2d').value)
+                    + parseInt(document.getElementById('lhp').value)
+                    + parseInt(document.getElementById('rekon').value)) == 100) {
                 $('#wkonversi').fadeOut(200);
             }
         })
-    
-        $('#lhp').keyup(function(){
-            if(document.getElementById('lhp').value !=''){
+
+        $('#lhp').keyup(function() {
+            if (document.getElementById('lhp').value != '') {
                 $('#wlhp').fadeOut(200);
             }
-            if((parseInt(document.getElementById('konversi').value)
-                +parseInt(document.getElementById('sp2d').value)
-                +parseInt(document.getElementById('lhp').value)
-                +parseInt(document.getElementById('rekon').value)) ==100){
+            if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('sp2d').value)
+                    + parseInt(document.getElementById('lhp').value)
+                    + parseInt(document.getElementById('rekon').value)) == 100) {
                 $('#wkonversi').fadeOut(200);
             }
         })
-    
-        $('#rekon').keyup(function(){
-            if(document.getElementById('rekon').value !=''){
+
+        $('#rekon').keyup(function() {
+            if (document.getElementById('rekon').value != '') {
                 $('#wrekon').fadeOut(200);
             }
-            if((parseInt(document.getElementById('konversi').value)
-                +parseInt(document.getElementById('sp2d').value)
-                +parseInt(document.getElementById('lhp').value)
-                +parseInt(document.getElementById('rekon').value)) ==100){
+            if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('sp2d').value)
+                    + parseInt(document.getElementById('lhp').value)
+                    + parseInt(document.getElementById('rekon').value)) == 100) {
                 $('#wkonversi').fadeOut(200);
             }
         })
-    
-        $('#spm_ba').keyup(function(){
-            if(document.getElementById('spm_ba').value !=''){
+
+        $('#spm_ba').keyup(function() {
+            if (document.getElementById('spm_ba').value != '') {
                 $('#wspm_ba').fadeOut(200);
             }
-            if((parseInt(document.getElementById('spm_ba').value)
-                +parseInt(document.getElementById('rekon_ba').value)
-                +parseInt(document.getElementById('kontrak_ba').value)) ==100){
+            if ((parseInt(document.getElementById('spm_ba').value)
+                    + parseInt(document.getElementById('rekon_ba').value)
+                    + parseInt(document.getElementById('kontrak_ba').value)) == 100) {
                 $('#wspm_ba').fadeOut(200);
             }
         })
-    
-        $('#rekon_ba').keyup(function(){
-            if(document.getElementById('rekon_ba').value !=''){
+
+        $('#rekon_ba').keyup(function() {
+            if (document.getElementById('rekon_ba').value != '') {
                 $('#wrekon_ba').fadeOut(200);
             }
-            if((parseInt(document.getElementById('spm_ba').value)
-                +parseInt(document.getElementById('rekon_ba').value)
-                +parseInt(document.getElementById('kontrak_ba').value)) ==100){
+            if ((parseInt(document.getElementById('spm_ba').value)
+                    + parseInt(document.getElementById('rekon_ba').value)
+                    + parseInt(document.getElementById('kontrak_ba').value)) == 100) {
                 $('#wspm_ba').fadeOut(200);
             }
         })
-    
-        $('#kontrak_ba').keyup(function(){
-            if(document.getElementById('kontrak_ba').value !=''){
+
+        $('#kontrak_ba').keyup(function() {
+            if (document.getElementById('kontrak_ba').value != '') {
                 $('#wkontrak_ba').fadeOut(200);
             }
-            if((parseInt(document.getElementById('spm_ba').value)
-                +parseInt(document.getElementById('rekon_ba').value)
-                +parseInt(document.getElementById('kontrak_ba').value)) ==100){
+            if ((parseInt(document.getElementById('spm_ba').value)
+                    + parseInt(document.getElementById('rekon_ba').value)
+                    + parseInt(document.getElementById('kontrak_ba').value)) == 100) {
                 $('#wspm_ba').fadeOut(200);
             }
         })
-    
-        $('#sp2d_pkn').keyup(function(){
-            if(document.getElementById('sp2d_pkn').value !=''){
+
+        $('#sp2d_pkn').keyup(function() {
+            if (document.getElementById('sp2d_pkn').value != '') {
                 $('#wsp2d_pkn').fadeOut(200);
             }
-            if((parseInt(document.getElementById('sp2d_pkn').value)
-                +parseInt(document.getElementById('spt_pkn').value)) ==100){
+            if ((parseInt(document.getElementById('sp2d_pkn').value)
+                    + parseInt(document.getElementById('spt_pkn').value)) == 100) {
                 $('#wsp2d_pkn').fadeOut(200);
             }
         })
-    
-        $('#spt_pkn').keyup(function(){
-            if(document.getElementById('spt_pkn').value !=''){
+
+        $('#spt_pkn').keyup(function() {
+            if (document.getElementById('spt_pkn').value != '') {
                 $('#wspt_pkn').fadeOut(200);
             }
-            if((parseInt(document.getElementById('sp2d_pkn').value)
-                +parseInt(document.getElementById('spt_pkn').value)) ==100){
+            if ((parseInt(document.getElementById('sp2d_pkn').value)
+                    + parseInt(document.getElementById('spt_pkn').value)) == 100) {
                 $('#wsp2d_pkn').fadeOut(200);
             }
         })
 
     }
-    
-    function ceklvl1(){
+
+    function ceklvl1() {
         var pattern = '^[0-9]+$';
         var kppn = document.getElementById('kppn').value;
         var ba = document.getElementById('ba').value;
         var pkn = document.getElementById('pkn').value;
-        var all = parseInt(kppn)+parseInt(ba)+parseInt(pkn);
-        var jml=0;
-        
-        if((all)!='100'){
+        var all = parseInt(kppn) + parseInt(ba) + parseInt(pkn);
+        var jml = 0;
+
+        if ((all) != '100') {
             var wkppn = 'Jumlah Bobot KPPN + BA + PKN Harus 100 !';
             $('#wkppn').html(wkppn);
             $('#wkppn').fadeIn(200);
             jml++;
         }
-        
-        if(!kppn.match(pattern)){
+
+        if (!kppn.match(pattern)) {
             var wkppn = 'Bobot KPPN harus dalam bentuk angka!';
             $('#wkppn').html(wkppn);
             $('#wkppn').fadeIn(200);
             jml++;
         }
-        
-        if(kppn==''){
-            var wkppn= 'Bobot KPPN harus diisi!';
+
+        if (kppn == '') {
+            var wkppn = 'Bobot KPPN harus diisi!';
             $('#wkppn').fadeIn(0);
             $('#wkppn').html(wkppn);
             jml++;
         }
-        
-        if(!ba.match(pattern)){
+
+        if (!ba.match(pattern)) {
             var wba = 'Bobot BA.999 harus dalam bentuk angka!';
             $('#wba').html(wba);
             $('#wba').fadeIn(200);
             jml++;
         }
-        
-        if(ba==''){
-            var wba= 'Bobot BA harus diisi!';
+
+        if (ba == '') {
+            var wba = 'Bobot BA harus diisi!';
             $('#wba').fadeIn(0);
             $('#wba').html(wba);
             jml++;
         }
-        
-        if(!pkn.match(pattern)){
+
+        if (!pkn.match(pattern)) {
             var wpkn = 'Bobot PKN harus dalam bentuk angka!';
             $('#wpkn').html(wpkn);
             $('#wpkn').fadeIn(200);
             jml++;
         }
-        
-        if(pkn==''){
-            var wpkn= 'Bobot PKN harus diisi!';
+
+        if (pkn == '') {
+            var wpkn = 'Bobot PKN harus diisi!';
             $('#wpkn').fadeIn(0);
             $('#wpkn').html(wpkn);
             jml++;
-        }      
-        
-        if(jml>0){
+        }
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
-    
-    function ceklvl2kppn(){
+
+    function ceklvl2kppn() {
         var pattern = '^[0-9]+$';
         var konversi = document.getElementById('konversi').value;
         var sp2d = document.getElementById('sp2d').value;
         var lhp = document.getElementById('lhp').value;
         var rekon = document.getElementById('rekon').value;
-        var all = parseInt(konversi)+parseInt(sp2d)+parseInt(lhp)+parseInt(rekon);
-        var jml=0;
-        
-        if((all)!='100'){
+        var all = parseInt(konversi) + parseInt(sp2d) + parseInt(lhp) + parseInt(rekon);
+        var jml = 0;
+
+        if ((all) != '100') {
             var wkonversi = 'Jumlah Bobot Konversi + SP2D + LHP + Rekon Harus 100 !';
             $('#wkonversi').html(wkonversi);
             $('#wkonversi').fadeIn(200);
             jml++;
         }
-        
-        if(!konversi.match(pattern)){
+
+        if (!konversi.match(pattern)) {
             var wkonversi = 'Bobot Konversi harus dalam bentuk angka!';
             $('#wkonversi').html(wkonversi);
             $('#wkonversi').fadeIn(200);
             jml++;
         }
-        
-        if(konversi==''){
-            var wkonversi= 'Bobot Konversi harus diisi!';
+
+        if (konversi == '') {
+            var wkonversi = 'Bobot Konversi harus diisi!';
             $('#wkonversi').fadeIn(0);
             $('#wkonversi').html(wkonversi);
             jml++;
         }
-        
-        if(!sp2d.match(pattern)){
+
+        if (!sp2d.match(pattern)) {
             var wsp2d = 'Bobot SP2D harus dalam bentuk angka!';
             $('#wsp2d').html(wsp2d);
             $('#wsp2d').fadeIn(200);
             jml++;
         }
-        
-        if(sp2d==''){
-            var wsp2d= 'Bobot SP2D harus diisi!';
+
+        if (sp2d == '') {
+            var wsp2d = 'Bobot SP2D harus diisi!';
             $('#wsp2d').fadeIn(0);
             $('#wsp2d').html(wsp2d);
             jml++;
         }
-        
-        if(!lhp.match(pattern)){
+
+        if (!lhp.match(pattern)) {
             var wlhp = 'Bobot LHP harus dalam bentuk angka!';
             $('#wlhp').html(wlhp);
             $('#wlhp').fadeIn(200);
             jml++;
         }
-        
-        if(lhp==''){
-            var wlhp= 'Bobot LHP harus diisi!';
+
+        if (lhp == '') {
+            var wlhp = 'Bobot LHP harus diisi!';
             $('#wlhp').fadeIn(0);
             $('#wlhp').html(wlhp);
             jml++;
         }
-        
-        if(!rekon.match(pattern)){
+
+        if (!rekon.match(pattern)) {
             var wrekon = 'Bobot Rekon harus dalam bentuk angka!';
             $('#wrekon').html(wrekon);
             $('#wrekon').fadeIn(200);
             jml++;
         }
-        
-        if(rekon==''){
-            var wrekon= 'Bobot Rekon harus diisi!';
+
+        if (rekon == '') {
+            var wrekon = 'Bobot Rekon harus diisi!';
             $('#wrekon').fadeIn(0);
             $('#wrekon').html(wrekon);
             jml++;
         }
-        
-        if(jml>0){
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
-    
-    function ceklvl2ba(){
+
+    function ceklvl2ba() {
         var pattern = '^[0-9]+$';
         var spm_ba = document.getElementById('spm_ba').value;
         var rekon_ba = document.getElementById('rekon_ba').value;
         var kontrak_ba = document.getElementById('kontrak_ba').value;
-        var all = parseInt(spm_ba)+parseInt(rekon_ba)+parseInt(kontrak_ba);
-        var jml=0;
-        
-        if((all)!='100'){
+        var all = parseInt(spm_ba) + parseInt(rekon_ba) + parseInt(kontrak_ba);
+        var jml = 0;
+
+        if ((all) != '100') {
             var wspm_ba = 'Jumlah Bobot SPM + Rekon + Kontrak BA.999 Harus 100 !';
             $('#wspm_ba').html(wspm_ba);
             $('#wspm_ba').fadeIn(200);
             jml++;
         }
-        
-        if(!spm_ba.match(pattern)){
+
+        if (!spm_ba.match(pattern)) {
             var wspm_ba = 'Bobot SPM BA.999 harus dalam bentuk angka!';
             $('#wspm_ba').html(wspm_ba);
             $('#wspm_ba').fadeIn(200);
             jml++;
         }
-        
-        if(spm_ba==''){
+
+        if (spm_ba == '') {
             var wspm_ba = 'Bobot SPM BA.999 harus diisi!';
             $('#wspm_ba').fadeIn(0);
             $('#wspm_ba').html(wspm_ba);
             jml++;
         }
-        
-        if(!rekon_ba.match(pattern)){
+
+        if (!rekon_ba.match(pattern)) {
             var wrekon_ba = 'Bobot Rekon BA.999 harus dalam bentuk angka!';
             $('#wrekon_ba').html(wrekon_ba);
             $('#wrekon_ba').fadeIn(200);
             jml++;
         }
-        
-        if(rekon_ba==''){ 
-            var wrekon_ba= 'Bobot Rekon BA.999 harus diisi!';
+
+        if (rekon_ba == '') {
+            var wrekon_ba = 'Bobot Rekon BA.999 harus diisi!';
             $('#wrekon_ba').fadeIn(0);
             $('#wrekon_ba').html(wrekon_ba);
             jml++;
         }
-        
-        if(!kontrak_ba.match(pattern)){
+
+        if (!kontrak_ba.match(pattern)) {
             var wkontrak_ba = 'Bobot Kontrak BA.999 harus dalam bentuk angka!';
             $('#wkontrak_ba').html(wkontrak_ba);
             $('#wkontrak_ba').fadeIn(200);
             jml++;
         }
-        
-        if(kontrak_ba==''){
-            var wkontrak_ba= 'Bobot Kontrak BA.999 harus diisi!';
+
+        if (kontrak_ba == '') {
+            var wkontrak_ba = 'Bobot Kontrak BA.999 harus diisi!';
             $('#wkontrak_ba').fadeIn(0);
             $('#wkontrak_ba').html(wkontrak_ba);
             jml++;
         }
-        
-        if(jml>0){
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
-    
-    function ceklvl2pkn(){
+
+    function ceklvl2pkn() {
         var pattern = '^[0-9]+$';
         var sp2d_pkn = document.getElementById('sp2d_pkn').value;
         var spt_pkn = document.getElementById('spt_pkn').value;
-        var all = parseInt(sp2d_pkn)+parseInt(spt_pkn);
-        var jml=0;
-        
-        if((all)!='100'){
+        var all = parseInt(sp2d_pkn) + parseInt(spt_pkn);
+        var jml = 0;
+
+        if ((all) != '100') {
             var wsp2d_pkn = 'Jumlah Bobot SP2D + SPT PKN Harus 100 !';
             $('#wsp2d_pkn').html(wsp2d_pkn);
             $('#wsp2d_pkn').fadeIn(200);
             jml++;
         }
-        
-        if(!sp2d_pkn.match(pattern)){
+
+        if (!sp2d_pkn.match(pattern)) {
             var wsp2d_pkn = 'Bobot SP2D PKN harus dalam bentuk angka!';
             $('#wsp2d_pkn').html(wsp2d_pkn);
             $('#wsp2d_pkn').fadeIn(200);
             jml++;
         }
-        
-        if(sp2d_pkn==''){
+
+        if (sp2d_pkn == '') {
             var wsp2d_pkn = 'Bobot SP2D PKN harus diisi!';
             $('#wsp2d_pkn').fadeIn(0);
             $('#wsp2d_pkn').html(wsp2d_pkn);
             jml++;
         }
-        
-        if(!spt_pkn.match(pattern)){
+
+        if (!spt_pkn.match(pattern)) {
             var wspt_pkn = 'Bobot SPM PKN harus dalam bentuk angka!';
             $('#wspt_pkn').html(wspt_pkn);
             $('#wspt_pkn').fadeIn(200);
             jml++;
         }
-        
-        if(spt_pkn==''){
-            var wspt_pkn= 'Bobot SPT PKN harus diisi!';
+
+        if (spt_pkn == '') {
+            var wspt_pkn = 'Bobot SPT PKN harus diisi!';
             $('#wspt_pkn').fadeIn(0);
             $('#wspt_pkn').html(wspt_pkn);
             jml++;
         }
-        
-    
-        if(jml>0){
+
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
-    
+
     }
 </script>

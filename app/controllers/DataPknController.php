@@ -71,32 +71,32 @@ class DataPknController extends BaseController {
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
         //if (isset($_POST['upd_d_pkn'])) {
-            $kd_d_pkn = $_POST['kd_d_pkn'];
-            $kd_d_user = $_POST['kd_d_user'];
-            $kd_d_tgl = $_POST['kd_d_tgl'];
-            $kd_d_sp2d = $_POST['kd_d_sp2d'];
-            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_spt = $_POST['kd_d_spt'];
-            $kd_d_spt_gagal = $_POST['kd_d_spt_gagal'];
+        $kd_d_pkn = $_POST['kd_d_pkn'];
+        $kd_d_user = $_POST['kd_d_user'];
+        $kd_d_tgl = $_POST['kd_d_tgl'];
+        $kd_d_sp2d = $_POST['kd_d_sp2d'];
+        $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+        $kd_d_spt = $_POST['kd_d_spt'];
+        $kd_d_spt_gagal = $_POST['kd_d_spt_gagal'];
 
-            $d_pkn->set_kd_d_pkn($kd_d_pkn);
-            $d_pkn->set_kd_d_user($kd_d_user);
-            $d_pkn->set_kd_d_tgl($kd_d_tgl);
-            $d_pkn->set_kd_d_sp2d($kd_d_sp2d);
-            $d_pkn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
-            $d_pkn->set_kd_d_spt($kd_d_spt);
-            $d_pkn->set_kd_d_spt_gagal($kd_d_spt_gagal);
+        $d_pkn->set_kd_d_pkn($kd_d_pkn);
+        $d_pkn->set_kd_d_user($kd_d_user);
+        $d_pkn->set_kd_d_tgl($kd_d_tgl);
+        $d_pkn->set_kd_d_sp2d($kd_d_sp2d);
+        $d_pkn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+        $d_pkn->set_kd_d_spt($kd_d_spt);
+        $d_pkn->set_kd_d_spt_gagal($kd_d_spt_gagal);
 
-            if (!$d_pkn->update_d_pkn()) {
-                $this->view->d_ubah = $d_pkn;
-                $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
-                $this->view->error = $d_pkn->get_error();
-                $this->view->data = $d_pkn->get_d_pkn();
-                $this->view->render('admin/dataPkn');
-            } else {
-                $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
-                header('location:' . URL . 'dataPkn/addDataPkn');
-            }
+        if (!$d_pkn->update_d_pkn()) {
+            $this->view->d_ubah = $d_pkn;
+            $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
+            $this->view->error = $d_pkn->get_error();
+            $this->view->data = $d_pkn->get_d_pkn();
+            $this->view->render('admin/dataPkn');
+        } else {
+            $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
+            header('location:' . URL . 'dataPkn/addDataPkn');
+        }
         //}
     }
 
@@ -121,7 +121,7 @@ class DataPknController extends BaseController {
      * cek data dobel ketika input data
      */
 
-    public function is_double_data(){
+    public function is_double_data() {
         $tgl = $_POST['tgl'];
         $kppn = new DataPkn($this->registry);
         $count = $kppn->is_double_data($tgl);
@@ -131,24 +131,28 @@ class DataPknController extends BaseController {
     /*
      * paging halaman
      */
-    public function data_nav(){
-        $hal = $_POST['halaman']; //echo $hal."-";
+
+    public function data_nav() {
+        $hal = $_POST['halaman'];
+        echo $hal . "-";
         $max = $_POST['max_data'];
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
         $count = count($d_pkn);
-        $jml_hal = ceil($count/$max);
-        $start = ($hal-1)*$max; //echo $start."-";
+        $jml_hal = ceil($count / $max);
+        $start = ($hal - 1) * $max;
+        echo $start . "-";
         //$end = $start+$max; echo $end."<br>";
-        $this->view->mulai = $start+1;
-        $this->view->data = array_slice($d_pkn, $start,$max);
+        $this->view->mulai = $start + 1;
+        $this->view->data = array_slice($d_pkn, $start, $max);
         $this->view->load('admin/tableDataPkn');
     }
 
     /*
      * paging halaman
      */
-    public function get_data_pkn_array(){
+
+    public function get_data_pkn_array() {
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
         $return = array();

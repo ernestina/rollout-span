@@ -21,14 +21,13 @@ class DataKppnController extends BaseController {
     public function index() {
         $this->view->render('admin/dataKppnList');
     }
-	
-	/*
+
+    /*
      * view Data KPPN PER KANWIL
      */
 
     public function viewDataKppnLvl1() {
         $d_kppn = new DataKppn($this->registry);
-        $d_bobot = new DataBobot($this->registry);
         $d_user = new DataUser($this->registry);
         $this->view->data = $d_kppn->get_d_kanwil();
         $this->view->d_kanwil = $d_user->get_kanwil_name();
@@ -39,8 +38,7 @@ class DataKppnController extends BaseController {
      * view Data seluruh Kanwil 
      */
 
-
-    public function viewDataKppnLvl2($kanwil=null) {
+    public function viewDataKppnLvl2($kanwil = null) {
         $d_kppn = new DataKppn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
@@ -48,37 +46,24 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_lvl2($kanwil);
         $this->view->render('admin/dataKppnLvl2');
     }
-	
-	public function viewDataKppnLvl3($kppn=null) {
+
+    public function viewDataKppnLvl3($kppn = null) {
         $d_kppn = new DataKppn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
         $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
         $this->view->data = $d_kppn->get_d_kppn_lvl3($kppn);
-		$this->view->sp2d = $d_kppn->get_d_kppn_per_tgl($kppn);
-        if(!is_null($kppn)) $this->view->kppn = $kppn;
+        $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl($kppn);
+        if (!is_null($kppn))
+            $this->view->kppn = $kppn;
         $this->view->render('admin/dataKppnLvl3');
     }
-
-    /*
-     * view Data KPPN dalam Kanwil 
-     
-
-    public function viewDataKppnLvl3($id_kanwil) { 
-        $d_kppn = new DataKppn($this->registry);
-        $d_bobot = new DataBobot($this->registry);
-        $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
-        $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
-        $this->view->data = $d_kppn->get_d_kppn();
-        $this->view->render('admin/dataKppnLvl3');
-    }
-    */
 
     /*
      * view Data KPPN  
      */
 
-    public function viewDataKppnLvl4($id_kppn) { 
+    public function viewDataKppnLvl4() {
         $d_kppn = new DataKppn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_kppn_lvl3();
@@ -91,7 +76,7 @@ class DataKppnController extends BaseController {
      * tambah Data KPPN Level 3
      */
 
-    public function addDataKppnLvl3($id=null){
+    public function addDataKppnLvl3($id = null) {
         $d_kppn = new DataKppn($this->registry);
         if (isset($_POST['add_d_kppn'])) {
             $kd_d_user = $_POST['kd_d_user'];
@@ -136,36 +121,38 @@ class DataKppnController extends BaseController {
      * cek data dobel ketika input data
      */
 
-    public function is_double_data(){
+    public function is_double_data() {
         $kd_user = Session::get('id_user');
         $tgl = $_POST['tgl'];
         $kppn = new DataKppn($this->registry);
-        $count = $kppn->is_double_data($kd_user,$tgl);
+        $count = $kppn->is_double_data($kd_user, $tgl);
         echo $count;
     }
 
     /*
      * paging halaman
      */
-    public function data_nav($id){
+
+    public function data_nav($id) {
         $hal = $_POST['halaman'];
         $max = $_POST['max_data'];
         //$id = Session::get('id_user');
         $kppn = new DataKppn($this->registry);
         $d_kppn = $kppn->get_d_kppn($id);
         $count = count($d_kppn);
-        $jml_hal = ceil($count/$max);
-        $start = ($hal-1)*$max;
+        $jml_hal = ceil($count / $max);
+        $start = ($hal - 1) * $max;
         //$end = (($hal-1)*$max)+$max;
-        $this->view->mulai = $start+1;
-        $this->view->data = array_slice($d_kppn, $start,$max);
+        $this->view->mulai = $start + 1;
+        $this->view->data = array_slice($d_kppn, $start, $max);
         $this->view->load('admin/tableDataKppnLvl3');
     }
 
     /*
      * paging halaman
      */
-    public function get_data_kppn_array($id){
+
+    public function get_data_kppn_array($id) {
         //$id = Session::get('id_user');
         $kppn = new DataKppn($this->registry);
         $d_kppn = $kppn->get_d_kppn($id);
@@ -176,7 +163,7 @@ class DataKppnController extends BaseController {
             $tmp['kd_d_user'] = $val->get_kd_d_user();
             $tmp['kd_d_tgl'] = $val->get_kd_d_tgl();
             $tmp['kd_d_konversi'] = $val->get_kd_d_konversi();
-            $tmp['kd_d_konversi_gagal'] = $val->get_kd_d_konversi_gagal(); 
+            $tmp['kd_d_konversi_gagal'] = $val->get_kd_d_konversi_gagal();
             $tmp['kd_d_sp2d'] = $val->get_kd_d_sp2d();
             $tmp['kd_d_sp2d_gagal'] = $val->get_kd_d_sp2d_gagal();
             $tmp['kd_d_lhp'] = $val->get_kd_d_lhp();
@@ -192,7 +179,7 @@ class DataKppnController extends BaseController {
 
         echo json_encode($return);
     }
-    
+
     /*
      * tambah Data KPPN Jakarta 2
      */
@@ -236,7 +223,7 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn(Session::get('id_user'));
         $this->view->render('admin/dataKppnLvl3Jkt2');
     }
-    
+
     /*
      * tambah Data KPPN Jakarta 6
      */
@@ -280,46 +267,46 @@ class DataKppnController extends BaseController {
         $this->view->data = $d_kppn->get_d_kppn_jkt6();
         $this->view->render('admin/dataKppnLvl3Jkt6');
     }
-	
-	/*
-	 * ubah data KPPN
-	 */
-	 
-	 public function updDataKppnLvl3() {
+
+    /*
+     * ubah data KPPN
+     */
+
+    public function updDataKppnLvl3() {
         $d_kppn = new DataKppn($this->registry);
         //if (isset($_POST['upd_d_kppn'])) {
-            $kd_d_kppn = $_POST['kd_d_kppn'];
-            $kd_d_user = $_POST['kd_d_user'];
-            $kd_d_tgl = $_POST['kd_d_tgl'];
-            $kd_d_konversi = $_POST['kd_d_konversi'];
-            $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
-            $kd_d_sp2d = $_POST['kd_d_sp2d'];
-            $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
-            $kd_d_lhp = $_POST['kd_d_lhp'];
-            $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
-            $kd_d_rekon = $_POST['kd_d_rekon'];
-            $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
+        $kd_d_kppn = $_POST['kd_d_kppn'];
+        $kd_d_user = $_POST['kd_d_user'];
+        $kd_d_tgl = $_POST['kd_d_tgl'];
+        $kd_d_konversi = $_POST['kd_d_konversi'];
+        $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+        $kd_d_sp2d = $_POST['kd_d_sp2d'];
+        $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
+        $kd_d_lhp = $_POST['kd_d_lhp'];
+        $kd_d_lhp_gagal = $_POST['kd_d_lhp_gagal'];
+        $kd_d_rekon = $_POST['kd_d_rekon'];
+        $kd_d_rekon_gagal = $_POST['kd_d_rekon_gagal'];
 
-            $d_kppn->set_kd_d_kppn($kd_d_kppn);
-            $d_kppn->set_kd_d_user($kd_d_user);
-            $d_kppn->set_kd_d_tgl($kd_d_tgl);
-            $d_kppn->set_kd_d_konversi($kd_d_konversi);
-            $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
-            $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
-            $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
-            $d_kppn->set_kd_d_lhp($kd_d_lhp);
-            $d_kppn->set_kd_d_lhp_gagal($kd_d_lhp_gagal);
-            $d_kppn->set_kd_d_rekon($kd_d_rekon);
-            $d_kppn->set_kd_d_rekon_gagal($kd_d_rekon_gagal);
+        $d_kppn->set_kd_d_kppn($kd_d_kppn);
+        $d_kppn->set_kd_d_user($kd_d_user);
+        $d_kppn->set_kd_d_tgl($kd_d_tgl);
+        $d_kppn->set_kd_d_konversi($kd_d_konversi);
+        $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+        $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
+        $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
+        $d_kppn->set_kd_d_lhp($kd_d_lhp);
+        $d_kppn->set_kd_d_lhp_gagal($kd_d_lhp_gagal);
+        $d_kppn->set_kd_d_rekon($kd_d_rekon);
+        $d_kppn->set_kd_d_rekon_gagal($kd_d_rekon_gagal);
 
-            if (!$d_kppn->update_d_kppn()) {
-                $this->view->d_ubah = $d_kppn;
-                $this->view->error = $d_kppn->get_error();
-                $this->view->data = $d_kppn->get_d_kppn();
-                $this->view->render('admin/dataKppnLvl3');
-            } else {
-                header('location:' . URL . 'dataKppn/addDataKppnLvl3');
-            }
+        if (!$d_kppn->update_d_kppn()) {
+            $this->view->d_ubah = $d_kppn;
+            $this->view->error = $d_kppn->get_error();
+            $this->view->data = $d_kppn->get_d_kppn();
+            $this->view->render('admin/dataKppnLvl3');
+        } else {
+            header('location:' . URL . 'dataKppn/addDataKppnLvl3');
+        }
         //}
     }
 
@@ -365,7 +352,7 @@ class DataKppnController extends BaseController {
             }
         }
     }
-    
+
     /*
      * ubah data Jakarta 6
      */
@@ -424,7 +411,7 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppn');
     }
-    
+
     /*
      * hapus data KPPN 
      * @param kd_d_tetap
@@ -441,8 +428,8 @@ class DataKppnController extends BaseController {
         $d_kppn->delete_d_kppn();
         header('location:' . URL . 'dataKppn/addDataKppnLvl3');
     }
-	
-	/*
+
+    /*
      * hapus data KPPN Jakarta 2
      * @param kd_d_tetap
      */
@@ -463,7 +450,7 @@ class DataKppnController extends BaseController {
      * hapus data KPPN Jakarta 6
      * @param kd_d_tetap
      */
-    
+
     public function delDataKppnLvl3Jkt6($id) {
         $d_kppn = new DataKppn($this->registry);
         if (is_null($id)) {
