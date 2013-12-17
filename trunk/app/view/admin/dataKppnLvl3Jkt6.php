@@ -5,20 +5,20 @@
         <h2>DATA KPPN JAKARTA 6</h2></div>
     <div class="kolom3">
         <fieldset><legend><?php
-if (isset($this->d_ubah)) {
-    echo 'Ubah Data';
-} else {
-    echo 'Tambah Data';
-}
-?></legend>
+                if (isset($this->d_ubah)) {
+                    echo 'Ubah Data';
+                } else {
+                    echo 'Tambah Data';
+                }
+                ?></legend>
             <div id="form-input"><div class="kiri">
                     <form method="POST" action="<?php
-                if (isset($this->d_ubah)) {
-                    echo URL . 'dataKppn/updDataKppnLvl3Jkt6';
-                } else {
-                    $_SERVER['PHP_SELF'];
-                }
-?>">
+                    if (isset($this->d_ubah)) {
+                        echo URL . 'dataKppn/updDataKppnLvl3Jkt6';
+                    } else {
+                        $_SERVER['PHP_SELF'];
+                    }
+                    ?>">
                               <?php
                               if (isset($this->d_ubah)) {
                                   echo "<input type='hidden' name='kd_d_kppn' value=" . $this->d_ubah->get_kd_d_kppn() . ">";
@@ -127,96 +127,96 @@ if (isset($this->d_ubah)) {
     </div>
 </div>
 <script type="text/javascript">
-    $(function(){
+    $(function() {
         hideErrorId();
         hideWarning();
     });
-    
-    function hideErrorId(){
+
+    function hideErrorId() {
         $('.error').fadeOut(0);
     }
 
-    function hideWarning(){
-        $('#kd_d_user').keyup(function(){
-            if(document.getElementById('kd_d_user').value !=''){
+    function hideWarning() {
+        $('#kd_d_user').keyup(function() {
+            if (document.getElementById('kd_d_user').value != '') {
                 $('#wuser').fadeOut(200);
             }
         })
-        
-        $('#kd_d_tgl').keyup(function(){
-            if(document.getElementById('kd_d_tgl').value !=''){
+
+        $('#kd_d_tgl').keyup(function() {
+            if (document.getElementById('kd_d_tgl').value != '') {
                 $('#wtgl').fadeOut(200);
             }
         })
-    
-        $('#kd_d_konversi').keyup(function(){
-            if(document.getElementById('kd_d_konversi').value !=''){
+
+        $('#kd_d_konversi').keyup(function() {
+            if (document.getElementById('kd_d_konversi').value != '') {
                 $('#wkonversi').fadeOut(200);
             }
         })
-    
-        $('#kd_d_konversi_gagal').keyup(function(){
-            if(document.getElementById('kd_d_konversi_gagal').value !=''){
+
+        $('#kd_d_konversi_gagal').keyup(function() {
+            if (document.getElementById('kd_d_konversi_gagal').value != '') {
                 $('#wkonversi_gagal').fadeOut(200);
             }
         })
-    
-        $('#kd_d_sp2d').keyup(function(){
-            if(document.getElementById('kd_d_sp2d').value !=''){
+
+        $('#kd_d_sp2d').keyup(function() {
+            if (document.getElementById('kd_d_sp2d').value != '') {
                 $('#wsp2d').fadeOut(200);
             }
         })
-    
-        $('#kd_d_sp2d_gagal').keyup(function(){
-            if(document.getElementById('kd_d_sp2d_gagal').value !=''){
+
+        $('#kd_d_sp2d_gagal').keyup(function() {
+            if (document.getElementById('kd_d_sp2d_gagal').value != '') {
                 $('#wsp2d_gagal').fadeOut(200);
             }
         })
-        
-        $('#kd_d_lhp').keyup(function(){
-            if(document.getElementById('kd_d_lhp').value !=''){
+
+        $('#kd_d_lhp').keyup(function() {
+            if (document.getElementById('kd_d_lhp').value != '') {
                 $('#wlhp').fadeOut(200);
             }
         })
-    
-        $('#kd_d_lhp_gagal').keyup(function(){
-            if(document.getElementById('kd_d_lhp_gagal').value !=''){
+
+        $('#kd_d_lhp_gagal').keyup(function() {
+            if (document.getElementById('kd_d_lhp_gagal').value != '') {
                 $('#wlhp_gagal').fadeOut(200);
             }
         })
-    
-        $('#kd_d_rekon').keyup(function(){
-            if(document.getElementById('kd_d_rekon').value !=''){
+
+        $('#kd_d_rekon').keyup(function() {
+            if (document.getElementById('kd_d_rekon').value != '') {
                 $('#wrekon').fadeOut(200);
             }
         })
-        
-        $('#kd_d_rekon_gagal').keyup(function(){
-            if(document.getElementById('kd_d_rekon_gagal').value !=''){
+
+        $('#kd_d_rekon_gagal').keyup(function() {
+            if (document.getElementById('kd_d_rekon_gagal').value != '') {
                 $('#wrekon_gagal').fadeOut(200);
             }
         })
 
     }
-    
-    $(function() { 
+
+    $(function() {
         $("#kd_d_tgl").datepicker({dateFormat: "yy-mm-dd"
-            //            buttonImage:'images/calendar.gif',
-            //            buttonImageOnly: true,
-            //            showOn: 'button'
-        }); 
+                    //            buttonImage:'images/calendar.gif',
+                    //            buttonImageOnly: true,
+                    //            showOn: 'button'
+        });
     });
 
-    function del(user){
-        var text = "Yakin data tanggal "+user+" akan dihapus?";
-        if(confirm(text)){
+    function del(user) {
+        var text = "Yakin data tanggal " + user + " akan dihapus?";
+        if (confirm(text)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    function cek(){
+
+    function cek() {
         var pattern = '^[0-9]+$';
         var kd_d_user = document.getElementById('kd_d_user').value;
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
@@ -228,136 +228,136 @@ if (isset($this->d_ubah)) {
         var kd_d_lhp_gagal = document.getElementById('kd_d_lhp_gagal').value;
         var kd_d_rekon = document.getElementById('kd_d_rekon').value;
         var kd_d_rekon_gagal = document.getElementById('kd_d_rekon_gagal').value;
-        var jml=0;
-        if(kd_d_user==''){
-            var wuser= 'User harus diisi!';
+        var jml = 0;
+        if (kd_d_user == '') {
+            var wuser = 'User harus diisi!';
             $('#wuser').fadeIn(0);
             $('#wuser').html(wuser);
             jml++;
         }
-        
-        if(kd_d_tgl==''){
-            var wtgl= 'Tanggal harus diisi!';
+
+        if (kd_d_tgl == '') {
+            var wtgl = 'Tanggal harus diisi!';
             $('#wtgl').fadeIn(0);
             $('#wtgl').html(wtgl);
             jml++;
         }
-        
-        if(!kd_d_konversi.match(pattern)){
+
+        if (!kd_d_konversi.match(pattern)) {
             var wkonversi = "Konversi harus dalam bentuk angka!";
             $('#wkonversi').html(wkonversi);
             $('#wkonversi').fadeIn(200);
             jml++;
         }
-    
-        if(kd_d_konversi==''){
-            var wkonversi= 'Jumlah Konversi harus diisi!';
+
+        if (kd_d_konversi == '') {
+            var wkonversi = 'Jumlah Konversi harus diisi!';
             $('#wkonversi').fadeIn(0);
             $('#wkonversi').html(wkonversi);
             jml++;
         }
-        
-        if(!kd_d_konversi_gagal.match(pattern)){
+
+        if (!kd_d_konversi_gagal.match(pattern)) {
             var wkonversi_gagal = "Konversi harus dalam bentuk angka!";
             $('#wkonversi_gagal').html(wkonversi_gagal);
             $('#wkonversi_gagal').fadeIn(200);
             jml++;
         }
-    
-        if(kd_d_konversi_gagal==''){
-            var wkonversi_gagal= 'Jumlah Konversi harus diisi!';
+
+        if (kd_d_konversi_gagal == '') {
+            var wkonversi_gagal = 'Jumlah Konversi harus diisi!';
             $('#wkonversi_gagal').fadeIn(0);
             $('#wkonversi_gagal').html(wkonversi_gagal);
             jml++;
         }
-        
-        if(!kd_d_sp2d.match(pattern)){
+
+        if (!kd_d_sp2d.match(pattern)) {
             var wsp2d = "SP2D harus dalam bentuk angka!";
             $('#wsp2d').html(wsp2d);
             $('#wsp2d').fadeIn(200);
             jml++;
         }
-        
-        if(kd_d_sp2d==''){
-            var wsp2d= 'Jumlah SP2D harus diisi!';
+
+        if (kd_d_sp2d == '') {
+            var wsp2d = 'Jumlah SP2D harus diisi!';
             $('#wsp2d').fadeIn(0);
             $('#wsp2d').html(wsp2d);
             jml++;
         }
-        
-        if(!kd_d_sp2d_gagal.match(pattern)){
+
+        if (!kd_d_sp2d_gagal.match(pattern)) {
             var wsp2d_gagal = "SP2D harus dalam bentuk angka!";
             $('#wsp2d_gagal').html(wsp2d_gagal);
             $('#wsp2d_gagal').fadeIn(200);
             jml++;
         }
-        
-        if(kd_d_sp2d_gagal==''){
-            var wsp2d_gagal= 'Jumlah SP2D harus diisi!';
+
+        if (kd_d_sp2d_gagal == '') {
+            var wsp2d_gagal = 'Jumlah SP2D harus diisi!';
             $('#wsp2d_gagal').fadeIn(0);
             $('#wsp2d_gagal').html(wsp2d_gagal);
             jml++;
         }
-    
-        if(!kd_d_lhp.match(pattern)){
+
+        if (!kd_d_lhp.match(pattern)) {
             var wlhp = "LHP harus dalam bentuk angka!";
             $('#wlhp').html(wlhp);
             $('#wlhp').fadeIn(200);
             jml++;
         }
-        
-        if(kd_d_lhp==''){
-            var wlhp= 'Jumlah LHP harus diisi!';
+
+        if (kd_d_lhp == '') {
+            var wlhp = 'Jumlah LHP harus diisi!';
             $('#wlhp').fadeIn(0);
             $('#wlhp').html(wlhp);
             jml++;
         }
-        
-        if(!kd_d_lhp_gagal.match(pattern)){
+
+        if (!kd_d_lhp_gagal.match(pattern)) {
             var wlhp_gagal = "LHP harus dalam bentuk angka!";
             $('#wlhp_gagal').html(wlhp_gagal);
             $('#wlhp_gagal').fadeIn(200);
             jml++;
         }
-        
-        if(kd_d_lhp_gagal==''){
-            var wlhp_gagal= 'Jumlah LHP harus diisi!';
+
+        if (kd_d_lhp_gagal == '') {
+            var wlhp_gagal = 'Jumlah LHP harus diisi!';
             $('#wlhp_gagal').fadeIn(0);
             $('#wlhp_gagal').html(wlhp_gagal);
             jml++;
         }
-        
-        if(!kd_d_rekon.match(pattern)){
+
+        if (!kd_d_rekon.match(pattern)) {
             var wrekon = "Rekon harus dalam bentuk angka!";
             $('#wrekon').html(wrekon);
             $('#wrekon').fadeIn(200);
             jml++;
         }
-    
-        if(kd_d_rekon==''){
-            var wrekon= 'Jumlah Rekon harus diisi!';
+
+        if (kd_d_rekon == '') {
+            var wrekon = 'Jumlah Rekon harus diisi!';
             $('#wrekon').fadeIn(0);
             $('#wrekon').html(wrekon);
             jml++;
         }
-        
-        if(!kd_d_rekon_gagal.match(pattern)){
+
+        if (!kd_d_rekon_gagal.match(pattern)) {
             var wrekon_gagal = "Rekon harus dalam bentuk angka!";
             $('#wrekon_gagal').html(wrekon_gagal);
             $('#wrekon_gagal').fadeIn(200);
             jml++;
         }
-    
-        if(kd_d_rekon_gagal==''){
-            var wrekon_gagal= 'Jumlah Rekon harus diisi!';
+
+        if (kd_d_rekon_gagal == '') {
+            var wrekon_gagal = 'Jumlah Rekon harus diisi!';
             $('#wrekon_gagal').fadeIn(0);
             $('#wrekon_gagal').html(wrekon_gagal);
             jml++;
         }
-        
-        if(jml>0){
+
+        if (jml > 0) {
             return false
-        }else{
+        } else {
             return true;
         }
     }

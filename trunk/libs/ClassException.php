@@ -6,13 +6,14 @@
  */
 
 class ClassException extends Exception {
-    
+
     public function __construct() {
         parent::__construct();
     }
-    
-    /*public function __construct($message, $code, $previous) {
-        parent::__construct($message, $code, $previous);
-    }*/
+
+    /* public function __construct($message, $code, $previous) {
+      parent::__construct($message, $code, $previous);
+      } */
 }
+
 ?>

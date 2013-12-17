@@ -12,7 +12,7 @@ class DataMasalahController extends BaseController {
 
     public function __construct($registry) {
         parent::__construct($registry);
-		//$this->kd_d_user = Session::get('kd_d_user');
+        //$this->kd_d_user = Session::get('kd_d_user');
     }
 
     /*
@@ -35,11 +35,11 @@ class DataMasalahController extends BaseController {
             $kd_d_user = Session::get('id_user');
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
-           
+
             $d_mslh->set_kd_d_user($kd_d_user);
             $d_mslh->set_tgl_mslh($tgl_mslh);
             $d_mslh->set_masalah($masalah);
-            
+
             if (!$d_mslh->add_d_mslh()) {
                 $this->view->d_rekam = $d_mslh;
                 $this->view->error = $d_mslh->get_error();
@@ -50,7 +50,7 @@ class DataMasalahController extends BaseController {
             $d_mslh->set_kd_d_mslh($id);
             $this->view->d_ubah = $d_mslh->get_d_mslh_by_id($d_mslh);
         }
-		
+
 
         //$this->view->dasbor = $d_mslh->get_d_pkn_per_tgl();
         $this->view->data = $d_mslh->get_d_mslh();
@@ -71,12 +71,12 @@ class DataMasalahController extends BaseController {
             $kd_d_user = Session::get('id_user');
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
-         
+
             $d_mslh->set_kd_d_mslh($kd_d_mslh);
             $d_mslh->set_kd_d_user($kd_d_user);
             $d_mslh->set_tgl_mslh($tgl_mslh);
             $d_mslh->set_masalah($masalah);
-            
+
             if (!$d_mslh->update_d_mslh()) {
                 $this->view->d_ubah = $d_mslh;
                 //$this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();

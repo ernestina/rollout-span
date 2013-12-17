@@ -125,25 +125,25 @@ class DataBobot {
 
     public function update_d_bobot() {
         $data = array(
-        'konversi' => $this->get_konversi(),
-        'sp2d' => $this->get_sp2d(),
-        'lhp' => $this->get_lhp(),
-        'rekon' => $this->get_rekon(),
-        'spm_ba' => $this->get_spm_ba(),
-        'rekon_ba' => $this->get_rekon_ba(),
-        'kontrak_ba' => $this->get_kontrak_ba(),
-        'sp2d_pkn' => $this->get_sp2d_pkn(),
-        'spt_pkn' => $this->get_spt_pkn(),
-        'kppn' => $this->get_kppn(),
-        'ba' => $this->get_ba(),
-        'pkn' => $this->get_pkn()
+            'konversi' => $this->get_konversi(),
+            'sp2d' => $this->get_sp2d(),
+            'lhp' => $this->get_lhp(),
+            'rekon' => $this->get_rekon(),
+            'spm_ba' => $this->get_spm_ba(),
+            'rekon_ba' => $this->get_rekon_ba(),
+            'kontrak_ba' => $this->get_kontrak_ba(),
+            'sp2d_pkn' => $this->get_sp2d_pkn(),
+            'spt_pkn' => $this->get_spt_pkn(),
+            'kppn' => $this->get_kppn(),
+            'ba' => $this->get_ba(),
+            'pkn' => $this->get_pkn()
         );
         $this->validate();
         if (!$this->get_valid())
             return false;
         if (!is_array($data))
             return false;
-         $where = '1';
+        $where = '1';
         return $this->db->update($this->_table, $data, $where);
     }
 

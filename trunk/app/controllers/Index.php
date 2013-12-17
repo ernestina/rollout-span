@@ -5,13 +5,13 @@
  * and open the template in the editor.
  */
 
-class Index extends BaseController{
-    
+class Index extends BaseController {
+
     public function __construct($registry) {
         parent::__construct($registry);
     }
-    
-    public function index(){
+
+    public function index() {
         //echo Session::get('role');
         if (Session::get('role') == ADMIN) {
             $d_bobot = new DataBobot($this->registry);
@@ -22,7 +22,7 @@ class Index extends BaseController{
             $this->view->ba = $d_ba->get_d_ba_per_tgl();
             $d_pkn = new DataPkn($this->registry);
             $this->view->pkn = $d_pkn->get_d_pkn_per_tgl();
-			$d_pkn = new DataMasalah($this->registry);
+            $d_pkn = new DataMasalah($this->registry);
             //$this->view->mslh = $d_mslh->get_d_mslh_per_tgl();
             $this->view->render('dasbor/level1');
         } elseif (Session::get('role') == KPPN) {
@@ -35,5 +35,7 @@ class Index extends BaseController{
             header('location:' . URL . 'auth/login');
         }
     }
+
 }
+
 ?>

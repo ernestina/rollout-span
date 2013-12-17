@@ -5,12 +5,12 @@
  * and open the template in the editor.
  */
 
-class Wewenang{
-    
-    public static function status_int_string($status){
-        $sts ='';
-        
-        switch($status){
+class Wewenang {
+
+    public static function status_int_string($status) {
+        $sts = '';
+
+        switch ($status) {
             case '1':
                 $sts = 'Admin';
                 break;
@@ -39,14 +39,14 @@ class Wewenang{
                 $sts = 'Lainya';
                 break;
         }
-        
+
         return $sts;
     }
-    
-    public static function status_string_int($status){
-        $sts ='';
-        
-        switch($status){
+
+    public static function status_string_int($status) {
+        $sts = '';
+
+        switch ($status) {
             case 'Admin':
                 $sts = '1';
                 break;
@@ -77,5 +77,7 @@ class Wewenang{
         }
         return $sts;
     }
+
 }
+
 ?>

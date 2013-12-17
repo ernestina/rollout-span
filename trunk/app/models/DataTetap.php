@@ -141,15 +141,15 @@ class DataTetap {
             $this->_error .= "FO 1 belum diinput!<?br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_d_tetap_trainer() == "" ) {
+        if ($this->get_d_tetap_trainer() == "") {
             $this->_error .= "Trainer belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_d_tetap_pendamping() == "" ) {
+        if ($this->get_d_tetap_pendamping() == "") {
             $this->_error .= "Pendamping belum diinput!</br>";
             $this->_valid = FALSE;
         }
-        if ($this->get_d_tetap_dsu() == "" ) {
+        if ($this->get_d_tetap_dsu() == "") {
             $this->_error .= "Duta SPAN belum diinput!</br>";
             $this->_valid = FALSE;
         }

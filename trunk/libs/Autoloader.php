@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Autoloader is a class scanner with caching.
  * 
@@ -17,35 +18,36 @@
  * @author Anthony Bush, Wayne Wight
  * @copyright 2006-2008 Academic Superstore. This software is open source protected by the FreeBSD License.
  * @version 2008-09-22
- **/
+ * */
 class Autoloader {
+
     protected static $classPaths = array();
     protected static $classFileSuffix = '.php';
     protected static $cacheFilePath = null;
     protected static $cachedPaths = null;
     protected static $excludeFolderNames = '/^CVS|\..*$/'; // CVS directories and directories starting with a dot (.).
     protected static $hasSaver = false;
-    
+
     /**
      * Sets the paths to search in when looking for a class.
      * 
      * @param array $paths
      * @return void
-     **/
+     * */
     public static function setClassPaths($paths) {
         self::$classPaths = $paths;
     }
-    
+
     /**
      * Adds a path to search in when looking for a class.
      * 
      * @param string $path
      * @return void
-     **/
+     * */
     public static function addClassPath($path) {
         self::$classPaths[] = $path;
     }
-    
+
     /**
      * Set the full file path to the cache file to use.
      * 
@@ -57,22 +59,22 @@ class Autoloader {
      * 
      * @param string $path
      * @return void
-     **/
+     * */
     public static function setCacheFilePath($path) {
         self::$cacheFilePath = $path;
     }
-    
+
     /**
      * Sets the suffix to append to a class name in order to get a file name
      * to look for
      * 
      * @param string $suffix - $className . $suffix = filename.
      * @return void
-     **/
+     * */
     public static function setClassFileSuffix($suffix) {
         self::$classFileSuffix = $suffix;
     }
-    
+
     /**
      * When searching the {@link $classPaths} recursively for a matching class
      * file, folder names matching $regex will not be searched.
@@ -85,18 +87,18 @@ class Autoloader {
      * 
      * @param string $regex
      * @return void
-     **/
+     * */
     public static function excludeFolderNamesMatchingRegex($regex) {
         self::$excludeFolderNames = $regex;
     }
-    
+
     /**
      * Returns true if the class file was found and included, false if not.
      *
      * @return boolean
-     **/
+     * */
     public static function loadClass($className) {
-        
+
         $filePath = self::getCachedPath($className);
         if ($filePath && file_exists($filePath)) {
             // Cached location is correct
@@ -115,11 +117,10 @@ class Autoloader {
                     return true;
                 }
             }
-            
         }
         return false;
     }
-    
+
     protected static function getCachedPath($className) {
         self::loadCachedPaths();
         if (isset(self::$cachedPaths[$className])) {
@@ -128,7 +129,7 @@ class Autoloader {
             return false;
         }
     }
-    
+
     protected static function loadCachedPaths() {
         if (is_null(self::$cachedPaths)) {
             if (self::$cacheFilePath && is_file(self::$cacheFilePath)) {
@@ -136,12 +137,12 @@ class Autoloader {
             }
         }
     }
-    
+
     /**
      * Write cached paths to disk.
      * 
      * @return void
-     **/
+     * */
     public static function saveCachedPaths() {
         if (!file_exists(self::$cacheFilePath) || is_writable(self::$cacheFilePath)) {
             $fileContents = serialize(self::$cachedPaths);
@@ -153,7 +154,7 @@ class Autoloader {
             trigger_error('Autoload cache file not writable: ' . self::$cacheFilePath, E_USER_ERROR);
         }
     }
-    
+
     protected static function searchForClassFile($className, $directory) {
         if (is_dir($directory) && is_readable($directory)) {
             $d = dir($directory);
@@ -176,14 +177,13 @@ class Autoloader {
         }
         return false;
     }
-	
-	public static function register()
-	{
-		/*** nullify any existing autoloads ***/
-		spl_autoload_register(null, false);
+
+    public static function register() {
+        /*         * * nullify any existing autoloads ** */
+        spl_autoload_register(null, false);
         spl_autoload_register(array('Autoloader', 'loadClass'));
     }
-    
+
 }
 
 ?> 
