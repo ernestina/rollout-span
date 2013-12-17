@@ -134,14 +134,12 @@ class DataPknController extends BaseController {
 
     public function data_nav() {
         $hal = $_POST['halaman'];
-        echo $hal . "-";
         $max = $_POST['max_data'];
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
         $count = count($d_pkn);
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
-        echo $start . "-";
         //$end = $start+$max; echo $end."<br>";
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_pkn, $start, $max);
