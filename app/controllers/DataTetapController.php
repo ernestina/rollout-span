@@ -42,7 +42,7 @@ class DataTetapController extends BaseController {
             $d_tetap->set_d_tetap_dsu($d_tetap_dsu);
 
             if (!$d_tetap->add_d_tetap()) {
-                $this->view->d_rekam = $d_tetap;
+                //$this->view->d_rekam = $d_tetap;
                 $this->view->error = $d_tetap->get_error();
             }
         }
