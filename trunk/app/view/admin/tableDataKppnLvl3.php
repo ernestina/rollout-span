@@ -53,7 +53,7 @@
                     echo "<td><b>" . $val->get_kd_d_rekon_persen() . "%</b></td>";
                     if (Session::get('role') == KPPN) {
                         echo "<td><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
-									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "><i class=\"icon-pencil\"></i></a></td>";
+									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\"></i></a></td>";
                     }
                     echo "</tr>";
                     $no++;

@@ -87,7 +87,7 @@
                         //var_dump($val);
                         echo "<tr>";
                         echo "<td>$no</td>";
-                        echo "<td>" . date("d/m", strtotime($val->get_tgl_mslh())) . "</td>";
+                        echo "<td>" . date("d/m/Y", strtotime($val->get_tgl_mslh())) . "</td>";
                         if (Session::get('role') == ADMIN) {
                             echo "<td>" . $val->get_kd_d_user() . "</td>";
                             echo "<td>" . $val->get_masalah() . "</td>";
