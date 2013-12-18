@@ -1,7 +1,4 @@
-<h2>MONITORING 
-    <?php
-    echo strtoupper(Session::get('user'));
-    ?></h2>
+<h2>MONITORING PER KANWIL</h2>
 <center><?php $this->load('dasbor/kppnLvl1') ?></center>
 <div id="top">
     <div id="gambar"></div>
