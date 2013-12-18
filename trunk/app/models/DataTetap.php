@@ -35,7 +35,7 @@ class DataTetap {
      */
 
     public function get_d_tetap($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_r_unit";
+        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tetap";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -133,7 +133,7 @@ class DataTetap {
     }
 
     public function validate() {
-        if ($this->get_kd_r_unit() == 0) {
+        if ($this->get_kd_r_unit() == "") {
             $this->_error .= "Unit belum dipilih!</br>";
             $this->_valid = FALSE;
         }
