@@ -53,6 +53,48 @@
 								<div id="wuser_ba"  class="error"></div>
                                 <label class="isian">Pilih Satker</label>
                                 <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 110px" type="text">
+								<?php if (isset($this->d_ubah)) {
+									$sat=$this->d_ubah->get_kd_d_user_ba();
+									echo "<option value=".$sat." selected>";
+									if ($sat==1) {
+										echo "DJA 979321";
+									} else if ($sat==2) {
+										echo "DJA 999200";
+									} else if ($sat==3) {
+										echo "DJA 984501";
+									} else if ($sat==4) {
+										echo "DJKN 977191";
+									} else if ($sat==5) {
+										echo "DJPK 999201";
+									} else if ($sat==6) {
+										echo "DJPK 999202";
+									} else if ($sat==7) {
+										echo "DJPK 999204";
+									} else if ($sat==8) {
+										echo "DSP 987361";
+									} else if ($sat==9) {
+										echo "DSP 984475";
+									} else if ($sat==10) {
+										echo "PKN 440780";
+									} else if ($sat==11) {
+										echo "PKN 999001<";
+									} else if ($sat==12) {
+										echo "SMI 997386";
+									} else if ($sat==13) {
+										echo "SMI 983783";
+									} else if ($sat==14) {
+										echo "SMI 961671";
+									} else if ($sat==15) {
+										echo "DJPK 985251 2";
+									} else if ($sat==16) {
+										echo "DJPK 985251 6";
+									} else if ($sat==17) {
+										echo "DJPU 960186";
+									} else if ($sat==18) {
+										echo "DJPU 977263";
+									}
+									echo " </option>";;
+								} ?>
                                     <option value="">- Pilih Satker -</option>
 									<option value="1">DJA 979321</option>
                                     <option value="2">DJA 999200</option>
