@@ -1,5 +1,5 @@
 <h2>MONITORING DATA BA 999</h2>
-<center><?php $this->load('dasbor/baLvl2') ?></center>
+<center><?php $this->load('dasbor/baLvl2') ?></center></br>
 <div id="top">
     <div id="form">
         <?php if (Session::get('role') == BA999) { ?>
@@ -13,17 +13,17 @@
 	</div></br></br>";
         }
         ?>-->
-        <div class="kolom3" style="display:none">
-            <fieldset>
+        <!--div class="kolom3" style="display:none"-->
+            <!--fieldset>
                 <legend>
                     <?php
-                    if (isset($this->d_ubah)) {
-                        echo 'Ubah Data ba';
-                    } else {
-                        echo 'Tambah Data ba';
-                    }
+//                    if (isset($this->d_ubah)) {
+//                        echo 'Ubah Data ba';
+//                    } else {
+//                        echo 'Tambah Data ba';
+//                    }
                     ?>
-                </legend>
+                </legend-->
                 <div id="form_input">
                     <div class="kiri">
                         <form id="form_rekam">
@@ -46,12 +46,15 @@
                             }
                             ?>
                             <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="99999">
-                            <div class="kolom1" style="width:600spx">
+                            <!--div class="kolom1" style="width:600spx"-->
                                 <div id="wdouble" class="error"></div>
-                                <div id="wuser_ba"  class="error"></div>
-                                <label >Pilih Satker</label>
-                                <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 100px" type="text">
-                                    <option value="1">DJA 979321</option>
+                                <div id="wtgl"  class="error"></div>
+                                <label class="isian">Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+								<div id="wuser_ba"  class="error"></div>
+                                <label class="isian">Pilih Satker</label>
+                                <select name="kd_d_user_ba" id="kd_d_user_ba" style="width: 110px" type="text">
+                                    <option value="">- Pilih Satker -</option>
+									<option value="1">DJA 979321</option>
                                     <option value="2">DJA 999200</option>
                                     <option value="3">DJA 984501</option>
                                     <option value="4">DJKN 977191</option>
@@ -70,25 +73,24 @@
                                     <option value="17">DJPU 960186</option>
                                     <option value="18">DJPU 977263</option>
                                 </select>
-                                <div id="wtgl"  class="error"></div>
-                                <label>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                                
                                 <div id="wspm"  class="error"></div>
-                                <label>SPM Sukses</label><input type="number" name="kd_d_spm" id="kd_d_spm" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm() : ''); ?>">
+                                <label class="isian">SPM Sukses</label><input type="number" name="kd_d_spm" id="kd_d_spm" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm() : ''); ?>">
                                 <div id="wspm_gagal"  class="error"></div>
-                                <label>SPM Gagal</label><input type="number" name="kd_d_spm_gagal" id="kd_d_spm_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm_gagal() : ''); ?>">
+                                <label class="isian">SPM Gagal</label><input type="number" name="kd_d_spm_gagal" id="kd_d_spm_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm_gagal() : ''); ?>">
                                 <div id="wrekon"  class="error"></div>
-                            </div>
-                            <div class="kolom2" style="width:160px">
-                                <label>Rekon Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                            <!--/div>
+                            <div class="kolom2" style="width:160px"-->
+                                <label class="isian">Rekon Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
                                 <div id="wrekon_gagal"  class="error"></div>
-                                <label>Rekon Gagal</label><input type="number" name="kd_d_rekon_gagal" id="kd_d_rekon_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon_gagal() : ''); ?>">
+                                <label class="isian">Rekon Gagal</label><input type="number" name="kd_d_rekon_gagal" id="kd_d_rekon_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon_gagal() : ''); ?>">
                                 <div id="wkontrak"  class="error"></div>
-                                <label>Kontrak Sukses</label><input type="number" name="kd_d_kontrak" id="kd_d_kontrak" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak() : ''); ?>">
+                                <label class="isian">Kontrak Sukses</label><input type="number" name="kd_d_kontrak" id="kd_d_kontrak" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak() : ''); ?>">
                                 <div id="wkontrak_gagal"  class="error"></div>
-                                <label>Kontrak Gagal</label><input type="number" name="kd_d_kontrak_gagal" id="kd_d_kontrak_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak_gagal() : ''); ?>">
-                            </div>
-                            <ul class="inline tengah">
-                                <li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li>
+                                <label class="isian">Kontrak Gagal</label><input type="number" name="kd_d_kontrak_gagal" id="kd_d_kontrak_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak_gagal() : ''); ?>">
+                            <!--/div-->
+                            <ul class="inline" style="margin-left: 250px;">
+                                <!--li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li-->
                                 <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_ba' : 'add_d_ba'; ?>" value="SIMPAN" onClick=""></li>
                             </ul>
                         </form>
@@ -96,7 +98,10 @@
                 </div>
             </fieldset>
         </div>
-        <div class="kolom6" id="table">
+        <fieldset><legend>DATA BA</legend>
+		<div class="kolom6" id="table">
+		</div></br><div id="nav"></div>
+		</fieldset>
             <!--<fieldset>
                 <legend>Data BA 999</legend>
                 <div id="table-title"></div>
@@ -111,9 +116,9 @@
                                 <th colspan="3" width="25%">Rekon</th>
                                 <th colspan="3" width="25%">Kontrak</th>
             <?php
-            if (Session::get('role') == BA999) {
-                echo "<th rowspan='2' width='10%'>Aksi</th>";
-            }
+//            if (Session::get('role') == BA999) {
+//                echo "<th rowspan='2' width='10%'>Aksi</th>";
+//            }
             ?>
                             </tr>
                             <tr>
@@ -129,7 +134,7 @@
                             </tr>
                         </thead>
                         <tbody>
-            <?php
+            <?php /*
             $no = 1;
             foreach ($this->data as $val) {
                 //var_dump($val);
@@ -191,13 +196,13 @@
                 }
                 echo "</tr>";
                 $no++;
-            }
+            } */
             ?>
                         </tbody>
                     </table>
                 </div>
             </fieldset>-->
-        </div><div id="nav"></div>
+        
     </div>
 </div>
 <script type="text/javascript">
@@ -278,6 +283,13 @@
         width: 500,
         height: 400,
         modal: true,
+		title: '<?php
+                    if (isset($this->d_ubah)) {
+                        echo 'Ubah Data BA';
+                    } else {
+                        echo 'Tambah Data BA';
+                    }
+                    ?>',
         close: function() {
             emptyField();
             hideErrorId();

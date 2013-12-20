@@ -442,6 +442,12 @@ input[type="button"], a.modal {
 	margin-bottom: 0px;
 	border: 1px solid #49afcd
 }
+
+input[type="button"].sukses {
+	border: 1px solid #5bb75b;
+	background-color: #5bb75b;
+}
+
 a.modal {
 	text-decoration: none;
 	padding: 5px;
@@ -1174,7 +1180,7 @@ th, td {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background: rgba(0,0,0,0.8);
+		background: rgba(0,0,0,0.3);
 		z-index: 99999;
 		opacity:0;
 		-webkit-transition: opacity 400ms ease-in;

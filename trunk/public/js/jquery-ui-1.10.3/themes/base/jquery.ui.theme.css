@@ -14,9 +14,21 @@
 
 /* Component containers
 ----------------------------------*/
+@font-face {
+    font-family: "Nexa";
+    src: url("../../../../../font/Nexa-Bold.otf");
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: "Sub";
+    src: url("../../../../../font/Novecentowide-Medium.otf");
+}
+
 .ui-widget {
-	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
-	font-size: 1.1em/*{fsDefault}*/;
+	font-family: Nexa/*{ffDefault}*/;
+	/*font-size: 1.1em/*{fsDefault}*/;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -25,7 +37,7 @@
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	font-family: Nexa/*{ffDefault}*/;
 	font-size: 1em;
 }
 .ui-widget-content {
@@ -37,10 +49,14 @@
 	color: #222222/*{fcContent}*/;
 }
 .ui-widget-header {
-	border: 1px solid #aaaaaa/*{borderColorHeader}*/;
-	background: #cccccc/*{bgColorHeader}*/ url(images/ui-bg_highlight-soft_75_cccccc_1x100.png)/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/;
+	height: 40px;
 	color: #222222/*{fcHeader}*/;
-	font-weight: bold;
+	/*font-weight: h2; */
+	font-family: Sub;
+	font-size: 24px;
+	text-align: center;
+	border-bottom: 1px solid #eee; 
+	margin-top: 10px;
 }
 .ui-widget-header a {
 	color: #222222/*{fcHeader}*/;
