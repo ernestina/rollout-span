@@ -448,6 +448,14 @@ input[type="button"].sukses {
 	background-color: #5bb75b;
 }
 
+input[type="button"].paging, input[type="button"].paging-kecil {
+	width: 50px;
+	margin: 5px 25px 5px -10px;
+	background-color: #faa732;
+	border: 1px solid #faa732;
+	
+}
+
 a.modal {
 	text-decoration: none;
 	padding: 5px;
