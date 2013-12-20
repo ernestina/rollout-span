@@ -171,7 +171,7 @@ class DataPkn {
             'kd_d_spt' => $this->get_kd_d_spt(),
             'kd_d_spt_gagal' => $this->get_kd_d_spt_gagal()
         );
-        $this->validate();
+        $this->validate(false);
         if (!$this->get_valid())
             return false;
         if (!is_array($data))
@@ -189,7 +189,7 @@ class DataPkn {
         $this->db->delete($this->_table, $where);
     }
 
-    public function validate() {
+    public function validate($add=true) {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";
             $this->_valid = FALSE;
@@ -214,10 +214,13 @@ class DataPkn {
             $this->_error .= "SPT belum diinput!</br>";
             $this->_valid = FALSE;
         }
-
-        if($this->is_double_data($this->get_kd_d_tgl())>0){
-            $this->_valid = FALSE;
-        }
+		
+		if($add){
+			if($this->is_double_data($this->get_kd_d_tgl())>0){
+				$this->_error .= "Terdapat data double untuk tanggal ".$this->get_kd_d_tgl()."!</br>";
+	            $this->_valid = FALSE;
+	        }
+		}
     }
 
     public function is_double_data($tgl){

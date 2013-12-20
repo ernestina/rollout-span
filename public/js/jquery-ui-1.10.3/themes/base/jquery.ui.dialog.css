@@ -9,11 +9,12 @@
  * http://docs.jquery.com/UI/Dialog#theming
  */
 .ui-dialog {
-	position: absolute;
+	position: relative;
 	top: 0;
 	left: 0;
 	padding: .2em;
 	outline: 0;
+	z-index: 99999;
 }
 .ui-dialog .ui-dialog-titlebar {
 	padding: .4em 1em;
@@ -22,19 +23,23 @@
 .ui-dialog .ui-dialog-title {
 	float: left;
 	margin: .1em 0;
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
-	right: .3em;
-	top: 50%;
-	width: 21px;
-	margin: -10px 0 0 0;
+	
+	
 	padding: 1px;
-	height: 20px;
+	
+	right: -17px;
+		text-align: center;
+		top: -25px;
+		width: 24px;
+		height: 24px;
+		border-radius: 12px;
 }
 .ui-dialog .ui-dialog-content {
 	position: relative;

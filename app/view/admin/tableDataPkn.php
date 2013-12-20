@@ -23,23 +23,23 @@
                     <th width="15%">%</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style='text-align: center'>
                 <?php
                 $no = $this->mulai;
                 foreach ($this->data as $val) {
                     //var_dump($val);
                     echo "<tr>";
-                    echo "<td style=\"text-align: center\">$no</td>";
+                    echo "<td>$no</td>";
                     echo "<td style='text-align: center'>" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d() . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d_gagal() . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_sp2d_persen() . "%</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt() . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt_gagal() . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_spt_persen() . "%</b></td>";
+                    echo "<td>" . $val->get_kd_d_sp2d() . "</td>";
+                    echo "<td>" . $val->get_kd_d_sp2d_gagal() . "</td>";
+                    echo "<td><b>" . $val->get_kd_d_sp2d_persen() . "%</td>";
+                    echo "<td>" . $val->get_kd_d_spt() . "</td>";
+                    echo "<td>" . $val->get_kd_d_spt_gagal() . "</td>";
+                    echo "<td><b>" . $val->get_kd_d_spt_persen() . "%</b></td>";
                     if (Session::get('role') == PKN) {
-                        echo "<td style=\"text-align: center\"><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "#kModal><i class=\"icon-pencil\"></i></a></td>";
+                        echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
+                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
                     }
                     echo "</tr>";
                     $no++;

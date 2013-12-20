@@ -40,6 +40,7 @@
                 } else {
                     $_SERVER['PHP_SELF'];
                 } ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+				
 				<div id="top">
 					<form method="POST" action="<?php
                 if (isset($this->d_ubah)) {
@@ -148,7 +149,11 @@
 <div id="top">
     <div id="gambar"></div>
     <div class="fitur" id="table">
-        <div class="kolom6" id="data_table">
+        <fieldset><legend>Data PKN</legend>
+			<div class="kolom6" id="data_table"></div></br>
+			<div id="nav"></div>
+		</fieldset>
+    </div>
             <!--<fieldset><legend>Data</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
@@ -161,9 +166,9 @@
                                 <th colspan="3">SP2D</th>
                                 <th colspan="3">LHP</th>
                                 <th colspan="3">Rekon</th>
-								<?php if (Session::get('role') == KPPN) { 
-                                echo "<th rowspan='2' width ='20%'>Aksi</th>";
-								}
+								<?php //if (Session::get('role') == KPPN) { 
+//                                echo "<th rowspan='2' width ='20%'>Aksi</th>";
+//								}
 								?>
                             </tr>
                             <tr>
@@ -182,7 +187,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
+                            <?php /*
                             $no = 1;
                             foreach ($this->data as $val) {
                                 //var_dump($val);
@@ -208,13 +213,12 @@
 								echo "</tr>";
                                 $no++;
                             }
-                            ?>
+                            */ ?>
                         </tbody>
                     </table>
                 </div>
             </fieldset>-->
-        </div><div id="nav"></div>
-    </div>
+        
 </div>
 </div>
 <script type="text/javascript">

@@ -1,8 +1,7 @@
-<fieldset>
-    <legend>Data BA 999</legend>
+<!--fieldset-->
     <div id="table-title"></div>
     <div id="table-content">
-        <table class="table-bordered zebra scroll">
+        <table class="table-bordered zebra">
             <thead>
                 <tr>
                     <th rowspan="2" width="5%">No</th>
@@ -97,4 +96,4 @@
             </tbody>
         </table>
     </div>
-</fieldset>
+<!--/fieldset-->

@@ -3,46 +3,37 @@
 <?php if (Session::get('role') == PKN) { ?>
     <div id="top">
         <div>
-            <a href='#kModal' class='modal'><i class='icon-plus icon-white'></i>INPUT DATA</a>
-        </div></br></br>
+            <input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
+        </div>
     <?php } ?>
 
-    <div id="top">
-        <div id='kModal' class='modalDialog'>
-		<div>
-			<h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px">
-				<?php
-                    if (isset($this->d_ubah)) {
-                        echo 'Ubah Data PKN';
-                    } else {
-                        echo 'Tambah Data PKN';
-                    }
-                    ?>
-			</h2>
-			
-			<a href="<?php if (isset($this->d_ubah)) {
-                    echo URL . 'dataPkn/updDataPkn';
-                } else {
-                    $_SERVER['PHP_SELF'];
-                } ?>" title="Tutup" class="close"><i class=		"icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+    <div id="form">
+        <div>
+            <?php
+            if (Session::get('role') == 5) {
+                echo "<input id='add_data' class='normal' type='button' onclick='addData()' value='TAMBAH DATA'>";
+            }
+            ?>
+        </div></br></br>
+        <!--div class="kolom3" style="display:none">
+            <fieldset><legend><?php
+//                    if (isset($this->d_ubah)) {
+//                        echo 'Ubah Data PKN';
+//                    } else {
+//                        echo 'Tambah Data PKN';
+//                    }
+                    ?></legend-->
+                <div id="form_input"><div class="kiri">
+                        <form id="form_rekam"> 
                             <!--method="POST" action="<?php
-//                            if (isset($this->d_ubah)) {
-//                                echo URL . 'dataPkn/updDataPkn';
-//                            } else {
-//                                $_SERVER['PHP_SELF'];
-//                            }
+                            if (isset($this->d_ubah)) {
+                                echo URL . 'dataPkn/updDataPkn';
+                            } else {
+                                $_SERVER['PHP_SELF'];
+                            }
                             ?>"-->
-            <div id="top">
-					<form method="POST" action="<?php
-                if (isset($this->d_ubah)) {
-                    echo URL . 'dataPkn/updDataPkn';
-                } else {
-                    $_SERVER['PHP_SELF'];
-                }
-			?>">
-							<?php
-          
-							echo "<input type='hidden' name='add_d_pkn' value=''>";
+                            <?php
+                            echo "<input type='hidden' name='add_d_pkn' value=''>";
                             if (isset($this->d_ubah)) {
                                 echo "<input type=hidden name='kd_d_pkn' value=" . $this->d_ubah->get_kd_d_pkn() . ">";
                             }
@@ -53,33 +44,33 @@
                             ?>
 
                             <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
-                            
-							<div id="wdouble" class="error"></div>
+                            <div id="wdouble" class="error"></div>
                             <div id="wtgl"  class="error"></div>
-                            <label class='isian'>Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
-                            <!--div class="kolom1" style="width:160px"-->
+                            <label class="isian">Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+                            
                                 <div id="wsp2d"  class="error"></div>
-                                <label class='isian'>SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
+                                <label class="isian">SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
                                 <div id="wsp2d_gagal" class="error"></div>
-                                <label class='isian'>SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
+                                <label class="isian">SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
                             
                                 <div id="wspt" class="error"></div>
-                                <label class='isian'>SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
+                                <label class="isian">SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
                                 <div id="wspt_gagal" class="error"></div>
-                                <label class='isian'>SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
-                            <!--/div-->
-                            <ul class="inline" style="margin-left: 230px;>
+                                <label class="isian">SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
+                            
+                            <ul class="inline" style="margin-left: 220px">
                                 <!--li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li-->
-                                <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick="return cek()"></li>
+                                <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick=""></li>
                             </ul>
                         </form>
                     </div>
-                </div> <!--end kModal-->
-        </div> <!--end top-->
-	<fieldset><legend>Data </legend>
-        <div class="kolom6" id="table"></div></br>
-		<div id="nav"></div>
-	</fieldset>
+                </div>
+            </fieldset>
+        </div>
+        <fieldset><legend>DATA PKN</legend>
+		<div class="kolom6" id="table">
+		</div></br><div id="nav"></div>
+		</fieldset>
             <!--<fieldset><legend>Data PKN</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
@@ -125,15 +116,14 @@
                 }
                 echo "</tr>";
                 $no++;
-            }
-				*/
-			?>
+            } */
+            ?>
                         </tbody>
                     </table>
                 </div>
             </fieldset>-->
         
-    </div>
+    </div> <!--end modal-->
 </div>
 </div>
 <script type="text/javascript">
@@ -213,6 +203,13 @@
         width: 400,
         height: 300,
         modal: true,
+		title: '<?php
+                    if (isset($this->d_ubah)) {
+                        echo 'Ubah Data PKN';
+                    } else {
+                        echo 'Tambah Data PKN';
+                    }
+                    ?>',
         close: function() {
             emptyField();
             hideErrorId();
