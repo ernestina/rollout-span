@@ -109,9 +109,7 @@ class DataTetapController extends BaseController {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

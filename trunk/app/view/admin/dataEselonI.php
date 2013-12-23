@@ -24,7 +24,7 @@
                                 //var_dump($val);
                                 echo "<tr>";
                                 echo "<td>$no</td>";
-                                echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . ">" . $val['singkat_kanwil'] . "</a></td>";
+                                echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . " target=_blank>" . $val['singkat_kanwil'] ."</a></td>";
                                 echo "<td>" . ceil($val['konversi']) . "%</td>";
                                 echo "<td>" . ceil($val['sp2d']) . "%</td>";
                                 echo "<td>" . ceil($val['lhp']) . "%</td>";

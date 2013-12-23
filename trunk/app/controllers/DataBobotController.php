@@ -69,9 +69,7 @@ class DataBobotController extends BaseController {
     }
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

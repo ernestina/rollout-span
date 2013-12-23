@@ -188,10 +188,12 @@ class DataBa {
             'kd_d_kontrak_gagal' => $this->get_kd_d_kontrak_gagal()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         return $this->db->insert($this->_table, $data);
     }
 
@@ -213,10 +215,12 @@ class DataBa {
             'kd_d_kontrak_gagal' => $this->get_kd_d_kontrak_gagal()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_ba=' . $this->get_kd_d_ba();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -420,9 +424,7 @@ class DataBa {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

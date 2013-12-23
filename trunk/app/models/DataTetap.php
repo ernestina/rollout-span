@@ -94,10 +94,12 @@ class DataTetap {
             'd_tetap_dsu' => $this->get_d_tetap_dsu()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         return $this->db->insert($this->_table, $data);
     }
 
@@ -115,10 +117,12 @@ class DataTetap {
             'd_tetap_dsu' => $this->get_d_tetap_dsu()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_tetap=' . $this->get_kd_d_tetap();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -235,9 +239,7 @@ class DataTetap {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

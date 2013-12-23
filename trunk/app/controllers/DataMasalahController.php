@@ -112,9 +112,7 @@ class DataMasalahController extends BaseController {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>
