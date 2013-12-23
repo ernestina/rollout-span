@@ -176,9 +176,7 @@ class DataPknController extends BaseController {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

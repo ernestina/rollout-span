@@ -100,10 +100,12 @@ class DataUser {
             'pass_user' => $this->get_pass_user()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         return $this->db->insert($this->_table, $data);
     }
 
@@ -121,10 +123,12 @@ class DataUser {
             'pass_user' => $this->get_pass_user()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_user=' . $this->get_kd_d_user();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -229,9 +233,7 @@ class DataUser {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

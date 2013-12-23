@@ -139,10 +139,12 @@ class DataBobot {
             'pkn' => $this->get_pkn()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = '1';
         return $this->db->update($this->_table, $data, $where);
     }
@@ -318,9 +320,7 @@ class DataBobot {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

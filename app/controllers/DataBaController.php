@@ -188,8 +188,6 @@ class DataBaController extends BaseController {
     }
 
     public function __destruct() {
-        ;
+        
     }
 }
-
-?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2013 at 03:24 AM
+-- Generation Time: Dec 23, 2013 at 03:59 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -21,30 +21,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dasbor` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `dasbor`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d_apk`
---
-
-CREATE TABLE IF NOT EXISTS `d_apk` (
-  `kd_d_apk` int(11) NOT NULL AUTO_INCREMENT,
-  `kd_d_user` int(11) NOT NULL,
-  `kd_d_tgl` date NOT NULL,
-  `kd_d_akun` int(11) DEFAULT NULL,
-  `kd_d_pel` int(11) DEFAULT NULL,
-  `kd_d_masalah` varchar(1023) DEFAULT NULL,
-  PRIMARY KEY (`kd_d_apk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `d_apk`
---
-
-INSERT INTO `d_apk` (`kd_d_apk`, `kd_d_user`, `kd_d_tgl`, `kd_d_akun`, `kd_d_pel`, `kd_d_masalah`) VALUES
-(1, 1, '2013-10-08', 32234234, 34234234, 'joijoikmfokwmdvomerovmeor'),
-(2, 3, '2013-10-17', 343, 3, 'FVSDFVSDF');
 
 -- --------------------------------------------------------
 
@@ -1756,46 +1732,6 @@ CREATE TABLE IF NOT EXISTS `d_bobot` (
 
 INSERT INTO `d_bobot` (`konversi`, `sp2d`, `lhp`, `rekon`, `spm_ba`, `rekon_ba`, `kontrak_ba`, `sp2d_pkn`, `spt_pkn`, `kppn`, `ba`, `pkn`) VALUES
 (30, 30, 30, 10, 50, 25, 25, 80, 20, 40, 30, 30);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d_djpu`
---
-
-CREATE TABLE IF NOT EXISTS `d_djpu` (
-  `kd_d_djpu` int(11) NOT NULL AUTO_INCREMENT,
-  `kd_d_user` int(11) NOT NULL,
-  `kd_d_tgl` date NOT NULL,
-  `kd_d_node` int(11) DEFAULT NULL,
-  `kd_d_masalah` varchar(1023) DEFAULT NULL,
-  PRIMARY KEY (`kd_d_djpu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d_kanwil`
---
-
-CREATE TABLE IF NOT EXISTS `d_kanwil` (
-  `kd_d_kanwil` int(11) NOT NULL AUTO_INCREMENT,
-  `kd_d_user` int(11) NOT NULL,
-  `kd_d_tgl` date NOT NULL,
-  `kd_d_rekon` int(11) DEFAULT NULL,
-  `kd_d_jaringan` varchar(1023) DEFAULT NULL,
-  `kd_d_masalah` varchar(1023) DEFAULT NULL,
-  PRIMARY KEY (`kd_d_kanwil`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `d_kanwil`
---
-
-INSERT INTO `d_kanwil` (`kd_d_kanwil`, `kd_d_user`, `kd_d_tgl`, `kd_d_rekon`, `kd_d_jaringan`, `kd_d_masalah`) VALUES
-(1, 1000, '2013-10-08', 2, '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890', '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'),
-(3, 4000, '2013-10-15', 23, 'knkk65789', 'hkhk657890'),
-(4, 2000, '2013-10-16', 1, '2d', 'dvcsdfvdfv');
 
 -- --------------------------------------------------------
 
@@ -4513,32 +4449,6 @@ INSERT INTO `d_pkn` (`kd_d_pkn`, `kd_d_user`, `kd_d_tgl`, `kd_d_sp2d`, `kd_d_sp2
 (105, 88888, '2014-03-02', 1, 1, 1, 11),
 (106, 88888, '2014-03-02', 1, 1, 1, 11),
 (107, 88888, '2014-03-03', 123, 1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `d_smi`
---
-
-CREATE TABLE IF NOT EXISTS `d_smi` (
-  `kd_d_smi` int(11) NOT NULL AUTO_INCREMENT,
-  `kd_d_user` int(11) NOT NULL,
-  `kd_d_tgl` date NOT NULL,
-  `kd_d_akun` int(11) DEFAULT NULL,
-  `kd_d_pel` int(11) DEFAULT NULL,
-  `kd_d_masalah` varchar(1023) DEFAULT NULL,
-  PRIMARY KEY (`kd_d_smi`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `d_smi`
---
-
-INSERT INTO `d_smi` (`kd_d_smi`, `kd_d_user`, `kd_d_tgl`, `kd_d_akun`, `kd_d_pel`, `kd_d_masalah`) VALUES
-(1, 1, '2013-10-08', 32234234, 34234234, 'joijoikmfokwmdvomerovmeor'),
-(2, 4, '2013-10-16', 4, 4, 'aaaaaaaaaaaaaaaaaaa'),
-(3, 2, '2013-10-10', 3423, 234, 'gwrggwerg'),
-(4, 1, '2013-10-04', 0, 2, 'wdcdcqedcwdecwd');
 
 -- --------------------------------------------------------
 

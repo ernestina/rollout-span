@@ -42,22 +42,16 @@ class DataKppn {
     /*
      * mendapatkan data dari tabel Data Tetap
      * @param limit batas default null
-     * return array objek Data Tetap
-     * $sql = "SELECT a.KD_FAKUL as KD_FAKUL,
-      b.NM_UNIV as KD_UNIV,
-      a.NM_FAKUL as NM_FAKUL,
-      a.ALMT_FAKUL as ALMT_FAKUL,
-      a.TELP_FAKUL as TELP_FAKUL
-      FROM " . $this->_table . " a
-      LEFT JOIN " . $this->_tb_univ . " b ON a.KD_UNIV=b.KD_UNIV";
-     */
-
+     * return array objek Data Tetap*/
+    
     public function get_d_kppn($kd_user=null, $limit = null, $batas = null) {
 
         $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
                 LEFT JOIN " . $this->_t_tetap . " b 
                 ON a.kd_d_user = b.kd_d_tetap";
-        if(!is_null($kd_user)) $sql .= " WHERE a.kd_d_user=".$kd_user;
+        if (!is_null($kd_user)) {
+            $sql .= " WHERE a.kd_d_user=" . $kd_user;
+        }
         $sql .=  " ORDER BY kd_d_tgl desc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
@@ -100,7 +94,6 @@ class DataKppn {
 			}
 
             $data[] = $d_kppn;
-            //var_dump($d_kppn);
         }
 
         return $data;
@@ -113,18 +106,6 @@ class DataKppn {
 		if (!is_null($limit) AND !is_null($batas)) {
 			$sql .= " LIMIT " . $limit . "," . $batas;
         }
-		
-		// SELECT 
-		// avg(a.kd_d_konversi)/((a.kd_d_konversi)+(a.kd_d_konversi_gagal))*100 as konversi , 
-		// avg(a.kd_d_sp2d)/((a.kd_d_sp2d)+(a.kd_d_sp2d_gagal))*100 as sp2d ,
-		// avg(a.kd_d_lhp)/((a.kd_d_lhp)+(a.kd_d_lhp_gagal))*100 as lhp ,
-		// avg(a.kd_d_rekon)/((a.kd_d_rekon)+(a.kd_d_rekon_gagal))*100 as rekon ,
-		// b.kd_d_user, 
-		// b.nama_user FROM d_kppn a 
-		// LEFT JOIN d_user b 
-		// ON a.kd_d_user = b.kd_d_user
-		// WHERE (a.kd_d_user between 10000 and 10999 )
-		
         
         $result = $this->db->select($sql);
         
@@ -151,23 +132,13 @@ class DataKppn {
 			}
 
             $data[] = $d_kppn;
-            //var_dump($d_kppn);
         }
 
         return $data;
     }
 	
 	public function get_d_kppn_lvl2($kanwil=null, $limit = null, $batas = null) {
-		$plus=$kanwil+999;
-        /*$sql = "SELECT 
-				a.kd_d_user, 
-				substr(b.nama_user,6) nama_user,
-				substr(c.nama_user, 20 ) nama_kanwil,
-				avg(kd_d_konversi/(kd_d_konversi+kd_d_konversi_gagal)*100) as kd_d_konversi_persen ,
-				avg(kd_d_sp2d/(kd_d_sp2d+kd_d_sp2d_gagal)*100) as kd_d_sp2d_persen ,
-				avg(kd_d_lhp/(kd_d_lhp+kd_d_lhp_gagal)*100) as kd_d_lhp_persen ,
-				avg(kd_d_rekon/(kd_d_rekon+kd_d_rekon_gagal)*100) as kd_d_rekon_persen";
-        */
+	$plus=$kanwil+999;
         $sql = "SELECT 
                 a.kd_d_user, 
                 substr(b.nama_user,6) nama_user,
@@ -186,7 +157,7 @@ class DataKppn {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
 
-        $d_kppn = $this->db->select($sql); //print_r($d_kppn);
+        $d_kppn = $this->db->select($sql);
         $result = array();
         foreach ($d_kppn as $value) {
             $kd_kppn = $value['kd_d_user'];
@@ -314,7 +285,9 @@ class DataKppn {
     public function get_d_kppn_per_tgl($kd_user=null, $limit = null, $batas = null) {
         $sql = "SELECT *
                 FROM " . $this->_table . "  a";
-        if(!is_null($kd_user)) $sql .= " WHERE kd_d_user=".$kd_user;
+        if (!is_null($kd_user)) {
+            $sql .= " WHERE kd_d_user=" . $kd_user;
+        }
         $sql .= " GROUP BY kd_d_tgl, kd_d_user";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
@@ -623,10 +596,12 @@ class DataKppn {
             'kd_d_rekon_gagal' => $this->get_kd_d_rekon_gagal(),
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_kppn=' . $this->get_kd_d_kppn();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -861,9 +836,7 @@ class DataKppn {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

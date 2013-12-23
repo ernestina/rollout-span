@@ -54,8 +54,9 @@ class DataKppnController extends BaseController {
         $this->view->dasbor = $d_kppn->get_d_kppn_per_tgl();
         $this->view->data = $d_kppn->get_d_kppn_lvl3($kppn);
         $this->view->sp2d = $d_kppn->get_d_kppn_per_tgl($kppn);
-        if (!is_null($kppn))
+        if (!is_null($kppn)) {
             $this->view->kppn = $kppn;
+        }
         $this->view->render('admin/dataKppnLvl3');
     }
 
@@ -464,9 +465,7 @@ class DataKppnController extends BaseController {
     }
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

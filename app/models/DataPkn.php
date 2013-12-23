@@ -150,10 +150,12 @@ class DataPkn {
             'kd_d_spt_gagal' => $this->get_kd_d_spt_gagal()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         return $this->db->insert($this->_table, $data);
     }
 
@@ -172,10 +174,12 @@ class DataPkn {
             'kd_d_spt_gagal' => $this->get_kd_d_spt_gagal()
         );
         $this->validate(false);
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_pkn=' . $this->get_kd_d_pkn();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -338,9 +342,7 @@ class DataPkn {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

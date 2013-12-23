@@ -22,8 +22,6 @@ class Index extends BaseController {
             $this->view->ba = $d_ba->get_d_ba_per_tgl();
             $d_pkn = new DataPkn($this->registry);
             $this->view->pkn = $d_pkn->get_d_pkn_per_tgl();
-            $d_pkn = new DataMasalah($this->registry);
-            //$this->view->mslh = $d_mslh->get_d_mslh_per_tgl();
             $this->view->render('dasbor/level1');
         } elseif (Session::get('role') == KPPN) {
             header('location:' . URL . 'dataKppn/addDataKppnLvl3');
@@ -37,5 +35,3 @@ class Index extends BaseController {
     }
 
 }
-
-?>

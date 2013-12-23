@@ -72,5 +72,3 @@ class AuthController extends BaseController {
         parent::__destruct();
     }
 }
-
-?>

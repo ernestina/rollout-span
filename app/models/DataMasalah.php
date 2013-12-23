@@ -120,10 +120,12 @@ class DataMasalah {
             'masalah' => $this->get_masalah()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         return $this->db->insert($this->_table, $data);
     }
 
@@ -139,10 +141,12 @@ class DataMasalah {
             'masalah' => $this->get_masalah()
         );
         $this->validate();
-        if (!$this->get_valid())
+        if (!$this->get_valid()) {
             return false;
-        if (!is_array($data))
+        }
+        if (!is_array($data)) {
             return false;
+        }
         $where = ' kd_d_mslh=' . $this->get_kd_d_mslh();
         return $this->db->update($this->_table, $data, $where);
     }
@@ -235,9 +239,7 @@ class DataMasalah {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

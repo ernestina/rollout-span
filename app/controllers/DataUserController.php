@@ -33,12 +33,10 @@ class DataUserController extends BaseController {
             $kd_r_unit = $_POST['kd_r_unit'];
             $nama_user = $_POST['nama_user'];
             $pass_user = $_POST['pass_user'];
-
             $d_user->set_kd_r_jenis($kd_r_jenis);
             $d_user->set_kd_r_unit($kd_r_unit);
             $d_user->set_nama_user($nama_user);
             $d_user->set_pass_user($pass_user);
-
             if (!$d_user->add_d_user()) {
                 $this->view->d_rekam = $d_user;
                 $this->view->error = $d_user->get_error();
@@ -48,7 +46,6 @@ class DataUserController extends BaseController {
             $d_user->set_kd_d_user($id);
             $this->view->d_ubah = $d_user->get_d_user_by_id($d_user);
         }
-
         $this->view->data = $d_user->get_d_user();
         $this->view->render('admin/dataUser');
     }
@@ -65,13 +62,11 @@ class DataUserController extends BaseController {
             $kd_r_unit = $_POST['kd_r_unit'];
             $nama_user = $_POST['nama_user'];
             $pass_user = $_POST['pass_user'];
-
             $d_user->set_kd_d_user($kd_d_user);
             $d_user->set_kd_r_jenis($kd_r_jenis);
             $d_user->set_kd_r_unit($kd_r_unit);
             $d_user->set_nama_user($nama_user);
             $d_user->set_pass_user($pass_user);
-
             if (!$d_user->update_d_user()) {
                 $this->view->d_ubah = $d_user;
                 $this->view->error = $d_user->get_error();
@@ -105,9 +100,7 @@ class DataUserController extends BaseController {
      */
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>
