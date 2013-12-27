@@ -67,10 +67,12 @@
                 </div>
             </fieldset>
         </div>
+	<div id="top">
         <fieldset><legend>DATA PKN</legend>
 		<div class="kolom6" id="table">
 		</div></br><div id="nav"></div>
 		</fieldset>
+	</div>
             <!--<fieldset><legend>Data PKN</legend>
                 <div id="table-title"></div>
                 <div id="table-content">
