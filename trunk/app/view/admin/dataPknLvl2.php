@@ -1,4 +1,4 @@
-<h2>DATA PKN</h2>
+<h2>DATA PKN PER SUBDIT</h2>
 <center><?php $this->load('dasbor/pknLvl2') ?></center>
 <?php if (Session::get('role') == PKN) { ?>
     <div id="top">
@@ -15,115 +15,109 @@
             }
             ?>
         </div></br></br>
-        <!--div class="kolom3" style="display:none">
-            <fieldset><legend><?php
-//                    if (isset($this->d_ubah)) {
-//                        echo 'Ubah Data PKN';
-//                    } else {
-//                        echo 'Tambah Data PKN';
-//                    }
-                    ?></legend-->
-                <div id="form_input"><div class="kiri">
-                        <form id="form_rekam"> 
-                            <!--method="POST" action="<?php
-                            if (isset($this->d_ubah)) {
-                                echo URL . 'dataPkn/updDataPkn';
-                            } else {
-                                $_SERVER['PHP_SELF'];
-                            }
-                            ?>"-->
-                            <?php
-                            echo "<input type='hidden' name='add_d_pkn' value=''>";
-                            if (isset($this->d_ubah)) {
-                                echo "<input type=hidden name='kd_d_pkn' value=" . $this->d_ubah->get_kd_d_pkn() . ">";
-                            }
+        <div id="form_input"><div class="kiri">
+                <form id="form_rekam"> 
+                    <!--method="POST" action="<?php
+                    if (isset($this->d_ubah)) {
+                        echo URL . 'dataPkn/updDataPkn';
+                    } else {
+                        $_SERVER['PHP_SELF'];
+                    }
+                    ?>"-->
+                    <?php
+                    echo "<input type='hidden' name='add_d_pkn' value=''>";
+                    if (isset($this->d_ubah)) {
+                        echo "<input type=hidden name='kd_d_pkn' value=" . $this->d_ubah->get_kd_d_pkn() . ">";
+                    }
 
-                            if (isset($this->error)) {
-                                echo "<div class=error>" . $this->error . "</div>";
-                            }
-                            ?>
+                    if (isset($this->error)) {
+                        echo "<div class=error>" . $this->error . "</div>";
+                    }
+                    ?>
 
-                            <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
-                            <div id="wdouble" class="error"></div>
-                            <div id="wtgl"  class="error"></div>
-                            <label class="isian">Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
-                            
-                                <div id="wsp2d"  class="error"></div>
-                                <label class="isian">SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
-                                <div id="wsp2d_gagal" class="error"></div>
-                                <label class="isian">SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
-                            
-                                <div id="wspt" class="error"></div>
-                                <label class="isian">SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
-                                <div id="wspt_gagal" class="error"></div>
-                                <label class="isian">SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
-                            
-                            <ul class="inline" style="margin-left: 220px">
-                                <!--li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li-->
-                                <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick=""></li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-            </fieldset>
+                    <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
+                    <div id="wdouble" class="error"></div>
+                    <div id="wtgl"  class="error"></div>
+                    <label class="isian">Tanggal</label><input type="text" name="kd_d_tgl" id="kd_d_tgl" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_tgl() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_tgl() : ''); ?>">
+
+                    <div id="wsp2d"  class="error"></div>
+                    <label class="isian">SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
+                    <div id="wsp2d_gagal" class="error"></div>
+                    <label class="isian">SP2D Gagal</label><input type="number" name="kd_d_sp2d_gagal" id="kd_d_sp2d_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d_gagal() : ''); ?>">
+
+                    <div id="wspt" class="error"></div>
+                    <label class="isian">SPT Sukses</label><input type="number" name="kd_d_spt" id="kd_d_spt" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt() : ''); ?>">
+                    <div id="wspt_gagal" class="error"></div>
+                    <label class="isian">SPT Gagal</label><input type="number" name="kd_d_spt_gagal" id="kd_d_spt_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spt_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spt_gagal() : ''); ?>">
+
+                    <ul class="inline" style="margin-left: 220px">
+                        <!--li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li-->
+                        <li><input id="submit" class="sukses" type="button" name="<?php echo isset($this->d_ubah) ? 'upd_d_pkn' : 'add_d_pkn'; ?>" value="SIMPAN" onClick=""></li>
+                    </ul>
+                </form>
+            </div>
         </div>
-        <fieldset><legend>DATA PKN</legend>
-		<div class="kolom6" id="table">
-		</div></br><div id="nav"></div>
-		</fieldset>
-            <!--<fieldset><legend>Data PKN</legend>
-                <div id="table-title"></div>
-                <div id="table-content">
-                    <table class="table-bordered zebra scroll">
-                        <thead>
-                            <tr>
-                                <th rowspan="2" width ="5%">No</th>
-                                <th rowspan="2" width ="5%">Tanggal</th>
-                                <th colspan="3" width ="45%">SP2D</th>
-                                <th colspan="3" width ="45%">SPT</th>
-            <?php
-//            if (Session::get('role') == PKN) {
-//                echo "<th rowspan='2' width ='15%'>Aksi</th>";
-//            }
-            ?>
-                            </tr>
-                            <tr>
-                                <th width="15%">Sukses</th>
-                                <th width="15%">Gagal</th>
-                                <th width="15%">%</th>
-                                <th width="15%">Sukses</th>
-                                <th width="15%">Gagal</th>
-                                <th width="15%">%</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            <?php /*
-            $no = 1;
-            foreach ($this->data as $val) {
-                //var_dump($val);
-                echo "<tr>";
-                echo "<td style=\"text-align: center\">$no</td>";
-                echo "<td>" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "</td>";
-                echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d() . "</td>";
-                echo "<td style=\"text-align: center\">" . $val->get_kd_d_sp2d_gagal() . "</td>";
-                echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_sp2d_persen() . "%</td>";
-                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt() . "</td>";
-                echo "<td style=\"text-align: center\">" . $val->get_kd_d_spt_gagal() . "</td>";
-                echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_spt_persen() . "%</b></td>";
-                if (Session::get('role') == PKN) {
-                    echo "<td style=\"text-align: center\"><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a></td>";
-                }
-                echo "</tr>";
-                $no++;
-            } */
-            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </fieldset>-->
-        
-    </div> <!--end modal-->
+        </fieldset>
+    </div>
+    <fieldset><legend>Data PKN</legend>
+        <div id="table-title"></div>
+        <div id="table-content">
+            <table class="table-bordered zebra" style="text-align: center">
+                <thead>
+                <th width="5%">No</th>
+                <th width="10%">Subdit</th>
+                <th width="10%">SP2D Sukses</th>
+                <th width="10%">SPT Sukses</th>
+                <th width="10%">Total/Bobot</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    $sp2d = 0;
+                    $spt = 0;
+                    foreach ($this->bobot as $bot) {
+                        $sp2d = $bot->get_sp2d_pkn() / 100;
+                        $spt = $bot->get_spt_pkn() / 100;
+                    }
+                    foreach ($this->data as $val) {
+                        if($val->get_kd_d_sp2d_persen()<1){
+                            $kd_d_sp2d = "-";
+                            $kd_d_spt = $val->get_kd_d_spt_persen()."%";
+                            $total = $val->get_kd_d_spt_persen()."%";
+                        }elseif($val->get_kd_d_spt_persen()<1){
+                            $kd_d_sp2d = $val->get_kd_d_sp2d_persen()."%";
+                            $kd_d_spt = "-";
+                            $total = $val->get_kd_d_sp2d_persen()."%";
+                        }else{
+                            $kd_d_sp2d = $val->get_kd_d_sp2d_persen()."%";
+                            $kd_d_spt = $val->get_kd_d_spt_persen()."%";
+                            $total = ((int) ((($val->get_kd_d_sp2d_persen() * $sp2d) + ($val->get_kd_d_spt_persen() * $spt))))."%";
+                        }
+                        echo "<tr>";
+                        echo "<td>$no</td>";
+                        if ($val->get_kd_d_user() == 88881) {
+                            echo "<td><a href=" . URL . "dataPkn/viewDataPKNLvl3/" . $val->get_kd_d_user() . " target=_blank> RKN </td>";
+                        } else if ($val->get_kd_d_user() == 88882) {
+                            echo "<td><a href=" . URL . "dataPkn/viewDataPKNLvl3/" . $val->get_kd_d_user() . " target=_blank>RKUN</td>";
+                        } else if ($val->get_kd_d_user() == 88883) {
+                            echo "<td><a href=" . URL . "dataPkn/viewDataPKNLvl3/" . $val->get_kd_d_user() . " target=_blank>RPH</td>";
+                        } else if ($val->get_kd_d_user() == 88884) {
+                            echo "<td><a href=" . URL . "dataPkn/viewDataPKNLvl3/" . $val->get_kd_d_user() . " target=_blank>RPL</td>";
+                        } else {
+                            echo "<td>subdit salah";
+                        }
+                        echo "<td><b>" . $kd_d_sp2d . "</td>";
+                        echo "<td><b>" . $kd_d_spt . "</b></td>";
+                        echo "<td><b>" . $total. "</b></td>";
+                        echo "<tr>";
+                        $no++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</div> <!--end modal-->
 </div>
 </div>
 <script type="text/javascript">
@@ -203,13 +197,13 @@
         width: 400,
         height: 300,
         modal: true,
-		title: '<?php
-                    if (isset($this->d_ubah)) {
-                        echo 'Ubah Data PKN';
-                    } else {
-                        echo 'Tambah Data PKN';
-                    }
-                    ?>',
+        title: '<?php
+if (isset($this->d_ubah)) {
+    echo 'Ubah Data PKN';
+} else {
+    echo 'Tambah Data PKN';
+}
+?>',
         close: function() {
             emptyField();
             hideErrorId();

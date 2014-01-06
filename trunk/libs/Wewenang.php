@@ -38,6 +38,9 @@ class Wewenang {
             case '9':
                 $sts = 'Lainya';
                 break;
+            case '10':
+                $sts = 'Jaringan';
+                break;
         }
 
         return $sts;
@@ -74,10 +77,11 @@ class Wewenang {
             case 'Lainya':
                 $sts = '9';
                 break;
+            case 'Jaringan':
+                $sts = '10';
+                break;
         }
         return $sts;
     }
 
 }
-
-?>

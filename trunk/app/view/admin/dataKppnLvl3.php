@@ -83,8 +83,7 @@
 								<div id="wlhp_gagal" class="error"></div>
 								<label class="isian">LHP Gagal</label><input type="number" name="kd_d_lhp_gagal" id="kd_d_lhp_gagal" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_lhp_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_lhp_gagal() : ''); ?>">	
 					
-						<ul class="inline" style="margin-left: 230px;>
-								<!--li><input id="batal" class="normal" type="button" onclick="" value="BATAL"></li-->
+						<ul class="inline" style="margin-left: 230px";>
 								<li><input id="submit" class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_kppn' : 'add_d_kppn'; ?>" value="SIMPAN" onClick="return cek();"></li>
 							</ul>	
 					</form>
@@ -149,7 +148,7 @@
 <div id="top">
     <div id="gambar"></div>
     <div class="fitur" id="table">
-        <fieldset><legend>Data KPPN</legend>
+        <fieldset><legend>Data PKN</legend>
 			<div class="kolom6" id="data_table"></div></br>
 			<div id="nav"></div>
 		</fieldset>

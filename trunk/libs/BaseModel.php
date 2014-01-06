@@ -12,9 +12,7 @@ class BaseModel {
     }
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

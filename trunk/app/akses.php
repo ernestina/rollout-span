@@ -102,4 +102,3 @@ $akses['DataMasalah'] = array(
     'delDataMasalah',
     '__destruct'
 );
-?>

@@ -31,6 +31,8 @@ define('KANWIL','kanwil');
 define('ADMIN','admin');
 define('PKN','pkn');
 define('BA999','ba');
+define('LAINYA','lainya');
+define('JARINGAN','jaringan');
 
 $path = array(
     ROOT.'/libs/',
@@ -67,10 +69,9 @@ $registry->auth->add_roles('pkn'); //pkn
 $registry->auth->add_access('dataPkn','pkn',$akses['DataPkn']);
 $registry->auth->add_access('auth','pkn','logout');
 $registry->auth->add_access('auth','guest',$akses['Auth']);
+$registry->auth->add_roles('lainya'); //lainya
+$registry->auth->add_roles('jaringan'); //jaringan
 $registry->exception = new ClassException();
 $registry->bootstrap = new Bootstrap($registry);
 
 $registry->bootstrap->loader();
-
-
-?>
