@@ -191,9 +191,7 @@ class MysqlSelect {
     }
 
     public function __destruct() {
-        ;
+        
     }
 
 }
-
-?>

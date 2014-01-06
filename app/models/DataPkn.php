@@ -10,6 +10,7 @@ class DataPkn {
     private $db;
     private $_kd_d_pkn;
     private $_kd_d_user;
+    private $_kd_d_user_pkn;
     private $_kd_d_tgl;
     private $_kd_d_sp2d;
     private $_kd_d_sp2d_gagal;
@@ -37,8 +38,48 @@ class DataPkn {
      * return array objek Data Tetap
      */
 
-    public function get_d_pkn($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " ORDER BY kd_d_tgl desc";
+    public function get_d_pkn($id=null) {
+        $sql = "SELECT * FROM " . $this->_table;
+        $sql .= " WHERE kd_d_user_pkn = ".Session::get('id_user');
+        //if(!is_null($id)) $sql .= " WHERE kd_d_user_pkn = ".$id;
+        $sql .= " ORDER BY kd_d_tgl desc";
+        
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_pkn = new $this($this->registry);
+            $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
+            $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                //$d_pkn->set_kd_d_sp2d_persen(100);
+                $d_pkn->set_kd_d_sp2d_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                //$d_pkn->set_kd_d_spt_persen(100);
+                $d_pkn->set_kd_d_spt_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
+
+            $data[] = $d_pkn;
+            //var_dump($d_pkn);
+        }
+
+        return $data;
+    }
+    
+    
+        public function get_d_pkn1($id=null, $limit = null, $batas = null) {
+        $sql = "SELECT * FROM " . $this->_table;
+        $sql .= " WHERE kd_d_user_pkn = ".Session::get('id_user');
+        $sql .= " ORDER BY kd_d_tgl asc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -47,22 +88,22 @@ class DataPkn {
         foreach ($result as $val) {
             $d_pkn = new $this($this->registry);
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
-            $d_pkn->set_kd_d_user($val['kd_d_user']);
+            $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-			if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
-			   $d_pkn->set_kd_d_sp2d_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
-			}
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                $d_pkn->set_kd_d_sp2d_persen(100);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
             $d_pkn->set_kd_d_spt($val['kd_d_spt']);
             $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
-            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
-			   $d_pkn->set_kd_d_spt_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
-			}
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                $d_pkn->set_kd_d_spt_persen(100);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
 
             $data[] = $d_pkn;
             //var_dump($d_pkn);
@@ -71,8 +112,98 @@ class DataPkn {
         return $data;
     }
 
-    public function get_d_pkn_per_tgl($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " GROUP BY kd_d_tgl asc";
+
+    /*
+     * mendapatkan data dari tabel Data PKN per subdit
+     * @param limit batas default null
+     * return array objek Data PKN
+     */
+
+    public function get_d_pkn_lvl2($limit = null, $batas = null) {
+        $sql = "SELECT * FROM " . $this->_table . " GROUP BY kd_d_user_pkn ORDER BY kd_d_user_pkn asc";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $d_pkn = $this->db->select($sql);
+        $result = array();
+        foreach ($d_pkn as $value) {
+            $kd_pkn = $value['kd_d_user_pkn'];
+            
+            //sp2d
+            if($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal']==0){
+                $sp2d = -1;
+            }else{
+                $sp2d = $value['kd_d_sp2d']/($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal'])*100;    
+            }
+
+            //spt
+            if($value['kd_d_spt']+$value['kd_d_spt_gagal']==0){
+                $spt = -1;
+            }else{
+                $spt = $value['kd_d_spt']/($value['kd_d_spt']+$value['kd_d_spt_gagal'])*100;    
+            }
+
+            if(array_key_exists($kd_pkn, $result)){
+                $result[$kd_pkn]['count_data']++;
+                $sp2d = (($result[$kd_pkn]['kd_d_sp2d_persen']*($result[$kd_pkn]['count_data']-1))+$sp2d)/ $result[$kd_pkn]['count_data'];
+                $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_data']-1))+$spt)/ $result[$kd_pkn]['count_data'];
+                $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
+                $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
+            }else{
+                $result[$kd_pkn] = array();
+                $result[$kd_pkn]['count_data'] = 1;
+                $result[$kd_pkn]['kd_d_user'] = $value['kd_d_user_pkn'];
+                $result[$kd_pkn]['kd_d_sp2d_persen'] = $sp2d;
+                $result[$kd_pkn]['kd_d_spt_persen'] = $spt;
+            }
+            
+        }
+        $data = array();   
+        foreach ($result as $key=> $val) {
+            $d_kppn = new $this($this->registry);
+            $d_kppn->set_kd_d_user($val['kd_d_user']);
+            $d_kppn->set_kd_d_sp2d_persen(ceil($val['kd_d_sp2d_persen']));
+            $d_kppn->set_kd_d_spt_persen(ceil($val['kd_d_spt_persen']));
+
+            $data[] = $d_kppn;
+            //var_dump($d_kppn);
+        }
+
+            /*$d_pkn = new $this($this->registry);
+            $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
+            $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                //$d_pkn->set_kd_d_sp2d_persen(100);
+                $d_pkn->set_kd_d_sp2d_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                //$d_pkn->set_kd_d_spt_persen(100);
+                $d_pkn->set_kd_d_spt_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
+            */
+            
+            //var_dump($d_pkn);
+        
+
+        return $data;
+    }
+
+    /*
+    * tidak terpakai
+    */
+    public function get_d_pkn3($id = null, $limit = null, $batas = null) {
+        $sql = "SELECT * FROM " . $this->_table.
+                " WHERE kd_d_user_pkn = ".$id .
+                " ORDER BY kd_d_tgl DESC ";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -80,18 +211,97 @@ class DataPkn {
         $data = array();
         foreach ($result as $val) {
             $d_pkn = new $this($this->registry);
+            $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
+            $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                //$d_pkn->set_kd_d_sp2d_persen(100);
+                $d_pkn->set_kd_d_sp2d_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                //$d_pkn->set_kd_d_spt_persen(100);
+                $d_pkn->set_kd_d_spt_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
+
+            $data[] = $d_pkn;
+            //var_dump($d_pkn);
+        }
+
+        return $data;
+    }
+    
+    /*
+    * tidak terpakai
+    */
+        public function get_d_pkn32($id = null, $limit = null, $batas = null) {
+        $sql = "SELECT * FROM " . $this->_table.
+                " WHERE kd_d_user_pkn = ".$id .
+                " ORDER BY kd_d_tgl ASC ";
+        if (!is_null($limit) AND !is_null($batas)) {
+            $sql .= " LIMIT " . $limit . "," . $batas;
+        }
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_pkn = new $this($this->registry);
+            $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
+            $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
+            $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
+            $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                //$d_pkn->set_kd_d_sp2d_persen(100);
+                $d_pkn->set_kd_d_sp2d_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
+            $d_pkn->set_kd_d_spt($val['kd_d_spt']);
+            $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                //$d_pkn->set_kd_d_spt_persen(100);
+                $d_pkn->set_kd_d_spt_persen(-1); //echo $val['kd_d_user_pkn']."-".$val['kd_d_tgl']."-".$d_pkn->get_kd_d_spt_persen();
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
+
+            $data[] = $d_pkn;
+            //var_dump($d_pkn);
+        }
+
+        return $data;
+    }
+
+    public function get_d_pkn_per_tgl($id=null) {
+        $sql = "SELECT * FROM " . $this->_table;
+        if(!is_null($id)) $sql .= " WHERE kd_d_user_pkn=".$id; 
+        $sql .= " ORDER BY kd_d_tgl asc";
+        
+        $result = $this->db->select($sql);
+        $data = array();
+        foreach ($result as $val) {
+            $d_pkn = new $this($this->registry);
             $d_pkn->set_kd_d_user($val['kd_d_user']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
-            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
-			   $d_pkn->set_kd_d_sp2d_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
-			}
-            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
-			   $d_pkn->set_kd_d_spt_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
-			}
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                //$d_pkn->set_kd_d_sp2d_persen(100);
+                $d_pkn->set_kd_d_sp2d_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                //$d_pkn->set_kd_d_spt_persen(100);
+                $d_pkn->set_kd_d_spt_persen(-1);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
 
             $data[] = $d_pkn;
             //var_dump($d_pkn);
@@ -119,18 +329,18 @@ class DataPkn {
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
-            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])==0){
-			   $d_pkn->set_kd_d_sp2d_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
-			}
+            if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
+                $d_pkn->set_kd_d_sp2d_persen(100);
+            } else {
+                $d_pkn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d']) / (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal'])) * 100));
+            }
             $d_pkn->set_kd_d_spt($val['kd_d_spt']);
             $d_pkn->set_kd_d_spt_gagal($val['kd_d_spt_gagal']);
-            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])==0){
-			   $d_pkn->set_kd_d_spt_persen(100);
-			} else {
-			   $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
-			}
+            if (($val['kd_d_spt']) + ($val['kd_d_spt_gagal']) == 0) {
+                $d_pkn->set_kd_d_spt_persen(100);
+            } else {
+                $d_pkn->set_kd_d_spt_persen(ceil(($val['kd_d_spt']) / (($val['kd_d_spt']) + ($val['kd_d_spt_gagal'])) * 100));
+            }
         }
         return $this;
     }
@@ -143,6 +353,7 @@ class DataPkn {
     public function add_d_pkn() {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
+            'kd_d_user_pkn' => $this->get_kd_d_user_pkn(),
             'kd_d_tgl' => $this->get_kd_d_tgl(),
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
             'kd_d_sp2d_gagal' => $this->get_kd_d_sp2d_gagal(),
@@ -193,7 +404,7 @@ class DataPkn {
         $this->db->delete($this->_table, $where);
     }
 
-    public function validate($add=true) {
+    public function validate($add = true) {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";
             $this->_valid = FALSE;
@@ -218,17 +429,17 @@ class DataPkn {
             $this->_error .= "SPT belum diinput!</br>";
             $this->_valid = FALSE;
         }
-		
-		if($add){
-			if($this->is_double_data($this->get_kd_d_tgl())>0){
-				$this->_error .= "Terdapat data double untuk tanggal ".$this->get_kd_d_tgl()."!</br>";
-	            $this->_valid = FALSE;
-	        }
-		}
+
+        if ($add) {
+            if ($this->is_double_data($this->get_kd_d_tgl()) > 0) {
+                $this->_error .= "Terdapat data double untuk tanggal " . $this->get_kd_d_tgl() . "!</br>";
+                $this->_valid = FALSE;
+            }
+        }
     }
 
-    public function is_double_data($tgl){
-        $sql = "SELECT COUNT(*) as hitung FROM ".$this->_table." WHERE kd_d_tgl='".$tgl."'";
+    public function is_double_data($tgl) {
+        $sql = "SELECT COUNT(*) as hitung FROM " . $this->_table . " WHERE kd_d_tgl='" . $tgl . "' and kd_d_user_pkn = ".Session::get('id_user');
         $return = 0;
         $data = $this->db->select($sql);
         foreach ($data as $key => $value) {
@@ -248,6 +459,10 @@ class DataPkn {
 
     public function set_kd_d_user($user) {
         $this->_kd_d_user = $user;
+    }
+
+    public function set_kd_d_user_pkn($user_pkn) {
+        $this->_kd_d_user_pkn = $user_pkn;
     }
 
     public function set_kd_d_tgl($tgl) {
@@ -299,6 +514,10 @@ class DataPkn {
 
     public function get_kd_d_user() {
         return $this->_kd_d_user;
+    }
+
+    public function get_kd_d_user_pkn() {
+        return $this->_kd_d_user_pkn;
     }
 
     public function get_kd_d_tgl() {

@@ -27,4 +27,3 @@ date_default_timezone_set('Asia/Jakarta');
 define('HASH_GENERAL_KEY', 'MixitUp200');
 
 define('HASH_SALT_KEY', 'kolokulokelaskalihkulokaliankoncokoncoklayapan');
-?>

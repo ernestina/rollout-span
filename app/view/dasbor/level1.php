@@ -8,7 +8,6 @@ $nilai_ba = 0;
 $nilai_pkn1 = 0;
 $nilai_pkn = 0;
 $nilai_total = 0;
-
 $bobot_kppn = 0;
 $bobot_ba = 0;
 $bobot_pkn = 0;
@@ -77,7 +76,7 @@ $nilai_total = (int) ($nilai_kppn * $bobot_kppn + $nilai_ba * $bobot_ba + $nilai
         <a href="<?php echo URL; ?>dataBa/addDataBa" target="_blank"><div id="g3"></div></a><br><br>
     </div>
     <div class="kolom2">
-        <a href="<?php echo URL; ?>dataPkn/addDataPkn" target="_blank"><div id="g4"></div></a>
+        <a href="<?php echo URL; ?>dataPkn/viewDataPknLvl2" target="_blank"><div id="g4"></div></a>
     </div>
 </div>
 
@@ -98,7 +97,7 @@ $nilai_total = (int) ($nilai_kppn * $bobot_kppn + $nilai_ba * $bobot_ba + $nilai
             value: nilai_total,
             min: 0,
             max: 100,
-            title: "Piloting SPAN",
+            title: "Pelaksanaan SPAN",
             label: "% SUKSES"
         });
 
