@@ -14,7 +14,7 @@ class Bootstrap {
         $this->registry = $registry;
         Session::createSession();
         $logged = Session::get('loggedin');
-        $this->role = ($logged) ? (Session::get('role') == ADMIN ? 'admin' : (Session::get('role') == KPPN ? 'kppn' : (Session::get('role') == BA999 ? 'ba' : 'pkn'))) : 'guest';
+        $this->role = ($logged) ? (Session::get('role') == ADMIN ? 'admin' : (Session::get('role') == KPPN ? 'kppn' : (Session::get('role') == BA999 ? 'ba' : (Session::get('role') == JARINGAN ? 'jaringan' : 'pkn')))) : 'guest';
     }
 
     /*

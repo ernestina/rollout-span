@@ -71,6 +71,7 @@ $registry->auth->add_access('auth','pkn','logout');
 $registry->auth->add_access('auth','guest',$akses['Auth']);
 $registry->auth->add_roles('lainya'); //lainya
 $registry->auth->add_roles('jaringan'); //jaringan
+$registry->auth->add_access('dataKppn','jaringan',$akses['DataKppn']);
 $registry->exception = new ClassException();
 $registry->bootstrap = new Bootstrap($registry);
 

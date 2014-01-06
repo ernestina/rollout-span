@@ -40,10 +40,10 @@ class DataPkn {
 
     public function get_d_pkn($id=null) {
         $sql = "SELECT * FROM " . $this->_table;
-        $sql .= " WHERE kd_d_user_pkn = ".Session::get('id_user');
-        //if(!is_null($id)) $sql .= " WHERE kd_d_user_pkn = ".$id;
+        //$sql .= " WHERE kd_d_user_pkn = ".Session::get('id_user');
+        if(!is_null($id)) $sql .= " WHERE kd_d_user_pkn = ".$id;
         $sql .= " ORDER BY kd_d_tgl desc";
-        
+        if(is_null($id)) $sql .= ",kd_d_user_pkn";
         $result = $this->db->select($sql);
         $data = array();
         foreach ($result as $val) {
