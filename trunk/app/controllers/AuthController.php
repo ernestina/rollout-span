@@ -39,9 +39,6 @@ class AuthController extends BaseController {
                 case 5:
                     $role = 'pkn';
                     break;
-                case 9:
-                    $role = 'lainya';
-                    break;
                 case 10:
                     $role = 'jaringan';
                     break;
@@ -54,8 +51,8 @@ class AuthController extends BaseController {
                 Session::set('loggedin', TRUE);
                 Session::set('user', $user);
                 Session::set('role', $role);
-                Session::set('id_user', $res[3]);
-                header('location:' . URL);
+                Session::set('id_user', $res[3]); print_r($_SESSION);
+                header('location:' . URL); 
             } else if ((int) $res[0] == 0) {
                 $this->view->error = "user tidak ditemukan!";
                 $this->view->load('admin/login');
@@ -77,5 +74,4 @@ class AuthController extends BaseController {
     public function __destruct() {
         parent::__destruct();
     }
-
 }

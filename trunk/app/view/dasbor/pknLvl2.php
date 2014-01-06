@@ -16,41 +16,36 @@
             $sp2d = $bot->get_sp2d_pkn() / 100;
             $spt = $bot->get_spt_pkn() / 100;
         }
-        $min = 100;
         foreach ($this->data as $value) {
             $persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
-            if ($value->get_kd_d_sp2d_persen() < 0) {
+            if($value->get_kd_d_sp2d_persen()<0){
                 $persen = $value->get_kd_d_spt_persen();
-            } elseif ($value->get_kd_d_spt_persen() < 0) {
+            }elseif($value->get_kd_d_spt_persen()<0){
                 $persen = $value->get_kd_d_sp2d_persen();
             }
             $ids[] = $persen;
-            if ($persen<=$min) {
-                $min = $persen; 
-            }
-            if ($value->get_kd_d_user() == 88881) {
+            if ($value->get_kd_d_user()==88881){
                 $tgl[] = '"RKN"';
-            } elseif ($value->get_kd_d_user() == 88882) {
+            } elseif ($value->get_kd_d_user()==88882){
                 $tgl[] = '"RKUN"';
-            } elseif ($value->get_kd_d_user() == 88883) {
+            } elseif ($value->get_kd_d_user()==88883){
                 $tgl[] = '"RPH"';
-            } elseif ($value->get_kd_d_user() == 88884) {
+            }elseif ($value->get_kd_d_user()==88884){
                 $tgl[] = '"RPL"';
             } else {
                 $tgl[] = '"Subdit tidak terdaftar"';
             }
+            
+            
         }
-        $mod = $min % 10;
-        $min -= $mod;
-        $step = (100-$min)/10;
         ?>
         <canvas id="canvas" height="400" width="900"></canvas>
     </body>
 </html>
 
 <script>
-    val = new Array(<?php echo implode(',', $ids); ?>)
-    label = new Array(<?php echo implode(',', $tgl); ?>)
+    val = new Array(<?php echo implode(',', $ids) ?>)
+    label = new Array(<?php echo implode(',', $tgl) ?>)
     var lineChartData = {
         labels: label,
         datasets: [
@@ -62,17 +57,18 @@
                 data: val
             }
         ]
+
     }
-    var options = {
+	var options = {
         scaleOverride: true,
         // Number - The number of steps in a hard coded scale
-        scaleSteps: <?php echo $step ?>,
+        scaleSteps: 2,
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 10,
         // Number - The scale starting value
-        scaleStartValue: <?php echo $min ?>,
+        scaleStartValue: 80,
     }
 
-    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(lineChartData, options);
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(lineChartData,options);
 
 </script>

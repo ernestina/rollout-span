@@ -78,7 +78,7 @@ class DataPknController extends BaseController {
             $this->view->d_ubah = $d_pkn->get_d_pkn_by_id($d_pkn);
         }
         $id = Session::get('id_user');
-        $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl(Session::get('id_user'));
+        $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
         $this->view->data = $d_pkn->get_d_pkn(); //echo count($this->view->data);
         $this->view->render('admin/dataPknLvl3');
     }
