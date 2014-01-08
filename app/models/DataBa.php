@@ -241,7 +241,7 @@ class DataBa {
      * cek data kosong
      * return pembagi
      */
-    public static function getPembagi($obj = DataKppn){
+    public static function getPembagi($obj = DataBa){
         $d_bobot = new DataBobot($obj->registry);
         $bobot = $d_bobot->get_bobot_ba_lvl2();
         $bot = array();
