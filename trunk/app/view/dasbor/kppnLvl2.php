@@ -15,16 +15,30 @@
         $min = 100;
         $no = 0;
         foreach ($this->bobot as $bot) {
-            $k = $bot->get_konversi() / 100;
-            $s = $bot->get_sp2d() / 100;
-            $l = $bot->get_lhp() / 100;
-            $r = $bot->get_rekon() / 100;
+            $k = $bot->get_konversi();
+            $s = $bot->get_sp2d();
+            $l = $bot->get_lhp();
+            $r = $bot->get_rekon();
         }
+
         foreach ($this->data as $value) {
-            $ids[] = '"' . ceil(($value->get_kd_d_konversi_persen() * $k + $value->get_kd_d_sp2d_persen() * $s + $value->get_kd_d_lhp_persen() * $l + $value->get_kd_d_rekon_persen() * $r)) . '"';
+            $pembagi = DataKppn::getPembagi($value);
+            $ids[] = '"' . ceil(($value->get_kd_d_konversi_persen() * $k + 
+                    $value->get_kd_d_sp2d_persen() * $s + 
+                    $value->get_kd_d_lhp_persen() * $l + 
+                    $value->get_kd_d_rekon_persen() * $r)
+                    /$pembagi) . '"';
             $tgl[] = '"' . $value->get_kd_d_kppn() . '"';
-            if ((ceil(($value->get_kd_d_konversi_persen() * $k + $value->get_kd_d_sp2d_persen() * $s + $value->get_kd_d_lhp_persen() * $l + $value->get_kd_d_rekon_persen() * $r))) <= $min) {
-                $min = floor(ceil(($value->get_kd_d_konversi_persen() * $k + $value->get_kd_d_sp2d_persen() * $s + $value->get_kd_d_lhp_persen() * $l + $value->get_kd_d_rekon_persen() * $r)));
+            if ((ceil(($value->get_kd_d_konversi_persen() * $k + 
+                    $value->get_kd_d_sp2d_persen() * $s + 
+                    $value->get_kd_d_lhp_persen() * $l + 
+                    $value->get_kd_d_rekon_persen() * $r)
+                    /$pembagi)) <= $min) {
+                $min = floor(ceil(($value->get_kd_d_konversi_persen() * $k + 
+                    $value->get_kd_d_sp2d_persen() * $s + 
+                    $value->get_kd_d_lhp_persen() * $l + 
+                    $value->get_kd_d_rekon_persen() * $r)
+                    /$pembagi));
                 $no++;
             }
         }
