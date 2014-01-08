@@ -67,28 +67,32 @@ class DataKppn {
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
 			if (($val['kd_d_konversi'])+($val['kd_d_konversi_gagal'])==0){
-			    $d_kppn->set_kd_d_konversi_persen(100);
+			    //$d_kppn->set_kd_d_konversi_persen(100);
+                $d_kppn->set_kd_d_konversi_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
 			}
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
-			    $d_kppn->set_kd_d_sp2d_persen(100);
+			    //$d_kppn->set_kd_d_sp2d_persen(100);
+                $d_kppn->set_kd_d_sp2d_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
 			}
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
             $d_kppn->set_kd_d_lhp_gagal($val['kd_d_lhp_gagal']);
             if (($val['kd_d_lhp'])+($val['kd_d_lhp_gagal'])==0){
-			    $d_kppn->set_kd_d_lhp_persen(100);
+			    //$d_kppn->set_kd_d_lhp_persen(100);
+                $d_kppn->set_kd_d_lhp_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
 			}
             $d_kppn->set_kd_d_rekon($val['kd_d_rekon']);
             $d_kppn->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
             if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_kppn->set_kd_d_rekon_persen(100);
+			    //$d_kppn->set_kd_d_rekon_persen(100);
+                $d_kppn->set_kd_d_rekon_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 			}
@@ -300,22 +304,26 @@ class DataKppn {
             $d_kppn->set_kd_d_user($val['kd_d_user']);
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             if (($val['kd_d_konversi'])+($val['kd_d_konversi_gagal'])==0){
-			    $d_kppn->set_kd_d_konversi_persen(100);
+			    //$d_kppn->set_kd_d_konversi_persen(100);
+                $d_kppn->set_kd_d_konversi_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
 			}
             if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
-			    $d_kppn->set_kd_d_sp2d_persen(100);
+			    //$d_kppn->set_kd_d_sp2d_persen(100);
+                $d_kppn->set_kd_d_sp2d_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_sp2d_persen(ceil(($val['kd_d_sp2d'])/(($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal']))*100));
 			}
             if (($val['kd_d_lhp'])+($val['kd_d_lhp_gagal'])==0){
-			    $d_kppn->set_kd_d_lhp_persen(100);
+			    //$d_kppn->set_kd_d_lhp_persen(100);
+                $d_kppn->set_kd_d_lhp_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_lhp_persen(ceil(($val['kd_d_lhp'])/(($val['kd_d_lhp'])+($val['kd_d_lhp_gagal']))*100));
 			}
             if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_kppn->set_kd_d_rekon_persen(100);
+			    //$d_kppn->set_kd_d_rekon_persen(100);
+                $d_kppn->set_kd_d_rekon_persen(-1);
 			} else {
 				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 			}
@@ -342,10 +350,10 @@ class DataKppn {
         $l=0;
         $r=0;
         foreach ($bobot as $bot) {
-            $k=$bot->get_konversi()/100; 
-            $s=$bot->get_sp2d()/100;
-            $l=$bot->get_lhp()/100;
-            $r=$bot->get_rekon()/100;
+            $k=$bot->get_konversi(); 
+            $s=$bot->get_sp2d();
+            $l=$bot->get_lhp();
+            $r=$bot->get_rekon();
         }
         foreach ($d_kppn as $key => $val) {
             foreach ($d_kanwil as $value) {
@@ -364,6 +372,7 @@ class DataKppn {
                                     $s*$val->get_kd_d_sp2d_persen()+
                                     $l*$val->get_kd_d_lhp_persen()+
                                     $r*$val->get_kd_d_rekon_persen());
+                    $pembagi = DataKppn::getPembagi($val);
                     if(array_key_exists($kd_kanwil, $return)){
                         $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['jml_data'];
                         $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['jml_data'];
@@ -375,7 +384,7 @@ class DataKppn {
                         $return[$kd_kanwil]['sp2d'] = ($tmp_sp2d+$val->get_kd_d_sp2d_persen())/$return[$kd_kanwil]['jml_data'];
                         $return[$kd_kanwil]['lhp'] = ($tmp_lhp+$val->get_kd_d_lhp_persen())/$return[$kd_kanwil]['jml_data'];
                         $return[$kd_kanwil]['rekon'] = ($tmp_rekon+$val->get_kd_d_rekon_persen())/$return[$kd_kanwil]['jml_data'];
-                        $return[$kd_kanwil]['sum'] = ($tmp_value+$data_insert)/$return[$kd_kanwil]['jml_data'];
+                        $return[$kd_kanwil]['sum'] = ($tmp_value+($data_insert/$pembagi))/$return[$kd_kanwil]['jml_data'];
                     }else{
                         $tmp = explode(" ", $nm_kanwil);
                         $len = count($tmp);
@@ -393,7 +402,7 @@ class DataKppn {
                         $return[$kd_kanwil]['sp2d'] = $val->get_kd_d_sp2d_persen();
                         $return[$kd_kanwil]['lhp'] = $val->get_kd_d_lhp_persen();
                         $return[$kd_kanwil]['rekon'] = $val->get_kd_d_rekon_persen();
-                        $return[$kd_kanwil]['sum'] = $data_insert;
+                        $return[$kd_kanwil]['sum'] = $data_insert/$pembagi;
                     }
                 }
             }
@@ -613,6 +622,24 @@ class DataKppn {
     public function delete_d_kppn() {
         $where = ' kd_d_kppn=' . $this->get_kd_d_kppn();
         $this->db->delete($this->_table, $where);
+    }
+
+    /*
+     * cek data kosong
+     * return pembagi
+     */
+    public static function getPembagi($obj = DataKppn){
+        $d_bobot = new DataBobot($obj->registry);
+        $bobot = $d_bobot->get_bobot_kppn_lvl3();
+        $bot = array();
+        foreach ($bobot as $val) {
+            $r = ($obj->get_kd_d_konversi_persen()<0)?0:$val->get_konversi();
+            $s = ($obj->get_kd_d_sp2d_persen()<0)?0:$val->get_sp2d();
+            $t = ($obj->get_kd_d_lhp_persen()<0)?0:$val->get_lhp();
+            $u = ($obj->get_kd_d_rekon_persen()<0)?0:$val->get_rekon();
+        }
+
+        return $r+$s+$t+$u;
     }
 
     public function validate() {

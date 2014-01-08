@@ -13,12 +13,16 @@
         $ids = array();
         $tgl = array();
         foreach ($this->bobot as $bot) {
-            $s = $bot->get_spm_ba() / 100;
-            $r = $bot->get_rekon_ba() / 100;
-            $k = $bot->get_kontrak_ba() / 100;
+            $s = $bot->get_spm_ba();
+            $r = $bot->get_rekon_ba();
+            $k = $bot->get_kontrak_ba();
         }
         foreach ($this->dasbor as $value) {
-            $persen = ceil(($value->get_kd_d_spm_persen() * $s + $value->get_kd_d_rekon_persen() * $r + $value->get_kd_d_kontrak_persen() * $k));
+            $pembagi = DataBa::getPembagi($value);
+            $persen = ceil(($value->get_kd_d_spm_persen() * $s + 
+                    $value->get_kd_d_rekon_persen() * $r + 
+                    $value->get_kd_d_kontrak_persen() * $k)
+                    /$pembagi);
             $ids[] = $persen;
             $originalDate = $value->get_kd_d_tgl();
             $newDate = date("d/m", strtotime($originalDate));

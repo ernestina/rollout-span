@@ -76,15 +76,25 @@
                     } else {
                         echo "<td>Satker tidak ditemukan</td>";
                     }
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm() . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_spm_gagal() . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_spm_persen() . "%</b></td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon() . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_rekon_gagal() . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_rekon_persen() . "%</b></td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak() . "</td>";
-                    echo "<td style=\"text-align: center\">" . $val->get_kd_d_kontrak_gagal() . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $val->get_kd_d_kontrak_persen() . "%</b></td>";
+
+                    $spm = ($val->get_kd_d_spm()==0)?"-":$val->get_kd_d_spm();
+                    $spm_gagal = ($val->get_kd_d_spm_gagal()==0)?"-":$val->get_kd_d_spm_gagal();
+                    $spm_persen = ($val->get_kd_d_spm_persen()<0)?"-":$val->get_kd_d_spm_persen()."%";
+                    $rekon = ($val->get_kd_d_rekon()==0)?"-":$val->get_kd_d_rekon();
+                    $rekon_gagal = ($val->get_kd_d_rekon_gagal()==0)?"-":$val->get_kd_d_rekon_gagal();
+                    $rekon_persen = ($val->get_kd_d_rekon_persen()<0)?"-":$val->get_kd_d_rekon_persen()."%";
+                    $kontrak = ($val->get_kd_d_kontrak()==0)?"-":$val->get_kd_d_kontrak();
+                    $kontrak_gagal = ($val->get_kd_d_kontrak_gagal()==0)?"-":$val->get_kd_d_kontrak_gagal();
+                    $kontrak_persen = ($val->get_kd_d_kontrak_persen()<0)?"-":$val->get_kd_d_kontrak_persen()."%";
+                    echo "<td style=\"text-align: center\">" . $spm . "</td>";
+                    echo "<td style=\"text-align: center\">" . $spm_gagal . "</td>";
+                    echo "<td style=\"text-align: center\"><b>" . $spm_persen . "</b></td>";
+                    echo "<td style=\"text-align: center\">" . $rekon . "</td>";
+                    echo "<td style=\"text-align: center\">" . $rekon_gagal . "</td>";
+                    echo "<td style=\"text-align: center\"><b>" . $rekon_persen . "</b></td>";
+                    echo "<td style=\"text-align: center\">" . $kontrak . "</td>";
+                    echo "<td style=\"text-align: center\">" . $kontrak_gagal . "</td>";
+                    echo "<td style=\"text-align: center\"><b>" . $kontrak_persen . "</b></td>";
                     if (Session::get('role') == BA999) {
                         echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
                         <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";

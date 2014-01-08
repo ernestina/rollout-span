@@ -57,21 +57,24 @@ class DataBa {
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
 			if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
-			    $d_ba->set_kd_d_spm_persen(100);
+			    //$d_ba->set_kd_d_spm_persen(100);
+                $d_ba->set_kd_d_spm_persen(-1);
 			} else {
 			    $d_ba->set_kd_d_spm_persen(ceil(($val['kd_d_spm'])/(($val['kd_d_spm'])+($val['kd_d_spm_gagal']))*100));
 			}
             $d_ba->set_kd_d_rekon($val['kd_d_rekon']);
             $d_ba->set_kd_d_rekon_gagal($val['kd_d_rekon_gagal']);
             if (($val['kd_d_rekon'])+($val['kd_d_rekon_gagal'])==0){
-			    $d_ba->set_kd_d_rekon_persen(100);
+			    //$d_ba->set_kd_d_rekon_persen(100);
+                $d_ba->set_kd_d_rekon_persen(-1);
 			} else {
 			    $d_ba->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 			}
             $d_ba->set_kd_d_kontrak($val['kd_d_kontrak']);
             $d_ba->set_kd_d_kontrak_gagal($val['kd_d_kontrak_gagal']);
             if (($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal'])==0){
-			    $d_ba->set_kd_d_kontrak_persen(100);
+			    //$d_ba->set_kd_d_kontrak_persen(100);
+                $d_ba->set_kd_d_kontrak_persen(-1);
 			} else {
 			    $d_ba->set_kd_d_kontrak_persen(ceil(($val['kd_d_kontrak'])/(($val['kd_d_kontrak'])+($val['kd_d_kontrak_gagal']))*100));
 			}
@@ -232,6 +235,23 @@ class DataBa {
     public function delete_d_ba() {
         $where = ' kd_d_ba=' . $this->get_kd_d_ba();
         $this->db->delete($this->_table, $where);
+    }
+
+    /*
+     * cek data kosong
+     * return pembagi
+     */
+    public static function getPembagi($obj = DataKppn){
+        $d_bobot = new DataBobot($obj->registry);
+        $bobot = $d_bobot->get_bobot_ba_lvl2();
+        $bot = array();
+        foreach ($bobot as $val) {
+            $r = ($obj->get_kd_d_spm_persen()<0)?0:$val->get_spm_ba();
+            $s = ($obj->get_kd_d_rekon_persen()<0)?0:$val->get_rekon_ba();
+            $t = ($obj->get_kd_d_kontrak_persen()<0)?0:$val->get_kontrak_ba();
+        }
+
+        return $r+$s+$t;
     }
 
     public function validate() {

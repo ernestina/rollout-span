@@ -16,10 +16,10 @@
             $ids4 = array();
             $tgl = array();
             foreach ($this->sp2d as $value) {
-                $ids[] = $value->get_kd_d_konversi_persen();
-                $ids2[] = $value->get_kd_d_sp2d_persen();
-                $ids3[] = $value->get_kd_d_lhp_persen();
-                $ids4[] = $value->get_kd_d_rekon_persen();
+                $ids[] = ($value->get_kd_d_konversi_persen()<0)?0:$value->get_kd_d_konversi_persen();
+                $ids2[] = ($value->get_kd_d_sp2d_persen()<0)?0:$value->get_kd_d_sp2d_persen();
+                $ids3[] = ($value->get_kd_d_lhp_persen()<0)?0:$value->get_kd_d_lhp_persen();
+                $ids4[] = ($value->get_kd_d_rekon_persen()<0)?0:$value->get_kd_d_rekon_persen();
                 $originalDate = $value->get_kd_d_tgl();
                 $newDate = date("d/m", strtotime($originalDate));
                 $tgl[] = '"' . $newDate . '"';
