@@ -56,6 +56,12 @@ $nilai_ba = (int) ($nilai_ba1 / $noba);
 $nopkn = 0;
 foreach ($this->pkn as $valpkn) {
     $persen = ceil(($valpkn->get_kd_d_sp2d_persen() * $bobot_sp2d_pkn + $valpkn->get_kd_d_spt_persen() * $bobot_spt_pkn));
+    if($valpkn->get_kd_d_sp2d_persen()<0){
+        $persen = $valpkn->get_kd_d_spt_persen();
+    }elseif($valpkn->get_kd_d_spt_persen()<0){
+        $persen = $valpkn->get_kd_d_sp2d_persen();
+    }
+    if($persen<0) $persen=0;
     $nilai_pkn1 += $persen;
     $nopkn++;
 }
