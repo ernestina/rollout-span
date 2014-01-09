@@ -21,17 +21,14 @@ class Upload {
     const DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
     const DOCX2 = 'application/octet-stream';
 
-    public function __construct() {
-        ;
+    public function __construct($fupload) {
+        $this->init($fupload);
     }
 
     public function init($fupload) {
         $this->setDirFrom($_FILES[$fupload]['tmp_name']);
         $this->setFileExt($_FILES[$fupload]['type']);
-        $this->setFileName($_FILES[$fupload]['name']);
-//        echo $this->getDirFrom().'</br>';
-//        echo $this->getFileExt().'</br>';
-//        echo $this->getFileName().'</br>';        
+        $this->setFileName($_FILES[$fupload]['name']);       
     }
 
     public function cekFileExist() {
@@ -69,13 +66,16 @@ class Upload {
         $nama = '';
         $length = count($ubahNama);
         for ($i = 0; $i < $length; $i++) {
-            $nama .= $ubahNama[$i] . "_";
+            $t = trim($ubahNama[$i]);
+            $nama .= $t . "_";
         }
-        $ekst = end(explode(".", $filename));
+        $tmp = explode(".", $filename);
+        $len = count($tmp);
+        $ekst = $tmp[$len-1];
         $nama = rtrim($nama, "_");
-        //$nama .= $filename;
         $nama .= "." . $ekst;
         $nama = str_replace('/', '_', $nama);
+        $nama = str_replace(" ", "", $nama);
         $nama = trim($nama);
         $this->fileTo = $nama;
         return $this->fileTo;
@@ -86,16 +86,34 @@ class Upload {
      * 
      */
 
-    public function uploadFile($doctype = NULL) {
+    public function uploadFile($dir_to, $nama=array()) {
+        $this->setDirTo($dir_to);
+        $this->changeFileName($this->getFileName(),$nama);
         if ($this->cekFileExist()) {
-//            if($this->cekEkstensi($this->getFileExt())){
             move_uploaded_file($this->getDirFrom(), $this->getDirTo() . $this->getFileTo());
             return true;
-//            }else{
-//                throw new Exception();
+        } else {
             return false;
-//                exit();
-//            }
+        }
+    }
+
+    /*
+     * melakukan upload file, parameter : array untuk penamaan file
+     * 
+     */
+
+    public function uploadFile2($doctype = NULL, $nama = array()) {
+        for ($i = 0; $i < 10; $i++) {  //membuat angka random
+            $rand = $rand . rand(0, 9);
+        }
+        array_push($nama, $rand);
+        $this->changeFileName($this->getFileName(), $nama);
+        if ($this->cekFileExist()) {
+            if (move_uploaded_file($this->getDirFrom(), $this->getDirTo() . $this->getFileTo())) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -150,3 +168,5 @@ class Upload {
     }
 
 }
+
+?>

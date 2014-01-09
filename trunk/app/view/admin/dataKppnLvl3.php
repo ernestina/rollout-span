@@ -22,6 +22,7 @@
         </h2></div>
         <?php if(Session::get('role')==KPPN){ ?>
 			<a href="#pModal" class="modal"><i class="icon-plus icon-white"></i>INPUT DATA</a>
+            <!-- ADD/EDIT DATA KPPN -->
 			<div id="pModal" class="modalDialog">
 			<div>
 				<!--input id="add_data" class="normal" type="button" onclick="addData('<?php //echo Session::get('id_user');?>')" value="TAMBAH DATA"-->
@@ -90,6 +91,43 @@
 					</div>
 				</div><!--end top-->
 			</div><!--end modal-->
+            <!-- UPLOAD FILE LAPORAN KPPN -->
+            <div id="uplModal" class="modalDialog">
+            <div>
+                <!--input id="add_data" class="normal" type="button" onclick="addData('<?php //echo Session::get('id_user');?>')" value="TAMBAH DATA"-->
+                <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px">
+                    Upload File Laporan
+                </h2>
+                
+                <a href="<?php $_SERVER['PHP_SELF']; ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+                
+                <div id="top">
+                    <form method="POST" action="<?php echo URL . 'dataKppn/upload_file';?>" enctype="multipart/form-data">
+                              
+                        <div id="wfile" class="error"></div>
+                        <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo Session::get('id_user');?>">
+                        <input type="hidden" name="id_data" id="id_data" value="
+                            <?php 
+                                if (isset($this->d_ubah)) {
+                                    echo $this->d_ubah->get_kd_d_kppn();
+                                }
+                            ?>
+                        ">
+                        <table style="margin: 0px 5px 0px 5px">
+                            <tr>
+                                <td align="left" width="30%">Nama File</td><td> : </td><td>hjahdjash</td>
+                            </tr>
+                            <tr>
+                                <td>File Upload</td><td> : </td><td><input type="file" name="fupload" id="fupload"></td>
+                            </tr>
+                        </table>
+                        <ul class="inline" style="margin-left: 230px";>
+                                <li><input id="submit" class="sukses" type="submit" name="submit_file" value="SIMPAN" onClick="return cek_upload();"></li>
+                            </ul>   
+                    </form>
+                    </div>
+                </div><!--end top-->
+            </div><!--end modal-->
 			</div>
 		</br></br>
 		<?php } ?>
@@ -571,5 +609,39 @@
             rekam();
             return true;
         }
+    }
+
+    function cek_upload(){
+        var file_upload = document.getElementById('fupload').value;
+        var jml = 0;
+        if(file_upload==''){
+            $('#wfile').html('file belum dipilih!');
+            $('#wfile').fadeIn();
+            jml++;
+        }else{
+            var fsplit = file_upload.split('.');
+            var ext = fsplit[fsplit.length-1];
+            var cek_file = ext=='doc' || ext=='docx' || ext=='xls' || ext=='xlsx' || ext=='pdf';
+            if(!cek_file){
+                $('#wfile').html('file tidak sesuai dengan format!');
+                $('#wfile').fadeIn();
+                jml++;
+            } 
+        }
+
+        if(jml>0){
+            return false;
+        }
+    }
+
+    function viewFile(file){
+        var url = "<?php echo URL;?>dataKppn/view_file/"+file;
+    
+        var w = 800;
+        var h = 500;
+        var left = (screen.width/2)-(w/2);
+        var top = (screen.height/2)-(h/2);
+        var title = "tampilan surat tugas";
+        window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
     }
 </script>

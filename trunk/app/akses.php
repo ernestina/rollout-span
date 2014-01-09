@@ -64,6 +64,7 @@ $akses['DataKppn'] = array(
     'delDataKppn',
     'viewDataKppnLvl2',
     'viewDataKppnLvl3',
+    'view_file',
     '__destruct'
 );
 

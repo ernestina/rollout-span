@@ -464,6 +464,26 @@ class DataKppnController extends BaseController {
         header('location:' . URL . 'dataKppn/addDataKppnLvl3Jkt6');
     }
 
+    public function upload_file(){
+        $kd_kppn = $_POST['kd_d_user'];
+        $kd_d_kppn = $_POST['id_data'];
+        $file;
+        $upload = new Upload('fupload');
+        $nama = array($kd_kppn,$kd_d_kppn);
+        $upload->uploadFile('report/',$nama);
+        $file = $upload->getFileTo();
+
+        $kppn = new DataKppn($this->registry);
+        $kppn->set_kd_d_kppn($kd_d_kppn);
+        $kppn->add_file($file);
+        header('location:'.URL.'dataKppn/addDataKppnLvl3');
+    }
+
+    public function view_file($file){
+        $this->view->file = $file;
+        $this->view->load('admin/viewfile');
+    }
+
     public function __destruct() {
         
     }
