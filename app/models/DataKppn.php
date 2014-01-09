@@ -23,6 +23,7 @@ class DataKppn {
     private $_kd_d_rekon_gagal;
     private $_kd_d_rekon_persen;
     private $_kd_d_kppn_lvl2;
+    private $_file;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_kppn';
@@ -96,7 +97,7 @@ class DataKppn {
 			} else {
 				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 			}
-
+            $d_kppn->set_file($val['file']);
             $data[] = $d_kppn;
         }
 
@@ -700,6 +701,12 @@ class DataKppn {
         return $return;
     }
 
+    public function add_file($file){
+        $where = " kd_d_kppn=".$this->get_kd_d_kppn();
+        $data = array("file"=>$file);
+        $this->db->update($this->_table,$data,$where);
+    }
+
     /*
      * setter
      */
@@ -770,6 +777,10 @@ class DataKppn {
     
     public function set_kd_r_unit($unit) {
         $this->_kd_r_unit = $unit;
+    }
+
+    public function set_file($file){
+        $this->_file = $file;
     }
 
     /*
@@ -856,6 +867,10 @@ class DataKppn {
 
     public function get_kd_r_unit() {
         return $this->_kd_r_unit;
+    }
+
+    public function get_file(){
+        return $this->_file;
     }
 
     /*

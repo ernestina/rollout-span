@@ -49,7 +49,7 @@ Autoloader::setCacheFilePath(ROOT.'/libs/cache.txt');
 Autoloader::setClassPaths($path);
 Autoloader::register();
 $registry = new Registry();
-$registry->upload = new Upload();
+//$registry->upload = new Upload();
 $registry->view = new View();
 $registry->db = new Database();
 $registry->auth = new Auth();

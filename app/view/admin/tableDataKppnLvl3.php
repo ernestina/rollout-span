@@ -11,9 +11,9 @@
                     <th colspan="3" width ="20%">LHP</th>
                     <th colspan="3" width ="20%">Rekon</th>
                     <?php
-                    if (Session::get('role') == KPPN) {
+                    //if (Session::get('role') == KPPN) {
                         echo "<th rowspan='2' width ='10%'>Aksi</th>";
-                    }
+                    //}
                     ?>
                 </tr>
                 <tr>
@@ -65,7 +65,13 @@
                     echo "<td><b>" . $kd_d_rekon_persen . "</b></td>";
                     if (Session::get('role') == KPPN) {
                         echo "<td style='text-align: center'><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\"><i class=\"icon-trash\"></i></a>
-									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\"></i></a></td>";
+									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\"></i></a>
+                                    <a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#uplModal ><i class=\"icon-trash\" title='upload file'></i></a>
+                                    <a onclick='viewFile(\"".$val->get_file()."\")'><i class=\"icon-pencil\" title='lihat file'></i></a>
+                                    <a href=" . URL . "dataMasalah/addDataMasalah/#oModal><i class=\"icon-pencil\" title='input masalah'></i></a></td>";
+                    }
+                    if(Session::get('role') == ADMIN){
+                        echo "<td style='text-align: center'><a onclick='viewFile(".$val->get_file().")'><i class=\"icon-pencil\" title='input masalah'></i></a></td>";
                     }
                     echo "</tr>";
                     $no++;
