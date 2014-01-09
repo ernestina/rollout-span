@@ -120,7 +120,7 @@ class DataPkn {
      */
 
     public function get_d_pkn_lvl2($limit = null, $batas = null) {
-        $sql = "SELECT * FROM " . $this->_table . " GROUP BY kd_d_user_pkn ORDER BY kd_d_user_pkn asc";
+        $sql = "SELECT * FROM " . $this->_table . "  ORDER BY kd_d_user_pkn asc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
         }
@@ -133,7 +133,7 @@ class DataPkn {
             if($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal']==0){
                 $sp2d = -1;
             }else{
-                $sp2d = $value['kd_d_sp2d']/($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal'])*100;    
+                $sp2d = ($value['kd_d_sp2d']/($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal']))*100;   
             }
 
             //spt
@@ -144,11 +144,17 @@ class DataPkn {
             }
 
             if(array_key_exists($kd_pkn, $result)){
-                $result[$kd_pkn]['count_data']++;
-                $sp2d = (($result[$kd_pkn]['kd_d_sp2d_persen']*($result[$kd_pkn]['count_data']-1))+$sp2d)/ $result[$kd_pkn]['count_data'];
-                $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_data']-1))+$spt)/ $result[$kd_pkn]['count_data'];
-                $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
-                $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
+                if($sp2d>-1 || $spt>-1){
+                    $result[$kd_pkn]['count_data']++;
+                }
+                if($sp2d>-1){
+                    $sp2d = (($result[$kd_pkn]['kd_d_sp2d_persen']*($result[$kd_pkn]['count_data']-1))+$sp2d)/ $result[$kd_pkn]['count_data'];    
+                    $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
+                }
+                if($spt>-1){
+                    $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_data']-1))+$spt)/ $result[$kd_pkn]['count_data'];
+                    $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
+                }
             }else{
                 $result[$kd_pkn] = array();
                 $result[$kd_pkn]['count_data'] = 1;
