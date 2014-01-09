@@ -23,6 +23,7 @@
             }elseif($value->get_kd_d_spt_persen()<0){
                 $persen = $value->get_kd_d_sp2d_persen();
             }
+            if($persen<0) $persen=0;
             $ids[] = $persen;
             $originalDate = $value->get_kd_d_tgl();
             $newDate = date("d/m", strtotime($originalDate));
