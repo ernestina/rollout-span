@@ -35,18 +35,27 @@
                                   echo "<input type=hidden name='kd_d_mslh' value=" . $this->d_ubah->get_kd_d_mslh() . ">";
                               }
 
+                              if (isset($this->kd_d_kppn)) {
+                                  echo "<input type=hidden name='kd_d_kppn' value=" . $this->kd_d_kppn . ">";
+                              }
+
                               if (isset($this->error)) {
                                   echo "<div class=error>" . $this->error . "</div>";
                               }
                               ?>
 
                         <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_user() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_user() : '88888'); ?>">
-
                         <div id="wtgl"  class="error"></div>
-                        <label class="isian">Tanggal</label><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>">
-
                         <div id="wmslh"  class="error"></div>
-                        <label class="isian">Uraian Permasalahan</label><textarea type="text" name="masalah" id="masalah" rows="7" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
+                        <table>
+                            <tr><td></td><td></td></tr>
+                            <tr><td>Tanggal</td><td><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>"></td></tr>
+                            <tr><td colspan="2">Uraian Permasalahan</td></tr>
+                            <tr><td colspan="2">
+                                <textarea style="display:inline-block" type="text" name="masalah" id="masalah" rows="7" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?>></textarea>
+                                <input type="button" id="bt_add" value="+" style="display:inline-block">
+                            </td></tr>
+                        </table>
 
                         <ul class="inline" style="margin-left: 200px">
                             <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick="return cek();"></li>
@@ -115,6 +124,10 @@
     $(function() {
         hideErrorId();
         hideWarning();
+
+        $('#bt_add').click(function(){
+
+        });
 
     });
 
