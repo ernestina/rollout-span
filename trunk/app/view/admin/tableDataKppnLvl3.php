@@ -67,7 +67,7 @@
                         echo "<td style='text-align: center'><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\" title='hapus data'><i class=\"icon-trash\"></i></a>
 									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\" title='ubah data'></i></a>
                                     <a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#uplModal ><i class=\"icon-upload\" title='upload file'></i></a>
-                                    <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_kppn()."#oModal><i class=\"icon-eye-close\" title='input masalah'></i></a></td>";
+                                    <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_kppn()."/1#oModal><i class=\"icon-eye-close\" title='input masalah'></i></a></td>";
                     }
                     if(Session::get('role') == ADMIN){
                         echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")'><i class=\"icon-search\" title='lihat file'></i></a>

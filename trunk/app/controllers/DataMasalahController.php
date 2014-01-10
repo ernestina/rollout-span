@@ -35,18 +35,24 @@ class DataMasalahController extends BaseController {
             $kd_d_user = Session::get('id_user');
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
+            $kppn = $_POST['kd_d_kppn'];
 
-            $d_mslh->set_kd_d_user($kd_d_user);
-            $d_mslh->set_tgl_mslh($tgl_mslh);
-            $d_mslh->set_masalah($masalah);
+            foreach ($masalah as $key => $value) {
+                $d_mslh->set_kd_d_user($kd_d_user);
+                $d_mslh->set_tgl_mslh($tgl_mslh);
+                $d_mslh->set_masalah($value);
+                $d_mslh->set_kd_d_kppn($kppn);
 
-            if (!$d_mslh->add_d_mslh()) {
-                $this->view->d_rekam = $d_mslh;
-                $this->view->error = $d_mslh->get_error();
+                $d_mslh->add_d_mslh();
             }
+
+            //if (!$d_mslh->add_d_mslh()) {
+                //$this->view->d_rekam = $d_mslh;
+                //$this->view->error = $d_mslh->get_error();
+            //}
         }
         //var_dump($d_tetap->get_d_tetap());
-        
+
         if(!is_null($link_d_kppn)) {
             $this->view->kd_d_kppn = $id;
         }elseif (!is_null($id)) {

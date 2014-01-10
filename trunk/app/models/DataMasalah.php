@@ -12,6 +12,7 @@ class DataMasalah {
     private $_kd_d_user;
     private $_tgl_mslh;
     private $_masalah;
+    private $_kd_d_kppn;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_mslh';
@@ -117,7 +118,8 @@ class DataMasalah {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
             'tgl_mslh' => $this->get_tgl_mslh(),
-            'masalah' => $this->get_masalah()
+            'masalah' => $this->get_masalah(),
+            'kd_d_kppn'=>$this->get_kd_d_kppn()
         );
         $this->validate();
         if (!$this->get_valid()) {
@@ -195,6 +197,10 @@ class DataMasalah {
         $this->_masalah = $bmslh;
     }
 
+    public function set_kd_d_kppn($kppn) {
+        $this->_kd_d_kppn = $kppn;
+    }
+
     public function set_table($table) {
         $this->_table = $table;
     }
@@ -224,6 +230,10 @@ class DataMasalah {
 
     public function get_masalah() {
         return $this->_masalah;
+    }
+
+    public function get_kd_d_kppn() {
+        return $this->_kd_d_kppn;
     }
 
     public function get_error() {

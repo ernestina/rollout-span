@@ -52,12 +52,12 @@
                             <tr><td>Tanggal</td><td><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>"></td></tr>
                             <tr><td colspan="2">Uraian Permasalahan</td></tr>
                             <tr><td colspan="2">
-                                <textarea style="display:inline-block" type="text" name="masalah" id="masalah" rows="7" cols="1000" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
+                                <textarea style="display:inline-block" type="text" name="masalah[]" id="masalah" rows="7" cols="1000" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
                             </td></tr>
                         </table>
                         <input type="button" id="bt_add" value="+" style="display:inline-block">
                         <ul class="inline" style="margin-left: 200px">
-                            <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick="return cek();"></li>
+                            <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></li>
                                                         <!--li><input class="normal" type="reset" onclick="" value="BATAL"></li-->
                         </ul>
                     </form>
@@ -137,7 +137,7 @@
         td.colSpan = 2;
         var textarea = document.createElement('textarea');
         textarea.type = "text";
-        textarea.name = "masalah";
+        textarea.name = "masalah[]";
         textarea.id = "masalah";
         textarea.colSpan = "80";
         td.appendChild(textarea);
