@@ -27,7 +27,7 @@ class DataMasalahController extends BaseController {
      * tambah data Masalah
      */
 
-    public function addDataMasalah($id = null) {
+    public function addDataMasalah($id = null,$link_d_kppn=null) {
         $d_mslh = new DataMasalah($this->registry);
         //$d_bobot = new DataBobot($this->registry);
         //$this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
@@ -46,11 +46,13 @@ class DataMasalahController extends BaseController {
             }
         }
         //var_dump($d_tetap->get_d_tetap());
-        if (!is_null($id)) {
+        
+        if(!is_null($link_d_kppn)) {
+            $this->view->kd_d_kppn = $id;
+        }elseif (!is_null($id)) {
             $d_mslh->set_kd_d_mslh($id);
             $this->view->d_ubah = $d_mslh->get_d_mslh_by_id($d_mslh);
         }
-
 
         //$this->view->dasbor = $d_mslh->get_d_pkn_per_tgl();
         $this->view->data = $d_mslh->get_d_mslh();
