@@ -479,7 +479,7 @@ class DataKppnController extends BaseController {
         header('location:'.URL.'dataKppn/addDataKppnLvl3');
     }
 
-    public function view_file($file){
+    public function view_file($file=null){
         $this->view->file = $file;
         $this->view->load('admin/viewfile');
     }

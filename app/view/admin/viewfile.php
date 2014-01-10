@@ -1,5 +1,5 @@
 <?php 
-if($this->file!='' AND file_exists('report/'.$this->file)) {
+if($this->file!='' AND !is_null($this->file) AND file_exists('report/'.$this->file)) {
 	$cfile = explode(".", $this->file);
 	$len = count($cfile);
 	$ext = $cfile[$len-1];
