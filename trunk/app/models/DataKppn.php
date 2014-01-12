@@ -143,6 +143,7 @@ class DataKppn {
     }
 	
 	public function get_d_kppn_lvl2($kanwil=null, $limit = null, $batas = null) {
+        $bot = new DataBobot($this->registry);
 	$plus=$kanwil+999;
         $sql = "SELECT 
                 a.kd_d_user, 
@@ -168,51 +169,87 @@ class DataKppn {
             $kd_kppn = $value['kd_d_user'];
             //konversi
             if($value['kd_d_konversi']+$value['kd_d_konversi_gagal']==0){
-                $konversi = 100;
+                //$konversi = 100;
+                $konversi = -1;
             }else{
                 $konversi = $value['kd_d_konversi']/($value['kd_d_konversi']+$value['kd_d_konversi_gagal'])*100;    
             }
 
             //sp2d
             if($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal']==0){
-                $sp2d = 100;
+                //$sp2d = 100;
+                $sp2d = -1;
             }else{
                 $sp2d = $value['kd_d_sp2d']/($value['kd_d_sp2d']+$value['kd_d_sp2d_gagal'])*100;    
             }
 
             //lhp
             if($value['kd_d_lhp']+$value['kd_d_lhp_gagal']==0){
-                $lhp = 100;
+                //$lhp = 100;
+                $lhp = -1;
             }else{
                 $lhp = $value['kd_d_lhp']/($value['kd_d_lhp']+$value['kd_d_lhp_gagal'])*100;    
             }
 
             //rekon
             if($value['kd_d_rekon']+$value['kd_d_rekon_gagal']==0){
-                $rekon = 100;
+                //$rekon = 100;
+                $rekon = -1;
             }else{
                 $rekon = $value['kd_d_rekon']/($value['kd_d_rekon']+$value['kd_d_rekon_gagal'])*100;    
             }
             if(array_key_exists($kd_kppn, $result)){
-                $result[$kd_kppn]['count_data']++;
-                $konversi = (($result[$kd_kppn]['kd_d_konversi_persen']*($result[$kd_kppn]['count_data']-1))+$konversi)/ $result[$kd_kppn]['count_data'];
-                $sp2d = (($result[$kd_kppn]['kd_d_sp2d_persen']*($result[$kd_kppn]['count_data']-1))+$sp2d)/ $result[$kd_kppn]['count_data'];
-                $lhp = (($result[$kd_kppn]['kd_d_lhp_persen']*($result[$kd_kppn]['count_data']-1))+$lhp)/ $result[$kd_kppn]['count_data'];
-                $rekon = (($result[$kd_kppn]['kd_d_rekon_persen']*($result[$kd_kppn]['count_data']-1))+$rekon)/ $result[$kd_kppn]['count_data'];
-                $result[$kd_kppn]['kd_d_konversi_persen'] = ceil($konversi);
-                $result[$kd_kppn]['kd_d_sp2d_persen'] = ceil($sp2d);
-                $result[$kd_kppn]['kd_d_lhp_persen'] = ceil($lhp);
-                $result[$kd_kppn]['kd_d_rekon_persen'] = ceil($rekon);
+                
+                //$total = $konversi*$bot->get_
+                if($konversi>=0){
+                    $result[$kd_kppn]['count_konversi']++;
+                    $konversi = (($result[$kd_kppn]['kd_d_konversi_persen']*($result[$kd_kppn]['count_konversi']-1))+$konversi)/ $result[$kd_kppn]['count_konversi'];
+                    $result[$kd_kppn]['kd_d_konversi_persen'] = ceil($konversi);
+                }
+                if($sp2d>=0){
+                    $result[$kd_kppn]['count_sp2d']++;
+                    $sp2d = (($result[$kd_kppn]['kd_d_sp2d_persen']*($result[$kd_kppn]['count_sp2d']-1))+$sp2d)/ $result[$kd_kppn]['count_sp2d'];
+                    $result[$kd_kppn]['kd_d_sp2d_persen'] = ceil($sp2d);
+                }
+                if($lhp>=0){
+                    $result[$kd_kppn]['count_lhp']++;
+                    $lhp = (($result[$kd_kppn]['kd_d_lhp_persen']*($result[$kd_kppn]['count_lhp']-1))+$lhp)/ $result[$kd_kppn]['count_lhp'];
+                    $result[$kd_kppn]['kd_d_lhp_persen'] = ceil($lhp);
+                }
+                if($rekon>=0){
+                    $result[$kd_kppn]['count_rekon']++;
+                    $rekon = (($result[$kd_kppn]['kd_d_rekon_persen']*($result[$kd_kppn]['count_rekon']-1))+$rekon)/ $result[$kd_kppn]['count_rekon'];
+                    $result[$kd_kppn]['kd_d_rekon_persen'] = ceil($rekon);
+                }   
             }else{
                 $result[$kd_kppn] = array();
-                $result[$kd_kppn]['count_data'] = 1;
                 $result[$kd_kppn]['nama_user'] = $value['nama_user'];
                 $result[$kd_kppn]['nama_kanwil'] = $value['nama_kanwil'];
                 $result[$kd_kppn]['kd_d_user'] = $value['kd_d_user'];
-                $result[$kd_kppn]['kd_d_konversi_persen'] = $konversi;
-                $result[$kd_kppn]['kd_d_sp2d_persen'] = $sp2d;
-                $result[$kd_kppn]['kd_d_lhp_persen'] = $lhp;
-                $result[$kd_kppn]['kd_d_rekon_persen'] = $rekon;
+                if($konversi>=0){
+                    $result[$kd_kppn]['count_konversi'] = 1;
+                    $result[$kd_kppn]['kd_d_konversi_persen'] = $konversi;
+                }else{
+                    $result[$kd_kppn]['kd_d_konversi_persen'] = 0;
+                }
+                if($sp2d>=0){
+                    $result[$kd_kppn]['count_sp2d'] = 1;
+                    $result[$kd_kppn]['kd_d_sp2d_persen'] = $sp2d;
+                }else{
+                    $result[$kd_kppn]['kd_d_sp2d_persen'] = 0;
+                }
+                if($lhp>=0){
+                    $result[$kd_kppn]['count_lhp'] = 1;
+                    $result[$kd_kppn]['kd_d_lhp_persen'] = $lhp;
+                }else{
+                    $result[$kd_kppn]['kd_d_lhp_persen'] = 0;
+                }
+                if($rekon>=0){
+                    $result[$kd_kppn]['count_rekon'] = 1;
+                    $result[$kd_kppn]['kd_d_rekon_persen'] = $rekon;
+                }else{
+                    $result[$kd_kppn]['kd_d_rekon_persen'] = 0;
+                }
             }
             
         }
@@ -226,7 +263,7 @@ class DataKppn {
 			$d_kppn->set_kd_d_sp2d_persen(ceil($val['kd_d_sp2d_persen']));
 			$d_kppn->set_kd_d_lhp_persen(ceil($val['kd_d_lhp_persen']));
 			$d_kppn->set_kd_d_rekon_persen(ceil($val['kd_d_rekon_persen']));
-
+            $d_kppn->total = '687897';
             $data[] = $d_kppn;
             //var_dump($d_kppn);
         }

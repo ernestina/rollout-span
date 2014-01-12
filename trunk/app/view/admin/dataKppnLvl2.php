@@ -39,17 +39,17 @@
                         $pembagi = DataKppn::getPembagi($val);
                         $konversi = ($val->get_kd_d_konversi_persen()<0)?"-":$val->get_kd_d_konversi_persen()."%";
                         $sp2d = ($val->get_kd_d_sp2d_persen()<0)?"-":$val->get_kd_d_sp2d_persen()."%";
-                        $lhp = ($val->get_kd_d_lhp_persen()<0)?"-":"%";
-                        $rekon = ($val->get_kd_d_rekon_persen()<0)?"-":"%";
+                        $lhp = ($val->get_kd_d_lhp_persen()<0)?"-":$val->get_kd_d_lhp_persen()."%";
+                        $rekon = ($val->get_kd_d_rekon_persen()<0)?"-":$val->get_kd_d_rekon_persen()."%";
                         $total = ceil(($val->get_kd_d_konversi_persen() * $k + $val->get_kd_d_sp2d_persen() * $s + $val->get_kd_d_lhp_persen() * $l + $val->get_kd_d_rekon_persen() * $r)/$pembagi); 
                         echo "<tr>";
                         echo "<td>$no</td>";
                         echo "<td style=\"text-align: left\"><a href=" . URL . "dataKppn/viewDataKppnLvl3/" . $val->get_kd_d_user() . " target=_blank>" . $val->get_kd_d_kppn() . "</td>";
-                        echo "<td>" . $konversi . "%</td>";
-                        echo "<td>" . $sp2d . "%</td>";
-                        echo "<td>" . $lhp . "%</td>";
-                        echo "<td>" . $rekon . "%</td>";
-                        echo "<td>" . $total . "%</td>";
+                        echo "<td>" . $konversi . "</td>";
+                        echo "<td>" . $sp2d . "</td>";
+                        echo "<td>" . $lhp . "</td>";
+                        echo "<td>" . $rekon . "</td>";
+                        echo "<td>" . $val->total . "</td>";
                         $no++;
                     }
                     ?>

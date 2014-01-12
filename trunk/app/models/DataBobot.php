@@ -34,7 +34,7 @@ class DataBobot {
         $this->registry = $registry;
     }
 
-    public function get_bobot() {
+    public function get_bobot($bobot=null) {
         $sql = "SELECT *
                 FROM " . $this->_table;
         $result = $this->db->select($sql);
@@ -55,6 +55,9 @@ class DataBobot {
             $d_bobot->set_pkn($val['pkn']);
 
             $data[] = $d_bobot;
+            if(!is_null($bobot){
+                return $val[$bobot];     
+            }
         }
         return $data;
     }
