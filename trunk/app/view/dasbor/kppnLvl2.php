@@ -23,11 +23,12 @@
 
         foreach ($this->data as $value) {
             $pembagi = DataKppn::getPembagi($value);
-            $ids[] = '"' . ceil(($value->get_kd_d_konversi_persen() * $k + 
+            /*$ids[] = '"' . ceil(($value->get_kd_d_konversi_persen() * $k + 
                     $value->get_kd_d_sp2d_persen() * $s + 
                     $value->get_kd_d_lhp_persen() * $l + 
                     $value->get_kd_d_rekon_persen() * $r)
-                    /$pembagi) . '"';
+                    /$pembagi) . '"';*/
+            $ids[] = '"'.$value->total.'"';
             $tgl[] = '"' . $value->get_kd_d_kppn() . '"';
             if ((ceil(($value->get_kd_d_konversi_persen() * $k + 
                     $value->get_kd_d_sp2d_persen() * $s + 

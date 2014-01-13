@@ -55,7 +55,7 @@ class DataBobot {
             $d_bobot->set_pkn($val['pkn']);
 
             $data[] = $d_bobot;
-            if(!is_null($bobot){
+            if(!is_null($bobot)){
                 return $val[$bobot];     
             }
         }
