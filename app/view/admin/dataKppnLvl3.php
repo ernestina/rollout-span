@@ -644,4 +644,18 @@
         var title = "tampilan surat tugas";
         window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
     }
+
+    function vieMasalah(id_data){
+        var div = document.createElement('div');
+        var ul = document.createElement('ul');
+        $.ajax({
+            type:'post',
+            url:'<?php echo URL."dataMasalah/get_masalah_kppn"; ?>',
+            data:'',
+            dataType:'json',
+            success:function(data){
+
+            }  
+        });
+    }
 </script>

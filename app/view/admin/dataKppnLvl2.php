@@ -49,7 +49,7 @@
                         echo "<td>" . $sp2d . "</td>";
                         echo "<td>" . $lhp . "</td>";
                         echo "<td>" . $rekon . "</td>";
-                        echo "<td>" . $val->total . "</td>";
+                        echo "<td>" . $val->total . "%</td>";
                         $no++;
                     }
                     ?>

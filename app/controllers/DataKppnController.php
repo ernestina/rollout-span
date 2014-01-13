@@ -144,6 +144,7 @@ class DataKppnController extends BaseController {
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
         //$end = (($hal-1)*$max)+$max;
+        $this->view->kppn = $id;
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_kppn, $start, $max);
         $this->view->load('admin/tableDataKppnLvl3');

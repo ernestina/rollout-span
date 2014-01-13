@@ -72,7 +72,7 @@
                     if(Session::get('role') == ADMIN){
                         echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")'><i class=\"icon-search\" title='lihat file'></i></a>
                                 <a onclick='viewMasalah(\"".$val->get_kd_d_kppn()."\")'><i class=\"icon-eye-close\" title='lihat file'></i></a></td>";
-                    }
+                    } //onclick='viewMasalah(\"".$val->get_kd_d_kppn()."\")'
                     echo "</tr>";
                     $no++;
                 }

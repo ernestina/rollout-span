@@ -115,6 +115,10 @@ class DataMasalahController extends BaseController {
         header('location:' . URL . 'dataMasalah/addDataMasalah');
     }
 
+    public function get_masalah_kppn(){
+        $obj = new DataMasalah($this->registry);
+    }
+
     /*
      * DESTRUKTOR
      */
