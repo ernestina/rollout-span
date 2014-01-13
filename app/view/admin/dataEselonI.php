@@ -20,8 +20,13 @@
                         <tbody >
                             <?php
                             $no = 1;
+                            $k = $this->bot->get_bobot('konversi');
+                            $s = $this->bot->get_bobot('sp2d');
+                            $l = $this->bot->get_bobot('lhp');
+                            $r = $this->bot->get_bobot('rekon');
                             foreach ($this->data as $key => $val) {
                                 //var_dump($val);
+                                $total = ($val['konversi']*$k+$val['sp2d']*$s+$val['lhp']*$l+$val['rekon']*$r)/DataKppn::getPembagi($val);
                                 echo "<tr>";
                                 echo "<td>$no</td>";
                                 echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . " target=_blank>" . $val['singkat_kanwil'] ."</a></td>";
@@ -29,7 +34,7 @@
                                 echo "<td>" . ceil($val['sp2d']) . "%</td>";
                                 echo "<td>" . ceil($val['lhp']) . "%</td>";
                                 echo "<td>" . ceil($val['rekon']) . "%</td>";
-                                echo "<td>" . ceil($val['sum']) . "%</td>";
+                                echo "<td>" .  ceil($val['sum']). "%</td>";
                                 echo "</tr>";
                                 $no++;
                             }

@@ -447,7 +447,12 @@ class DataKppn {
                             $return[$kd_kanwil]['jml_data_rekon']++;
                             $return[$kd_kanwil]['rekon'] = ($tmp_rekon+$val->get_kd_d_rekon_persen())/$return[$kd_kanwil]['jml_data_rekon'];
                         }
-                        $return[$kd_kanwil]['sum'] = ($tmp_value+($data_insert/$pembagi))/$return[$kd_kanwil]['jml_data'];
+                        //$return[$kd_kanwil]['sum'] = ($tmp_value+($data_insert/$pembagi))/$return[$kd_kanwil]['jml_data'];
+                        $return[$kd_kanwil]['sum'] = ($return[$kd_kanwil]['konversi']*$k+
+                                                    $return[$kd_kanwil]['sp2d']*$s+
+                                                    $return[$kd_kanwil]['lhp']*$l+
+                                                    $return[$kd_kanwil]['rekon']*$r)/100;
+                        //print_r($return[$kd_kanwil]);
                     }else{
                         $tmp = explode(" ", $nm_kanwil);
                         $len = count($tmp);
