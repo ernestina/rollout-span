@@ -4,30 +4,30 @@
         <table class="table-bordered zebra" width= "95%">
             <thead>
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2" width ="10%">Tanggal</th>
-                    <th colspan="3" width ="20%">Konversi</th>
-                    <th colspan="3" width ="20%">SP2D</th>
-                    <th colspan="3" width ="20%">LHP</th>
-                    <th colspan="3" width ="20%">Rekon</th>
+                    <th rowspan="2" width ="3%">No</th>
+                    <th rowspan="2" width ="5%">Tanggal</th>
+                    <th colspan="3" width ="18%">Konversi</th>
+                    <th colspan="3" width ="18%">SP2D</th>
+                    <th colspan="3" width ="18%">LHP</th>
+                    <th colspan="3" width ="18%">Rekon</th>
                     <?php
                     //if (Session::get('role') == KPPN) {
-                        echo "<th rowspan='2' width ='10%'>Aksi</th>";
+                        echo "<th rowspan='2' width ='15%'>Aksi</th>";
                     //}
                     ?>
                 </tr>
                 <tr>
-                    <th width ="7%">Sukses</th>
-                    <th width ="7%">Gagal</th>
+                    <th width ="6%">Sukses</th>
+                    <th width ="6%">Gagal</th>
                     <th width ="6%">%</th>
-                    <th width ="7%">Sukses</th>
-                    <th width ="7%">Gagal</th>
+                    <th width ="6%">Sukses</th>
+                    <th width ="6%">Gagal</th>
                     <th width ="6%">%</th>
-                    <th width ="7%">Sukses</th>
-                    <th width ="7%">Gagal</th>
+                    <th width ="6%">Sukses</th>
+                    <th width ="6%">Gagal</th>
                     <th width ="6%">%</th>
-                    <th width ="7%">Sukses</th>
-                    <th width ="7%">Gagal</th>
+                    <th width ="6%">Sukses</th>
+                    <th width ="6%">Gagal</th>
                     <th width ="6%">%</th>
                 </tr>
             </thead>
@@ -65,9 +65,9 @@
                     echo "<td><b>" . $kd_d_rekon_persen . "</b></td>";
                     if (Session::get('role') == KPPN) {
                         echo "<td style='text-align: center'><a href=" . URL . "dataKppn/delDataKppnLvl3/" . $val->get_kd_d_kppn() . " onclick=\"return del('" . $val->get_kd_d_tgl() . "')\" title='hapus data'><i class=\"icon-trash\"></i></a>
-									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\" title='ubah data'></i></a>
-                                    <a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#uplModal ><i class=\"icon-upload\" title='upload file'></i></a>
-                                    <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_kppn()."/1#oModal><i class=\"icon-eye-close\" title='input masalah'></i></a></td>";
+									<a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#pModal><i class=\"icon-pencil\" title='ubah data'></i></a> &nbsp; &nbsp;
+                                    <a href=" . URL . "dataKppn/addDataKppnLvl3/" . $val->get_kd_d_kppn() . "#uplModal ><i class=\"icon-file\" title='upload file'></i></a> 
+                                    <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_kppn()."/1#oModal><i class=\"icon-list-alt\" title='input masalah'></i></a></td>";
                     }
                     if(Session::get('role') == ADMIN){
                         echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")'><i class=\"icon-search\" title='lihat file'></i></a>
