@@ -48,18 +48,28 @@
                         <div id="wtgl"  class="error"></div>
                         <div id="wmslh"  class="error"></div>
                         <table id="tb_input" style="width:90%;">
-                            <tr><td></td><td></td></tr>
-                            <tr><td>Tanggal</td><td><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>"></td></tr>
-                            <tr><td colspan="2">Uraian Permasalahan</td></tr>
-                            <tr><td colspan="2">
-                                <textarea style="display:inline-block" type="text" name="masalah[]" id="masalah" rows="7" cols="1000" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
-                            </td></tr>
+                            <tr>
+								<td width="35%"><b>Tanggal</b></td>
+								<td width="60%" colspan="2"><input type="text" name="tgl_mslh" id="tgl_mslh" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_tgl_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_tgl_mslh() : ''); ?>"></td>
+							</tr>
+                            <!--tr><td colspan="2">Uraian Permasalahan</td></tr-->
+                            <tr style="vertical-align: top;">
+								<td><b>Masalah</b></td>
+								<td colspan="2">
+                                <textarea style="display:inline-block" type="text" name="masalah[]" id="masalah" rows="10" cols="1200" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td width="65%"><input type="button" id="bt_add" value="TAMBAH" style="margin-top: 4px;"></td>
+								<td width="30%"><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></td>
+							</tr>
                         </table>
-                        <input type="button" id="bt_add" value="+" style="display:inline-block">
-                        <ul class="inline" style="margin-left: 200px">
-                            <li><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></li>
+                        
+                        <!--ul class="inline" style="margin-left: 200px">
+                            <li></li>
                                                         <!--li><input class="normal" type="reset" onclick="" value="BATAL"></li-->
-                        </ul>
+                        <!--/ul-->
                     </form>
                 </div>
             </div>

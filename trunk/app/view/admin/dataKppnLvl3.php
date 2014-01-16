@@ -186,7 +186,7 @@
 <div id="top">
     <div id="gambar"></div>
     <div class="fitur" id="table">
-        <fieldset><legend>Data PKN</legend>
+        <fieldset><legend>Data KPPN</legend>
 			<div class="kolom6" id="data_table"></div></br>
 			<div id="nav"></div>
 		</fieldset>
