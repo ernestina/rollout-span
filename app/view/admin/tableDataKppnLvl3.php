@@ -6,10 +6,11 @@
                 <tr>
                     <th rowspan="2" width ="3%">No</th>
                     <th rowspan="2" width ="5%">Tanggal</th>
-                    <th colspan="3" width ="18%">Konversi</th>
-                    <th colspan="3" width ="18%">SP2D</th>
-                    <th colspan="3" width ="18%">LHP</th>
-                    <th colspan="3" width ="18%">Rekon</th>
+                    <th colspan="3" width ="15%">Konversi</th>
+                    <th colspan="3" width ="15%">Supplier</th>
+                    <th colspan="3" width ="15%">SP2D</th>
+                    <th colspan="3" width ="15%">LHP</th>
+                    <th colspan="3" width ="15%">Rekon</th>
                     <?php
                     //if (Session::get('role') == KPPN) {
                         echo "<th rowspan='2' width ='15%'>Aksi</th>";
@@ -17,18 +18,21 @@
                     ?>
                 </tr>
                 <tr>
-                    <th width ="6%">Sukses</th>
-                    <th width ="6%">Gagal</th>
-                    <th width ="6%">%</th>
-                    <th width ="6%">Sukses</th>
-                    <th width ="6%">Gagal</th>
-                    <th width ="6%">%</th>
-                    <th width ="6%">Sukses</th>
-                    <th width ="6%">Gagal</th>
-                    <th width ="6%">%</th>
-                    <th width ="6%">Sukses</th>
-                    <th width ="6%">Gagal</th>
-                    <th width ="6%">%</th>
+                    <th width ="5%">Sukses</th>
+                    <th width ="5%">Gagal</th>
+                    <th width ="5%">%</th>
+                    <th width ="5%">Sukses</th>
+                    <th width ="5%">Gagal</th>
+                    <th width ="5%">%</th>
+                    <th width ="5%">Sukses</th>
+                    <th width ="5%">Gagal</th>
+                    <th width ="5%">%</th>
+                    <th width ="5%">Sukses</th>
+                    <th width ="5%">Gagal</th>
+                    <th width ="5%">%</th>
+                    <th width ="5%">Sukses</th>
+                    <th width ="5%">Gagal</th>
+                    <th width ="5%">%</th>
                 </tr>
             </thead>
             <tbody style="text-align: right">
@@ -39,6 +43,9 @@
                     $kd_d_konversi = ($val->get_kd_d_konversi()==0)?"-":$val->get_kd_d_konversi();
                     $kd_d_konversi_gagal = ($val->get_kd_d_konversi_gagal()==0)?"-":$val->get_kd_d_konversi_gagal();
                     $kd_d_konversi_persen = ($val->get_kd_d_konversi_persen()<0)?"-":$val->get_kd_d_konversi_persen()."%";
+                    $kd_d_supplier = ($val->get_kd_d_supplier()==0)?"-":$val->get_kd_d_supplier();
+                    $kd_d_supplier_gagal = ($val->get_kd_d_supplier_gagal()==0)?"-":$val->get_kd_d_supplier_gagal();
+                    $kd_d_supplier_persen = ($val->get_kd_d_supplier_persen()<0)?"-":$val->get_kd_d_supplier_persen()."%";
                     $kd_d_sp2d = ($val->get_kd_d_sp2d()==0)?"-":$val->get_kd_d_sp2d();
                     $kd_d_sp2d_gagal = ($val->get_kd_d_sp2d_gagal()==0)?"-":$val->get_kd_d_sp2d_gagal();
                     $kd_d_sp2d_persen = ($val->get_kd_d_sp2d_persen()<0)?"-":$val->get_kd_d_sp2d_persen()."%";
@@ -54,6 +61,9 @@
                     echo "<td>" . $kd_d_konversi . "</td>";
                     echo "<td>" . $kd_d_konversi_gagal . "</td>";
                     echo "<td><b>" . $kd_d_konversi_persen . "</b></td>";
+                    echo "<td>" . $kd_d_supplier . "</td>";
+                    echo "<td>" . $kd_d_supplier_gagal . "</td>";
+                    echo "<td><b>" . $kd_d_supplier_persen . "</b></td>";
                     echo "<td>" . $kd_d_sp2d . "</td>";
                     echo "<td>" . $kd_d_sp2d_gagal . "</td>";
                     echo "<td><b>" . $kd_d_sp2d_persen . "</td>";

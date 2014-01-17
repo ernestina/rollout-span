@@ -85,6 +85,8 @@ class DataKppnController extends BaseController {
             $kd_d_tgl = $_POST['kd_d_tgl'];
             $kd_d_konversi = $_POST['kd_d_konversi'];
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+            $kd_d_supplier = $_POST['kd_d_supplier'];
+            $kd_d_supplier_gagal = $_POST['kd_d_supplier_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
             $kd_d_lhp = $_POST['kd_d_lhp'];
@@ -96,6 +98,8 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_tgl($kd_d_tgl);
             $d_kppn->set_kd_d_konversi($kd_d_konversi);
             $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+            $d_kppn->set_kd_d_supplier($kd_d_supplier);
+            $d_kppn->set_kd_d_supplier_gagal($kd_d_supplier_gagal);
             $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
             $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
             $d_kppn->set_kd_d_lhp($kd_d_lhp);
@@ -167,6 +171,8 @@ class DataKppnController extends BaseController {
             $tmp['kd_d_tgl'] = $val->get_kd_d_tgl();
             $tmp['kd_d_konversi'] = $val->get_kd_d_konversi();
             $tmp['kd_d_konversi_gagal'] = $val->get_kd_d_konversi_gagal();
+            $tmp['kd_d_supplier'] = $val->get_kd_d_supplier();
+            $tmp['kd_d_supplier_gagal'] = $val->get_kd_d_supplier_gagal();
             $tmp['kd_d_sp2d'] = $val->get_kd_d_sp2d();
             $tmp['kd_d_sp2d_gagal'] = $val->get_kd_d_sp2d_gagal();
             $tmp['kd_d_lhp'] = $val->get_kd_d_lhp();
@@ -194,6 +200,8 @@ class DataKppnController extends BaseController {
             $kd_d_tgl = $_POST['kd_d_tgl'];
             $kd_d_konversi = $_POST['kd_d_konversi'];
             $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+            $kd_d_supplier = $_POST['kd_d_supplier'];
+            $kd_d_supplier_gagal = $_POST['kd_d_supplier_gagal'];
             $kd_d_sp2d = $_POST['kd_d_sp2d'];
             $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
             $kd_d_lhp = $_POST['kd_d_lhp'];
@@ -205,6 +213,8 @@ class DataKppnController extends BaseController {
             $d_kppn->set_kd_d_tgl($kd_d_tgl);
             $d_kppn->set_kd_d_konversi($kd_d_konversi);
             $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+             $d_kppn->set_kd_d_supplier($kd_d_supplier);
+            $d_kppn->set_kd_d_supplier_gagal($kd_d_supplier_gagal);
             $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
             $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
             $d_kppn->set_kd_d_lhp($kd_d_lhp);
@@ -283,6 +293,8 @@ class DataKppnController extends BaseController {
         $kd_d_tgl = $_POST['kd_d_tgl'];
         $kd_d_konversi = $_POST['kd_d_konversi'];
         $kd_d_konversi_gagal = $_POST['kd_d_konversi_gagal'];
+        $kd_d_supplier = $_POST['kd_d_supplier'];
+        $kd_d_supplier_gagal = $_POST['kd_d_supplier_gagal'];
         $kd_d_sp2d = $_POST['kd_d_sp2d'];
         $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
         $kd_d_lhp = $_POST['kd_d_lhp'];
@@ -295,6 +307,8 @@ class DataKppnController extends BaseController {
         $d_kppn->set_kd_d_tgl($kd_d_tgl);
         $d_kppn->set_kd_d_konversi($kd_d_konversi);
         $d_kppn->set_kd_d_konversi_gagal($kd_d_konversi_gagal);
+        $d_kppn->set_kd_d_supplier($kd_d_supplier);
+        $d_kppn->set_kd_d_supplier_gagal($kd_d_supplier_gagal);
         $d_kppn->set_kd_d_sp2d($kd_d_sp2d);
         $d_kppn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
         $d_kppn->set_kd_d_lhp($kd_d_lhp);

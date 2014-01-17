@@ -70,6 +70,10 @@
 								<label class="isian">Konversi Sukses</label><input type="number" name="kd_d_konversi" id="kd_d_konversi" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_konversi() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_konversi() : ''); ?>">
 								<div id="wkonversi_gagal"  class="error"></div>
 								<label class="isian">Konversi Gagal</label><input type="number" name="kd_d_konversi_gagal" id="kd_d_konversi_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_konversi_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_konversi_gagal() : ''); ?>">
+                                <div id="wsupplier"  class="error"></div>
+                                <label class="isian">Supplier Sukses</label><input type="number" name="kd_d_supplier" id="kd_d_supplier" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_supplier() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_supplier() : ''); ?>">
+                                <div id="wsupplier_gagal"  class="error"></div>
+                                <label class="isian">Supplier Gagal</label><input type="number" name="kd_d_supplier_gagal" id="kd_d_supplier_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_supplier_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_supplier_gagal() : ''); ?>">
 								<div id="wsp2d"  class="error"></div>
 								<label class="isian">SP2D Sukses</label><input type="number" name="kd_d_sp2d" id="kd_d_sp2d" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_sp2d() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_sp2d() : ''); ?>">
 								<div id="wsp2d_gagal"  class="error"></div>
@@ -334,6 +338,9 @@
         document.getElementById('kd_d_konversi').value= '';
 //		$('#kd_d_konversi_gagal').val('');
         document.getElementById('kd_d_konversi_gagal').value= '';
+        document.getElementById('kd_d_supplier').value= '';
+//      $('#kd_d_konversi_gagal').val('');
+        document.getElementById('kd_d_supplier_gagal').value= '';
 //		$('#kd_d_sp2d').val('');
         document.getElementById('kd_d_sp2d').value= '';
 //		$('#kd_d_sp2d_gagal').val('');
@@ -374,6 +381,18 @@
         $('#kd_d_konversi_gagal').keyup(function(){
             if(document.getElementById('kd_d_konversi_gagal').value !=''){
                 $('#wkonversi_gagal').fadeOut(200);
+            }
+        })
+
+        $('#kd_d_supplier').keyup(function(){
+            if(document.getElementById('kd_d_supplier').value !=''){
+                $('#wsupplier').fadeOut(200);
+            }
+        })
+    
+        $('#kd_d_supplier_gagal').keyup(function(){
+            if(document.getElementById('kd_d_supplier_gagal').value !=''){
+                $('#wsupplier_gagal').fadeOut(200);
             }
         })
     
@@ -466,6 +485,8 @@
         var kd_d_tgl = document.getElementById('kd_d_tgl').value;
         var kd_d_konversi = document.getElementById('kd_d_konversi').value;
         var kd_d_konversi_gagal = document.getElementById('kd_d_konversi_gagal').value;
+        var kd_d_supplier = document.getElementById('kd_d_supplier').value;
+        var kd_d_supplier_gagal = document.getElementById('kd_d_supplier_gagal').value;
         var kd_d_sp2d = document.getElementById('kd_d_sp2d').value;
         var kd_d_sp2d_gagal = document.getElementById('kd_d_sp2d_gagal').value;
         var kd_d_lhp = document.getElementById('kd_d_lhp').value;
@@ -512,6 +533,34 @@
             var wkonversi_gagal= 'Jumlah Konversi harus diisi!';
             $('#wkonversi_gagal').fadeIn(0);
             $('#wkonversi_gagal').html(wkonversi_gagal);
+            jml++;
+        }
+
+        if(!kd_d_supplier.match(pattern)){
+            var wsupplier = 'supplier harus dalam bentuk angka!';
+            $('#wsupplier').html(wsupplier);
+            $('#wsupplier').fadeIn(200);
+            jml++;
+        }
+    
+        if(kd_d_supplier==''){
+            var wsupplier= 'Jumlah Supplier harus diisi!';
+            $('#wsupplier').fadeIn(0);
+            $('#wsupplier').html(wsupplier);
+            jml++;
+        }
+        
+        if(!kd_d_supplier_gagal.match(pattern)){
+            var wsupplier_gagal = 'Supplier harus dalam bentuk angka!';
+            $('#wsupplier_gagal').html(wsupplier_gagal);
+            $('#wsupplier_gagal').fadeIn(200);
+            jml++;
+        }
+    
+        if(kd_d_supplier_gagal==''){
+            var wsupplier_gagal= 'Jumlah Supplier harus diisi!';
+            $('#wsupplier_gagal').fadeIn(0);
+            $('#wsupplier_gagal').html(wsupplier_gagal);
             jml++;
         }
         
