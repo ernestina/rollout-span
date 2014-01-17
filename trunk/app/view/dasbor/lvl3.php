@@ -14,12 +14,14 @@
             $ids2 = array();
             $ids3 = array();
             $ids4 = array();
+            $ids5 = array();
             $tgl = array();
             foreach ($this->sp2d as $value) {
                 $ids[] = ($value->get_kd_d_konversi_persen()<0)?0:$value->get_kd_d_konversi_persen();
                 $ids2[] = ($value->get_kd_d_sp2d_persen()<0)?0:$value->get_kd_d_sp2d_persen();
                 $ids3[] = ($value->get_kd_d_lhp_persen()<0)?0:$value->get_kd_d_lhp_persen();
                 $ids4[] = ($value->get_kd_d_rekon_persen()<0)?0:$value->get_kd_d_rekon_persen();
+                $ids5[] = ($value->get_kd_d_supplier_persen()<0)?0:$value->get_kd_d_supplier_persen();
                 $originalDate = $value->get_kd_d_tgl();
                 $newDate = date("d/m", strtotime($originalDate));
                 $tgl[] = '"' . $newDate . '"';
@@ -30,6 +32,8 @@
         <ul class="inline">
             <li><div id="bundar" class="kuning"></div></li>
             <li><h3>Tren Konversi  &nbsp &nbsp </h3></li>
+            <li><div id="bundar" class="pink"></div></li>
+            <li><h3>Tren Supplier &nbsp &nbsp </h3></li>
             <li><div id="bundar" class="birutua"></div></li>
             <li><h3>Tren SP2D &nbsp &nbsp </h3></li>
             <li><div id="bundar" class="ungu"></div></li>
@@ -46,6 +50,7 @@
     val2 = new Array(<?php echo implode(',', $ids2) ?>)
     val3 = new Array(<?php echo implode(',', $ids3) ?>)
     val4 = new Array(<?php echo implode(',', $ids4) ?>)
+    val5 = new Array(<?php echo implode(',', $ids5) ?>)
     label = new Array(<?php echo implode(',', $tgl) ?>)
     var lineChartData = {
         labels: label,
@@ -57,6 +62,14 @@
                 pointColor: "rgba(243,190,0,1)",
                 pointStrokeColor: "#fff",
                 data: val
+            },
+            {
+                //orange
+                fillColor: "rgba(255,121,185,0)",
+                strokeColor: "rgba(255,121,185,1)",
+                pointColor: "rgba(255,121,185,1)",
+                pointStrokeColor: "#fff",
+                data: val5
             },
             {
                 //biru

@@ -12,6 +12,7 @@
                         <th width="5%">No</th>
                         <th width="10%">KPPN</th>
                         <th width="10%">Konversi Sukses</th>
+                        <th width="10%">Supplier Sukses</th>
                         <th width="10%">SP2D Sukses</th>
                         <th width="10%">LHP Sukses</th>
                         <th width="10%">Rekon Sukses</th>
@@ -21,6 +22,7 @@
                             <?php
                             $no = 1;
                             $k = $this->bot->get_bobot('konversi');
+                            $p = $this->bot->get_bobot('supplier');
                             $s = $this->bot->get_bobot('sp2d');
                             $l = $this->bot->get_bobot('lhp');
                             $r = $this->bot->get_bobot('rekon');
@@ -31,6 +33,7 @@
                                 echo "<td>$no</td>";
                                 echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . " target=_blank>" . $val['singkat_kanwil'] ."</a></td>";
                                 echo "<td>" . ceil($val['konversi']) . "%</td>";
+                                 echo "<td>" . ceil($val['supplier']) . "%</td>";
                                 echo "<td>" . ceil($val['sp2d']) . "%</td>";
                                 echo "<td>" . ceil($val['lhp']) . "%</td>";
                                 echo "<td>" . ceil($val['rekon']) . "%</td>";

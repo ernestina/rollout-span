@@ -37,6 +37,7 @@
                                       $ba = $value->get_ba();
                                       $pkn = $value->get_pkn();
                                       $konversi = $value->get_konversi();
+                                      $supplier 
                                       $sp2d = $value->get_sp2d();
                                       $lhp = $value->get_lhp();
                                       $rekon = $value->get_rekon();

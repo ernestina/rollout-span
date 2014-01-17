@@ -215,6 +215,10 @@ a #g2:hover, a #g3:hover, a #g4:hover {
 	background-color:rgba(243,190,0,0.3);
 	border: 2px solid rgba(243,190,0,1);
 }
+.pink {
+	background-color:rgba(255,121,185,0.3);
+	border: 2px solid rgba(255,121,185,1);
+}
 .birutua {
 	background-color:rgba(0,121,185,0.5);
 	border: 2px solid rgba(0,121,185,1);

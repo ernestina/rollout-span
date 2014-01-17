@@ -694,16 +694,29 @@
         window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
     }
 
-    function vieMasalah(id_data){
-        var div = document.createElement('div');
-        var ul = document.createElement('ul');
+    function vieMasalah(id_data){ 
         $.ajax({
             type:'post',
-            url:'<?php echo URL."dataMasalah/get_masalah_kppn"; ?>',
+            url:'<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data,
             data:'',
             dataType:'json',
             success:function(data){
-
+                var div = document.createElement('div');
+                var count_data = Object.keys(data).length;
+                if(count_data==0){
+                    var ul = document.createElement('div');
+                    var h2 = document.createElement('h3');
+                    h2.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
+                    ul.appendChild(h2);
+                }else{
+                    var ul = document.createElement('ul');
+                    for(key in data){
+                        var li = document.createElement('li');
+                        li.appendChild(document.createTextNode(key));
+                        ul.appendChild(li);
+                    }
+                }
+                div.appendChild(ul);
             }  
         });
     }

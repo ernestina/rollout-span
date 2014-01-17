@@ -63,7 +63,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		//console.log('ASDFGHJK');
 		nextOne = document.createElement('input');
 		nextOne.type = "button";
-		nextOne.value = "Next";
+		nextOne.value = "Next >";
 		nextOne.className = "paging";
 		nextOne.setAttribute("id",idNextOne);
 		//console.log(nextOne); 
@@ -85,7 +85,7 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 	}else{
 		prevOne = document.createElement('input');
 		prevOne.type = "button";
-		prevOne.value = "Prev";
+		prevOne.value = "< Prev";
 		prevOne.className = "paging";
 		prevOne.setAttribute("id",idPrevOne);
 	}
@@ -119,8 +119,14 @@ function createNavigation(url,url_data,numOfPage,divContainerId){
 		last.className = "paging-kecil";
 		last.setAttribute("id",idLast);
 	}
-
-	if(page==1){
+	if(numOfPage==1){
+		if(isExistDomId(nextOne)) document.getElementById(nextOne).remove();
+		if(isExistDomId(idFirst)) document.getElementById(idFirst).remove();
+		if(isExistDomId(idPrev)) document.getElementById(idPrev).remove();
+		if(isExistDomId(idNext)) document.getElementById(idNext).remove();
+		if(isExistDomId(idLast)) document.getElementById(idLast).remove();
+		if(isExistDomId(idPrevOne)) document.getElementById(idPrevOne).remove(); 
+	}else if(page==1){
 		//TODO cek komponen lain, jika ada, hapus dari container
 		//first,prev,next,last,prevOne
 		if(isExistDomId(idFirst)) document.getElementById(idFirst).remove();
