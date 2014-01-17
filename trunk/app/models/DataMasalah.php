@@ -45,7 +45,7 @@ class DataMasalah {
         if ($id_user != 1) {
             $sql .= " WHERE a.kd_d_user= " . $id_user;
         }
-        $sql .= " ORDER BY a.tgl_mslh desc";
+        $sql .= " ORDER BY a.tgl_mslh desc a.kd_d_waktu_isi desc";
 
 
         if (!is_null($limit) AND !is_null($batas)) {

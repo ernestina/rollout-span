@@ -23,6 +23,7 @@
                                   $ba = '';
                                   $pkn = '';
                                   $konversi = '';
+                                  $supplier = '';
                                   $sp2d = '';
                                   $lhp = '';
                                   $rekon = '';

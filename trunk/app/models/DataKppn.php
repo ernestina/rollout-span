@@ -14,6 +14,9 @@ class DataKppn {
     private $_kd_d_konversi;
     private $_kd_d_konversi_gagal;
     private $_kd_d_konversi_persen;
+    private $_kd_d_supplier;
+    private $_kd_d_supplier_gagal;
+    private $_kd_d_supplier_persen;
     private $_kd_d_sp2d;
     private $_kd_d_sp2d_gagal;
     private $_kd_d_sp2d_persen;
@@ -73,6 +76,14 @@ class DataKppn {
 			} else {
 				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
 			}
+            $d_kppn->set_kd_d_supplier($val['kd_d_supplier']);
+            $d_kppn->set_kd_d_supplier_gagal($val['kd_d_supplier_gagal']);
+            if (($val['kd_d_supplier'])+($val['kd_d_supplier_gagal'])==0){
+                //$d_kppn->set_kd_d_konversi_persen(100);
+                $d_kppn->set_kd_d_supplier_persen(-1);
+            } else {
+                $d_kppn->set_kd_d_supplier_persen(ceil(($val['kd_d_supplier'])/(($val['kd_d_supplier'])+($val['kd_d_supplier_gagal']))*100));
+            }
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
@@ -97,7 +108,7 @@ class DataKppn {
 			} else {
 				$d_kppn->set_kd_d_rekon_persen(ceil(($val['kd_d_rekon'])/(($val['kd_d_rekon'])+($val['kd_d_rekon_gagal']))*100));
 			}
-            $d_kppn->set_file($val['file']);
+            $d_kppn->set_file($val['file_kppn']);
             $data[] = $d_kppn;
         }
 
@@ -123,6 +134,7 @@ class DataKppn {
             $d_kppn->set_kd_d_user($kd_d_user);
 			$sql2="SELECT 
 					avg (kd_d_konversi/(kd_d_konversi+kd_d_konversi_gagal)*100) as kd_d_konversi_persen ,
+                    avg (kd_d_supplier/(kd_d_supplier+kd_d_supplier_gagal)*100) as kd_d_supplier_persen ,
 					avg (kd_d_sp2d/(kd_d_sp2d+kd_d_sp2d_gagal)*100) as kd_d_sp2d_persen ,
 					avg (kd_d_lhp/(kd_d_lhp+kd_d_lhp_gagal)*100) as kd_d_lhp_persen ,
 					avg (kd_d_rekon/(kd_d_rekon+kd_d_rekon_gagal)*100) as kd_d_rekon_persen
@@ -131,6 +143,7 @@ class DataKppn {
 			$result2 = $this->db->select($sql2);
 			foreach ($result2 as $val2) {
             $d_kppn->set_kd_d_konversi_persen(ceil($val2['kd_d_konversi_persen']));
+            $d_kppn->set_kd_d_supplier_persen(ceil($val2['kd_d_supplier_persen']));
 			$d_kppn->set_kd_d_sp2d_persen(ceil($val2['kd_d_sp2d_persen']));
 			$d_kppn->set_kd_d_lhp_persen(ceil($val2['kd_d_lhp_persen']));
 			$d_kppn->set_kd_d_rekon_persen(ceil($val2['kd_d_rekon_persen']));
@@ -145,6 +158,7 @@ class DataKppn {
 	public function get_d_kppn_lvl2($kanwil=null, $limit = null, $batas = null) {
         $bot = new DataBobot($this->registry);
         $k = $bot->get_bobot('konversi');
+        $p = $bot->get_bobot('supplier');
         $s = $bot->get_bobot('sp2d');
         $l = $bot->get_bobot('lhp');
         $r = $bot->get_bobot('rekon');
@@ -154,6 +168,7 @@ class DataKppn {
                 substr(b.nama_user,6) nama_user,
                 substr(c.nama_user, 20 ) nama_kanwil,
                 kd_d_konversi, kd_d_konversi_gagal,
+                kd_d_supplier, kd_d_supplier_gagal,
                 kd_d_sp2d, kd_d_sp2d_gagal,
                 kd_d_lhp,kd_d_lhp_gagal,
                 kd_d_rekon,kd_d_rekon_gagal";        
@@ -177,6 +192,14 @@ class DataKppn {
                 $konversi = -1;
             }else{
                 $konversi = $value['kd_d_konversi']/($value['kd_d_konversi']+$value['kd_d_konversi_gagal'])*100;    
+            }
+
+            //supplier
+            if($value['kd_d_supplier']+$value['kd_d_supplier_gagal']==0){
+                //$konversi = 100;
+                $supplier = -1;
+            }else{
+                $supplier = $value['kd_d_supplier']/($value['kd_d_supplier']+$value['kd_d_supplier_gagal'])*100;    
             }
 
             //sp2d
@@ -203,11 +226,16 @@ class DataKppn {
                 $rekon = $value['kd_d_rekon']/($value['kd_d_rekon']+$value['kd_d_rekon_gagal'])*100;    
             }
             if(array_key_exists($kd_kppn, $result)){
-                $total = ($konversi*$k+$sp2d*$s+$lhp*$l+$rekon*$r)/DataKppn::getPembagi($value); //belom fix
+                $total = ($konversi*$k+$supplier*$p+$sp2d*$s+$lhp*$l+$rekon*$r)/DataKppn::getPembagi($value); //belom fix
                 if($konversi>=0){
                     $result[$kd_kppn]['count_konversi']++;
                     $konversi = (($result[$kd_kppn]['kd_d_konversi_persen']*($result[$kd_kppn]['count_konversi']-1))+$konversi)/ $result[$kd_kppn]['count_konversi'];
                     $result[$kd_kppn]['kd_d_konversi_persen'] = ceil($konversi);
+                }
+                if($supplier>=0){
+                    $result[$kd_kppn]['count_supplier']++;
+                    $supplier = (($result[$kd_kppn]['kd_d_supplier_persen']*($result[$kd_kppn]['count_supplier']-1))+$supplier)/ $result[$kd_kppn]['count_supplier'];
+                    $result[$kd_kppn]['kd_d_supplier_persen'] = ceil($supplier);
                 }
                 if($sp2d>=0){
                     $result[$kd_kppn]['count_sp2d']++;
@@ -236,6 +264,12 @@ class DataKppn {
                     $result[$kd_kppn]['kd_d_konversi_persen'] = $konversi;
                 }else{
                     $result[$kd_kppn]['kd_d_konversi_persen'] = 0;
+                }
+                if($supplier>=0){
+                    $result[$kd_kppn]['count_supplier'] = 1;
+                    $result[$kd_kppn]['kd_d_supplier_persen'] = $supplier;
+                }else{
+                    $result[$kd_kppn]['kd_d_supplier_persen'] = 0;
                 }
                 if($sp2d>=0){
                     $result[$kd_kppn]['count_sp2d'] = 1;
@@ -266,6 +300,7 @@ class DataKppn {
 			$d_kppn->set_kd_d_kanwil($val['nama_kanwil']);
             $d_kppn->set_kd_d_user($val['kd_d_user']);
             $d_kppn->set_kd_d_konversi_persen(ceil($val['kd_d_konversi_persen']));
+            $d_kppn->set_kd_d_supplier_persen(ceil($val['kd_d_supplier_persen']));
 			$d_kppn->set_kd_d_sp2d_persen(ceil($val['kd_d_sp2d_persen']));
 			$d_kppn->set_kd_d_lhp_persen(ceil($val['kd_d_lhp_persen']));
 			$d_kppn->set_kd_d_rekon_persen(ceil($val['kd_d_rekon_persen']));
@@ -301,6 +336,13 @@ class DataKppn {
 			} else {
 				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
 			}
+            $d_kppn->set_kd_d_supplier($val['kd_d_supplier']);
+            $d_kppn->set_kd_d_supplier_gagal($val['kd_d_supplier_gagal']);
+            if (($val['kd_d_supplier'])+($val['kd_d_supplier_gagal'])==0){
+                $d_kppn->set_kd_d_supplier_persen(100);
+            } else {
+                $d_kppn->set_kd_d_supplier_persen(ceil(($val['kd_d_supplier'])/(($val['kd_d_supplier'])+($val['kd_d_supplier_gagal']))*100));
+            }
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
@@ -353,6 +395,12 @@ class DataKppn {
 			} else {
 				$d_kppn->set_kd_d_konversi_persen(ceil(($val['kd_d_konversi'])/(($val['kd_d_konversi'])+($val['kd_d_konversi_gagal']))*100));
 			}
+            if (($val['kd_d_supplier'])+($val['kd_d_supplier_gagal'])==0){
+                //$d_kppn->set_kd_d_konversi_persen(100);
+                $d_kppn->set_kd_d_supplier_persen(-1);
+            } else {
+                $d_kppn->set_kd_d_supplier_persen(ceil(($val['kd_d_supplier'])/(($val['kd_d_supplier'])+($val['kd_d_supplier_gagal']))*100));
+            }
             if (($val['kd_d_sp2d'])+($val['kd_d_sp2d_gagal'])==0){
 			    //$d_kppn->set_kd_d_sp2d_persen(100);
                 $d_kppn->set_kd_d_sp2d_persen(-1);
@@ -394,7 +442,8 @@ class DataKppn {
         $l=0;
         $r=0;
         foreach ($bobot as $bot) {
-            $k=$bot->get_konversi(); 
+            $k=$bot->get_konversi();
+            $p=$bot->get_supplier(); 
             $s=$bot->get_sp2d();
             $l=$bot->get_lhp();
             $r=$bot->get_rekon();
@@ -412,6 +461,7 @@ class DataKppn {
                                     ($val->get_kd_d_lhp_persen()*3/10)+
                                     ($val->get_kd_d_rekon_persen()/4))."--</br>";*/
                     $konversi = ($val->get_kd_d_konversi_persen()<0)?0:$val->get_kd_d_konversi_persen();
+                    $supplier = ($val->get_kd_d_supplier_persen()<0)?0:$val->get_kd_d_supplier_persen();
                     $sp2d = ($val->get_kd_d_sp2d_persen()<0)?0:$val->get_kd_d_sp2d_persen();
                     $lhp = ($val->get_kd_d_lhp_persen<0)?0:$val->get_kd_d_lhp_persen;
                     $rekon = ($val->get_kd_d_rekon_persen()<0)?0:$val->get_kd_d_rekon_persen();
@@ -420,20 +470,26 @@ class DataKppn {
                                     $l*$val->get_kd_d_lhp_persen()+
                                     $r*$val->get_kd_d_rekon_persen());*/
                     $data_insert = ($k*$konversi +
+                                    $p*$supplier +
                                     $s*$sp2d+
                                     $l*$lhp+
                                     $r*$rekon);
                     $pembagi = DataKppn::getPembagi($val);
                     if(array_key_exists($kd_kanwil, $return)){
                         $tmp_value = $return[$kd_kanwil]['sum']*$return[$kd_kanwil]['jml_data'];
-                        $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['jml_data'];
-                        $tmp_sp2d = $return[$kd_kanwil]['sp2d']*$return[$kd_kanwil]['jml_data'];
-                        $tmp_lhp = $return[$kd_kanwil]['lhp']*$return[$kd_kanwil]['jml_data'];
-                        $tmp_rekon = $return[$kd_kanwil]['rekon']*$return[$kd_kanwil]['jml_data'];
+                        $tmp_konversi = $return[$kd_kanwil]['konversi']*$return[$kd_kanwil]['jml_data_konversi'];
+                        $tmp_supplier = $return[$kd_kanwil]['supplier']*$return[$kd_kanwil]['jml_data_supplier'];
+                        $tmp_sp2d = $return[$kd_kanwil]['sp2d']*$return[$kd_kanwil]['jml_data_sp2d'];
+                        $tmp_lhp = $return[$kd_kanwil]['lhp']*$return[$kd_kanwil]['jml_data_lhp'];
+                        $tmp_rekon = $return[$kd_kanwil]['rekon']*$return[$kd_kanwil]['jml_data_rekon'];
                         $return[$kd_kanwil]['jml_data']++;
                         if($val->get_kd_d_konversi_persen()>=0){
                             $return[$kd_kanwil]['jml_data_konversi']++;
                             $return[$kd_kanwil]['konversi'] = ($tmp_konversi+$val->get_kd_d_konversi_persen())/$return[$kd_kanwil]['jml_data_konversi'];
+                        }
+                        if($val->get_kd_d_supplier_persen()>=0){
+                            $return[$kd_kanwil]['jml_data_supplier']++;
+                            $return[$kd_kanwil]['supplier'] = ($tmp_supplier+$val->get_kd_d_konversi_persen())/$return[$kd_kanwil]['jml_data_supplier'];
                         }
                         if($val->get_kd_d_sp2d_persen()>=0){
                             $return[$kd_kanwil]['jml_data_sp2d']++;
@@ -449,6 +505,7 @@ class DataKppn {
                         }
                         //$return[$kd_kanwil]['sum'] = ($tmp_value+($data_insert/$pembagi))/$return[$kd_kanwil]['jml_data'];
                         $return[$kd_kanwil]['sum'] = ($return[$kd_kanwil]['konversi']*$k+
+                                                    $return[$kd_kanwil]['supplier']*$p+
                                                     $return[$kd_kanwil]['sp2d']*$s+
                                                     $return[$kd_kanwil]['lhp']*$l+
                                                     $return[$kd_kanwil]['rekon']*$r)/100;
@@ -469,6 +526,12 @@ class DataKppn {
                         if($val->get_kd_d_konversi_persen()>=0){
                             $return[$kd_kanwil]['konversi'] = $val->get_kd_d_konversi_persen();
                             $return[$kd_kanwil]['jml_data_konversi'] = 1;
+                        }else{
+                            $return[$kd_kanwil]['konversi'] = 0;
+                        }
+                        if($val->get_kd_d_supplier_persen()>=0){
+                            $return[$kd_kanwil]['supplier'] = $val->get_kd_d_supplier_persen();
+                            $return[$kd_kanwil]['jml_data_supplier'] = 1;
                         }else{
                             $return[$kd_kanwil]['konversi'] = 0;
                         }
@@ -638,6 +701,8 @@ class DataKppn {
             $d_kppn->set_kd_d_tgl($val['kd_d_tgl']);
             $d_kppn->set_kd_d_konversi($val['kd_d_konversi']);
             $d_kppn->set_kd_d_konversi_gagal($val['kd_d_konversi_gagal']);
+            $d_kppn->set_kd_d_supplier($val['kd_d_supplier']);
+            $d_kppn->set_kd_d_supplier_gagal($val['kd_d_supplier_gagal']);
             $d_kppn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_kppn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             $d_kppn->set_kd_d_lhp($val['kd_d_lhp']);
@@ -659,6 +724,8 @@ class DataKppn {
             'kd_d_tgl' => $this->get_kd_d_tgl(),
             'kd_d_konversi' => $this->get_kd_d_konversi(),
             'kd_d_konversi_gagal' => $this->get_kd_d_konversi_gagal(),
+            'kd_d_supplier' => $this->get_kd_d_supplier(),
+            'kd_d_supplier_gagal' => $this->get_kd_d_supplier_gagal(),
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
             'kd_d_sp2d_gagal' => $this->get_kd_d_sp2d_gagal(),
             'kd_d_lhp' => $this->get_kd_d_lhp(),
@@ -685,6 +752,8 @@ class DataKppn {
             'kd_d_tgl' => $this->get_kd_d_tgl(),
             'kd_d_konversi' => $this->get_kd_d_konversi(),
             'kd_d_konversi_gagal' => $this->get_kd_d_konversi_gagal(),
+            'kd_d_supplier' => $this->get_kd_d_supplier(),
+            'kd_d_supplier_gagal' => $this->get_kd_d_supplier_gagal(),
             'kd_d_sp2d' => $this->get_kd_d_sp2d(),
             'kd_d_sp2d_gagal' => $this->get_kd_d_sp2d_gagal(),
             'kd_d_lhp' => $this->get_kd_d_lhp(),
@@ -729,22 +798,25 @@ class DataKppn {
         foreach ($bobot as $val) {
             if($obj instanceof DataKppn){
                 $r = ($obj->get_kd_d_konversi_persen()<0)?0:$val->get_konversi();
+                $p = ($obj->get_kd_d_supplier_persen()<0)?0:$val->get_supplier();
                 $s = ($obj->get_kd_d_sp2d_persen()<0)?0:$val->get_sp2d();
                 $t = ($obj->get_kd_d_lhp_persen()<0)?0:$val->get_lhp();
                 $u = ($obj->get_kd_d_rekon_persen()<0)?0:$val->get_rekon();
             }else{
                 $konversi = $obj['kd_d_konversi']+$obj['kd_d_konversi_gagal'];
+                $supplier = $obj['kd_d_supplier']+$obj['kd_d_supplier_gagal'];
                 $sp2d = $obj['kd_d_sp2d']+$obj['kd_d_sp2d_gagal'];
                 $lhp = $obj['kd_d_lhp']+$obj['kd_d_lhp_gagal'];
                 $rekon = $obj['kd_d_rekon']+$obj['kd_d_rekon_gagal'];
                 $r = ($konversi=0)?0:$val->get_konversi();
+                $p = ($supplier=0)?0:$val->get_supplier();
                 $s = ($sp2d=0)?0:$val->get_sp2d();
                 $t = ($lhp=0)?0:$val->get_lhp();
                 $u = ($rekon=0)?0:$val->get_rekon();
             }
         }
 
-        return $r+$s+$t+$u;
+        return $r+$p+$s+$t+$u;
     }
 
     public function validate() {
@@ -762,6 +834,14 @@ class DataKppn {
         }
         if ($this->get_kd_d_konversi_gagal() == "") {
             $this->_error .= "Konversi belum diinput!<?br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_supplier() == "") {
+            $this->_error .= "Supplier belum diinput!<?br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_kd_d_supplier_gagal() == "") {
+            $this->_error .= "Supplier belum diinput!<?br>";
             $this->_valid = FALSE;
         }
         if ($this->get_kd_d_sp2d() == "") {
@@ -807,7 +887,7 @@ class DataKppn {
 
     public function add_file($file){
         $where = " kd_d_kppn=".$this->get_kd_d_kppn();
-        $data = array("file"=>$file);
+        $data = array("file_kppn"=>$file);
         $this->db->update($this->_table,$data,$where);
     }
 
@@ -838,9 +918,21 @@ class DataKppn {
     public function set_kd_d_konversi_gagal($konversi_gagal) {
         $this->_kd_d_konversi_gagal = $konversi_gagal;
     }
-    
+
     public function set_kd_d_konversi_persen($konversi_persen) {
         $this->_kd_d_konversi_persen = $konversi_persen;
+    }
+
+    public function set_kd_d_supplier($supplier) {
+        $this->_kd_d_supplier = $supplier;
+    }
+
+    public function set_kd_d_supplier_gagal($supplier_gagal) {
+        $this->_kd_d_supplier_gagal = $supplier_gagal;
+    }
+    
+    public function set_kd_d_supplier_persen($supplier_persen) {
+        $this->_kd_d_supplier_persen = $supplier_persen;
     }
 
     public function set_kd_d_sp2d($sp2d) {
@@ -923,6 +1015,18 @@ class DataKppn {
     
     public function get_kd_d_konversi_persen() {
         return $this->_kd_d_konversi_persen;
+    }
+
+    public function get_kd_d_supplier() {
+        return $this->_kd_d_supplier;
+    }
+
+    public function get_kd_d_supplier_gagal() {
+        return $this->_kd_d_supplier_gagal;
+    }
+    
+    public function get_kd_d_supplier_persen() {
+        return $this->_kd_d_supplier_persen;
     }
 
     public function get_kd_d_sp2d() {

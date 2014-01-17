@@ -9,6 +9,7 @@ class DataBobot {
 
     private $db;
     private $_konversi;
+    private $_supplier;
     private $_sp2d;
     private $_lhp;
     private $_rekon;
@@ -42,6 +43,7 @@ class DataBobot {
         foreach ($result as $val) {
             $d_bobot = new $this($this->registry);
             $d_bobot->set_konversi($val['konversi']);
+            $d_bobot->set_supplier($val['supplier']);
             $d_bobot->set_sp2d($val['sp2d']);
             $d_bobot->set_lhp($val['lhp']);
             $d_bobot->set_rekon($val['rekon']);
@@ -70,6 +72,7 @@ class DataBobot {
         foreach ($result as $val) {
             $d_bobot = new $this($this->registry);
             $d_bobot->set_konversi($val['konversi']);
+            $d_bobot->set_supplier($val['supplier']);
             $d_bobot->set_sp2d($val['sp2d']);
             $d_bobot->set_lhp($val['lhp']);
             $d_bobot->set_rekon($val['rekon']);
@@ -129,6 +132,7 @@ class DataBobot {
     public function update_d_bobot() {
         $data = array(
             'konversi' => $this->get_konversi(),
+            'supplier' => $this->get_supplier(),
             'sp2d' => $this->get_sp2d(),
             'lhp' => $this->get_lhp(),
             'rekon' => $this->get_rekon(),
@@ -155,6 +159,10 @@ class DataBobot {
     public function validate() {
         if ($this->get_konversi() == "") {
             $this->_error .= "konversi belum diinput!</br>";
+            $this->_valid = FALSE;
+        }
+        if ($this->get_supplier() == "") {
+            $this->_error .= "supplier belum diinput!</br>";
             $this->_valid = FALSE;
         }
         if ($this->get_sp2d() == "") {
@@ -214,6 +222,10 @@ class DataBobot {
         $this->_konversi = $konversi;
     }
 
+    public function set_supplier($supplier) {
+        $this->_supplier = $supplier;
+    }
+
     public function set_sp2d($sp2d) {
         $this->_sp2d = $sp2d;
     }
@@ -264,6 +276,10 @@ class DataBobot {
 
     public function get_konversi() {
         return $this->_konversi;
+    }
+
+    public function get_supplier() {
+        return $this->_supplier;
     }
 
     public function get_sp2d() {

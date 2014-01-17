@@ -31,6 +31,7 @@ class DataBobotController extends BaseController {
         $d_bobot = new DataBobot($this->registry);
         if (isset($_POST['upd_bobot'])) {
             $konversi = $_POST['konversi'];
+            $supplier = $_POST['supplier'];
             $sp2d = $_POST['sp2d'];
             $lhp = $_POST['lhp'];
             $rekon = $_POST['rekon'];
@@ -44,6 +45,7 @@ class DataBobotController extends BaseController {
             $pkn = $_POST['pkn'];
 
             $d_bobot->set_konversi($konversi);
+            $d_bobot->set_supplier($supplier);
             $d_bobot->set_sp2d($sp2d);
             $d_bobot->set_lhp($lhp);
             $d_bobot->set_rekon($rekon);
