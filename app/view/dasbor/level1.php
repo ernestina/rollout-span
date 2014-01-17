@@ -26,6 +26,7 @@ foreach ($this->bobot as $bot) {
     $bobot_ba = $bot->get_ba() / 100;
     $bobot_pkn = $bot->get_pkn() / 100;
     $bobot_konversi = $bot->get_konversi() / 100;
+    $bobot_supplier = $bot->get_supplier() / 100;
     $bobot_sp2d = $bot->get_sp2d() / 100;
     $bobot_lhp = $bot->get_lhp() / 100;
     $bobot_rekon = $bot->get_rekon() / 100;
@@ -40,7 +41,7 @@ $nokppn = 0;
 foreach ($this->kppn as $valkppn) {
     $unit = $valkppn->get_kd_d_user();
     $pembagi = DataKppn::getPembagi($valkppn);
-    $persen = (int) (($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon)*100/$pembagi);
+    $persen = (int) (($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_supplier_persen() * $bobot_supplier +$valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon)*100/$pembagi);
     //$persen = (int) $valkppn->total;
     $nilai_kppn += $persen;
     $nokppn++;

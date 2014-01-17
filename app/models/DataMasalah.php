@@ -105,8 +105,26 @@ class DataMasalah {
             $d_mslh->set_kd_d_user($val['kd_d_user']);
             $d_mslh->set_tgl_mslh($val['tgl_mslh']);
             $d_mslh->set_masalah($val['masalah']);
+            $d_mslh->set_kd_d_kppn($val['kd_d_kppn']);
         }
         return $this;
+    }
+
+    public function get_masalah_kppn($id_data){
+        $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=".$id_data;
+        $d_masalah = $this->db->select($sql);
+        $return = array();
+        foreach($d_masalah as $val){
+            $tmp = array();
+            $tmp['kd_masalah'] = $val['kd_d_mslh']);
+            $tmp['kd_user'] = $val['kd_d_user']);
+            $tmp['tgl_masalah'] = ($val['tgl_mslh']);
+            $tmp['masalah'] = ($val['masalah']);
+            $tmp['kd_data'] = ($val['kd_d_kppn']);
+            $return[] = $tmp;
+        }
+
+        return $return;
     }
 
     /*
@@ -140,7 +158,8 @@ class DataMasalah {
         $data = array(
             'kd_d_user' => $this->get_kd_d_user(),
             'tgl_mslh' => $this->get_tgl_mslh(),
-            'masalah' => $this->get_masalah()
+            'masalah' => $this->get_masalah(),
+            'kd_d_kppn'=>$this->get_kd_d_kppn()
         );
         $this->validate();
         if (!$this->get_valid()) {
