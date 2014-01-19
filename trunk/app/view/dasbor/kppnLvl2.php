@@ -16,6 +16,7 @@
         $no = 0;
         foreach ($this->bobot as $bot) {
             $k = $bot->get_konversi();
+            $p = $bot->get_supplier();
             $s = $bot->get_sp2d();
             $l = $bot->get_lhp();
             $r = $bot->get_rekon();
@@ -31,11 +32,13 @@
             $ids[] = '"'.$value->total.'"';
             $tgl[] = '"' . $value->get_kd_d_kppn() . '"';
             if ((ceil(($value->get_kd_d_konversi_persen() * $k + 
+                    $value->get_kd_d_supplier_persen() * $p + 
                     $value->get_kd_d_sp2d_persen() * $s + 
                     $value->get_kd_d_lhp_persen() * $l + 
                     $value->get_kd_d_rekon_persen() * $r)
                     /$pembagi)) <= $min) {
                 $min = floor(ceil(($value->get_kd_d_konversi_persen() * $k + 
+                    $value->get_kd_d_supplier_persen() * $p + 
                     $value->get_kd_d_sp2d_persen() * $s + 
                     $value->get_kd_d_lhp_persen() * $l + 
                     $value->get_kd_d_rekon_persen() * $r)
