@@ -37,7 +37,7 @@
                                       $ba = $value->get_ba();
                                       $pkn = $value->get_pkn();
                                       $konversi = $value->get_konversi();
-                                      $supplier 
+                                      $supplier = $value->get_supplier();
                                       $sp2d = $value->get_sp2d();
                                       $lhp = $value->get_lhp();
                                       $rekon = $value->get_rekon();
@@ -49,6 +49,7 @@
                                   }
                                   ?>
                             <input type="hidden" name="konversi" id="" size="8" value="<?php echo $konversi ?>">
+                            <input type="hidden" name="supplier" id="" size="8" value="<?php echo $supplier ?>">
                             <input type="hidden" name="sp2d" id="" size="8" value="<?php echo $sp2d ?>">
                             <input type="hidden" name="lhp" id="" size="8" value="<?php echo $lhp ?>">
                             <input type="hidden" name="rekon" id="" size="8" value="<?php echo $rekon ?>">
@@ -97,6 +98,8 @@
                             <input type="hidden" name="spt_pkn" id="" size="8" value="<?php echo $spt_pkn ?>">
                             <div id="wkonversi" class="error"></div>
                             <label class="isian">Konversi</label><input type="number" name="konversi" id="konversi" size="8" value="<?php echo $konversi ?>">
+                            <div id="wsupplier" class="error"></div>
+                            <label class="isian">Supplier</label><input type="number" name="supplier" id="supplier" size="8" value="<?php echo $supplier ?>">
                             <div id="wsp2d" class="error"></div>
                             <label class="isian">SP2D</label><input type="number" name="sp2d" id="sp2d" size="8" value="<?php echo $sp2d ?>">
                             <div id="wlhp" class="error"></div>
@@ -243,6 +246,20 @@
                 $('#wkonversi').fadeOut(200);
             }
             if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('supplier').value)
+                    + parseInt(document.getElementById('sp2d').value)
+                    + parseInt(document.getElementById('lhp').value)
+                    + parseInt(document.getElementById('rekon').value)) == 100) {
+                $('#wkonversi').fadeOut(200);
+            }
+        })
+
+        $('#supplier').keyup(function() {
+            if (document.getElementById('supplier').value != '') {
+                $('#wsupplier').fadeOut(200);
+            }
+            if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('supplier').value)
                     + parseInt(document.getElementById('sp2d').value)
                     + parseInt(document.getElementById('lhp').value)
                     + parseInt(document.getElementById('rekon').value)) == 100) {
@@ -255,6 +272,7 @@
                 $('#wsp2d').fadeOut(200);
             }
             if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('supplier').value)
                     + parseInt(document.getElementById('sp2d').value)
                     + parseInt(document.getElementById('lhp').value)
                     + parseInt(document.getElementById('rekon').value)) == 100) {
@@ -267,6 +285,7 @@
                 $('#wlhp').fadeOut(200);
             }
             if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('supplier').value)
                     + parseInt(document.getElementById('sp2d').value)
                     + parseInt(document.getElementById('lhp').value)
                     + parseInt(document.getElementById('rekon').value)) == 100) {
@@ -279,6 +298,7 @@
                 $('#wrekon').fadeOut(200);
             }
             if ((parseInt(document.getElementById('konversi').value)
+                    + parseInt(document.getElementById('supplier').value)
                     + parseInt(document.getElementById('sp2d').value)
                     + parseInt(document.getElementById('lhp').value)
                     + parseInt(document.getElementById('rekon').value)) == 100) {
@@ -409,10 +429,11 @@
     function ceklvl2kppn() {
         var pattern = '^[0-9]+$';
         var konversi = document.getElementById('konversi').value;
+        var supplier = document.getElementById('supplier').value;
         var sp2d = document.getElementById('sp2d').value;
         var lhp = document.getElementById('lhp').value;
         var rekon = document.getElementById('rekon').value;
-        var all = parseInt(konversi) + parseInt(sp2d) + parseInt(lhp) + parseInt(rekon);
+        var all = parseInt(konversi) + parseInt(supplier) + parseInt(sp2d) + parseInt(lhp) + parseInt(rekon);
         var jml = 0;
 
         if ((all) != '100') {
@@ -433,6 +454,20 @@
             var wkonversi = 'Bobot Konversi harus diisi!';
             $('#wkonversi').fadeIn(0);
             $('#wkonversi').html(wkonversi);
+            jml++;
+        }
+
+        if (!supplier.match(pattern)) {
+            var wsupplier = 'Bobot Supplier harus dalam bentuk angka!';
+            $('#wsupplier').html(wsupplier);
+            $('#wsupplier').fadeIn(200);
+            jml++;
+        }
+
+        if (supplier == '') {
+            var wsupplier = 'Bobot Supplier harus diisi!';
+            $('#wsupplier').fadeIn(0);
+            $('#wsupplier').html(wsupplier);
             jml++;
         }
 
