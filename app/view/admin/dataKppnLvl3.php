@@ -719,18 +719,15 @@
                 div.setAttribute('id',oMasalah);
                 div.setAttribute('title','Daftar Masalah');
                 var count_data = Object.keys(data).length;
+                var ul = document.createElement('div');
+                ul.style.color = "blue";
+                ul.style.fontSize = "18px";
                 if(count_data==0){
-                    var ul = document.createElement('div');
-                    ul.style.color = "blue";
-                    ul.style.fontSize = "18px";
                     var li = document.createElement('div');
                     styleListMasalah(li);
                     li.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
                     ul.appendChild(li);
                 }else{
-                    var ul = document.createElement('div');
-                    ul.style.color = "blue";
-                    ul.style.fontSize = "18px";
                     for(key in data){
                         var li = document.createElement('div');
                         styleListMasalah(li);
@@ -746,11 +743,11 @@
                     //height: 400,
                     show: {
                         effect: "blind",
-                        duration: 500
+                        duration: 300
                     },
                     hide: {
                         effect: "blind",
-                        duration: 500
+                        duration: 300
                     }
                 });
 
