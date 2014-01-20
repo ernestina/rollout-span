@@ -695,6 +695,15 @@
         window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
     }
 
+    function styleListMasalah(obj){
+        obj.style.borderRadius="2px";
+        obj.style.borderColor="#B6B6A9";
+        obj.style.borderWidth="2px";
+        obj.style.backgroundColor="#E0E0D1";
+        obj.style.padding = "5px";
+        obj.style.marginBottom="2px";
+    }
+
     function viewMasalah(id_data){
         console.log(id_data);
         var url_data = '<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data;
@@ -711,22 +720,20 @@
                 div.setAttribute('title','Daftar Masalah');
                 var count_data = Object.keys(data).length;
                 if(count_data==0){
-                    var ul = document.createElement('ul');
-                    var h2 = document.createElement('li');
-                    h2.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
-                    ul.appendChild(h2);
+                    var ul = document.createElement('div');
+                    ul.style.color = "blue";
+                    ul.style.fontSize = "18px";
+                    var li = document.createElement('div');
+                    styleListMasalah(li);
+                    li.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
+                    ul.appendChild(li);
                 }else{
                     var ul = document.createElement('div');
                     ul.style.color = "blue";
                     ul.style.fontSize = "18px";
                     for(key in data){
                         var li = document.createElement('div');
-                        li.style.borderRadius="2px";
-                        li.style.borderColor="#B6B6A9";
-                        li.style.borderWidth="2px";
-                        li.style.backgroundColor="#E0E0D1";
-                        li.style.padding = "5px";
-                        li.style.marginBottom="2px";
+                        styleListMasalah(li);
                         li.appendChild(document.createTextNode(data[key].masalah));
                         ul.appendChild(li);
                     }
