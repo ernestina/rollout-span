@@ -115,8 +115,15 @@ class DataMasalahController extends BaseController {
         header('location:' . URL . 'dataMasalah/addDataMasalah');
     }
 
-    public function get_masalah_kppn(){
+    public function get_masalah_kppn($id_data_kppn){
         $obj = new DataMasalah($this->registry);
+        $d_mas = $obj->get_masalah_kppn($id_data_kppn);
+        $count = count($d_mas);
+        if($d_mas>0){
+            echo json_encode($d_mas);
+        }else{
+            echo json_encode(array('DATA TIDAK DITEMUKAN'));
+        }
     }
 
     /*
