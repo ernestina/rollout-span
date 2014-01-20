@@ -261,6 +261,7 @@
             </fieldset>-->
         
 </div>
+<div id="modalMasalah"></div>
 </div>
 <script type="text/javascript">
     var add_data = false;
@@ -694,30 +695,65 @@
         window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
     }
 
-    function vieMasalah(id_data){ 
+    function viewMasalah(id_data){
+        console.log(id_data);
+        var url_data = '<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data;
         $.ajax({
             type:'post',
-            url:'<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data,
+            url: url_data,
             data:'',
             dataType:'json',
             success:function(data){
+                var oMasalah = 'oMasalah';
+                if(isExistDomId(oMasalah)) document.getElementById(oMasalah).remove();
                 var div = document.createElement('div');
+                div.setAttribute('id',oMasalah);
+                div.setAttribute('title','Daftar Masalah');
                 var count_data = Object.keys(data).length;
                 if(count_data==0){
-                    var ul = document.createElement('div');
-                    var h2 = document.createElement('h3');
+                    var ul = document.createElement('ul');
+                    var h2 = document.createElement('li');
                     h2.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
                     ul.appendChild(h2);
                 }else{
-                    var ul = document.createElement('ul');
+                    var ul = document.createElement('div');
+                    ul.style.color = "blue";
+                    ul.style.fontSize = "18px";
                     for(key in data){
-                        var li = document.createElement('li');
-                        li.appendChild(document.createTextNode(key));
+                        var li = document.createElement('div');
+                        li.style.borderRadius="2px";
+                        li.style.borderColor="#B6B6A9";
+                        li.style.borderWidth="2px";
+                        li.style.backgroundColor="#E0E0D1";
+                        li.style.padding = "5px";
+                        li.style.marginBottom="2px";
+                        li.appendChild(document.createTextNode(data[key].masalah));
                         ul.appendChild(li);
                     }
                 }
                 div.appendChild(ul);
+                document.getElementsByTagName('body')[0].appendChild(div);
+                $( "#oMasalah" ).dialog({
+                  autoOpen: false,
+                    width: 400,
+                    //height: 400,
+                    show: {
+                        effect: "blind",
+                        duration: 500
+                    },
+                    hide: {
+                        effect: "blind",
+                        duration: 500
+                    }
+                });
+
+                $( "#oMasalah" ).dialog( "open" );
+            },
+            error:function(data){
+                //console.log(data);
             }  
         });
     }
+
+
 </script>

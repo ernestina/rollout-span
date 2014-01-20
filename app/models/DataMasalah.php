@@ -33,8 +33,10 @@ class DataMasalah {
      * return array objek Data Tetap
      */
 
-    public function get_d_mslh($limit = null, $batas = null) {
-        $id_user = Session::get('id_user');
+    public function get_d_mslh($id=null) {
+        if(is_null($id)){
+            $id_user = Session::get('id_user');    
+        }
         $sql = "SELECT 
 				a.kd_d_mslh kd_d_mslh,
 				a.tgl_mslh tgl_mslh,
@@ -42,9 +44,14 @@ class DataMasalah {
 				b.nama_user nama_user
 				FROM " . $this->_table . " a
 				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user ";
-        if ($id_user != 1) {
-            $sql .= " WHERE a.kd_d_user= " . $id_user;
+        if(is_null($id)){
+            if ($id_user != 1) {
+                $sql .= " WHERE a.kd_d_user= " . $id_user;
+            }    
+        }else{
+            $sql .= " WHERE kd_d_kppn=" . $id;
         }
+        
         $sql .= " ORDER BY a.tgl_mslh desc a.kd_d_waktu_isi desc";
 
 
@@ -116,11 +123,11 @@ class DataMasalah {
         $return = array();
         foreach($d_masalah as $val){
             $tmp = array();
-            $tmp['kd_masalah'] = $val['kd_d_mslh']);
-            $tmp['kd_user'] = $val['kd_d_user']);
-            $tmp['tgl_masalah'] = ($val['tgl_mslh']);
-            $tmp['masalah'] = ($val['masalah']);
-            $tmp['kd_data'] = ($val['kd_d_kppn']);
+            $tmp['kd_masalah'] = $val['kd_d_mslh'];
+            $tmp['kd_user'] = $val['kd_d_user'];
+            $tmp['tgl_masalah'] = $val['tgl_mslh'];
+            $tmp['masalah'] = $val['masalah'];
+            $tmp['kd_data'] = $val['kd_d_kppn'];
             $return[] = $tmp;
         }
 
