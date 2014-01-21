@@ -27,7 +27,8 @@
                     if (isset($this->d_ubah)) {
                         echo URL . 'dataMasalah/updDataMasalah';
                     } else {
-                        $_SERVER['PHP_SELF'];
+                        echo URL . 'dataMasalah/addDataMasalah';
+                        //$_SERVER['PHP_SELF'];
                     }
                     ?>">
                               <?php

@@ -410,6 +410,35 @@ class DataPkn {
         $this->db->delete($this->_table, $where);
     }
 
+    /*
+     * cek data kosong
+     * return pembagi
+     */
+    public static function getPembagi($obj){
+        if($obj instanceof DataPkn){
+            $registry = $obj->registry;    
+        }else{
+            $registry = new Registry();
+            $registry->db = new Database();
+        }
+        $d_bobot = new DataBobot($registry);
+        $bobot = $d_bobot->get_bobot_pkn_lvl2();
+        $bot = array();
+        foreach ($bobot as $val) {
+            if($obj instanceof DataPkn){
+                $s = ($obj->get_kd_d_sp2d_persen()<0)?0:$val->get_sp2d_pkn();
+                $t = ($obj->get_kd_d_spt_persen()<0)?0:$val->get_spt_pkn(); //echo $s."-".$t."<br>";
+            }else{
+                $sp2d = $obj['kd_d_sp2d']+$obj['kd_d_sp2d_gagal'];
+                $spt = $obj['kd_d_spt']+$obj['kd_d_spt_gagal'];
+                $s = ($sp2d=0)?0:$val->get_sp2d_pkn();
+                $t = ($spt=0)?0:$val->get_spt_pkn();
+            }
+        }
+
+        return $s+$t;
+    }
+
     public function validate($add = true) {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";

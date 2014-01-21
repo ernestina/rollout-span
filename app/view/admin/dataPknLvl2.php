@@ -76,23 +76,26 @@
                     $sp2d = 0;
                     $spt = 0;
                     foreach ($this->bobot as $bot) {
-                        $sp2d = $bot->get_sp2d_pkn() / 100;
-                        $spt = $bot->get_spt_pkn() / 100;
+                        $s = $bot->get_sp2d_pkn();
+                        $t = $bot->get_spt_pkn();
                     }
                     foreach ($this->data as $val) {
-                        if($val->get_kd_d_sp2d_persen()<1){
+                        $sp2d = ($val->get_kd_d_sp2d_persen()<0)?0:$val->get_kd_d_sp2d_persen();
+                        $spt = ($val->get_kd_d_spt_persen()<0)?0:$val->get_kd_d_spt_persen();
+                        if($val->get_kd_d_sp2d_persen()<0){
                             $kd_d_sp2d = "-";
-                            $kd_d_spt = $val->get_kd_d_spt_persen()."%";
-                            $total = $val->get_kd_d_spt_persen()."%";
-                        }elseif($val->get_kd_d_spt_persen()<1){
-                            $kd_d_sp2d = $val->get_kd_d_sp2d_persen()."%";
+                            $kd_d_spt = $spt."%";
+                            //$total = $val->get_kd_d_spt_persen()."%";
+                        }elseif($val->get_kd_d_spt_persen()<0){
+                            $kd_d_sp2d = $sp2d."%";
                             $kd_d_spt = "-";
-                            $total = $val->get_kd_d_sp2d_persen()."%";
+                            //$total = $val->get_kd_d_sp2d_persen()."%";
                         }else{
-                            $kd_d_sp2d = $val->get_kd_d_sp2d_persen()."%";
-                            $kd_d_spt = $val->get_kd_d_spt_persen()."%";
-                            $total = ((int) ((($val->get_kd_d_sp2d_persen() * $sp2d) + ($val->get_kd_d_spt_persen() * $spt))))."%";
+                            $kd_d_sp2d = $sp2d."%";
+                            $kd_d_spt = $spt."%";
+                            //$total = ((int) ((($val->get_kd_d_sp2d_persen() * $sp2d) + ($val->get_kd_d_spt_persen() * $spt))))."%";
                         }
+                        $total = ceil((int) (($sp2d * $s) + ($spt * $t))/DataPkn::getPembagi($val))."%";
                         echo "<tr>";
                         echo "<td>$no</td>";
                         if ($val->get_kd_d_user() == 88881) {

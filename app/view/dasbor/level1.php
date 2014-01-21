@@ -41,7 +41,22 @@ $nokppn = 0;
 foreach ($this->kppn as $valkppn) {
     $unit = $valkppn->get_kd_d_user();
     $pembagi = DataKppn::getPembagi($valkppn);
-    $persen = (int) ceil(($valkppn->get_kd_d_konversi_persen() * $bobot_konversi + $valkppn->get_kd_d_supplier_persen() * $bobot_supplier +$valkppn->get_kd_d_sp2d_persen() * $bobot_sp2d + $valkppn->get_kd_d_lhp_persen() * $bobot_lhp + $valkppn->get_kd_d_rekon_persen() * $bobot_rekon)*100/$pembagi);
+    $konversi = ($valkppn->get_kd_d_konversi_persen()<0)?0:$valkppn->get_kd_d_konversi_persen();
+    $supplier = ($valkppn->get_kd_d_supplier_persen()<0)?0:$valkppn->get_kd_d_supplier_persen();
+    $sp2d = ($valkppn->get_kd_d_sp2d_persen()<0)?0:$valkppn->get_kd_d_sp2d_persen();
+    $lhp = ($valkppn->get_kd_d_lhp_persen()<0)?0:$valkppn->get_kd_d_lhp_persen();
+    $rekon = ($valkppn->get_kd_d_rekon_persen()<0)?0:$valkppn->get_kd_d_rekon_persen();
+    /*echo $konversi ."*". $bobot_konversi 
+                        ."+". $supplier ."*". $bobot_supplier 
+                        ."+". $sp2d ."*". $bobot_sp2d 
+                        ."+". $lhp ."*". $bobot_lhp 
+                        ."+". $rekon ."*". $bobot_rekon."*100/".$pembagi."<br>";*/
+
+    $persen = (int) ceil(($konversi * $bobot_konversi 
+                        + $supplier * $bobot_supplier 
+                        + $sp2d * $bobot_sp2d 
+                        + $lhp * $bobot_lhp 
+                        + $rekon * $bobot_rekon)*100/$pembagi);
     //$persen = (int) $valkppn->total;
     $nilai_kppn += $persen;
     $nokppn++;
