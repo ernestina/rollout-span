@@ -52,8 +52,8 @@ class DataMasalah {
             $sql .= " WHERE kd_d_kppn=" . $id;
         }
         
-        $sql .= " ORDER BY a.tgl_mslh desc a.kd_d_waktu_isi desc";
-
+        $sql .= " ORDER BY a.tgl_mslh desc, a.kd_d_waktu_isi desc";
+        //echo $sql;
 
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
