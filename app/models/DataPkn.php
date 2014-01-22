@@ -18,6 +18,7 @@ class DataPkn {
     private $_kd_d_spt;
     private $_kd_d_spt_gagal;
     private $_kd_d_spt_persen;
+    private $_total;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_pkn';
@@ -120,6 +121,12 @@ class DataPkn {
      */
 
     public function get_d_pkn_lvl2($limit = null, $batas = null) {
+        $bot = new DataBobot($this->registry);
+        $d_bobot = $bot->get_bobot_pkn_lvl2();
+        foreach ($d_bobot as $key => $value) {
+            $s = $value->get_sp2d_pkn();
+            $t = $value->get_spt_pkn();
+        }
         $sql = "SELECT * FROM " . $this->_table . "  ORDER BY kd_d_user_pkn asc";
         if (!is_null($limit) AND !is_null($batas)) {
             $sql .= " LIMIT " . $limit . "," . $batas;
@@ -142,25 +149,48 @@ class DataPkn {
             }else{
                 $spt = $value['kd_d_spt']/($value['kd_d_spt']+$value['kd_d_spt_gagal'])*100;    
             }
-
+            $sum = ceil((($sp2d<0?0:$sp2d)*$s+($spt<0?0:$spt)*$t)/DataPkn::getPembagi($value));
             if(array_key_exists($kd_pkn, $result)){
                 if($sp2d>-1 || $spt>-1){
                     $result[$kd_pkn]['count_data']++;
                 }
                 if($sp2d>-1){
-                    $sp2d = (($result[$kd_pkn]['kd_d_sp2d_persen']*($result[$kd_pkn]['count_data']-1))+$sp2d)/ $result[$kd_pkn]['count_data'];    
+                    $result[$kd_pkn]['count_sp2d']++;
+                    $sp2d = (($result[$kd_pkn]['kd_d_sp2d_persen']*($result[$kd_pkn]['count_sp2d']-1))+ceil($sp2d))/ $result[$kd_pkn]['count_sp2d'];
                     $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
                 }
                 if($spt>-1){
-                    $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_data']-1))+$spt)/ $result[$kd_pkn]['count_data'];
+                    $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_spt']-1))+$spt)/ $result[$kd_pkn]['count_spt'];
                     $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
                 }
+                /*echo $result[$kd_pkn]['kd_d_sp2d_persen']."*".$s
+                   ."+".$result[$kd_pkn]['kd_d_spt_persen']."*".$t."/".DataPkn::getPembagi($value)."-";
+                echo ceil(($result[$kd_pkn]['kd_d_sp2d_persen']*$s+$result[$kd_pkn]['kd_d_spt_persen']*$t)/DataPkn::getPembagi($value))."^";
+                echo ceil(($result[$kd_pkn]['sum']*($result[$kd_pkn]['count_data']-1)+$sum)/$result[$kd_pkn]['count_data'])."<br>";*/
+                $result[$kd_pkn]['sum'] = ceil(($result[$kd_pkn]['sum']*($result[$kd_pkn]['count_data']-1)+$sum)/$result[$kd_pkn]['count_data']);
             }else{
                 $result[$kd_pkn] = array();
                 $result[$kd_pkn]['count_data'] = 1;
                 $result[$kd_pkn]['kd_d_user'] = $value['kd_d_user_pkn'];
-                $result[$kd_pkn]['kd_d_sp2d_persen'] = $sp2d;
-                $result[$kd_pkn]['kd_d_spt_persen'] = $spt;
+                if($sp2d>=0){
+                    $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
+                    $result[$kd_pkn]['count_sp2d'] = 1;
+                }else{
+                    $result[$kd_pkn]['kd_d_sp2d_persen'] = 0;
+                    $result[$kd_pkn]['count_sp2d'] = 0;
+                }
+                if($spt>=0){
+                    $result[$kd_pkn]['kd_d_spt_persen'] = $spt;
+                    $result[$kd_pkn]['count_spt'] = 1;
+                }else{
+                    $result[$kd_pkn]['kd_d_spt_persen'] = 0;
+                    $result[$kd_pkn]['count_spt'] = 0;
+                }
+                /*echo $result[$kd_pkn]['kd_d_sp2d_persen']."*".$s
+                    ."+".$result[$kd_pkn]['kd_d_spt_persen']."*".$t."/".DataPkn::getPembagi($value)."-";
+                echo ceil(($result[$kd_pkn]['kd_d_sp2d_persen']*$s+$result[$kd_pkn]['kd_d_spt_persen']*$t)/DataPkn::getPembagi($value))."<br>";*/
+                $result[$kd_pkn]['sum'] = $sum;
+                
             }
             
         }
@@ -170,7 +200,7 @@ class DataPkn {
             $d_kppn->set_kd_d_user($val['kd_d_user']);
             $d_kppn->set_kd_d_sp2d_persen(ceil($val['kd_d_sp2d_persen']));
             $d_kppn->set_kd_d_spt_persen(ceil($val['kd_d_spt_persen']));
-
+            $d_kppn->set_total($val['sum']);
             $data[] = $d_kppn;
             //var_dump($d_kppn);
         }
@@ -426,13 +456,13 @@ class DataPkn {
         $bot = array();
         foreach ($bobot as $val) {
             if($obj instanceof DataPkn){
-                $s = ($obj->get_kd_d_sp2d_persen()<0)?0:$val->get_sp2d_pkn();
-                $t = ($obj->get_kd_d_spt_persen()<0)?0:$val->get_spt_pkn(); //echo $s."-".$t."<br>";
+                $s = ($obj->get_kd_d_sp2d_persen()<=0)?0:$val->get_sp2d_pkn();
+                $t = ($obj->get_kd_d_spt_persen()<=0)?0:$val->get_spt_pkn(); //echo $s."-".$t."<br>";
             }else{
                 $sp2d = $obj['kd_d_sp2d']+$obj['kd_d_sp2d_gagal'];
                 $spt = $obj['kd_d_spt']+$obj['kd_d_spt_gagal'];
-                $s = ($sp2d=0)?0:$val->get_sp2d_pkn();
-                $t = ($spt=0)?0:$val->get_spt_pkn();
+                $s = ($sp2d==0)?0:$val->get_sp2d_pkn();
+                $t = ($spt==0)?0:$val->get_spt_pkn();
             }
         }
 
@@ -528,6 +558,10 @@ class DataPkn {
         $this->_kd_d_spt_persen = $spt_persen;
     }
 
+    public function set_total($total) {
+        $this->_total = $total;
+    }
+
     public function set_table($table) {
         $this->_table = $table;
     }
@@ -581,6 +615,10 @@ class DataPkn {
 
     public function get_kd_d_spt_persen() {
         return $this->_kd_d_spt_persen;
+    }
+
+    public function get_total() {
+        return $this->_total;
     }
 
     public function get_error() {
