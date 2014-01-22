@@ -95,7 +95,8 @@
                             $kd_d_spt = $spt."%";
                             //$total = ((int) ((($val->get_kd_d_sp2d_persen() * $sp2d) + ($val->get_kd_d_spt_persen() * $spt))))."%";
                         }
-                        $total = ceil((int) (($sp2d * $s) + ($spt * $t))/DataPkn::getPembagi($val))."%";
+                        //$total = ceil((int) (($sp2d * $s) + ($spt * $t))/DataPkn::getPembagi($val))."%";
+                        $total = $val->get_total()."%";
                         echo "<tr>";
                         echo "<td>$no</td>";
                         if ($val->get_kd_d_user() == 88881) {

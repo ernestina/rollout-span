@@ -28,7 +28,7 @@ class DataPknController extends BaseController {
         $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
 
         $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
-        $this->view->data = $d_pkn->get_d_pkn_lvl2(); //belum di sum
+        $this->view->data = $d_pkn->get_d_pkn_lvl2();
         $this->view->render('admin/dataPknLvl2');
     }
     public function viewDataPknLvl3($id = null) {

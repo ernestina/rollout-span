@@ -17,12 +17,13 @@
             $spt = $bot->get_spt_pkn() / 100;
         }
         foreach ($this->data as $value) {
-            $persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
-            if($value->get_kd_d_sp2d_persen()<0){
+            //$persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
+            $persen = $value->get_total();
+            /*if($value->get_kd_d_sp2d_persen()<0){
                 $persen = $value->get_kd_d_spt_persen();
             }elseif($value->get_kd_d_spt_persen()<0){
                 $persen = $value->get_kd_d_sp2d_persen();
-            }
+            }*/
             $ids[] = $persen;
             if ($value->get_kd_d_user()==88881){
                 $tgl[] = '"RKN"';
