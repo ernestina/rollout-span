@@ -180,7 +180,7 @@ class DataPkn {
                     $result[$kd_pkn]['count_sp2d'] = 0;
                 }
                 if($spt>=0){
-                    $result[$kd_pkn]['kd_d_spt_persen'] = $spt;
+                    $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
                     $result[$kd_pkn]['count_spt'] = 1;
                 }else{
                     $result[$kd_pkn]['kd_d_spt_persen'] = 0;
