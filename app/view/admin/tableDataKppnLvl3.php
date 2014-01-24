@@ -18,27 +18,47 @@
                     ?>
                 </tr>
                 <tr>
-                    <th width ="5%">Sukses</th>
-                    <th width ="5%">Gagal</th>
+                    <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
+                    <th width ="5%"><i class="icon-remove" title='gagal'></th>
                     <th width ="5%">%</th>
-                    <th width ="5%">Sukses</th>
-                    <th width ="5%">Gagal</th>
+                    <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
+                    <th width ="5%"><i class="icon-remove" title='gagal'></th>
                     <th width ="5%">%</th>
-                    <th width ="5%">Sukses</th>
-                    <th width ="5%">Gagal</th>
+                    <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
+                    <th width ="5%"><i class="icon-remove" title='gagal'></th>
                     <th width ="5%">%</th>
-                    <th width ="5%">Sukses</th>
-                    <th width ="5%">Gagal</th>
+                    <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
+                    <th width ="5%"><i class="icon-remove" title='gagal'></th>
                     <th width ="5%">%</th>
-                    <th width ="5%">Sukses</th>
-                    <th width ="5%">Gagal</th>
+                    <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
+                    <th width ="5%"><i class="icon-remove" title='gagal'></th>
                     <th width ="5%">%</th>
                 </tr>
             </thead>
             <tbody style="text-align: right">
                 <?php
                 $no = $this->mulai;
+                $t_konversi = 0;
+                $t_konversi_gagal = 0;
+                $t_supplier = 0;
+                $t_supplier_gagal = 0;
+                $t_sp2d = 0;
+                $t_sp2d_gagal = 0;
+                $t_lhp = 0;
+                $t_lhp_gagal = 0;
+                $t_rekon = 0;
+                $t_rekon_gagal = 0;
                 foreach ($this->data as $val) {
+                    $t_konversi += $val->get_kd_d_konversi();
+                    $t_konversi_gagal += $val->get_kd_d_konversi_gagal();
+                    $t_supplier += $val->get_kd_d_supplier();
+                    $t_supplier_gagal += $val->get_kd_d_supplier_gagal();
+                    $t_sp2d += $val->get_kd_d_sp2d();
+                    $t_sp2d_gagal += $val->get_kd_d_sp2d_gagal();
+                    $t_lhp += $val->get_kd_d_lhp();
+                    $t_lhp_gagal += $val->get_kd_d_lhp_gagal();
+                    $t_rekon += $val->get_kd_d_rekon();
+                    $t_rekon_gagal += $val->get_kd_d_rekon_gagal();
                     //var_dump($val);
                     $kd_d_konversi = ($val->get_kd_d_konversi()==0)?"-":$val->get_kd_d_konversi();
                     $kd_d_konversi_gagal = ($val->get_kd_d_konversi_gagal()==0)?"-":$val->get_kd_d_konversi_gagal();
@@ -85,6 +105,20 @@
                     } //onclick='viewMasalah(\"".$val->get_kd_d_kppn()."\")'
                     echo "</tr>";
                     $no++;
+                }
+                echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2'>";
+                echo "<td></td><td style='text-align:left'>SubTotal</td><td>".$t_konversi."</td><td>".$t_konversi_gagal."</td><td></td>";
+                echo "<td>".$t_supplier."</td><td>".$t_supplier_gagal."</td><td></td>";
+                echo "<td>".$t_sp2d."</td><td>".$t_sp2d_gagal."</td><td></td>";
+                echo "<td>".$t_lhp."</td><td>".$t_lhp_gagal."</td><td></td>";
+                echo "<td>".$t_rekon."</td><td>".$t_rekon_gagal."</td><td colspan=2></td></tr>";
+                if(isset($this->total)){
+                    echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2;background-color:black;color:white'>";
+                    echo "<td></td><td style='text-align:left;'>TOTAL</td><td>".$this->total['kd_d_konversi']."</td><td>".$this->total['kd_d_konversi_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_suppier']."</td><td>".$this->total['kd_d_supplier_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_sp2d']."</td><td>".$this->total['kd_d_sp2d_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_lhp']."</td><td>".$this->total['kd_d_lhp_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_rekon']."</td><td>".$this->total['kd_d_rekon_gagal']."</td><td colspan=2></td></tr>";
                 }
                 ?>
             </tbody>

@@ -149,6 +149,10 @@ class DataKppnController extends BaseController {
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
         //$end = (($hal-1)*$max)+$max;
+        $is_end_page = ($hal==$jml_hal);
+        if($is_end_page){
+            $this->view->total = $kppn->get_sum_data($d_kppn);
+        }
         $this->view->kppn = $id;
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_kppn, $start, $max);
