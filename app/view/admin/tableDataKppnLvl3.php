@@ -113,7 +113,7 @@
                 echo "<td>".$t_lhp."</td><td>".$t_lhp_gagal."</td><td></td>";
                 echo "<td>".$t_rekon."</td><td>".$t_rekon_gagal."</td><td colspan=2></td></tr>";
                 if(isset($this->total)){
-                    echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2;background-color:black;color:white'>";
+                    echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2;background-color:#0066FF;color:#CCFFFF'>";
                     echo "<td></td><td style='text-align:left;'>TOTAL</td><td>".$this->total['kd_d_konversi']."</td><td>".$this->total['kd_d_konversi_gagal']."</td><td></td>";
                     echo "<td>".$this->total['kd_d_suppier']."</td><td>".$this->total['kd_d_supplier_gagal']."</td><td></td>";
                     echo "<td>".$this->total['kd_d_sp2d']."</td><td>".$this->total['kd_d_sp2d_gagal']."</td><td></td>";
