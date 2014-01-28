@@ -273,7 +273,7 @@ class DataKppn {
                     $rekon = (($result[$kd_kppn]['kd_d_rekon_persen']*($result[$kd_kppn]['count_rekon']-1))+$rekon)/ $result[$kd_kppn]['count_rekon'];
                     $result[$kd_kppn]['kd_d_rekon_persen'] = ceil($rekon);
                 }
-                $result[$kd_kppn]['total'] = ceil(($tmp_total+$total)/$result[$kd_kppn]['count_data']); echo $total."<br>"; echo $result[$kd_kppn]['total']."<br>";  
+                $result[$kd_kppn]['total'] = ceil(($tmp_total+$total)/$result[$kd_kppn]['count_data']); //echo $total."<br>"; echo $result[$kd_kppn]['total']."<br>";  
             }else{
                 $result[$kd_kppn] = array();
                 $result[$kd_kppn]['nama_user'] = $value['nama_user'];
@@ -320,8 +320,8 @@ class DataKppn {
                 }else{
                     $result[$kd_kppn]['kd_d_rekon_persen'] = 0;
                 }
-                echo $konversi."*".$k."+".$sp2d."*".$s."+".$lhp."*".$l."+".$rekon."*".$r."/".DataKppn::getPembagi($value)."<br>";
-                $result[$kd_kppn]['total'] = $total; echo "[".$total."e]<br>";
+                //echo $konversi."*".$k."+".$sp2d."*".$s."+".$lhp."*".$l."+".$rekon."*".$r."/".DataKppn::getPembagi($value)."<br>";
+                $result[$kd_kppn]['total'] = $total; //echo "[".$total."e]<br>";
             }
             
         }
