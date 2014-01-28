@@ -63,7 +63,7 @@
                             $t_lhp_gagal = 0;
                             $t_rekon = 0;
                             $t_rekon_gagal = 0;
-                            foreach ($this->data as $val) {
+                            foreach ($this->data as $key=>$val) {
                                 $t_konversi += $val['kd_d_konversi'];
                                 $t_konversi_gagal += $val['kd_d_konversi_gagal'];
                                 $t_supplier += $val['kd_d_supplier'];
