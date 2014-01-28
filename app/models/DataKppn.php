@@ -793,6 +793,9 @@ class DataKppn {
             'kd_d_rekon' => $this->get_kd_d_rekon(),
             'kd_d_rekon_gagal' => $this->get_kd_d_rekon_gagal(),
             );
+        if($this->is_double_data($this->get_kd_d_user(),$this->get_kd_d_tgl())){
+            return false;
+        }
         $this->validate();
         if (!$this->get_valid())
             return false;
