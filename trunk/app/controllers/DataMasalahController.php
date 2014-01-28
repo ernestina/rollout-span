@@ -83,7 +83,7 @@ class DataMasalahController extends BaseController {
             $d_mslh->set_kd_d_mslh($kd_d_mslh);
             $d_mslh->set_kd_d_user($kd_d_user);
             $d_mslh->set_tgl_mslh($tgl_mslh);
-            $d_mslh->set_masalah($masalah);
+            $d_mslh->set_masalah($masalah[0]);
 
             if (!$d_mslh->update_d_mslh()) {
                 $this->view->d_ubah = $d_mslh;

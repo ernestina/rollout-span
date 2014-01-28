@@ -60,12 +60,17 @@
                                 <textarea style="display:inline-block" type="text" name="masalah[]" id="masalah" rows="10" cols="1200" value="<?php //echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_mslh() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_mslh() : '');  ?>"><?php echo isset($this->d_ubah) ? $this->d_ubah->get_masalah() : (isset($this->d_rekam) ? $this->d_rekam->get_masalah() : ''); ?></textarea>
 								</td>
 							</tr>
-							<tr>
-								<td></td>
-								<td width="65%"><input type="button" id="bt_add" value="TAMBAH" style="margin-top: 4px;"></td>
-								<td width="30%"><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></td>
-							</tr>
                         </table>
+                        <table>
+                        <tr>
+                                <td></td>
+                                <td width="65%">
+                                    <?php if(!isset($this->d_ubah)){?>
+                                        <input type="button" id="bt_add" value="TAMBAH" style="margin-top: 4px;">
+                                    <?php } ?>
+                                </td>
+                                <td width="30%"><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></td>
+                            </tr></table>
                         
                         <!--ul class="inline" style="margin-left: 200px">
                             <li></li>
@@ -144,14 +149,17 @@
 
     function add_input(obj){
         var tr = document.createElement('tr');
+        var td1 = document.createElement('td'); 
         var td = document.createElement('td');
         td.colSpan = 2;
         var textarea = document.createElement('textarea');
         textarea.type = "text";
         textarea.name = "masalah[]";
         textarea.id = "masalah";
-        textarea.colSpan = "80";
+        textarea.setAttribute('rows',10);
+        textarea.setAttribute("cols",1200);
         td.appendChild(textarea);
+        tr.appendChild(td1);
         tr.appendChild(td);
         obj.appendChild(tr);
 

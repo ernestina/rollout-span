@@ -119,7 +119,7 @@
                         ">
                         <table style="margin: 0px 5px 0px 5px">
                             <tr>
-                                <td align="left" width="30%">Nama File</td><td> : </td><td>hjahdjash</td>
+                                <td align="left" width="30%">Nama File</td><td> : </td><td><div id="filename"></div></td>
                             </tr>
                             <tr>
                                 <td>File Upload</td><td> : </td><td><input type="file" name="fupload" id="fupload"></td>
@@ -307,6 +307,15 @@
 		<?php if(isset($this->d_ubah)){ ?>
 			$('#form_input').dialog('open');
 		<?php } ?>
+
+        $('#fupload').change(function(){
+            var tmp = $('#fupload').val();
+            var tmp_arr = tmp.split('\\');
+            console.log(tmp_arr);
+            var len = tmp_arr.length; console.log(len);
+            var filename = tmp_arr[len-1];
+            $('#filename').html(filename);
+        })
         
     });
     
