@@ -10,6 +10,13 @@
     <body>
 
         <?php
+        $len_data = count($this->dasbor);
+        if($len_data<=60){
+            $from = 0;
+        }else{
+            $from = $len_data-60;
+        }
+        $dasbor_ba = array_slice($this->dasbor,$from);
         $ids = array();
         $tgl = array();
         foreach ($this->bobot as $bot) {
@@ -17,7 +24,7 @@
             $r = $bot->get_rekon_ba();
             $k = $bot->get_kontrak_ba();
         }
-        foreach ($this->dasbor as $value) {
+        foreach ($dasbor_ba as $value) {
             $pembagi = DataBa::getPembagi($value);
             $persen = ceil(($value->get_kd_d_spm_persen() * $s + 
                     $value->get_kd_d_rekon_persen() * $r + 

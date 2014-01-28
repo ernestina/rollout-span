@@ -147,7 +147,7 @@
                             <div id="wkontrak_ba" class="error"></div>
                             <label class="isian">KONTRAK</label><input type="number" name="kontrak_ba" id="kontrak_ba" size="8" value="<?php echo $kontrak_ba ?>">
                             <div id="wrekon_ba"  class="error"></div>
-                            <label class="isian">REKON</label><input type="number" name="rekon_ba" id="rekon_ba" size="50" value="<?php echo $rekon_ba ?>">
+                            <label class="isian">SPP</label><input type="number" name="rekon_ba" id="rekon_ba" size="50" value="<?php echo $rekon_ba ?>">
                             </select>
                             <ul class="inline tengah1">
                                 <li><input class="normal" type="submit" onclick="" value="BATAL"></li>

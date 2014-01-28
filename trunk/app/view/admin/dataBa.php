@@ -116,16 +116,16 @@
                                     <option value="18">DJPU 977263</option>
                                 </select>
                                 
+                                <div id="wrekon"  class="error"></div>
+                            <!--/div>
+                            <div class="kolom2" style="width:160px"-->
+                                <label class="isian">SPP Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
+                                <div id="wrekon_gagal"  class="error"></div>
+                                <label class="isian">SPP Gagal</label><input type="number" name="kd_d_rekon_gagal" id="kd_d_rekon_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon_gagal() : ''); ?>">
                                 <div id="wspm"  class="error"></div>
                                 <label class="isian">SPM Sukses</label><input type="number" name="kd_d_spm" id="kd_d_spm" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm() : ''); ?>">
                                 <div id="wspm_gagal"  class="error"></div>
                                 <label class="isian">SPM Gagal</label><input type="number" name="kd_d_spm_gagal" id="kd_d_spm_gagal" size="50" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_spm_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_spm_gagal() : ''); ?>">
-                                <div id="wrekon"  class="error"></div>
-                            <!--/div>
-                            <div class="kolom2" style="width:160px"-->
-                                <label class="isian">Rekon Sukses</label><input type="number" name="kd_d_rekon" id="kd_d_rekon" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon() : ''); ?>">
-                                <div id="wrekon_gagal"  class="error"></div>
-                                <label class="isian">Rekon Gagal</label><input type="number" name="kd_d_rekon_gagal" id="kd_d_rekon_gagal" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_rekon_gagal() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_rekon_gagal() : ''); ?>">
                                 <div id="wkontrak"  class="error"></div>
                                 <label class="isian">Kontrak Sukses</label><input type="number" name="kd_d_kontrak" id="kd_d_kontrak" value="<?php echo isset($this->d_ubah) ? $this->d_ubah->get_kd_d_kontrak() : (isset($this->d_rekam) ? $this->d_rekam->get_kd_d_kontrak() : ''); ?>">
                                 <div id="wkontrak_gagal"  class="error"></div>

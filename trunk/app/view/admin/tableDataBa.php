@@ -7,8 +7,8 @@
                     <th rowspan="2" width="5%">No</th>
                     <th rowspan="2" width="5%">Tanggal</th>
                     <th rowspan="2" width="10%">Satker</th>
+                    <th colspan="3" width="25%">SPP</th>
                     <th colspan="3" width="25%">SPM</th>
-                    <th colspan="3" width="25%">Rekon</th>
                     <th colspan="3" width="25%">Kontrak</th>
                     <?php
                     if (Session::get('role') == BA999) {
@@ -86,12 +86,12 @@
                     $kontrak = ($val->get_kd_d_kontrak()==0)?"-":$val->get_kd_d_kontrak();
                     $kontrak_gagal = ($val->get_kd_d_kontrak_gagal()==0)?"-":$val->get_kd_d_kontrak_gagal();
                     $kontrak_persen = ($val->get_kd_d_kontrak_persen()<0)?"-":$val->get_kd_d_kontrak_persen()."%";
-                    echo "<td style=\"text-align: center\">" . $spm . "</td>";
-                    echo "<td style=\"text-align: center\">" . $spm_gagal . "</td>";
-                    echo "<td style=\"text-align: center\"><b>" . $spm_persen . "</b></td>";
                     echo "<td style=\"text-align: center\">" . $rekon . "</td>";
                     echo "<td style=\"text-align: center\">" . $rekon_gagal . "</td>";
                     echo "<td style=\"text-align: center\"><b>" . $rekon_persen . "</b></td>";
+                    echo "<td style=\"text-align: center\">" . $spm . "</td>";
+                    echo "<td style=\"text-align: center\">" . $spm_gagal . "</td>";
+                    echo "<td style=\"text-align: center\"><b>" . $spm_persen . "</b></td>";
                     echo "<td style=\"text-align: center\">" . $kontrak . "</td>";
                     echo "<td style=\"text-align: center\">" . $kontrak_gagal . "</td>";
                     echo "<td style=\"text-align: center\"><b>" . $kontrak_persen . "</b></td>";
