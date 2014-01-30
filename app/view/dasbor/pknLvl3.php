@@ -60,6 +60,6 @@
 
     }
 
-    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData, options);
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
 
 </script>
