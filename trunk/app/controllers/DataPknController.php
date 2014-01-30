@@ -79,8 +79,9 @@ class DataPknController extends BaseController {
             $d_pkn->set_kd_d_pkn($id);
             $this->view->d_ubah = $d_pkn->get_d_pkn_by_id($d_pkn);
         }
-        $id = Session::get('id_user');
-        $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl();
+        if(is_null($id)) $id=Session::get('id_user');
+        
+        $this->view->dasbor = $d_pkn->get_d_pkn_per_tgl($id);
         $this->view->data = $d_pkn->get_d_pkn(); //echo count($this->view->data);
         $this->view->render('admin/dataPknLvl3');
     }
@@ -97,6 +98,7 @@ class DataPknController extends BaseController {
         //if (isset($_POST['upd_d_pkn'])) {
         $kd_d_pkn = $_POST['kd_d_pkn'];
         $kd_d_user = $_POST['kd_d_user'];
+        $kd_d_user_pkn = $_POST['kd_d_user_pkn'];
         $kd_d_tgl = $_POST['kd_d_tgl'];
         $kd_d_sp2d = $_POST['kd_d_sp2d'];
         $kd_d_sp2d_gagal = $_POST['kd_d_sp2d_gagal'];
@@ -105,6 +107,7 @@ class DataPknController extends BaseController {
 
         $d_pkn->set_kd_d_pkn($kd_d_pkn);
         $d_pkn->set_kd_d_user($kd_d_user);
+        $d_pkn->set_kd_d_user_pkn($kd_d_user_pkn);
         $d_pkn->set_kd_d_tgl($kd_d_tgl);
         $d_pkn->set_kd_d_sp2d($kd_d_sp2d);
         $d_pkn->set_kd_d_sp2d_gagal($kd_d_sp2d_gagal);
@@ -180,7 +183,12 @@ class DataPknController extends BaseController {
         $max = $_POST['max_data'];
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
-        if(!is_null($id)) $d_pkn = $pkn->get_d_pkn($id);
+        if(is_null($id)){
+            $id = Session::get('id_user');
+        }
+        
+        $d_pkn = $pkn->get_d_pkn($id);
+
         $count = count($d_pkn);
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
@@ -197,9 +205,12 @@ class DataPknController extends BaseController {
     public function get_data_pkn_array($id=null) {
         $pkn = new DataPkn($this->registry);
         $d_pkn = $pkn->get_d_pkn();
-        if(!is_null($id)){
-            $d_pkn = $pkn->get_d_pkn($id);
+        if(is_null($id)){
+            $id = Session::get('id_user');
         }
+
+        $d_pkn = $pkn->get_d_pkn($id);
+
         $return = array();
         foreach ($d_pkn as $val) {
             $tmp = array();

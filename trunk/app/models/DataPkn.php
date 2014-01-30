@@ -45,7 +45,7 @@ class DataPkn {
         //$sql .= " WHERE kd_d_user_pkn = ".Session::get('id_user');
         if(!is_null($id)) $sql .= " WHERE kd_d_user_pkn = ".$id;
         $sql .= " ORDER BY kd_d_tgl desc";
-        if(is_null($id)) $sql .= ",kd_d_user_pkn";
+        if(is_null($id)) $sql .= ",kd_d_user_pkn"; 
         $result = $this->db->select($sql);
         $data = array();
         foreach ($result as $val) {
@@ -163,6 +163,7 @@ class DataPkn {
                     $result[$kd_pkn]['kd_d_sp2d_persen'] = ceil($sp2d);
                 }
                 if($spt>-1){
+                    $result[$kd_pkn]['count_spt']++;
                     $spt = (($result[$kd_pkn]['kd_d_spt_persen']*($result[$kd_pkn]['count_spt']-1))+$spt)/ $result[$kd_pkn]['count_spt'];
                     $result[$kd_pkn]['kd_d_spt_persen'] = ceil($spt);
                 }

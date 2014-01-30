@@ -293,19 +293,19 @@ if (isset($this->d_ubah)) {
 
             function cek() {
                 var pattern = '^[0-9]+$';
-                var kd_d_user = document.getElementById('kd_d_user').value;
+                var kd_d_user = document.getElementById('kd_d_user').value; console.log(kd_d_user);
                 var kd_d_tgl = document.getElementById('kd_d_tgl').value;
                 var kd_d_sp2d = document.getElementById('kd_d_sp2d').value;
                 var kd_d_sp2d_gagal = document.getElementById('kd_d_sp2d_gagal').value;
                 var kd_d_spt = document.getElementById('kd_d_spt').value;
                 var kd_d_spt_gagal = document.getElementById('kd_d_spt_gagal').value;
                 var jml = 0;
-                if (kd_d_user == '') {
+                /*if (kd_d_user == '') {
                     var wuser = 'User harus diisi!';
                     $('#wuser').fadeIn(0);
                     $('#wuser').html(wuser);
                     jml++;
-                }
+                }*/
 
                 if (kd_d_tgl == '') {
                     var wtgl = 'Tanggal harus diisi!';
@@ -369,7 +369,7 @@ if (isset($this->d_ubah)) {
                     $('#wspt_gagal').html(wspt_gagal);
                     jml++;
                 }
-
+                console.log(jml);
                 if (jml > 0) {
                     return false
                 } else {
