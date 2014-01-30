@@ -16,6 +16,7 @@
             $sp2d = $bot->get_sp2d_pkn() / 100;
             $spt = $bot->get_spt_pkn() / 100;
         }
+        $min = 100;
         foreach ($this->data as $value) {
             //$persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
             $persen = $value->get_total();
@@ -25,6 +26,7 @@
                 $persen = $value->get_kd_d_sp2d_persen();
             }*/
             $ids[] = $persen;
+            if(($persen-10)<$min) $min=($persen-10);
             if ($value->get_kd_d_user()==88881){
                 $tgl[] = '"RKN"';
             } elseif ($value->get_kd_d_user()==88882){
@@ -67,7 +69,7 @@
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 10,
         // Number - The scale starting value
-        scaleStartValue: 80,
+        scaleStartValue: <?php echo $min; ?>,
     }
 
     var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(lineChartData,options);

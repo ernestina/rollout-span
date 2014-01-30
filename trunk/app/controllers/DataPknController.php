@@ -229,7 +229,7 @@ class DataPknController extends BaseController {
         $pkn = new DataPkn($this->registry);
         $pkn->set_kd_d_pkn($kd_d_pkn);
         $pkn->add_file($file);
-        //header('location:'.URL.'dataPkn/addDataPkn');
+        header('location:'.URL.'dataPkn/addDataPkn');
     }
 
     public function view_file($file=null){

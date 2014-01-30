@@ -23,6 +23,7 @@
             $sp2d = $bot->get_sp2d_pkn() / 100;
             $spt = $bot->get_spt_pkn() / 100;
         }
+        $min = 100;
         foreach ($dasbor_pkn as $value) {
             $persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
             if($value->get_kd_d_sp2d_persen()<0){
@@ -32,6 +33,7 @@
             }
             if($persen<0) $persen=0;
             $ids[] = $persen;
+            if(($persen-10)<$min) $min=($persen-10);
             $originalDate = $value->get_kd_d_tgl();
             $newDate = date("d/m", strtotime($originalDate));
             $tgl[] = '"' . $newDate . '"';
@@ -58,6 +60,6 @@
 
     }
 
-    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData, options);
 
 </script>
