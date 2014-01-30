@@ -69,7 +69,7 @@
         Upload File Laporan
     </h2>
     
-    <a href="<?php echo URL . 'dataBa/addDataPkn'; ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+    <a href="<?php echo URL . 'dataPkn/addDataPkn'; ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
     
     <div id="top">
         <form method="POST" action="<?php echo URL . 'dataPkn/upload_file';?>" enctype="multipart/form-data">
