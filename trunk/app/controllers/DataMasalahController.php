@@ -36,12 +36,14 @@ class DataMasalahController extends BaseController {
             $tgl_mslh = $_POST['tgl_mslh'];
             $masalah = $_POST['masalah'];
             $kppn = $_POST['kd_d_kppn'];
+            $user = $_POST['user'];
 
             foreach ($masalah as $key => $value) {
                 $d_mslh->set_kd_d_user($kd_d_user);
                 $d_mslh->set_tgl_mslh($tgl_mslh);
                 $d_mslh->set_masalah($value);
                 $d_mslh->set_kd_d_kppn($kppn);
+                $d_mslh->set_kd_pemilik($user);
 
                 $d_mslh->add_d_mslh();
             }
@@ -55,6 +57,13 @@ class DataMasalahController extends BaseController {
 
         if(!is_null($link_d_kppn)) {
             $this->view->kd_d_kppn = $id;
+            if($link_d_kppn==KPPN){
+                $this->view->user = KPPN;
+            }elseif($link_d_kppn==BA999){
+                $this->view->user = BA999;
+            }elseif($link_d_kppn==PKN){
+                $this->view->user = PKN;
+            }
         }elseif (!is_null($id)) {
             $d_mslh->set_kd_d_mslh($id);
             $this->view->d_ubah = $d_mslh->get_d_mslh_by_id($d_mslh);
@@ -115,9 +124,9 @@ class DataMasalahController extends BaseController {
         header('location:' . URL . 'dataMasalah/addDataMasalah');
     }
 
-    public function get_masalah_kppn($id_data_kppn){
+    public function get_masalah_kppn($id_data_kppn, $user){
         $obj = new DataMasalah($this->registry);
-        $d_mas = $obj->get_masalah_kppn($id_data_kppn);
+        $d_mas = $obj->get_masalah_kppn($id_data_kppn, $user);
         $count = count($d_mas);
         if($d_mas>0){
             echo json_encode($d_mas);

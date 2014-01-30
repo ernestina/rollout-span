@@ -715,7 +715,7 @@
 
     function viewMasalah(id_data){
         console.log(id_data);
-        var url_data = '<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data;
+        var url_data = '<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data+'<?php echo "/".KPPN?>';
         $.ajax({
             type:'post',
             url: url_data,

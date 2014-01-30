@@ -13,6 +13,7 @@ class DataMasalah {
     private $_tgl_mslh;
     private $_masalah;
     private $_kd_d_kppn;
+    private $_kd_pemilik;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_mslh';
@@ -117,8 +118,8 @@ class DataMasalah {
         return $this;
     }
 
-    public function get_masalah_kppn($id_data){
-        $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=".$id_data;
+    public function get_masalah_kppn($id_data, $user){
+        $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=".$id_data." AND kd_pemilik=".$user;
         $d_masalah = $this->db->select($sql);
         $return = array();
         foreach($d_masalah as $val){
@@ -144,7 +145,8 @@ class DataMasalah {
             'kd_d_user' => $this->get_kd_d_user(),
             'tgl_mslh' => $this->get_tgl_mslh(),
             'masalah' => $this->get_masalah(),
-            'kd_d_kppn'=>$this->get_kd_d_kppn()
+            'kd_d_kppn'=>$this->get_kd_d_kppn(),
+            'kd_pemilik'=>$this->get_kd_pemilik()
         );
         $this->validate();
         if (!$this->get_valid()) {
@@ -166,7 +168,8 @@ class DataMasalah {
             'kd_d_user' => $this->get_kd_d_user(),
             'tgl_mslh' => $this->get_tgl_mslh(),
             'masalah' => $this->get_masalah(),
-            'kd_d_kppn'=>$this->get_kd_d_kppn()
+            'kd_d_kppn'=>$this->get_kd_d_kppn(),
+            'kd_pemilik'=>$this->get_kd_pemilik()
         );
         $this->validate();
         if (!$this->get_valid()) {
@@ -227,6 +230,10 @@ class DataMasalah {
         $this->_kd_d_kppn = $kppn;
     }
 
+    public function set_kd_pemilik($user) {
+        $this->_kd_pemilik = $user;
+    }
+
     public function set_table($table) {
         $this->_table = $table;
     }
@@ -260,6 +267,10 @@ class DataMasalah {
 
     public function get_kd_d_kppn() {
         return $this->_kd_d_kppn;
+    }
+
+    public function get_kd_pemilik() {
+        return $this->_kd_pemilik;
     }
 
     public function get_error() {

@@ -19,6 +19,7 @@ class DataPkn {
     private $_kd_d_spt_gagal;
     private $_kd_d_spt_persen;
     private $_total;
+    private $_file;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_pkn';
@@ -52,6 +53,7 @@ class DataPkn {
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
             $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_file($val['file_pkn']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
@@ -91,6 +93,7 @@ class DataPkn {
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
             $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_file($val['file_pkn']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
@@ -250,6 +253,7 @@ class DataPkn {
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
             $d_pkn->set_kd_d_user($val['kd_d_user_pkn']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_file($val['file_pkn']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
@@ -326,6 +330,7 @@ class DataPkn {
             $d_pkn = new $this($this->registry);
             $d_pkn->set_kd_d_user($val['kd_d_user']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_file($val['file_pkn']);
             if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
                 //$d_pkn->set_kd_d_sp2d_persen(100);
                 $d_pkn->set_kd_d_sp2d_persen(-1);
@@ -363,6 +368,7 @@ class DataPkn {
             $d_pkn->set_kd_d_pkn($val['kd_d_pkn']);
             $d_pkn->set_kd_d_user($val['kd_d_user']);
             $d_pkn->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_pkn->set_file($val['file_pkn']);
             $d_pkn->set_kd_d_sp2d($val['kd_d_sp2d']);
             $d_pkn->set_kd_d_sp2d_gagal($val['kd_d_sp2d_gagal']);
             if (($val['kd_d_sp2d']) + ($val['kd_d_sp2d_gagal']) == 0) {
@@ -469,6 +475,12 @@ class DataPkn {
         return $s+$t;
     }
 
+    public function add_file($file){
+        $where = " kd_d_pkn=".$this->get_kd_d_pkn(); echo $where."-".$file;
+        $data = array("file_pkn"=>$file);
+        $this->db->update($this->_table,$data,$where);
+    }
+
     public function validate($add = true) {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";
@@ -562,6 +574,10 @@ class DataPkn {
         $this->_total = $total;
     }
 
+    public function set_file($file){
+        $this->_file = $file;
+    }
+
     public function set_table($table) {
         $this->_table = $table;
     }
@@ -619,6 +635,10 @@ class DataPkn {
 
     public function get_total() {
         return $this->_total;
+    }
+
+    public function get_file(){
+        return $this->_file;
     }
 
     public function get_error() {
