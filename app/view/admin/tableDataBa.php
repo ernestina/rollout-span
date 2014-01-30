@@ -11,9 +11,9 @@
                     <th colspan="3" width="25%">SPM</th>
                     <th colspan="3" width="25%">Kontrak</th>
                     <?php
-                    if (Session::get('role') == BA999) {
+                    //if (Session::get('role') == BA999) {
                         echo "<th rowspan='2' width='10%'>Aksi</th>";
-                    }
+                    //}
                     ?>
                 </tr>
                 <tr>
@@ -97,7 +97,12 @@
                     echo "<td style=\"text-align: center\"><b>" . $kontrak_persen . "</b></td>";
                     if (Session::get('role') == BA999) {
                         echo "<td style=\"text-align: center\"><a href=" . URL . "dataBa/delDataBa/" . $val->get_kd_d_ba() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a></td>";
+                        <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "><i class=\"icon-pencil\"></i></a>
+                        <a href=" . URL . "dataBa/addDataBa/" . $val->get_kd_d_ba() . "/1#uplModal  style='cursor:pointer'><i class=\"icon-file\" title='upload file'></i></a>
+                        <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_ba()."/".BA999."#oModal  style='cursor:pointer'><i class=\"icon-list-alt\" title='input masalah'></i></a></td>";
+                    }elseif(Session::get('role') == ADMIN){
+                        echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")' style='cursor:pointer'><i class=\"icon-search\" title='lihat file'></i></a>
+                                <a onclick='viewMasalah(\"".$val->get_kd_d_ba()."\")' style='cursor:pointer'><i class=\"icon-eye-close\" title='lihat permasalahan'></i></a></td>";
                     }
                     echo "</tr>";
                     $no++;

@@ -10,13 +10,20 @@
     <body>
 
         <?php
+        $len_data = count($this->dasbor);
+        if($len_data<=60){
+            $from = 0;
+        }else{
+            $from = $len_data-60;
+        }
+        $dasbor_pkn = array_slice($this->dasbor,$from);
         $ids = array();
         $tgl = array();
         foreach ($this->bobot as $bot) {
             $sp2d = $bot->get_sp2d_pkn() / 100;
             $spt = $bot->get_spt_pkn() / 100;
         }
-        foreach ($this->dasbor as $value) {
+        foreach ($dasbor_pkn as $value) {
             $persen = ceil(($value->get_kd_d_sp2d_persen() * $sp2d + $value->get_kd_d_spt_persen() * $spt));
             if($value->get_kd_d_sp2d_persen()<0){
                 $persen = $value->get_kd_d_spt_persen();

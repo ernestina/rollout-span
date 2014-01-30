@@ -61,6 +61,43 @@
 </div> <!--end modal-->
 </div>
 </div>
+<!-- UPLOAD FILE LAPORAN BA -->
+<div id="uplModal" class="modalDialog">
+<div>
+    <!--input id="add_data" class="normal" type="button" onclick="addData('<?php //echo Session::get('id_user');?>')" value="TAMBAH DATA"-->
+    <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px">
+        Upload File Laporan
+    </h2>
+    
+    <a href="<?php echo URL . 'dataBa/addDataPkn'; ?>" title="Tutup" class="close"><i class="icon-remove icon-white" style="margin-left: 4px; margin-top: 0px"></i></a>
+    
+    <div id="top">
+        <form method="POST" action="<?php echo URL . 'dataPkn/upload_file';?>" enctype="multipart/form-data">
+                  
+            <div id="wfile" class="error"></div>
+            <input type="hidden" name="kd_d_user" id="kd_d_user" size="8" value="">
+            <input type="hidden" name="id_data" id="id_data" value="
+                <?php 
+                    if (isset($this->kd_d_pkn)) {
+                        echo $this->kd_d_pkn;
+                    }
+                ?>
+            ">
+            <table style="margin: 0px 5px 0px 5px">
+                <tr>
+                    <td align="left" width="30%">Nama File</td><td> : </td><td><div id="filename"></div></td>
+                </tr>
+                <tr>
+                    <td>File Upload</td><td> : </td><td><input type="file" name="fupload" id="fupload"></td>
+                </tr>
+            </table>
+            <ul class="inline" style="margin-left: 230px";>
+                    <li><input type="submit" id="uplsubmit" class="sukses" name="submit_file" value="SIMPAN" onClick="return cek_upload();"></li>
+                </ul>   
+        </form>
+        </div>
+    </div><!--end top-->
+</div><!--end modal-->
 <script type="text/javascript">
     var add_data = false;
     $(function() {
@@ -109,6 +146,14 @@
                     $('#form_input').dialog('open');
 <?php } ?>
 
+        $('#fupload').change(function(){
+            var tmp = $('#fupload').val();
+            var tmp_arr = tmp.split('\\');
+            console.log(tmp_arr);
+            var len = tmp_arr.length; console.log(len);
+            var filename = tmp_arr[len-1];
+            $('#filename').html(filename);
+        })
             });
 
             function rekam() {
@@ -336,4 +381,102 @@ if (isset($this->d_ubah)) {
                     return true;
                 }
             }
+
+function cek_upload(){
+        var file_upload = document.getElementById('fupload').value;
+        var jml = 0;
+        if(file_upload==''){
+            $('#wfile').html('file belum dipilih!');
+            $('#wfile').fadeIn();
+            jml++;
+        }else{
+            var fsplit = file_upload.split('.');
+            var ext = fsplit[fsplit.length-1];
+            var cek_file = ext=='doc' || ext=='docx' || ext=='xls' || ext=='xlsx' || ext=='pdf';
+            if(!cek_file){
+                $('#wfile').html('file tidak sesuai dengan format!');
+                $('#wfile').fadeIn();
+                jml++;
+            } 
+        }
+        console.log(jml);
+        if(jml>0){
+            return false;
+        }
+    }
+
+function viewFile(file){
+        var url = "<?php echo URL;?>dataPkn/view_file/"+file;
+    
+        var w = 800;
+        var h = 500;
+        var left = (screen.width/2)-(w/2);
+        var top = (screen.height/2)-(h/2);
+        var title = "tampilan surat tugas";
+        window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+    }
+
+function styleListMasalah(obj){
+        obj.style.borderRadius="2px";
+        obj.style.borderColor="#B6B6A9";
+        obj.style.borderWidth="2px";
+        obj.style.backgroundColor="#E0E0D1";
+        obj.style.padding = "5px";
+        obj.style.marginBottom="2px";
+    }
+
+    function viewMasalah(id_data){
+        console.log(id_data);
+        var url_data = '<?php echo URL."dataMasalah/get_masalah_kppn/"; ?>'+id_data+'<?php echo "/".PKN;?>';
+        $.ajax({
+            type:'post',
+            url: url_data,
+            data:'',
+            dataType:'json',
+            success:function(data){
+                var oMasalah = 'oMasalah';
+                if(isExistDomId(oMasalah)) document.getElementById(oMasalah).remove();
+                var div = document.createElement('div');
+                div.setAttribute('id',oMasalah);
+                div.setAttribute('title','Daftar Masalah');
+                var count_data = Object.keys(data).length;
+                var ul = document.createElement('div');
+                ul.style.color = "blue";
+                ul.style.fontSize = "18px";
+                if(count_data==0){
+                    var li = document.createElement('div');
+                    styleListMasalah(li);
+                    li.appendChild(document.createTextNode('Data Tidak Ditemukan!'));
+                    ul.appendChild(li);
+                }else{
+                    for(key in data){
+                        var li = document.createElement('div');
+                        styleListMasalah(li);
+                        li.appendChild(document.createTextNode(data[key].masalah));
+                        ul.appendChild(li);
+                    }
+                }
+                div.appendChild(ul);
+                document.getElementsByTagName('body')[0].appendChild(div);
+                $( "#oMasalah" ).dialog({
+                  autoOpen: false,
+                    width: 400,
+                    //height: 400,
+                    show: {
+                        effect: "blind",
+                        duration: 300
+                    },
+                    hide: {
+                        effect: "blind",
+                        duration: 300
+                    }
+                });
+
+                $( "#oMasalah" ).dialog( "open" );
+            },
+            error:function(data){
+                //console.log(data);
+            }  
+        });
+    }
 </script>

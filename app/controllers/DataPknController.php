@@ -46,7 +46,7 @@ class DataPknController extends BaseController {
      * tambah data PKN
      */
 
-    public function addDataPkn($id = null) {
+    public function addDataPkn($id = null, $param=null) {
         $d_pkn = new DataPkn($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_pkn_lvl2();
@@ -73,7 +73,9 @@ class DataPknController extends BaseController {
             }
         }
         //var_dump($d_tetap->get_d_tetap());
-        if (!is_null($id)) {
+        if(!is_null($param)){
+            $this->view->kd_d_pkn = $id;
+        }elseif (!is_null($id)) {
             $d_pkn->set_kd_d_pkn($id);
             $this->view->d_ubah = $d_pkn->get_d_pkn_by_id($d_pkn);
         }
@@ -214,6 +216,25 @@ class DataPknController extends BaseController {
             if(!array_key_exists($key, $return)) $return[$key] = $tmp;
         }
         echo json_encode($return);
+    }
+
+    public function upload_file(){
+        $kd_d_pkn = $_POST['id_data'];
+        $file;
+        $upload = new Upload('fupload');
+        $nama = array("PKN",$kd_d_pkn);
+        $upload->uploadFile('report/',$nama);
+        $file = $upload->getFileTo();
+
+        $pkn = new DataPkn($this->registry);
+        $pkn->set_kd_d_pkn($kd_d_pkn);
+        $pkn->add_file($file);
+        //header('location:'.URL.'dataPkn/addDataPkn');
+    }
+
+    public function view_file($file=null){
+        $this->view->file = $file;
+        $this->view->load('admin/viewfile');
     }
 
     /*

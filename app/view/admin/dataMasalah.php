@@ -38,6 +38,7 @@
 
                               if (isset($this->kd_d_kppn)) {
                                   echo "<input type=hidden name='kd_d_kppn' value=" . $this->kd_d_kppn . ">";
+                                  echo "<input type=hidden name='user' value=" . $this->user . ">";
                               }
 
                               if (isset($this->error)) {

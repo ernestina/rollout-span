@@ -21,6 +21,7 @@ class DataBa {
     private $_kd_d_kontrak;
     private $_kd_d_kontrak_gagal;
     private $_kd_d_kontrak_persen;
+    private $_file;
     private $_error;
     private $_valid = TRUE;
     private $_table = 'd_ba';
@@ -54,6 +55,7 @@ class DataBa {
             $d_ba->set_kd_d_user($val['kd_d_user']);
             $d_ba->set_kd_d_user_ba($val['kd_d_user_ba']);
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_ba->set_file($val['file_ba']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
 			if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
@@ -148,6 +150,7 @@ class DataBa {
             $d_ba->set_kd_d_user($val['kd_d_user']);
             $d_ba->set_kd_d_user_ba($val['kd_d_user_ba']);
             $d_ba->set_kd_d_tgl($val['kd_d_tgl']);
+            $d_ba->set_file($val['file_ba']);
             $d_ba->set_kd_d_spm($val['kd_d_spm']);
             $d_ba->set_kd_d_spm_gagal($val['kd_d_spm_gagal']);
             if (($val['kd_d_spm'])+($val['kd_d_spm_gagal'])==0){
@@ -252,6 +255,12 @@ class DataBa {
         }
 
         return $r+$s+$t;
+    }
+
+    public function add_file($file){
+        $where = " kd_d_ba=".$this->get_kd_d_ba(); echo $where."-".$file;
+        $data = array("file_ba"=>$file);
+        $this->db->update($this->_table,$data,$where);
     }
 
     public function validate() {
@@ -364,6 +373,10 @@ class DataBa {
         $this->_kd_d_kontrak_persen = $kontrak_persen;
     }
 
+    public function set_file($file){
+        $this->_file = $file;
+    }
+
     public function set_table($table) {
         $this->_table = $table;
     }
@@ -429,6 +442,10 @@ class DataBa {
 
     public function get_kd_d_kontrak_persen() {
         return $this->_kd_d_kontrak_persen;
+    }
+
+    public function get_file(){
+        return $this->_file;
     }
 
     public function get_error() {

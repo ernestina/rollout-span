@@ -77,6 +77,7 @@ $akses['DataBa'] = array(
     'addDataBa',
     'updDataBa',
     'delDataBa',
+    'upload_file',
     '__destruct'
 );
 

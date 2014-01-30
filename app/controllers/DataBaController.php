@@ -26,7 +26,7 @@ class DataBaController extends BaseController {
      * tambah data BA.999
      */
 
-    public function addDataBa($id = null) {
+    public function addDataBa($id = null, $param=null) {
         $d_ba = new DataBa($this->registry);
         $d_bobot = new DataBobot($this->registry);
         $this->view->bobot = $d_bobot->get_bobot_ba_lvl2();
@@ -56,7 +56,9 @@ class DataBaController extends BaseController {
                 $this->view->error = $d_ba->get_error();
             }
         }
-        if (!is_null($id)) {
+        if(!is_null($param)){
+            $this->view->kd_d_ba = $id;
+        }elseif (!is_null($id)) {
             $d_ba->set_kd_d_ba($id);
             $this->view->d_ubah = $d_ba->get_d_ba_by_id($d_ba);
         }
@@ -185,6 +187,25 @@ class DataBaController extends BaseController {
         }
 
         echo json_encode($return);
+    }
+
+    public function upload_file(){
+        $kd_d_ba = $_POST['id_data'];
+        $file;
+        $upload = new Upload('fupload');
+        $nama = array("BA",$kd_d_ba);
+        $upload->uploadFile('report/',$nama);
+        $file = $upload->getFileTo();
+
+        $ba = new DataBa($this->registry);
+        $ba->set_kd_d_ba($kd_d_ba);
+        $ba->add_file($file);
+        header('location:'.URL.'dataBa/addDataBa');
+    }
+
+    public function view_file($file=null){
+        $this->view->file = $file;
+        $this->view->load('admin/viewfile');
     }
 
     public function __destruct() {
