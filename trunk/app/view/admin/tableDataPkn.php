@@ -10,17 +10,17 @@
                     <th colspan="3" width ="35%">SPT</th>
                     <?php
                     //if (Session::get('role') == PKN) {
-                        echo "<th rowspan='2' width ='10%'>Aksi</th>";
+                        echo "<th rowspan='2' width ='20%'>Aksi</th>";
                     //}
                     ?>
                 </tr>
                 <tr>
                     <th width="10%"><i class="icon-ok" title='sukses'></th>
                     <th width="10%"><i class="icon-remove" title='gagal'></th>
-                    <th width="15%">%</th>
+                    <th width="10%">%</th>
                     <th width="10%"><i class="icon-ok" title='sukses'></th>
                     <th width="10%"><i class="icon-remove" title='gagal'></th>
-                    <th width="15%">%</th>
+                    <th width="10%">%</th>
                 </tr>
             </thead>
             <tbody style='text-align: center'>
@@ -45,7 +45,7 @@
                     //print_r($val->get_kd_d_spt_persen());
                     echo "<tr>";
                     echo "<td>$no</td>";
-                    echo "<td style='text-align: center'>" . $val->get_kd_d_tgl() . "</td>";
+                    echo "<td>" . $val->get_kd_d_tgl() . "</td>";
                     echo "<td>" . $kd_d_sp2d . "</td>";
                     echo "<td>" . $kd_d_sp2d_gagal . "</td>";
                     echo "<td><b>" . $kd_d_sp2d_persen . "</td>";
@@ -53,12 +53,12 @@
                     echo "<td>" . $kd_d_spt_gagal . "</td>";
                     echo "<td><b>" . $kd_d_spt_persen . "</b></td>";
                     if (Session::get('role') == PKN) {
-                        echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\"></i></a>
-                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\"></i></a>
-                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "/1#uplModal  style='cursor:pointer'><i class=\"icon-file\" title='upload file'></i></a>
+                        echo "<td><a href=" . URL . "dataPkn/delDataPkn/" . $val->get_kd_d_pkn() . " onclick=\"return del('" . date("d/m/Y", strtotime($val->get_kd_d_tgl())) . "')\"><i class=\"icon-trash\" title='hapus data'></i></a> &nbsp
+                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\" title='ubah data'></i></a> &nbsp
+                        <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "/1#uplModal  style='cursor:pointer'><i class=\"icon-file\" title='upload file'></i></a> &nbsp
                         <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_pkn()."/".PKN."#oModal  style='cursor:pointer'><i class=\"icon-list-alt\" title='input masalah'></i></a></td>";
                     }elseif(Session::get('role') == ADMIN){
-                        echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")' style='cursor:pointer'><i class=\"icon-search\" title='lihat file'></i></a>
+                        echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")' style='cursor:pointer'><i class=\"icon-search\" title='lihat file'></i></a> &nbsp
                                 <a onclick='viewMasalah(\"".$val->get_kd_d_pkn()."\")' style='cursor:pointer'><i class=\"icon-eye-close\" title='lihat permasalahan'></i></a></td>";
                     }
                     echo "</tr>";

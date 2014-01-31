@@ -1,6 +1,7 @@
+<div id="top">
 <h2>MONITORING DATA BA 999</h2>
 <center><?php $this->load('dasbor/baLvl2') ?></center></br>
-<div id="top">
+
     <div id="form">
         <?php if (Session::get('role') == BA999) { ?>
             <div>

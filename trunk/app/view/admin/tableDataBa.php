@@ -6,13 +6,13 @@
                 <tr>
                     <th rowspan="2" width="5%">No</th>
                     <th rowspan="2" width="5%">Tanggal</th>
-                    <th rowspan="2" width="10%">Satker</th>
+                    <th rowspan="2" width="8%">Satker</th>
                     <th colspan="3" width="25%">SPP</th>
                     <th colspan="3" width="25%">SPM</th>
                     <th colspan="3" width="25%">Kontrak</th>
                     <?php
                     //if (Session::get('role') == BA999) {
-                        echo "<th rowspan='2' width='10%'>Aksi</th>";
+                        echo "<th rowspan='2' width='12%'>Aksi</th>";
                     //}
                     ?>
                 </tr>

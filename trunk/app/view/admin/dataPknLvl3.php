@@ -1,10 +1,25 @@
-<h2>DATA PKN</h2>
+<!--tampilan judul ini masih salah jika dibuka pakai user subdit, tapi untuk user admin sudah benar-->
+<?php 
+	foreach ($this->data as $val){ 
+		$pkn=$val->get_kd_d_user();
+	}
+	if ($pkn >=88881 && $pkn <=88884) {
+?>
+<div id="top">
+<h2>DATA PKN SUBDIT
+	<?php 
+			if ($pkn == 88881) { echo "RKN"; }
+			else if ($pkn == 88882){ echo "RKUN";}
+			else if ($pkn == 88883){ echo "RPH";}
+			else { echo "RPL";}
+		
+        ?>
+</h2>
 <center><?php $this->load('dasbor/pknLvl3') ?></center>
 <?php if (Session::get('role') == PKN) { ?>
-    <div id="top">
-        <div>
+    
             <input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
-        </div>
+     
     <?php } ?>
 
     <div id="form"></br></br>
@@ -59,6 +74,7 @@
         ?>
     </fieldset>
 </div> <!--end modal-->
+
 </div>
 </div>
 <!-- UPLOAD FILE LAPORAN BA -->
@@ -98,6 +114,8 @@
         </div>
     </div><!--end top-->
 </div><!--end modal-->
+<?php } else { echo "<h2>"; echo "Maaf halaman yang Anda cari tidak ada"; echo "</h2>";} ?>
+
 <script type="text/javascript">
     var add_data = false;
     $(function() {

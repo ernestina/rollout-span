@@ -24,13 +24,13 @@
                 <th width="10%">Total/Bobot</th>-->
                 <tr>
                     <th rowspan="2" width ="3%">No</th>
-                    <th rowspan="2" width ="5%">Tanggal</th>
+                    <th rowspan="2" width ="15%">KPPN</th>
                     <th colspan="3" width ="15%">Konversi</th>
                     <th colspan="3" width ="15%">Supplier</th>
                     <th colspan="3" width ="15%">SP2D</th>
                     <th colspan="3" width ="15%">LHP</th>
                     <th colspan="3" width ="15%">Rekon</th>
-                    <th width="10%">Total/Bobot</th>
+                    <th rowspan="2" width="7%">Total/<br>Bobot</th>
                 </tr>
                 <tr>
                     <th width ="5%"><i class="icon-ok" title='sukses'></i></th>
