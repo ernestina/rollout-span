@@ -1,10 +1,11 @@
+<div id="top">
 <h2>DATA PKN PER SUBDIT</h2>
 <center><?php $this->load('dasbor/pknLvl2') ?></center>
 <?php if (Session::get('role') == PKN) { ?>
-    <div id="top">
-        <div>
+    
+        
             <input id="add_data" class="normal" type="button" onclick="addData()" value="TAMBAH DATA">
-        </div>
+        
     <?php } ?>
 
     <div id="form">
@@ -122,6 +123,7 @@
         </div>
     </fieldset>
 </div> <!--end modal-->
+
 </div>
 </div>
 <script type="text/javascript">
