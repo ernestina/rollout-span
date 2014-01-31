@@ -15,18 +15,26 @@
                     ?>
                 </tr>
                 <tr>
-                    <th width="10%">Sukses</th>
-                    <th width="10%">Gagal</th>
+                    <th width="10%"><i class="icon-ok" title='sukses'></th>
+                    <th width="10%"><i class="icon-remove" title='gagal'></th>
                     <th width="15%">%</th>
-                    <th width="10%">Sukses</th>
-                    <th width="10%">Gagal</th>
+                    <th width="10%"><i class="icon-ok" title='sukses'></th>
+                    <th width="10%"><i class="icon-remove" title='gagal'></th>
                     <th width="15%">%</th>
                 </tr>
             </thead>
             <tbody style='text-align: center'>
                 <?php
                 $no = $this->mulai;
+                $t_sp2d = 0;
+                $t_sp2d_gagal = 0;
+                $t_spt = 0;
+                $t_spt_gagal = 0;
                 foreach ($this->data as $val) {
+                    $t_sp2d += $val->get_kd_d_sp2d();
+                    $t_sp2d_gagal += $val->get_kd_d_sp2d_gagal();
+                    $t_spt += $val->get_kd_d_spt();
+                    $t_spt_gagal += $val->get_kd_d_spt_gagal();
                     //var_dump($val);
                     $kd_d_sp2d = ($val->get_kd_d_sp2d()==0)?"-":$val->get_kd_d_sp2d();
                     $kd_d_sp2d_gagal = ($val->get_kd_d_sp2d_gagal()==0)?"-":$val->get_kd_d_sp2d_gagal();
@@ -55,6 +63,16 @@
                     }
                     echo "</tr>";
                     $no++;
+                }
+                echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2'>";
+                echo "<td></td><td style='text-align:left'>SubTotal</td>";
+                echo "<td>".$t_sp2d."</td><td>".$t_sp2d_gagal."</td><td></td>";
+                echo "<td>".$t_spt."</td><td>".$t_spt_gagal."</td><td colspan=2></td></tr>";
+                if(isset($this->total)){
+                    echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2;background-color:#0066FF;color:#CCFFFF'>";
+                    echo "<td></td><td style='text-align:left;'>TOTAL</td>";
+                    echo "<td>".$this->total['kd_d_sp2d']."</td><td>".$this->total['kd_d_sp2d_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_spt']."</td><td>".$this->total['kd_d_spt_gagal']."</td><td></td><td colspan=2></td></tr>";
                 }
                 ?>
             </tbody>

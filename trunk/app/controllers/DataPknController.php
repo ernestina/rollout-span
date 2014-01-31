@@ -169,6 +169,10 @@ class DataPknController extends BaseController {
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
         //$end = $start+$max; echo $end."<br>";
+        $is_end_page = ($hal==$jml_hal); echo $hal."-".$jml_hal;
+        if($is_end_page){
+            $this->view->total = $pkn->get_sum_data($d_pkn);
+        }
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_pkn, $start, $max);
         $this->view->load('admin/tableDataPkn');
@@ -193,6 +197,10 @@ class DataPknController extends BaseController {
         $jml_hal = ceil($count / $max);
         $start = ($hal - 1) * $max;
         //$end = $start+$max; echo $end."<br>";
+        $is_end_page = ($hal==$jml_hal); //echo $hal."-".$jml_hal;
+        if($is_end_page){
+            $this->view->total = $pkn->get_sum_data($d_pkn);
+        }
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_pkn, $start, $max);
         $this->view->load('admin/tableDataPkn');

@@ -17,21 +17,34 @@
                     ?>
                 </tr>
                 <tr>
-                    <th width="7%" >Sukses</th>
-                    <th width="7%">Gagal</th>
+                    <th width="7%" ><i class="icon-ok" title='sukses'></th>
+                    <th width="7%"><i class="icon-remove" title='gagal'></th>
                     <th width="6%">%</th>
-                    <th width="7%">Sukses</th>
-                    <th width="7%">Gagal</th>
+                    <th width="7%"><i class="icon-ok" title='sukses'></th>
+                    <th width="7%"><i class="icon-remove" title='gagal'></th>
                     <th width="6%">%</th>
-                    <th width="7%">Sukses</th>
-                    <th width="7%">Gagal</th>
+                    <th width="7%"><i class="icon-ok" title='sukses'></th>
+                    <th width="7%"><i class="icon-remove" title='gagal'></th>
                     <th width="6%">%</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = $this->mulai;
+                $t_spm = 0;
+                $t_spm_gagal = 0;
+                $t_kontrak = 0;
+                $t_kontrak_gagal = 0;
+                $t_rekon = 0;
+                $t_rekon_gagal = 0;
+                //var_dump($this->total);
                 foreach ($this->data as $val) {
+                    $t_spm += $val->get_kd_d_spm();
+                    $t_spm_gagal += $val->get_kd_d_spm_gagal();
+                    $t_kontrak += $val->get_kd_d_kontrak();
+                    $t_kontrak_gagal += $val->get_kd_d_kontrak_gagal();
+                    $t_rekon += $val->get_kd_d_rekon();
+                    $t_rekon_gagal += $val->get_kd_d_rekon_gagal();
                     //var_dump($val);
                     echo "<tr>";
                     echo "<td style=\"text-align: center\">$no</td>";
@@ -106,6 +119,18 @@
                     }
                     echo "</tr>";
                     $no++;
+                }
+                echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2'>";
+                echo "<td></td><td style='text-align:left' colspan=2>SubTotal</td>";
+                echo "<td>".$t_rekon."</td><td>".$t_rekon_gagal."</td><td></td>";
+                echo "<td>".$t_spm."</td><td>".$t_spm_gagal."</td><td></td>";
+                echo "<td>".$t_kontrak."</td><td>".$t_kontrak_gagal."</td><td colspan=2></td></tr>";
+                if(isset($this->total)){
+                    echo "<tr style='font-weight:bold; border-top: 1px solid #D6D6C2;background-color:#0066FF;color:#CCFFFF'>";
+                    echo "<td></td><td style='text-align:left;'>TOTAL</td>";
+                    echo "<td>".$this->total['kd_d_rekon']."</td><td>".$this->total['kd_d_rekon_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_spm']."</td><td>".$this->total['kd_d_spm_gagal']."</td><td></td>";
+                    echo "<td>".$this->total['kd_d_kontrak']."</td><td>".$this->total['kd_d_kontrak_gagal']."</td><td colspan=2></td></tr>";
                 }
                 ?>
             </tbody>
