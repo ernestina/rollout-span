@@ -152,9 +152,13 @@ class DataBaController extends BaseController {
         $ba = new DataBa($this->registry);
         $d_ba = $ba->get_d_ba();
         $count = count($d_ba);
-        $jml_hal = ceil($count / $max);
+        $jml_hal = ceil($count / $max); //echo $count."-".$max."<br>";
         $start = ($hal - 1) * $max;
         //$end = (($hal-1)*$max)+$max;
+        $is_end_page = ($hal==$jml_hal); //echo $hal."-".$jml_hal;
+        if($is_end_page){
+            $this->view->total = $ba->get_sum_data($d_ba);
+        }
         $this->view->mulai = $start + 1;
         $this->view->data = array_slice($d_ba, $start, $max);
         $this->view->load('admin/tableDataBa');
@@ -183,7 +187,7 @@ class DataBaController extends BaseController {
             $tmp['kd_d_kontrak_persen'] = $val->get_kd_d_kontrak_persen();
             $tmp['kd_d_spm_persen'] = $val->get_kd_d_spm_persen();
             $tmp['kd_d_rekon_persen'] = $val->get_kd_d_rekon_persen();
-            $return[$val->get_kd_d_tgl()] = $tmp;
+            $return[$val->get_kd_d_user_ba()."*".$val->get_kd_d_tgl()] = $tmp;
         }
 
         echo json_encode($return);

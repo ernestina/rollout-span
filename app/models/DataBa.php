@@ -263,6 +263,41 @@ class DataBa {
         $this->db->update($this->_table,$data,$where);
     }
 
+    public function get_sum_data($obj){
+        $t_spm = 0;
+        $t_spm_gagal = 0;
+        $t_rekon = 0;
+        $t_rekon_gagal = 0;
+        $t_kontrak = 0;
+        $t_kontrak_gagal = 0;
+        foreach ($obj as $key => $val) {
+            if($val instanceof DataBa){
+                $t_spm += $val->get_kd_d_spm();
+                $t_spm_gagal += $val->get_kd_d_spm_gagal();
+                $t_rekon += $val->get_kd_d_rekon();
+                $t_rekon_gagal += $val->get_kd_d_rekon_gagal();
+                $t_kontrak += $val->get_kd_d_kontrak();
+                $t_rekon_gagal += $val->get_kd_d_kontrak_gagal();
+            }else{
+                $t_spm += $val['kd_d_spm'];
+                $t_spm_gagal += $val['kd_d_spm_gagal'];
+                $t_rekon += $val['kd_d_rekon'];
+                $t_rekon_gagal += $val['kd_d_rekon_gagal'];
+                $t_kontrak += $val['kd_d_kontrak'];
+                $t_kontrak_gagal += $val['kd_d_kontrak_gagal'];
+            }
+        }
+
+        $return = array('kd_d_spm'=>$t_spm,
+                        'kd_d_spm_gagal'=>$t_spm_gagal,
+                        'kd_d_rekon'=>$t_rekon_gagal,
+                        'kd_d_rekon_gagal'=>$t_rekon_gagal,
+                        'kd_d_kontrak'=>$t_kontrak,
+                        'kd_d_kontrak_gagal'=>$t_kontrak_gagal); //var_dump($return);
+
+        return $return;
+    }
+
     public function validate() {
         if ($this->get_kd_d_user() == "") {
             $this->_error .= "User belum dipilih!</br>";

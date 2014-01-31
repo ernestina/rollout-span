@@ -482,6 +482,33 @@ class DataPkn {
         $this->db->update($this->_table,$data,$where);
     }
 
+    public function get_sum_data($obj){
+        $t_sp2d = 0;
+        $t_sp2d_gagal = 0;
+        $t_spt = 0;
+        $t_spt_gagal = 0;
+        foreach ($obj as $key => $val) {
+            if($val instanceof DataPkn){
+                $t_sp2d += $val->get_kd_d_sp2d();
+                $t_sp2d_gagal += $val->get_kd_d_sp2d_gagal();
+                $t_spt += $val->get_kd_d_spt();
+                $t_spt_gagal += $val->get_kd_d_spt_gagal();
+            }else{
+                $t_sp2d += $val['kd_d_sp2d'];
+                $t_sp2d_gagal += $val['kd_d_sp2d_gagal'];
+                $t_spt += $val['kd_d_spt'];
+                $t_spt_gagal += $val['kd_d_spt_gagal'];
+            }
+        }
+
+        $return = array('kd_d_sp2d'=>$t_sp2d,
+                        'kd_d_sp2d_gagal'=>$t_sp2d_gagal,
+                        'kd_d_spt'=>$t_spt_gagal,
+                        'kd_d_spt_gagal'=>$t_spt_gagal); //var_dump($return);
+
+        return $return;
+    }
+
     public function validate($add = true) {
         if ($this->get_kd_d_user() == 0) {
             $this->_error .= "User belum dipilih!</br>";
