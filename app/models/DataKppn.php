@@ -225,18 +225,28 @@ class DataKppn {
             }else{
                 $rekon = $value['kd_d_rekon']/($value['kd_d_rekon']+$value['kd_d_rekon_gagal'])*100;    
             }
+			$pembagikppn = DataKppn::getPembagi($value);
+			if ($pembagikppn!=0){
             $total = (($konversi<0?0:$konversi)*$k
                     +($supplier<0?0:$supplier)*$p
                     +($sp2d<0?0:$sp2d)*$s
                     +($lhp<0?0:$lhp)*$l
                     +($rekon<0?0:$rekon)*$r)/DataKppn::getPembagi($value);
+			} else {
+				$total = 0;
+			}
             if(array_key_exists($kd_kppn, $result)){
                 $tmp_total = $result[$kd_kppn]['total']*$result[$kd_kppn]['count_data'];
+				$pembagikppn = DataKppn::getPembagi($value);
+				if ($pembagikppn!=0){
                 $total = ((($konversi<0)?0:$konversi)*$k
                             +(($supplier<0)?0:$supplier)*$p+
                             (($sp2d<0)?0:$sp2d)*$s+
                             (($lhp<0)?0:$lhp)*$l+
                             (($rekon<0)?0:$rekon)*$r)/DataKppn::getPembagi($value); //belom fix
+				} else {
+					$total = 0;
+				}
                 $result[$kd_kppn]['kd_d_konversi'] += ($konversi<0?0:$value['kd_d_konversi']);
                 $result[$kd_kppn]['kd_d_konversi_gagal'] += ($konversi<0?0:$value['kd_d_konversi_gagal']);
                 $result[$kd_kppn]['kd_d_sp2d'] += ($sp2d<0?0:$value['kd_d_sp2d']);
@@ -557,7 +567,11 @@ class DataKppn {
                             $return[$kd_kanwil]['rekon_persen'] = ($tmp_rekon+$rekon)/$return[$kd_kanwil]['jml_data_rekon'];
                         }
                         //$return[$kd_kanwil]['sum'] = ($tmp_value+($data_insert/$pembagi))/$return[$kd_kanwil]['jml_data'];
-                        $tmp_value = $data_insert/$pembagi;
+						if ($pembagi != 0) {
+							$tmp_value = $data_insert/$pembagi;
+						} else {
+							$tmp_value = 0;
+						}
                         $return[$kd_kanwil]['sum'] = ($tmp_value+$tmp_sum)/$return[$kd_kanwil]['jml_data'];
                         //print_r($return[$kd_kanwil]);
                     }else{

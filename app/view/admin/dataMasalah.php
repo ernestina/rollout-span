@@ -67,7 +67,7 @@
                                 <td></td>
                                 <td width="65%">
                                     <?php if(!isset($this->d_ubah)){?>
-                                        <input type="button" id="bt_add" value="TAMBAH" style="margin-top: 4px;">
+                                        
                                     <?php } ?>
                                 </td>
                                 <td width="30%"><input class="sukses" type="submit" name="<?php echo isset($this->d_ubah) ? 'upd_d_mslh' : 'add_d_mslh'; ?>" value="SIMPAN" onClick=""></td>

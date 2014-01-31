@@ -51,12 +51,15 @@ foreach ($this->kppn as $valkppn) {
                         ."+". $sp2d ."*". $bobot_sp2d 
                         ."+". $lhp ."*". $bobot_lhp 
                         ."+". $rekon ."*". $bobot_rekon."*100/".$pembagi."<br>";*/
-
+	if ($pembagi!=0){
     $persen = (int) ceil(($konversi * $bobot_konversi 
                         + $supplier * $bobot_supplier 
                         + $sp2d * $bobot_sp2d 
                         + $lhp * $bobot_lhp 
                         + $rekon * $bobot_rekon)*100/$pembagi);
+	} else {
+		$persen = 0;
+	}
     //$persen = (int) $valkppn->total;
     $nilai_kppn += $persen;
     $nokppn++;
@@ -76,7 +79,12 @@ foreach ($this->pkn as $valpkn) {
     $sp2d = ($valpkn->get_kd_d_sp2d_persen()<0)?0:$valpkn->get_kd_d_sp2d_persen();
     $spt = ($valpkn->get_kd_d_spt_persen()<0)?0:$valpkn->get_kd_d_spt_persen();
     //echo $sp2d ."*". $bobot_sp2d_pkn ."+". $spt ."*". $bobot_spt_pkn."*100/".DataPkn::getPembagi($valpkn)."<br>";
-    $persen = ceil(($sp2d * $bobot_sp2d_pkn + $spt * $bobot_spt_pkn)*100/DataPkn::getPembagi($valpkn));
+	$pembagipkn=DataPkn::getPembagi($valpkn);
+	if ($pembagipkn!=0){
+		$persen = ceil(($sp2d * $bobot_sp2d_pkn + $spt * $bobot_spt_pkn)*100/$pembagipkn);
+	} else {
+		$persen = 0;
+	}
     /*if($valpkn->get_kd_d_sp2d_persen()<0){
         $persen = $valpkn->get_kd_d_spt_persen();
     }elseif($valpkn->get_kd_d_spt_persen()<0){

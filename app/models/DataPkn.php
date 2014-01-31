@@ -152,7 +152,12 @@ class DataPkn {
             }else{
                 $spt = $value['kd_d_spt']/($value['kd_d_spt']+$value['kd_d_spt_gagal'])*100;    
             }
-            $sum = ceil((($sp2d<0?0:$sp2d)*$s+($spt<0?0:$spt)*$t)/DataPkn::getPembagi($value));
+			$pembagipkn = DataPkn::getPembagi($value);
+			if ($pembagipkn!=0){
+				$sum = ceil((($sp2d<0?0:$sp2d)*$s+($spt<0?0:$spt)*$t)/$pembagipkn);
+			} else {
+				$sum = 0;
+			}
             if(array_key_exists($kd_pkn, $result)){
                 if($sp2d>-1 || $spt>-1){
                     $result[$kd_pkn]['count_data']++;
