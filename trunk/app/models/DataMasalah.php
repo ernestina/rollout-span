@@ -119,7 +119,7 @@ class DataMasalah {
     }
 
     public function get_masalah_kppn($id_data, $user){
-        $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=".$id_data." AND kd_pemilik=".$user;
+        $sql = "SELECT * FROM " . $this->_table . " WHERE kd_d_kppn=".$id_data." AND kd_pemilik='".$user."'";
         $d_masalah = $this->db->select($sql);
         $return = array();
         foreach($d_masalah as $val){
