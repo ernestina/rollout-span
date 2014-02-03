@@ -26,7 +26,7 @@ function createPaging(url,url_data,page,maxPerPage,divContainerId){
 	        numOfData++;
 	    }
 	}
-	//console.log(numOfData);
+	console.log(numOfData);
 	numOfPage = Math.ceil(numOfData/maxPerPage);
 	
 	$.post(url,{halaman:page,max_data:maxPerPage},

@@ -131,7 +131,7 @@
                 echo Session::get('id_user');
             }?>
             ;
-        <?php if(Session::get('role')=='admin'){?>
+        <?php if(Session::get('role')==ADMIN || Session::get('role')==LAINYA){?>
             var url = '<?php echo URL; ?>dataPkn/data_nav/'+id;
                var url_data = '<?php echo URL; ?>dataPkn/get_data_pkn_array/'+id;
         <?php }else{ ?>
