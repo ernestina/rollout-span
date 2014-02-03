@@ -13,7 +13,7 @@ class Index extends BaseController {
 
     public function index() {
         //echo Session::get('role');
-        if (Session::get('role') == ADMIN || Session::get('role') == JARINGAN) {
+        if (Session::get('role') == ADMIN || Session::get('role') == LAINYA) {
             $d_bobot = new DataBobot($this->registry);
             $this->view->bobot = $d_bobot->get_bobot();
             $d_kppn = new DataKppn($this->registry);

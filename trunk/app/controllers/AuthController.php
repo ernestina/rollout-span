@@ -39,6 +39,9 @@ class AuthController extends BaseController {
                 case 5:
                     $role = 'pkn';
                     break;
+                case 9:
+                    $role = 'lainya';
+                    break;
                 case 10:
                     $role = 'jaringan';
                     break;

@@ -43,18 +43,25 @@
 						echo'<li class="nav"><a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a></li>';
 						echo '<li class="nav"><a href=' . URL . 'dataBa/addDataBa>BA 999</a></li>';
 						echo '<li class="nav"><a href=' . URL . 'dataPkn/viewDataPknLvl2>PKN</a></li>';
-						echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Daftar Masalah</a></li>';
+						echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Rekap Masalah</a></li>';
+                    }
+					if (Session::get('role') == LAINYA) {
+                        echo '<li class="nav"><a href=' . URL . 'index>BERANDA</a></li>';
+						echo'<li class="nav"><a href=' . URL . 'dataKppn/viewDataKppnLvl1>KPPN</a></li>';
+						echo '<li class="nav"><a href=' . URL . 'dataBa/addDataBa>BA 999</a></li>';
+						echo '<li class="nav"><a href=' . URL . 'dataPkn/viewDataPknLvl2>PKN</a></li>';
+						echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Rekap Masalah</a></li>';
                     }
                     if (Session::get('role') == KPPN) {
                         echo'<li class="nav"><a href=' . URL . 'dataKppn/addDataKppnLvl3>Data Harian</a></li>';
+                        echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Input Masalah</a></li>';
                     }
                     if (Session::get('role') == BA999) {
                         echo '<li class="nav"><a href=' . URL . 'dataBa/addDataBa>BA 999</a></li>';
+                        echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Input Masalah</a></li>';
                     }
                     if (Session::get('role') == PKN) {
                         echo '<li class="nav"><a href=' . URL . 'dataPkn/addDataPkn>PKN</a></li>';
-                    }
-                    if (Session::get('role') != ADMIN) {
                         echo '<li class="nav" ><a href=' . URL . 'dataMasalah/addDataMasalah>Input Masalah</a></li>';
                     }
                     ?>
