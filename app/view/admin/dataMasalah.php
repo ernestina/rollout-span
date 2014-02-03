@@ -1,6 +1,6 @@
 <h2>DATA PERMASALAHAN</h2>
 <div id="top">
-    <?php if (Session::get('role') != ADMIN) { ?>
+    <?php if (Session::get('role') != ADMIN && Session::get('role') != LAINYA) { ?>
         <a href="#oModal" class="modal">INPUT MASALAH</a><br><br>
         <div id="oModal" class="modalDialog" >
             <div>
