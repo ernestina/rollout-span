@@ -34,14 +34,19 @@
                             $r = $bot->get_rekon() / 100;
                         }
                         foreach ($this->data as $val) {
+                            $konversi = ($val->get_kd_d_konversi_persen()<=0)?"-":$val->get_kd_d_konversi_persen()."%";
+                            $supplier = ($val->get_kd_d_supplier_persen()<=0)?"-":$val->get_kd_d_supplier_persen()."%";
+                            $sp2d = ($val->get_kd_d_sp2d_persen()<=0)?"-":$val->get_kd_d_sp2d_persen()."%";
+                            $lhp = ($val->get_kd_d_lhp_persen()<=0)?"-":$val->get_kd_d_lhp_persen()."%";
+                            $rekon = ($val->get_kd_d_rekon_persen()<=0)?"-":$val->get_kd_d_rekon_persen()."%";
                             echo "<tr>";
                             echo "<td>$no</td>";
                             echo "<td style=\"text-align: left\"><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $val->get_kd_d_user() . " target=_blank>" . $val->get_kd_d_kppn() . "</a></td>";
-                            echo "<td>" . $val->get_kd_d_konversi_persen() . "%</td>";
-                             echo "<td>" . $val->get_kd_d_supplier_persen() . "%</td>";
-                            echo "<td>" . $val->get_kd_d_sp2d_persen() . "%</td>";
-                            echo "<td>" . $val->get_kd_d_lhp_persen() . "%</td>";
-                            echo "<td>" . $val->get_kd_d_rekon_persen() . "%</td>";
+                            echo "<td>" . $konversi . "</td>";
+                            echo "<td>" . $supplier . "</td>";
+                            echo "<td>" . $sp2d . "</td>";
+                            echo "<td>" . $lhp . "</td>";
+                            echo "<td>" . $rekon . "</td>";
                             echo "<td><b>" . ceil(($val->get_kd_d_konversi_persen() * $k + $val->get_kd_d_supplier_persen() * $p +$val->get_kd_d_sp2d_persen() * $s + $val->get_kd_d_lhp_persen() * $l + $val->get_kd_d_rekon_persen() * $r)) . "%</b></td>";
                             $no++;
                         }

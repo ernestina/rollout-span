@@ -57,7 +57,7 @@
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "><i class=\"icon-pencil\" title='ubah data'></i></a> &nbsp
                         <a href=" . URL . "dataPkn/addDataPkn/" . $val->get_kd_d_pkn() . "/1#uplModal  style='cursor:pointer'><i class=\"icon-file\" title='upload file'></i></a> &nbsp
                         <a href=" . URL . "dataMasalah/addDataMasalah/".$val->get_kd_d_pkn()."/".PKN."#oModal  style='cursor:pointer'><i class=\"icon-list-alt\" title='input masalah'></i></a></td>";
-                    }elseif(Session::get('role') == ADMIN){
+                    }elseif(Session::get('role') == ADMIN || Session::get('role') == LAINYA){
                         echo "<td style='text-align: center'><a onclick='viewFile(\"".$val->get_file()."\")' style='cursor:pointer'><i class=\"icon-search\" title='lihat file'></i></a> &nbsp
                                 <a onclick='viewMasalah(\"".$val->get_kd_d_pkn()."\")' style='cursor:pointer'><i class=\"icon-eye-close\" title='lihat permasalahan'></i></a></td>";
                     }
