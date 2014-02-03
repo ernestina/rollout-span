@@ -46,7 +46,7 @@ class DataMasalah {
 				FROM " . $this->_table . " a
 				LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user ";
         if(is_null($id)){
-            if ($id_user != 1) {
+            if ($id_user != 1 && $id_user != 9) {
                 $sql .= " WHERE a.kd_d_user= " . $id_user;
             }    
         }else{

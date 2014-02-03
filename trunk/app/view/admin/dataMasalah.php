@@ -89,7 +89,8 @@
                 <thead>
                     <tr>
                         <?php
-                        if (Session::get('role') == ADMIN) {
+						echo Session::get('role');
+                        if (Session::get('role') == ADMIN || Session::get('role') == lainya) {
                             echo "<th>No</th>";
                             echo "<th width ='20%'>Tanggal</th>";
                             echo "<th width ='20%'>User</th>";
@@ -113,7 +114,7 @@
                         echo "<tr>";
                         echo "<td>$no</td>";
                         echo "<td>" . date("d/m/Y", strtotime($val->get_tgl_mslh())) . "</td>";
-                        if (Session::get('role') == ADMIN) {
+                        if (Session::get('role') == ADMIN || Session::get('role') == LAINYA) {
                             echo "<td>" . $val->get_kd_d_user() . "</td>";
                             echo "<td>" . $val->get_masalah() . "</td>";
                         } else {
