@@ -78,7 +78,8 @@
                                 //$total = ($val['konversi']*$k+$val['sp2d']*$s+$val['lhp']*$l+$val['rekon']*$r)/DataKppn::getPembagi($val);
                                 echo "<tr>";
                                 echo "<td>$no</td>";
-                                echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . " target=_blank>" . $val['singkat_kanwil'] ."</a></td>";
+                                //echo "<td><a href=" . URL . "dataKppn/viewDataKppnLvl2/" . $key . " target=_blank>" . $val['singkat_kanwil'] ."</a></td>";
+                                echo "<td><a onclick=pilihan(".$key.") style='cursor:pointer; color:blue;'>" . $val['singkat_kanwil'] ."</a></td>";
                                 echo "<td>".$val['kd_d_konversi']."</td>";
                                 echo "<td>".$val['kd_d_konversi_gagal']."</td>";
                                 echo "<td>" . ceil($val['konversi_persen']) . "%</td>";
@@ -113,5 +114,69 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    function pilihan(kd_kanwil ){
+        if(isExistDomId('oPilihan')) document.getElementById('oPilihan').remove();
+        var oModal = document.createElement('div');
+        oModal.setAttribute('id','oPilihan');
+
+        var ul = document.createElement('div');
+        ul.className = "inline";
+        ul.style.width = "100%";
+        ul.style.textAlign = "center";
+
+        var liSum = document.createElement('div');
+        liSum.style.display = "inline-block";
+
+        var aSum = document.createElement('a');
+        aSum.href = "<?php echo URL . "dataKppn/viewDataKppnLvl2/"?>"+kd_kanwil;
+        aSum.setAttribute("title","summary data kppn");
+        aSum.setAttribute("target","_blank");
+
+        var imgSum = document.createElement('img');
+        imgSum.src = "<?php echo URL; ?>/public/img/chart.jpg";
+        imgSum.height = 100;
+        imgSum.width = 100;
+
+        var liDate = document.createElement('div');
+        liDate.style.display = "inline-block";
+
+        var aDate = document.createElement('a');
+        aDate.href = "<?php echo URL . "dataKppn/viewDataTanggal/"?>"+kd_kanwil;
+        aDate.setAttribute("title","data per tanggal");
+        aDate.setAttribute("target","_blank");
+
+        var imgDate = document.createElement('img');
+        imgDate.src = "<?php echo URL; ?>/public/img/calendar.jpg";
+        imgSum.height = 100;
+        imgDate.width = 100;
+
+        aSum.appendChild(imgSum);
+        aDate.appendChild(imgDate);
+        liSum.appendChild(aSum);
+        liDate.appendChild(aDate);
+        ul.appendChild(liSum);
+        ul.appendChild(liDate);
+        oModal.appendChild(ul);
+
+        var cbody = document.getElementsByTagName('body');
+        cbody[0].appendChild(oModal);
+
+        $('#oPilihan').dialog({
+            autoOpen:false,
+            width:300,
+            height:200,
+            close:function(){
+                if(isExistDomId('oPilihan')) document.getElementById('oPilihan').remove();
+            }
+        });
+
+
+
+        $('#oPilihan').dialog('open');
+
+    }
+
+
 
 </script>

@@ -75,6 +75,25 @@ class DataKppnController extends BaseController {
     }
 
     /*
+     * view data pertanggal
+     */
+
+    public function viewDataTanggal($kd_kanwil){
+        $this->view->kd_kanwil = $kd_kanwil;
+        $this->view->render('admin/dataTanggal');
+    }
+
+    /*
+     * tabel data per tanggal
+     */
+
+    public function viewTableDataTanggal($kd_kanwil,$tanggal){
+        $kppn = new DataKppn($this->registry);
+        $this->view->data = $kppn->get_data_tanggal($kd_kanwil,$tanggal);
+        $this->view->load('admin/tablePerTanggal');
+    }
+
+    /*
      * tambah Data KPPN Level 3
      */
 
