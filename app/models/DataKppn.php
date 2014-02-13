@@ -642,6 +642,80 @@ class DataKppn {
         return $return;
     }
 
+    /*
+     * get data kanwil per tanggal [rincian per kppn]
+     */
+    public function get_data_tanggal($kd_kanwil, $tanggal){
+        $bobot = new DataBobot($this->registry);
+        $bobot = $bobot->get_bobot();
+        $k=0;
+        $p=0;
+        $s=0;
+        $l=0;
+        $r=0;
+        foreach ($bobot as $bot) {
+            $k=$bot->get_konversi();
+            $p=$bot->get_supplier(); 
+            $s=$bot->get_sp2d();
+            $l=$bot->get_lhp();
+            $r=$bot->get_rekon();
+        }
+        $max = $kd_kanwil+999;
+        $sql = "SELECT a.kd_d_user, 
+                b.nama_user as kd_user,
+                a.kd_d_konversi, a.kd_d_konversi_gagal,
+                a.kd_d_supplier, a.kd_d_supplier_gagal,
+                a.kd_d_sp2d, a.kd_d_sp2d_gagal,
+                a.kd_d_lhp, a.kd_d_lhp_gagal,
+                a.kd_d_rekon, a.kd_d_rekon_gagal
+                FROM d_kppn a LEFT JOIN d_user b ON a.kd_d_user = b.kd_d_user
+                WHERE (b.kd_d_user between ".$kd_kanwil." AND ".$max.") AND a.kd_d_tgl ='".$tanggal."'";
+            //echo $sql;
+        $data = $this->db->select($sql);
+        $return = array();
+        foreach ($data as $key => $value) {
+            $konversi = ceil($this->getPersen($value['kd_d_konversi'],$value['kd_d_konversi_gagal']));
+            $supplier = ceil($this->getPersen($value['kd_d_supplier'],$value['kd_d_supplier_gagal']));
+            $sp2d = ceil($this->getPersen($value['kd_d_sp2d'],$value['kd_d_sp2d_gagal']));
+            $lhp = ceil($this->getPersen($value['kd_d_lhp'],$value['kd_d_lhp_gagal']));
+            $rekon = ceil($this->getPersen($value['kd_d_rekon'],$value['kd_d_rekon_gagal']));
+            $total = ($konversi*$k+
+                        $supplier*$p+
+                        $sp2d*$s+
+                        $lhp*$l+
+                        $rekon*$r);
+            $temp = array();
+            $temp['kd_d_user'] = $value['kd_d_user'];
+            $temp['nama_kppn'] = $value['kd_user'];
+            $temp['kd_d_konversi'] = $value['kd_d_konversi'];
+            $temp['kd_d_konversi_gagal'] = $value['kd_d_konversi_gagal'];
+            $temp['kd_d_konversi_persen'] = $konversi;
+            $temp['kd_d_supplier'] = $value['kd_d_supplier'];
+            $temp['kd_d_supplier_gagal'] = $value['kd_d_supplier_gagal'];
+            $temp['kd_d_supplier_persen'] = $supplier;
+            $temp['kd_d_sp2d'] = $value['kd_d_sp2d'];
+            $temp['kd_d_sp2d_gagal'] = $value['kd_d_sp2d_gagal'];
+            $temp['kd_d_sp2d_persen'] = $sp2d;
+            $temp['kd_d_lhp'] = $value['kd_d_lhp'];
+            $temp['kd_d_lhp_gagal'] = $value['kd_d_lhp_gagal'];
+            $temp['kd_d_lhp_persen'] = $lhp;
+            $temp['kd_d_rekon'] = $value['kd_d_rekon']; 
+            $temp['kd_d_rekon_gagal'] = $value['kd_d_rekon_gagal'];
+            $temp['kd_d_rekon_persen'] = $rekon;
+            $temp['total'] = $total/$this->getPembagi($value);
+            $return[] = $temp;
+        }
+
+        return $return;
+    }
+
+    private function getPersen($sukses, $gagal){
+        $total = $sukses+$gagal;
+        if($total==0) return 0;
+
+        return ($sukses/$total)*100;
+    }
+
     public function get_d_kppn_jkt2($limit = null, $batas = null) {
         $sql = "SELECT a.* , b.* FROM " . $this->_table . "  a 
                 LEFT JOIN " . $this->_t_tetap . " b 
