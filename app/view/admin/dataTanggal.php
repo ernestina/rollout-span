@@ -1,4 +1,4 @@
-<h2>MONITORING PER TANGGAL</h2>
+<h2>MONITORING PER TANGGAL PADA <?php echo strtoupper($this->kanwil);?></h2>
 <div id="top">
 	<div id="pilihan">
 		<h4>Pilih Tanggal :</h4>

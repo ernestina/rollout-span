@@ -80,6 +80,10 @@ class DataKppnController extends BaseController {
 
     public function viewDataTanggal($kd_kanwil){
         $this->view->kd_kanwil = $kd_kanwil;
+        $user = new DataUser($this->registry);
+        $user->set_kd_d_user($kd_kanwil);
+        $d_user = $user->get_d_user_by_id($user);
+        $this->view->kanwil = $d_user->get_nama_user();
         $this->view->render('admin/dataTanggal');
     }
 
