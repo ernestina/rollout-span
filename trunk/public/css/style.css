@@ -508,6 +508,18 @@ th, td {
   background-repeat: no-repeat;
 }
 
+.btn-chart{
+  background-image: url('../img/chart.jpg');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}
+
+.btn-cal{
+  background-image: url('../../img/calendar.jpg');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}
+
 /* White icons with optional class, or on hover/active states of certain elements */
 
 .icon-white {
