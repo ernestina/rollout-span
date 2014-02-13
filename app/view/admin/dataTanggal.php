@@ -32,7 +32,7 @@
 		var tgl = cdate.getDate();
 		var bln = cdate.getMonth()+1;
 		var thn = cdate.getFullYear();
-		var today = bln+'/'+tgl+'/'+thn; console.log(today);
+		var today = bln+'/'+tgl+'/'+thn;
 		dataPerDate(kd_kanwil,today);
 	});
 
@@ -51,38 +51,37 @@
 	}
 
 	function dateToString(date){
-		var bln = ''; console.log(date[0]);
+		var bln = ''; 
 		var tmp = date[0];
 		if(tmp.length<2){
 			tmp = '0'+tmp;
 		}
 		switch(tmp){
-			case '01' || '1':
+			case '01':
 				bln = 'Januari';
 				break;
-			case '02' || 2:
-				console.log('test');
+			case '02':
 				bln = 'Februari';
 				break;
-			case '03' || 3:
+			case '03':
 				bln = 'Maret';
 				break;
-			case '04' || 4:
+			case '04':
 				bln = 'April';
 				break;
-			case '05' || 5:
+			case '05':
 				bln = 'Mei';
 				break;
-			case '06' || 6:
+			case '06':
 				bln = 'Juni';
 				break;
-			case '07' || 7:
+			case '07':
 				bln = 'Juli';
 				break;
-			case '08' || 8:
+			case '08':
 				bln = 'Agustus';
 				break;
-			case '09' || 9:
+			case '09':
 				bln = 'September';
 				break;
 			case '10':
